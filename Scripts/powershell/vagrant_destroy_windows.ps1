@@ -8,7 +8,7 @@ Get-Process -Name *ruby* | Stop-Process -Force
 #Vagrant Boxes
 $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
 $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
-$ol8 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
+$ol9= "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 
 #up debian 11
 Set-Location $debian

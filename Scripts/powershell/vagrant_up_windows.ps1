@@ -12,10 +12,10 @@ setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d"
 #Vagrant Boxes
 $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
 $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
-$ol8 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
+$ol9= "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 
 #up ol8
-Set-Location $ol8
+Set-Location $ol9
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\ol8-lpic-201\virtualbox\private_key F:\Projetos\vagrant-pk\oracle-linux8
 

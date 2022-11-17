@@ -19,7 +19,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 # Box metadata location and box name
 BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
-BOX_NAME = "oraclelinux/8"
+BOX_NAME = "oraclelinux/9"
 
 # INSTALL PLUGIN RELLOAD
 unless Vagrant.has_plugin?("vagrant-reload")
@@ -113,34 +113,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vbguest.auto_update = false
   config.vbguest.no_remote = true
 
-  # VM ol8_lpic2_202
-  config.vm.define "ol8-lpic2-202"  do |ol8_lpic2_202|
+  # VM ol9_lpic2_202
+  config.vm.define "ol9-lpic2-202"  do |ol9_lpic2_202|
 
     # VARIABLE HOSTNAME
-   APP_NAME= "ol8-lpic2-202"
+   APP_NAME= "ol9-lpic2-202"
 
     # HOSTNAME
-    ol8_lpic2_202.vm.hostname =APP_NAME
+    ol9_lpic2_202.vm.hostname =APP_NAME
 
     # NETWORK
-    ol8_lpic2_202.vm.network "public_network" ,ip: "192.168.0.135",mode: "bridge" ,bridge: [
+    ol9_lpic2_202.vm.network "public_network" ,ip: "192.168.0.135",mode: "bridge" ,bridge: [
       "ens32",
       "Marvell AQtion 5Gbit Network Adapter",
     ]
-    ol8_lpic2_202.vm.network "private_network", ip: "172.36.12.220"
+    ol9_lpic2_202.vm.network "private_network", ip: "172.36.12.220"
 
     # Forward Port
-    # ol8_lpic2_202.vm.network "forwarded_port", guest: 8020, host: 9020, adapter: 1, guest_ip: "192.168.0.133" ,host_ip: "192.168.0.33"
-    # ol8_lpic2_202.vm.network "forwarded_port", guest: 2234, host: 3234, adapter: 1, guest_ip: "192.168.0.133" ,host_ip: "192.168.0.33"
+    # ol9_lpic2_202.vm.network "forwarded_port", guest: 8020, host: 9020, adapter: 1, guest_ip: "192.168.0.133" ,host_ip: "192.168.0.33"
+    # ol9_lpic2_202.vm.network "forwarded_port", guest: 2234, host: 3234, adapter: 1, guest_ip: "192.168.0.133" ,host_ip: "192.168.0.33"
 
     # MOUNTS
-    ol8_lpic2_202.vm.synced_folder ".", "/vagrant", disabled: true
-    ol8_lpic2_202.vm.synced_folder "./security", "/home/vagrant/security"
-    ol8_lpic2_202.vm.synced_folder "./configs", "/home/vagrant/configs"
-    ol8_lpic2_202.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    ol9_lpic2_202.vm.synced_folder ".", "/vagrant", disabled: true
+    ol9_lpic2_202.vm.synced_folder "./security", "/home/vagrant/security"
+    ol9_lpic2_202.vm.synced_folder "./configs", "/home/vagrant/configs"
+    ol9_lpic2_202.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 
     # PROVIDER
-    ol8_lpic2_202.vm.provider "virtualbox" do |vb|
+    ol9_lpic2_202.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
       vb.name =APP_NAME
       vb.memory = 2048
@@ -150,10 +150,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
 
-    ol8_lpic2_202.vm.provision "shell", path: "scripts/install.sh"
+    ol9_lpic2_202.vm.provision "shell", path: "scripts/install.sh"
 
     #ANSIBLE PROVISIONING
-    # ol8_lpic2_202.vm.provision "ansible" do |ansible|
+    # ol9_lpic2_202.vm.provision "ansible" do |ansible|
     #   ansible.limit = "all"
     #   ansible.inventory_path = "provisioning/hosts"
     #   ansible.playbook = "provisioning/app.yml"
