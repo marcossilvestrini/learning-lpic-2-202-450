@@ -14,14 +14,14 @@
 <p align="center">
 <strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/marcossilvestrini/templates">View Demo</a>
+    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450">View Demo</a>
     -
-    <a href="https://github.com/marcossilvestrini/templates/issues">Report Bug</a>
+    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Report Bug</a>
     -
-    <a href="https://github.com/marcossilvestrini/templates/issues">Request Feature</a>
+    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Request Feature</a>
 </p>
 
-<!-- TABLE OF CONTENTS -->
+<!-* TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -48,17 +48,17 @@
 
 ## About Project
 
->This project aims to help students or professionals to learn the main concepts of GNU \ Linux\
+>This project aims to help students or professionals to learn the main concepts of GNULinux
 and free software\
-Some GNU \ Linux distributions like Debian and RPM will be covered\
+Some GNULinux distributions like Debian and RPM will be covered\
 Installation and configuration of some packages will also be covered\
 >By doing this you can give the whole community a chance to benefit from your changes.\
 >Access to the source code is a precondition for this.\
 >Use vagrant for up machines and execute labs and practice content in this article.\
 >I have published in folder Vagrant a Vagrantfile with what is necessary\
 for you to upload an environment for studies
-
->Thanks Sue B.V., The Netherlands - Open Sourced 2021 for content of learning
+>
+>Thanks *Sue B.V.*, The Netherlands Open Sourced 2021 for content of learning
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,7 +81,7 @@ and how to install them.
 Clone the repo
 
 ```sh
-git clone https://github.com/marcossilvestrini/templates.git
+git clone https://github.com/marcossilvestrini/learning-lpic-2-202-450.git
 ```
 
 ## Usage
@@ -90,7 +90,7 @@ Use this repository for get learning about LPIC2 202-450 exam
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ROADMAP -->
+<!-* ROADMAP -->
 ## Roadmap
 
 * [x] Create repository
@@ -99,7 +99,6 @@ Use this repository for get learning about LPIC2 202-450 exam
 * [ ] Create examples about Topic 207.3
 * [ ] Create examples about Topic 208.1
 * [ ] Create examples about Topic 20x.y
-
 
 ## Four Essential Freedoms
 
@@ -160,7 +159,7 @@ processes blocked on I/O
 
 #### 200.1 Important Commands
 
-##### iostat - Report Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions
+##### iostat * Report Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions
 
 ```sh
 #syntax
@@ -188,7 +187,7 @@ iostat -d
 iostat -f /var/log
 ```
 
-##### iotop - simple top-like I/O monitor
+##### iotop * simple top-like I/O monitor
 
 ```sh
 #View disk usage
@@ -200,7 +199,7 @@ sudo iotop -b -u vagrant | head
 sudo iotop -a -u vagrant
 ```
 
-##### vmstat - Report virtual memory statistics
+##### vmstat * Report virtual memory statistics
 
 ```sh
 #syntaxe
@@ -213,7 +212,7 @@ vmstat -S m
 
 ```
 
-##### mpstat - Report processors related statistics
+##### mpstat * Report processors related statistics
 
 ```sh
 #syntaxe
@@ -225,7 +224,7 @@ mpstat 2 3
 mpstat -o JSON
 ```
 
-##### netstat - Print network connections, routing tables, interface statistics, masquerade connections
+##### netstat * Print network connections, routing tables, interface statistics, masquerade connections
 
 ```sh
 #syntaxe
@@ -248,7 +247,7 @@ netstat -aln --tcp
 netstat -al --tcp
 ```
 
-##### ss - another utility to investigate sockets
+##### ss * another utility to investigate sockets
 
 ```sh
 #syntaxe
@@ -282,7 +281,7 @@ ss -s
 ss -o state established '( dport = :ssh or sport = :ssh )'
 ```
 
-##### iptraf - Interactive Colorful IP LAN Monitor
+##### iptraf * Interactive Colorful IP LAN Monitor
 
 ```sh
 #show gui with option
@@ -292,7 +291,7 @@ iptraf
 iptraf -i eth1
 ```
 
-##### w - Show who is logged on and what they are doing
+##### w * Show who is logged on and what they are doing
 
 ```sh
 #show logins
@@ -302,7 +301,7 @@ w
 w -s
 ```
 
-##### sar - Collect, report, or save system activity information
+##### sar * Collect, report, or save system activity information
 
 ```sh
 #syntaxe
@@ -333,7 +332,7 @@ sar -f  /var/log/sysstat/sa31
 
 ```
 
-##### pstree - display a tree of processes
+##### pstree * display a tree of processes
 
 ```sh
 #Show tree process full formatting
@@ -349,7 +348,7 @@ pstree -a
 pstree -a PID
 ```
 
-##### ps - report a snapshot of the current processes
+##### ps * report a snapshot of the current processes
 
 Undertand RSS and VSZ
 
@@ -380,7 +379,7 @@ ps axu | grep vim
 ps -ely | grep "^D"
 ```
 
-##### lsof - list open files
+##### lsof * list open files
 
 ```sh
 #list all open files
@@ -450,14 +449,14 @@ sudo lsof {path} | grep deleted
 lsof -i tcp|grep -v LISTEN
 ```
 
-##### cifsiostat - Report CIFS statistics
+##### cifsiostat * Report CIFS statistics
 
 ```sh
 # show human-readable CIFS IO stats in megabytes every 1sec
 cifsiostat -h -m 1
 ```
 
-##### nfsiostat - Emulate iostat for NFS mount points using /proc/self/mountstats
+##### nfsiostat * Emulate iostat for NFS mount points using /proc/self/mountstats
 
 ```sh
 # show default statistic
@@ -474,19 +473,19 @@ nfsiostat 2 5 /particular/mount/point
 nfsiostat -s
 ```
 
-##### top - display Linux processes
+##### top * display Linux processes
 
 ```sh
 #Explaining  %Cpu(s)
-us - Time spent in user space
-sy - Time spent in kernel space
-ni - Time spent running niced user processes (User defined priority)
-id - Time spent in idle operations
-wa - Time spent on waiting on IO peripherals (eg. disk)
-hi - Time spent handling hardware interrupt routines. (Whenever a peripheral unit want attention form the CPU,\
+us * Time spent in user space
+sy * Time spent in kernel space
+ni * Time spent running niced user processes (User defined priority)
+id * Time spent in idle operations
+wa * Time spent on waiting on IO peripherals (eg. disk)
+hi * Time spent handling hardware interrupt routines. (Whenever a peripheral unit want attention form the CPU,\
 it literally pulls a line, to signal the CPU to service it)
-si - Time spent handling software interrupt routines. (a piece of code, calls an interrupt routine...)
-st - Time spent on involuntary waits by virtual cpu while hypervisor is servicing another processor\
+si * Time spent handling software interrupt routines. (a piece of code, calls an interrupt routine...)
+st * Time spent on involuntary waits by virtual cpu while hypervisor is servicing another processor\
 (stolen from a virtual machine)
 
 #Explaining the columns
@@ -529,7 +528,7 @@ top -d 100 #delay of 10 seconds
 top -p PID
 ```
 
-##### htop - interactive process viewer
+##### htop * interactive process viewer
 
 ```sh
 #show all process
@@ -542,7 +541,7 @@ htop -d 100
 htop -t
 ```
 
-##### uptime - Tell how long the system has been running
+##### uptime * Tell how long the system has been running
 
 ```sh
 #show infos
@@ -551,7 +550,7 @@ uptime -p
 uptime -s
 ```
 
-##### free - Display amount of free and used memory in the system
+##### free * Display amount of free and used memory in the system
 
 ```sh
 #show infos of memory
@@ -594,7 +593,8 @@ resource exhaustion
 
 #### Icinga2
 
->Icinga is a monitoring system which checks the availability of your network resources, notifies users of outages, and generates performance data for reporting.
+>Icinga is a monitoring system which checks the availability of your network resources,
+notifies users of outages, and generates performance data for reporting.
 
 ##### [Install icinga2 in Debian](https://icinga.com/get-started/download/#community)
 
@@ -602,7 +602,7 @@ resource exhaustion
 apt-get update
 apt-get -y install apt-transport-https wget gnupg
 
-wget -O - https://packages.icinga.com/icinga.key | apt-key add -
+wget -O * https://packages.icinga.com/icinga.key | apt-key add -
 
 DIST=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release); \
  echo "deb https://packages.icinga.com/debian icinga-${DIST} main" > \
@@ -808,7 +808,7 @@ pass: foo
 
 ##### Troubleshootings in Nagios Service
 
-- Nagios service not started
+* Nagios service not started
 Verify error in logs(/usr/local/nagios/var/nagios.log,/var/log/message,journalctl -xe)
 If error is "Caught SIGSEGV, shutting down...", possible no free memory ressource in server.
 For solution, add more memory ressources or set this value in nagios.cfg: check_for_updates=0
@@ -984,7 +984,7 @@ sudo systemctl enable collectd
 
 <https://hub.docker.com/r/puckel/docker-collectd>
 
-#### [MRTG - The Multi Router Traffic Grapher](https://oss.oetiker.ch/mrtg/)
+#### [MRTG * The Multi Router Traffic Grapher](https://oss.oetiker.ch/mrtg/)
 
 ##### [Install in Debian](https://www.debianhelp.co.uk/mrtg.htm)
 
@@ -1239,7 +1239,7 @@ Compress method of kernel sources
 #### 201.1 Important Commands
 
 ```sh
-#uname - get kernel version
+#uname * get kernel version
 uname -r
 ```
 
@@ -1247,11 +1247,11 @@ Understand versions
 
 Example\
 ![image](https://user-images.githubusercontent.com/62715900/177155847-171c142b-7fa3-4a25-8fc4-93d0c74e1e71.png)\
-5  - Version\
-4  - Patch level(Major release)\
-17 - Sub level(Minor release)\
-2136.300.7 - Extraversion (Distro maintainer-controlled version)\
-el8uek.x86_64 - Local Version (Distro maintainer-controlled version)\
+5  * Version\
+4  * Patch level(Major release)\
+17 * Sub level(Minor release)\
+2136.300.7 * Extraversion (Distro maintainer-controlled version)\
+el8uek.x86_64 * Local Version (Distro maintainer-controlled version)\
 
 Get size image of kernel
 
@@ -1434,7 +1434,7 @@ make  modules_install
 
 ##### Install Kernel
 
-###### Method 1 - Make Install
+###### Method 1 * Make Install
 
 ```sh
 cd /usr/src/linux
@@ -1443,7 +1443,7 @@ make  install
 
 ![image](https://user-images.githubusercontent.com/62715900/176065412-81c688af-be75-486e-bb60-922956be8c5d.png)
 
-###### Method 2 - Manual
+###### Method 2 * Manual
 
 ```sh
 #Copy image
@@ -1488,7 +1488,7 @@ make mrproper
 
 #### 201.2 Important Commands
 
-##### mkinitrd - is a compat wrapper, which calls dracut to generate an initramfs
+##### mkinitrd * is a compat wrapper, which calls dracut to generate an initramfs
 
 ```sh
 #Generate a initrd in RPM\RHEL
@@ -1496,21 +1496,21 @@ make mrproper
 mkinitrd -f /boot/initrd.img-5.18.41111-lpic-201-450.img 5.18.4-1111-lpic-201-450
 ```
 
-##### dracut - low-level tool for generating an initramfs/initrd image
+##### dracut * low-level tool for generating an initramfs/initrd image
 
 ```sh
 #update initramfs
 dracut --force
 ```
 
-##### mkinitramfs - low-level tool for generating an initramfs image
+##### mkinitramfs * low-level tool for generating an initramfs image
 
 ```sh
 #Generate a initrd in Debian
 mkinitramfs -o /boot/initrd.img-5.18.41111-lpic-201-450 5.18.4-1111-lpic-201-450
 ```
 
-##### make - GNU make utility to maintain groups of programs
+##### make * GNU make utility to maintain groups of programs
 
 ```sh
 # Generate kernel image
@@ -1565,7 +1565,7 @@ bunzip2 -v picture1.jpg.bz2
 bzip2 -dv picture1.jpg.bz2
 ```
 
-##### dkms - Dynamic Kernel Module Support
+##### dkms * Dynamic Kernel Module Support
 
 ```sh
 #install package
@@ -1640,7 +1640,7 @@ udevadm monitor
 
 #### 201.3 Important Commands
 
-##### uname - print system information
+##### uname * print system information
 
 ```sh
 # Show all information
@@ -1671,7 +1671,7 @@ uname -i
 uname -o
 ```
 
-##### sysctl - configure kernel parameters at runtime
+##### sysctl * configure kernel parameters at runtime
 
 ```sh
 # List all runtime files\params
@@ -1689,7 +1689,7 @@ fs.file-max = 400000
 #Or put a custom file XX-sysctl.conf in /etc/sysctl.d/  with content fs.file-max = 400000
 ```
 
-##### lspci - list all PCI devices
+##### lspci * list all PCI devices
 
 ```sh
 
@@ -1709,7 +1709,7 @@ lspci -k
 lspci -s $id -k
 ```
 
-##### lsusb - list USB devices
+##### lsusb * list USB devices
 
 ```sh
 #install
@@ -1729,14 +1729,14 @@ lsusb -t
 lsusb -vd $id
 ```
 
-##### lsdev - display information about installed hardware
+##### lsdev * display information about installed hardware
 
 ```sh
 #List all devices infos
 lsdev
 ```
 
-##### dmesg - print or control the kernel ring buffer
+##### dmesg * print or control the kernel ring buffer
 
 ```sh
 # Show messages of kernel ring buffer
@@ -1746,7 +1746,7 @@ dmesg
 dmesg -C
 ```
 
-##### depmod - Generate modules.dep and map files
+##### depmod * Generate modules.dep and map files
 
 ```sh
 # Probe all modules
@@ -1756,14 +1756,14 @@ depmod -a
 depmod -w
 ```
 
-##### lsmod -  Show the status of modules in the Linux Kernel
+##### lsmod *  Show the status of modules in the Linux Kernel
 
 ```sh
 #show all modules
 lsmod
 ```
 
-##### modinfo - Show information about a Linux Kernel module
+##### modinfo * Show information about a Linux Kernel module
 
 ```sh
 #show all info
@@ -1773,21 +1773,21 @@ modinfo video
 modinfo -p video
 ```
 
-##### insmod - Simple program to insert a module into the Linux Kernel
+##### insmod * Simple program to insert a module into the Linux Kernel
 
 ```sh
 # Up module in kernel
 insmod /lib/modules/5.4.17-2136.300.7.el8uek.x86_64/misc/vboxsf.ko
 ```
 
-##### rmmod - Simple program to remove a module from the Linux Kernel
+##### rmmod * Simple program to remove a module from the Linux Kernel
 
 ```sh
 # Down module in kernel
 rmmod /lib/modules/5.4.17-2136.300.7.el8uek.x86_64/misc/vboxsf.ko
 ```
 
-##### modprobe - Add and remove modules from the Linux Kernel
+##### modprobe * Add and remove modules from the Linux Kernel
 
 ```sh
 # Down module in kernel
@@ -1800,7 +1800,7 @@ modprobe snd-hda-intel
 modprobe psmouse resync_time=10
 ```
 
-##### udevadm - udev management tool
+##### udevadm * udev management tool
 
 ```sh
 # Show infos about device
@@ -1826,7 +1826,7 @@ udevadm monitor
 /etc/modules-load.d/
 ```
 
-#### About udev - Dynamic Device Management
+#### About udev * Dynamic Device Management
 
 ```sh
 # Configuration file
@@ -1877,14 +1877,14 @@ init and telinit
 
 #### 202.1 Important Commands
 
-##### runlevel - Print previous and current SysV runlevel
+##### runlevel * Print previous and current SysV runlevel
 
 ```sh
 # Show current runlevel(in /etc/inittab, line id:2:initdefault:)
 runlevel
 ```
 
-##### init, telinit - process control initialization
+##### init, telinit * process control initialization
 
 ```sh
 # Set runlevel
@@ -1892,7 +1892,7 @@ init 3
 telinit 5
 ```
 
-##### systemctl - Control the systemd system and service manager
+##### systemctl * Control the systemd system and service manager
 
 ```sh
 #Starts unit.
@@ -1950,7 +1950,7 @@ sudo systemctl poweroff
 sudo systemctl reboot
 ```
 
-##### systemd-delta - Find overridden configuration files
+##### systemd-delta * Find overridden configuration files
 
 ```sh
 # To see all local configuration:
@@ -2255,17 +2255,17 @@ Processes 2, 3, 4, 5 and 6 are kernel daemons.\
 The kernel daemons are started after init, so they get process numbers like normal processes do.\
 But their code and data lives in the kernel’s part of the memory.
 
-Kflushd and Kupdate :- Input and output is done via buffers in memory.\
+Kflushd and Kupdate :* Input and output is done via buffers in memory.\
 This allows things to run faster and the data in the buffer are written to disk in larger more efficient\
 chunks.The daemons kflushd and kupdate handle this work. kupdate runs periodically (5 seconds) to\
 check whether there are any dirty buffers. If there are, it gets kflushd to flush them to disk.
 
-Kswap and Kpiod :- System memory can be better managed by shifting unused parts of running programs\
+Kswap and Kpiod :* System memory can be better managed by shifting unused parts of running programs\
 out to the swap partition(s) of the hard disk. Moving this data in and out of memory as needed is done\
 by kpiod and kswapd. Every second or so, kswapd wakes up to check out the memory situation, and if\
 something on the disk is needed in memory, or there is not enough free memory, kpiod is called in.
 
-Mdrecoveryd :- mdrecoveryd is part of the Multiple Devices package used for software RAID and\
+Mdrecoveryd :* mdrecoveryd is part of the Multiple Devices package used for software RAID and\
 combining multiple disks into one virtual disk Basically it is part of the kernel.\
 It can be removed from the kernel by deselecting it (CONFIG_BLK_DEV_MD) and recompiling the kernel.
 
@@ -2338,7 +2338,7 @@ vfat
 
 ![grub-rescue](https://user-images.githubusercontent.com/62715900/178345692-77bbdf5b-b728-422a-8614-be7fe7f45a83.gif)
 
-##### Grub Shell - Execute manual boot
+##### Grub Shell * Execute manual boot
 
 ```sh
 #find disks
@@ -2433,7 +2433,7 @@ df | grep sda[1-5]
 ***warnning: Not execute this tutorial in production environment!!!***
 
 ```sh
-#1 - Causing the problem
+#1 * Causing the problem
 
 #list partiotions
 fdisk -l
@@ -2444,7 +2444,7 @@ dd if=/dev/zero of=/dev/sda bs=512 count=1
 #reboot system
 reboot
 
-#2 - Recovery MBR partition
+#2 * Recovery MBR partition
 
 #boot system with live cd
 
@@ -2456,7 +2456,7 @@ apt-get install -y testdisk
 
 #use testdisk for recovery\write MRB partition table
 
-#3 - Recovery grub
+#3 * Recovery grub
 
 #boot system with live cd
 
@@ -2469,7 +2469,7 @@ grub-install --root-directory=/mnt/boot /dev/sdXY
 #reboot system
 reboot
 
-#4 - Reinstall grub
+#4 * Reinstall grub
 grub-install /dev/sdXY
 update-grub
 reboot
@@ -2487,7 +2487,7 @@ Mount point
 
 #### 202.2 Important Commands
 
-##### grub-install - install GRUB to a device
+##### grub-install * install GRUB to a device
 
 ```sh
 #install grub
@@ -2497,14 +2497,14 @@ grub-install /dev/sda
 grub-install --root-directory=/mnt /dev/sda
 ```
 
-##### efibootmgr - manipulate the UEFI Boot Manager
+##### efibootmgr * manipulate the UEFI Boot Manager
 
 ```sh
 #list uefi infos
 efibootmgr
 ```
 
-##### update-grub, update-grub2 - stub for grub-mkconfig
+##### update-grub, update-grub2 * stub for grub-mkconfig
 
 ```sh
 # update configs of grub in file /boot/grub/grub.cfg
@@ -2585,7 +2585,7 @@ is a simple UEFI boot manager which executes configured EFI images.
 
 command: bootctl
 
-#### Das U-Boot - Universal Boot Loader
+#### Das U-Boot * Universal Boot Loader
 
 U-Boot is both a first-stage and second-stage bootloader.\
 It is loaded by the system's ROM (e.g. onchip ROM of the ARM CPU) from a supported boot device,\
@@ -2633,8 +2633,8 @@ Understanding of systemd mount units
 
 ```sh
 /etc/fstab
-/etc/mtab(-> ../proc/self/mounts) - mounted partitions
-/proc/mounts (-> self/mounts) - mounted partitions
+/etc/mtab(-> ../proc/self/mounts) * mounted partitions
+/proc/mounts (-> self/mounts) * mounted partitions
 /proc/swaps ->list of swap partitions
 mount and umount
 ```
@@ -2845,7 +2845,7 @@ swapon /swapfile
 
 #### 203.1 Importat Commands
 
-##### mount - mount a filesystem
+##### mount * mount a filesystem
 
 ```sh
 # show all mounted partitions
@@ -2876,7 +2876,7 @@ mount -o remount,ro /
 mount -o remount,ro /dev/sda1 /
 ```
 
-##### umount - unmount filesystems
+##### umount * unmount filesystems
 
 ```sh
 # umount all partitions with auto in /etc/fstab
@@ -2886,7 +2886,7 @@ umount -a
 umount /mnt/test
 ```
 
-##### systemd-mount, systemd-umount - Establish and destroy transient mount or auto-mount points
+##### systemd-mount, systemd-umount * Establish and destroy transient mount or auto-mount points
 
 ```sh
 # mount filesystem ext4
@@ -2921,14 +2921,14 @@ systemctl enable mnt-myfiles.mount
 
 ```
 
-##### blkid - locate/print block device attributes
+##### blkid * locate/print block device attributes
 
 ```sh
 #list all block devices atributes
 blkid
 ```
 
-##### lsblk - list block devices
+##### lsblk * list block devices
 
 ```sh
 #list blocks
@@ -2940,35 +2940,35 @@ lsblk -f /dev/sdb
 lsblk -f /dev/sdb1
 ```
 
-##### e2label - Change the label on an ext2/ext3/ext4 filesystem
+##### e2label * Change the label on an ext2/ext3/ext4 filesystem
 
 ```sh
 #list label of partition
 e2label /dev/sda1
 ```
 
-##### findfs - find a filesystem by label or UUID
+##### findfs * find a filesystem by label or UUID
 
 ```sh
 findfs UUID=F29E-358F
 findfs LABEL=FS_VFAT
 ```
 
-##### findmnt - find a filesystem
+##### findmnt * find a filesystem
 
 ```sh
 # list all mounted points
 findmnt
 ```
 
-##### sync - Synchronize cached writes to persistent storage
+##### sync * Synchronize cached writes to persistent storage
 
 ```sh
 # force sync of cache files
 sync
 ```
 
-##### swapon - enable/disable devices and files for paging and swapping
+##### swapon * enable/disable devices and files for paging and swapping
 
 ```sh
 # enable swap partition\file
@@ -2979,7 +2979,7 @@ swapon /myswapfile
 swapon
 ```
 
-##### swapoff - enable/disable devices and files for paging and swapping
+##### swapoff * enable/disable devices and files for paging and swapping
 
 ```sh
 # disable swap partition\file
@@ -2987,7 +2987,7 @@ swapoff/dev/sda2
 swapoff /myswapfile
 ```
 
-#### mkswap - set up a Linux swap area
+#### mkswap * set up a Linux swap area
 
 ```sh
 #formart partition\file for swap
@@ -3083,7 +3083,7 @@ xfs_info /dev/sda1
 #check and repair filesystem
 xfs_repair /dev/sda1
 
-#xfsdump - generate full backup
+#xfsdump * generate full backup
 xfsdump -l 0 -f /dev/device /path/to/filesystem
 
 #restore xfs filesystem
@@ -3092,7 +3092,7 @@ xfsrestore -f /dev/sdc -S session-ID /path/to/destination
 
 #### Important Commands
 
-##### mkfs - build a Linux filesystem
+##### mkfs * build a Linux filesystem
 
 >mke2fs supports a wide range of command line parameters and options. Here are some of the most significant ones.
 All of them also apply to mkfs.ext2, mkfs.ext3 and mkfs.ext4:
@@ -3156,12 +3156,12 @@ mkfs.ext2 -L "New-FS_EXT2" /dev/sdc1
 
 ![image](https://user-images.githubusercontent.com/62715900/138095310-97971e22-c852-4816-a412-e769d1178f4c.png)
 
-Filesystem XFS - mkfs.xfs
+Filesystem XFS * mkfs.xfs
 
 >mke2fs supports a wide range of command line parameters and options. Here are some of the most significant ones. All of them also apply to mkfs.ext2, mkfs.ext3 and mkfs.ext4:
 
 >Package in debian
-xfsprogs - Utilities for managing the XFS filesystem
+xfsprogs * Utilities for managing the XFS filesystem
 
 >-b SIZE
 Sets the size of the data blocks in the device to SIZE, which can be 1024, 2048 or 4096 bytes per block.
@@ -3200,7 +3200,7 @@ mkfs.xfs -L "New-FS-XFS" /dev/sdb1
 
 ![image](https://user-images.githubusercontent.com/62715900/138098775-2e6dcec5-eb11-4025-8fe5-3e104793a206.png)
 
-FAT Filesystem - mkfs.fat
+FAT Filesystem * mkfs.fat
 
 >Package in Debian:
 dosfstools
@@ -3268,7 +3268,7 @@ btrfs subvolume create /mnt/disk/BKP
 
 ![image](https://user-images.githubusercontent.com/62715900/138141768-a4abd764-eb3b-4982-ac2a-56571445c803.png)
 
-##### dumpe2fs - dump ext2/ext3/ext4 filesystem information
+##### dumpe2fs * dump ext2/ext3/ext4 filesystem information
 
 ```sh
 # show partition infos
@@ -3281,7 +3281,7 @@ dumpe2fs -h /dev/sdb1
 dumpe2fs -b /dev/sdb1
 ```
 
-##### tune2fs  -  adjust  tunable  filesystem  parameters  on  ext2/ext3/ext4 filesystems
+##### tune2fs  *  adjust  tunable  filesystem  parameters  on  ext2/ext3/ext4 filesystems
 
 ```sh
 #show all parameters in specific partition
@@ -3307,21 +3307,21 @@ tune2fs -e remount-ro /dev/nvme0n1p1
 tune2fs -e panic /dev/sdb
 ```
 
-##### debugfs - ext2/ext3/ext4 file system debugger
+##### debugfs * ext2/ext3/ext4 file system debugger
 
 ```sh
 #example get inode infos
 debugfs -R 'stat <5>' /dev/sdb1
 ```
 
-##### badblocks - search a device for bad blocks
+##### badblocks * search a device for bad blocks
 
 ```sh
 #get bad blocks
 badblock /dev/sdb1
 ```
 
-##### fsck - check and repair a Linux filesystem
+##### fsck * check and repair a Linux filesystem
 
 ```sh
 #check all filesystem mounted
@@ -3346,7 +3346,7 @@ fsck -f -n /dev/sdb1
 fsck -f -c /dev/sdb1
 ```
 
-##### e2fsck - check a Linux ext2/ext3/ext4 file system
+##### e2fsck * check a Linux ext2/ext3/ext4 file system
 
 ```sh
 e2fsck /dev/sdb1
@@ -3467,7 +3467,7 @@ systemctl status mnt-automount.automount
 
 #### 203.3 Important Commands
 
-##### mkisofs \ genisoimage - create ISO9660/Joliet/HFS filesystem with optional Rock Ridge attributes
+##### mkisofs \ genisoimage * create ISO9660/Joliet/HFS filesystem with optional Rock Ridge attributes
 
 ```sh
 #create a iso file with specific folder
@@ -3486,14 +3486,14 @@ mkisofs -R -o image-rock.iso /home/vagrant
 mkisofs -udf -o image-rock.iso /home/vagrant
 ```
 
-##### wodim - write data to optical disk media
+##### wodim * write data to optical disk media
 
 ```sh
 #record cdrom to iso file
 cdrecord /dev/sr0 debina-image.iso
 ```
 
-##### cryptsetup - manage plain dm-crypt and LUKS encrypted volumes
+##### cryptsetup * manage plain dm-crypt and LUKS encrypted volumes
 
 ```sh
 #encrypt partition with LUKS method
@@ -3625,7 +3625,7 @@ mount /dev/md0 /mnt/raid5
 
 #### 204.1 Important commands
 
-##### mdadm - manage MD devices aka Linux Software RAID
+##### mdadm * manage MD devices aka Linux Software RAID
 
 ```sh
 #create raid0
@@ -3878,7 +3878,7 @@ df -h
 
 #### 204.2 Important Commands
 
-##### hdparm - get/set SATA/IDE device parameters
+##### hdparm * get/set SATA/IDE device parameters
 
 ```sh
 #show infos about device
@@ -3898,7 +3898,7 @@ hdparm -T /dev/sda
 hdparm -d1 /dev/hda
 ```
 
-##### sdparm - access SCSI modes pages; read VPD pages; send simple SCSI commands
+##### sdparm * access SCSI modes pages; read VPD pages; send simple SCSI commands
 
 ```sh
 #show infos scsi\sata devices
@@ -3906,20 +3906,20 @@ sdparm /dev/sda
 sdparm -a /dev/sda
 ```
 
-##### nvme - the NVMe storage command line interface utility(nvme-cli)
+##### nvme * the NVMe storage command line interface utility(nvme-cli)
 
 ```sh
 #list all nvme devices
 ```
 
-##### fstrim - discard unused blocks on a mounted filesystem
+##### fstrim * discard unused blocks on a mounted filesystem
 
 ```sh
 #execute trim in all ssd mount point
 fstrim -a
 ```
 
-##### iscsiadm - open-iscsi administration utility
+##### iscsiadm * open-iscsi administration utility
 
 ```sh
 #discover available targets from a discovery portals
@@ -3960,7 +3960,7 @@ iscsiadm -m session -o show
 iscsiadm -m node -p ipaddress --rescan
 ```
 
-##### tgt-admin - Linux SCSI Target Configuration Tool
+##### tgt-admin * Linux SCSI Target Configuration Tool
 
 ```sh
 #show status of iscsi target configuration
@@ -4206,7 +4206,7 @@ iwlist
 
 #### 205.1 Important Commands
 
-##### ifconfig - configure a network interface
+##### ifconfig * configure a network interface
 
 ```sh
 #show network configurations
@@ -4229,7 +4229,7 @@ ifconfig eth0 add 172.24.24.20 netmask 255.255.255.0
 ifconfig eth0 hw ether 08:08:08:08:08:08
 ```
 
-##### route - show / manipulate the IP routing table
+##### route * show / manipulate the IP routing table
 
 ```sh
 #show routes
@@ -4247,7 +4247,7 @@ route del -net 172.24.24.0/24
 route del default
 ```
 
-##### ip - show / manipulate routing, network devices, interfaces and tunnels
+##### ip * show / manipulate routing, network devices, interfaces and tunnels
 
 ```sh
 #list the interface links available for configuration
@@ -4302,7 +4302,7 @@ ip neigh show
 
 ```
 
-##### arp - manipulate the system ARP cache
+##### arp * manipulate the system ARP cache
 
 ```sh
 #show arp table
@@ -4317,14 +4317,14 @@ arp -s IP MAC
 arp -f FILE_WITH_LIST_IP_MAC
 ```
 
-##### arpwatch - keep track of ethernet/ip address pairings
+##### arpwatch * keep track of ethernet/ip address pairings
 
 ```sh
 #debug mode
 arpwatch -d
 ```
 
-##### iw - show / manipulate wireless devices and their configuration
+##### iw * show / manipulate wireless devices and their configuration
 
 ```sh
 #stop NetworkManager for this examples
@@ -4341,14 +4341,14 @@ iw dev wlp2so scan
 iw dev wlp2sop up
 ```
 
-##### iwlist - Get more detailed wireless information from a wireless interface
+##### iwlist * Get more detailed wireless information from a wireless interface
 
 ```sh
 #show status wirelles network
 iwlist wlp0s2 scanning
 ```
 
-##### iwconfig - configure a wireless network interface
+##### iwconfig * configure a wireless network interface
 
 ```sh
 #show interface infos
@@ -4364,21 +4364,21 @@ iwconfig wlp2s0 key s:mypassword
 iwconfig wlp2s0 ap 52:54:00:12:35:02
 ```
 
-##### wpa_passphrase - Generate a WPA PSK from an ASCII passphrase for a SSID
+##### wpa_passphrase * Generate a WPA PSK from an ASCII passphrase for a SSID
 
 ```sh
 #configure password WPA Wirelles
 wpa_passphrase MY-WIRELLES  MYPASSWORD >/etc/wpa_supplicant.conf
 ```
 
-##### wpa_supplicant - Wi-Fi Protected Access client and IEEE 802.1X supplicant
+##### wpa_supplicant * Wi-Fi Protected Access client and IEEE 802.1X supplicant
 
 ```sh
 #connect in WPA Wirelles
 wpa_supplicant -c /etc/wpa_supplicant.conf -B -d -i wlp2s0
 ```
 
-##### dhclient - Dynamic Host Configuration Protocol Client
+##### dhclient * Dynamic Host Configuration Protocol Client
 
 ```sh
 #set dynamic ip in interface
@@ -4476,7 +4476,7 @@ ping 172.36.16.220
 
 #### 205.2 Important Commands
 
-##### ping - send ICMP ECHO_REQUEST to network hosts
+##### ping * send ICMP ECHO_REQUEST to network hosts
 
 ```sh
 #simple icmp test ipv4
@@ -4490,7 +4490,7 @@ ping6 2804:431:e7c5:488e:a00:27ff:fe72:19a8/64
 ping -c3 192.168.0.1
 ```
 
-##### traceroute - print the route packets trace to network host
+##### traceroute * print the route packets trace to network host
 
 ```sh
 #traceroute with UDP package
@@ -4504,7 +4504,7 @@ traceroute -I 192.168.1.111
 traceroute -I 192.168.1.111
 ```
 
-##### nc - TCP/IP swiss army knife
+##### nc * TCP/IP swiss army knife
 
 ```sh
 #test connection
@@ -4518,7 +4518,7 @@ nc -zv 192.168.0.135 50-100
 nc -l -p 1234
 ```
 
-##### netstat  -  Print  network connections, routing tables, interface statistics
+##### netstat  *  Print  network connections, routing tables, interface statistics
 
 ```sh
 #list all connections
@@ -4556,7 +4556,7 @@ netstat -lnp | grep ":22"
 netstat -i
 ```
 
-##### tcpdump - dump traffic on a network
+##### tcpdump * dump traffic on a network
 
 ```sh
 #show trafic of all interfaces
@@ -4600,7 +4600,7 @@ tcpdump -n dst 80
 tcpdump -n net 192.168.0.135
 ```
 
-##### nmap - Network exploration tool and security / port scanner
+##### nmap * Network exploration tool and security / port scanner
 
 ```sh
 #scan host
@@ -4725,7 +4725,7 @@ nmcli device show
 
 #### 205.3 Important Commands
 
-##### mtr - a network diagnostic tool
+##### mtr * a network diagnostic tool
 
 ```sh
 #show network traffic
@@ -4757,7 +4757,7 @@ hostname -i
 hostname -I
 ```
 
-##### host - DNS lookup utility
+##### host * DNS lookup utility
 
 ```sh
 #lookup example
@@ -4772,7 +4772,7 @@ host -t mx lpi.org
 host -t ns lpi.org
 ```
 
-##### dig - DNS lookup utility
+##### dig * DNS lookup utility
 
 ```sh
 #find A DNS entry
@@ -4839,7 +4839,7 @@ patch
 
 #### 206.1 Important Commands
 
-##### tar - an archiving utility
+##### tar * an archiving utility
 
 ```sh
 # Archiving
@@ -4861,7 +4861,7 @@ tar -xvf scripts.tar
 # extract to specific folder
 tar xvf logs.tar -C new-logs/
 
-#update - Add new version for modify files.Not best practice!
+#update * Add new version for modify files.Not best practice!
 tar -uvf scripts.tar scripts
 
 #update best practice for update tar files
@@ -4880,7 +4880,7 @@ tar -cJvf scripts.tar.xz scripts
 tar -xJvfp scripts.tar.xz
 ```
 
-##### Gzip - compress or expand files
+##### Gzip * compress or expand files
 
 ```sh
 #compress
@@ -4897,7 +4897,7 @@ gunzip -v scripts/script1.gz
 gzip -l picture1.jpg.gz
 ```
 
-##### Bzip2 - a block-sorting file compressor
+##### Bzip2 * a block-sorting file compressor
 
 ```sh
 #compress
@@ -4910,7 +4910,7 @@ bunzip2 -v picture1.jpg.bz2
 bzip2 -dv picture1.jpg.bz2
 ```
 
-##### xz - Compress or decompress .xz and .lzma files
+##### xz * Compress or decompress .xz and .lzma files
 
 ```sh
 #compress
@@ -5100,7 +5100,7 @@ scp backup.tar vagrant@192.168.0.135:~/backups
 scp -i ~/.ssh/id_ecdsa backup.tar vagrant@192.168.0.135:~/backups
 
 #user tar and ssh for copy
-tar cf - /etc | ssh vagrant@192.168.0.135 'cat > ~vagrant/backups/new-backup.tar'
+tar cf * /etc | ssh vagrant@192.168.0.135 'cat > ~vagrant/backups/new-backup.tar'
 ```
 
 #### Working with rsync
@@ -5135,9 +5135,9 @@ apt install backuppc
 
 BackupPC uses different protocols to get backup data from devices being backed up:
 
-- smb – used for backing up windows machines
-- tar – used for backing up Linux/Unix/MacOSX systems
-- rsync – used for backing up Linux/Unix/MacOSX systems. This
+* smb – used for backing up windows machines
+* tar – used for backing up Linux/Unix/MacOSX systems
+* rsync – used for backing up Linux/Unix/MacOSX systems. This
 can also be used to backup Windows systems.
 
 In this tutorial we are going to configure BackupPC to use the rsync protocol as a backup method.
@@ -5250,20 +5250,20 @@ systemctl
 
 #### Abount logins messages
 
-- /etc/issue
+* /etc/issue
 Message before login local
 
-- /etc/issue.net
+* /etc/issue.net
 Message before login remotly\
 For enable in ssh, configure file /etc/ssh/sshd_config, key Banner.\
 Example: Banner /etc/issue.net
 
-- /etc/motd
+* /etc/motd
 Message after login local or remotly
 
 #### 206.3 Important Commands
 
-##### wall - write a message to all users
+##### wall * write a message to all users
 
 ```sh
 #send message for all users
@@ -5277,7 +5277,7 @@ cat message  | wall
 cat /etc/passwd | wall
 ```
 
-##### shutdown - Halt, power-off or reboot the machine
+##### shutdown * Halt, power-off or reboot the machine
 
 ```sh
 #reboot system
@@ -5297,7 +5297,7 @@ shutdown --halt
 shutdown --poweroff
 ```
 
-<!-- CONTRIBUTING -->
+<!-* CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to
@@ -5315,95 +5315,94 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-- This project is licensed under the MIT License - see the LICENSE.md file for details
+* This project is licensed under the MIT License * see the LICENSE.md file for details
 
 ## Contact
 
-Marcos Silvestrini - [@mrsilvestrini](https://twitter.com/mrsilvestrini) - marcos.silvestrini@gmail.com
+Marcos Silvestrini * [@mrsilvestrini](https://twitter.com/mrsilvestrini) * marcos.silvestrini@gmail.com
 
-Project Link: [https://github.com/marcossilvestrini/templates](https://github.com/marcossilvestrini/templates)
-
+Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](https://github.com/marcossilvestrini/learning-lpic-2-202-450)
 
 ## Acknowledgments
 
-- [Richard Stallman's](http://www.stallman.org/)
-- [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
-- [GNU](https://www.gnu.org/)
-- [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
-- [GCC Compiler](https://gcc.gnu.org/wiki/History)
-- [GNU Tar](https://www.gnu.org/software/tar/)
-- [GNU Make](https://www.gnu.org/software/make/)
-- [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
-- [GNU Packages](https://www.gnu.org/software/)
-- [GNU/Linux Collection](https://directory.fsf.org/wiki/Collection:GNU/Linux)
-- [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
-- [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
-- [Kernel](https://www.kernel.org/)
-- [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
-- [Linux Standard Base](https://en.wikipedia.org/wiki/Linux_Standard_Base)
-- [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
-- [File Hierarchy Structure](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
-- [FSF](https://www.fsf.org)
-- [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
-- [Free Software](https://www.gnu.org/philosophy/free-sw.html)
-- [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
-- [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
-- [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.html)
-- [BSD](https://opensource.org/licenses/BSD-3-Clause)
-- [Open Source Initiative](https://opensource.org/)
-- [Creative Commons](https://creativecommons.org/)
-- [License LTS](https://en.wikipedia.org/wiki/Long-term_support)
-- [Debian Free Software Guidelines](https://www.debian.org/social_contract#guidelines)
-- [X11 Org](https://www.x.org/wiki/)
-- [Wayland](https://wayland.freedesktop.org/)
-- [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
-- [GNOME](https://www.gnome.org/)
-- [XFCE](https://xfce.org/)
-- [KDE Plasma](https://kde.org/plasma-desktop/)
-- [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
-- [xRDP](https://bytexd.com/xrdp-centos/)
-- [NTP](https://www.ntppool.org/en/)
-- [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
-- [Shebang](https://bash.cyberciti.biz/guide/Shebang)
-- [Environment Variables](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
-- [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
-- [Globbing](https://linuxhint.com/bash_globbing_tutorial/)
-- [Quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
-- [Regular Expressions](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
-- [List Linux Distribution](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
-- [Distro Watch](https://distrowatch.com/)
-- [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
-- [Download Packages](https://pkgs.org/)
-- [Guide Install Packages](https://installati.one/)
-- [Bugzila](https://bugzilla.kernel.org/)
-- [Command Not Found](https://command-not-found.com/)
-- [DistroTest](https://distrotest.net/index.php)
-- [Bash RC Generator](http://bashrcgenerator.com/)
-- [Explainshell](https://explainshell.com/)
-- [Vim Tutorial](https://www.openvim.com/)
-- [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
-- [Commands Examples](https://www.geeksforgeeks.org/)
-- [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
-- [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
-- [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)
-- [LPIC-2 202-450 Learning Material](https://lpic2book.github.io/src/)
-- [LPIC-2 202-450 Simulated Exam By ITexams](https://www.itexams.com/exam/202-450)
+* [Richard Stallman's](http://www.stallman.org/)
+* [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
+* [GNU](https://www.gnu.org/)
+* [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
+* [GCC Compiler](https://gcc.gnu.org/wiki/History)
+* [GNU Tar](https://www.gnu.org/software/tar/)
+* [GNU Make](https://www.gnu.org/software/make/)
+* [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+* [GNU Packages](https://www.gnu.org/software/)
+* [GNU/Linux Collection](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+* [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
+* [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
+* [Kernel](https://www.kernel.org/)
+* [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
+* [Linux Standard Base](https://en.wikipedia.org/wiki/Linux_Standard_Base)
+* [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+* [File Hierarchy Structure](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+* [FSF](https://www.fsf.org)
+* [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+* [Free Software](https://www.gnu.org/philosophy/free-sw.html)
+* [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
+* [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+* [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.html)
+* [BSD](https://opensource.org/licenses/BSD-3-Clause)
+* [Open Source Initiative](https://opensource.org/)
+* [Creative Commons](https://creativecommons.org/)
+* [License LTS](https://en.wikipedia.org/wiki/Long-term_support)
+* [Debian Free Software Guidelines](https://www.debian.org/social_contract#guidelines)
+* [X11 Org](https://www.x.org/wiki/)
+* [Wayland](https://wayland.freedesktop.org/)
+* [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+* [GNOME](https://www.gnome.org/)
+* [XFCE](https://xfce.org/)
+* [KDE Plasma](https://kde.org/plasma-desktop/)
+* [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+* [xRDP](https://bytexd.com/xrdp-centos/)
+* [NTP](https://www.ntppool.org/en/)
+* [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
+* [Shebang](https://bash.cyberciti.biz/guide/Shebang)
+* [Environment Variables](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+* [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
+* [Globbing](https://linuxhint.com/bash_globbing_tutorial/)
+* [Quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+* [Regular Expressions](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+* [List Linux Distribution](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+* [Distro Watch](https://distrowatch.com/)
+* [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+* [Download Packages](https://pkgs.org/)
+* [Guide Install Packages](https://installati.one/)
+* [Bugzila](https://bugzilla.kernel.org/)
+* [Command Not Found](https://command-not-found.com/)
+* [DistroTest](https://distrotest.net/index.php)
+* [Bash RC Generator](http://bashrcgenerator.com/)
+* [Explainshell](https://explainshell.com/)
+* [Vim Tutorial](https://www.openvim.com/)
+* [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
+* [Commands Examples](https://www.geeksforgeeks.org/)
+* [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+* [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
+* [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)
+* [LPIC-2 202-450 Learning Material](https://lpic2book.github.io/src/)
+* [LPIC-2 202-450 Simulated Exam By ITexams](https://www.itexams.com/exam/202-450)
 
 <p align="right">(<a href="#topic-206.3">back to Sub Topic 206.3</a>)</p>
 <p align="right">(<a href="#topic-206">back to Topic 206</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/templates.svg?style=for-the-badge
-[contributors-url]: https://github.com/marcossilvestrini/templates/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/templates.svg?style=for-the-badge
-[forks-url]: https://github.com/marcossilvestrini/templates/network/members
-[stars-shield]: https://img.shields.io/github/stars/marcossilvestrini/templates.svg?style=for-the-badge
-[stars-url]: https://github.com/marcossilvestrini/templates/stargazers
-[issues-shield]: https://img.shields.io/github/issues/marcossilvestrini/templates.svg?style=for-the-badge
-[issues-url]: https://github.com/marcossilvestrini/templates/issues
-[license-shield]: https://img.shields.io/github/license/marcossilvestrini/templates.svg?style=for-the-badge
-[license-url]: https://github.com/marcossilvestrini/templates/blob/master/LICENSE
+<!-* MARKDOWN LINKS & IMAGES -->
+<!-* https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
+[contributors-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
+[forks-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/network/members
+[stars-shield]: https://img.shields.io/github/stars/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
+[stars-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/stargazers
+[issues-shield]: https://img.shields.io/github/issues/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
+[issues-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues
+[license-shield]: https://img.shields.io/github/license/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
+[license-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
