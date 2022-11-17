@@ -10,9 +10,9 @@ Start-Process -Wait -NoNewWindow -FilePath "E:\Apps\VirtualBox\VBoxManage.exe" `
 setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d"
 
 #Vagrant Boxes
-$debian = "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\Debian"
-$debian5 = "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\Debian5"
-$ol8 = "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\OracleLinux"
+$debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
+$debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
+$ol8 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 
 #up ol8
 Set-Location $ol8
@@ -33,5 +33,5 @@ Copy-Item .\.vagrant\machines\debian5_lpic_201\virtualbox\private_key F:\Projeto
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0
 
 #open ssh tabs for conect
-#wt -p "Windows Powershell" -d "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\Debian" --title "Vagrant Debian" --tabColor '#a99300'
-#wt -w 0 nt -d "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\OracleLinux" --title "Vagrant OracleLinux" --tabColor '#dc9300'
+#wt -p "Windows Powershell" -d "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian" --title "Vagrant Debian" --tabColor '#a99300'
+#wt -w 0 nt -d "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux" --title "Vagrant OracleLinux" --tabColor '#dc9300'

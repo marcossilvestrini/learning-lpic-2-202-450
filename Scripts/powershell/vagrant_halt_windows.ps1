@@ -1,6 +1,6 @@
 #Vagrant Boxes
-$debian = "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\Debian"
-$ol8 = "F:\CERTIFICACAO\lpic-2-201-450\Vagrant\OracleLinux"
+$debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
+$ol8 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 
 #up debian
 Set-Location $debian

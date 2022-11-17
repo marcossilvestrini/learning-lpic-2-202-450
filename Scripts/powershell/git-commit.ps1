@@ -1,4 +1,4 @@
-$project = "F:\CERTIFICACAO\lpic-2-201-450"
+$project = "F:\CERTIFICACAO\lpic-2-202-450"
 Set-Location $project
 Get-Process -Name *git* | Stop-Process -Force
 git checkout main
