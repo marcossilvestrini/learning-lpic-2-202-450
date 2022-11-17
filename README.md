@@ -27,17 +27,17 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#instalation">Instalation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#freedoms">Four Essential Freedoms</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -62,10 +62,14 @@ for you to upload an environment for studies
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a name="getting-started"></a>
+
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
+
+<a name="prerequisites"></a>
 
 ### Prerequisites
 
@@ -76,6 +80,8 @@ and how to install them.
 * Virtual Box and extencion
 * Vagrant
 
+<a name="instalation"></a>
+
 ### Installation
 
 Clone the repo
@@ -84,13 +90,16 @@ Clone the repo
 git clone https://github.com/marcossilvestrini/learning-lpic-2-202-450.git
 ```
 
+<a name="usage"></a>
+
 ## Usage
 
 Use this repository for get learning about LPIC2 202-450 exam
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-* ROADMAP -->
+<a name="roadmap"></a>
+
 ## Roadmap
 
 * [x] Create repository
@@ -99,6 +108,8 @@ Use this repository for get learning about LPIC2 202-450 exam
 * [ ] Create examples about Topic 207.3
 * [ ] Create examples about Topic 208.1
 * [ ] Create examples about Topic 20x.y
+
+<a name="freedoms"></a>
 
 ## Four Essential Freedoms
 
