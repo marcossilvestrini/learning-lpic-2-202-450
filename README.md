@@ -1,4 +1,4 @@
-<a name="readme-top"></a>
+<h1><a name="readme-top"></a></h1>
 
 [![MIT License][license-shield]][license-url]
 [![Forks][forks-shield]][forks-url]
@@ -14,7 +14,7 @@
 <p align="center">
 <strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450">View Demo</a>
+    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450">Explore the Docs</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Report Bug</a>
     -
@@ -5392,8 +5392,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 <p align="right">(<a href="#topic-206">back to Topic 206</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-* MARKDOWN LINKS & IMAGES -->
-<!-* https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
 [contributors-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge

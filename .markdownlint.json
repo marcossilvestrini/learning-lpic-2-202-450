@@ -11,7 +11,8 @@
             "br",
             "h3",
             "strong",
-            "/strong"
+            "/strong",
+            "h1"
         ]
     },
     "MD013": {
