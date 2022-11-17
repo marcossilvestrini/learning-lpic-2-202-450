@@ -21,7 +21,7 @@
     <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Request Feature</a>
 </p>
 
-<!-* TABLE OF CONTENTS -->
+<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
