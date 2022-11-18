@@ -21,7 +21,6 @@
     <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Request Feature</a>
 </p>
 
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -154,11 +153,14 @@ Use this repository for get learning about LPIC2 202-450 exam
 ## Roadmap
 
 * [x] Create repository
-* [ ] Create examples about Topic 207.1
-* [ ] Create examples about Topic 207.2
-* [ ] Create examples about Topic 207.3
-* [ ] Create examples about Topic 208.1
-* [ ] Create examples about Topic 20x.y
+* [x] Update vagrant box oracle 8 for oracle 9
+* [ ] Create examples about Topic 207
+* [ ] Create examples about Topic 208
+* [ ] Create examples about Topic 209
+* [ ] Create examples about Topic 210
+* [ ] Create examples about Topic 211
+* [ ] Create examples about Topic 212
+* [ ] Upload simulated itexam
 
 <a name="freedoms"></a>
 
