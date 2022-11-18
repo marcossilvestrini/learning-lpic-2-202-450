@@ -14,7 +14,7 @@
 <p align="center">
 <strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450">Explore the Docs</a>
+    <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450">Main Page</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Report Bug</a>
     -
