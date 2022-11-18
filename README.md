@@ -21,8 +21,10 @@
     <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Request Feature</a>
 </p>
 
+## Sumary
+
 <details>
-  <summary>Table of Contents</summary>
+  <summary><b>TABLE OF CONTENT</b></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
