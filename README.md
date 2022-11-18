@@ -39,11 +39,54 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#freedoms">Four Essential Freedoms</a></li>
     <li>
-      <a href="#topic-207">Topic 207</a>
+      <a href="#topic-207">Topic 207: Domain Name Server</a>
       <ul>
         <li><a href="#topic-207.1">207.1 Basic DNS server configuration</a></li>
         <li><a href="#topic-207.2">207.2 Create and maintain DNS zones</a></li>
         <li><a href="#topic-207.3">207.3 Securing a DNS server </a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#topic-208">Topic 208: HTTP Services</a>
+      <ul>
+        <li><a href="#topic-208.1">208.1 Basic Apache configuration</a></li>
+        <li><a href="#topic-208.2">208.2 Apache configuration for HTTPS</a></li>
+        <li><a href="#topic-208.3">208.3 Implementing Squid as a caching proxy</a></li>
+        <li><a href="#topic-208.4">208.4 Implementing Nginx as a web server and a reverse proxy</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#topic-209">Topic 209: File Sharing</a>
+      <ul>
+        <li><a href="#topic-209.1">209.1 Samba Server Configuration</a></li>
+        <li><a href="#topic-209.2">209.2 NFS Server Configuration</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#topic-210">Topic 210: Network Client Management</a>
+      <ul>
+        <li><a href="#topic-210.1">210.1 DHCP configuration</a></li>
+        <li><a href="#topic-210.2">210.2 PAM authentication</a></li>
+        <li><a href="#topic-210.3">210.3 LDAP client usage</a></li>
+        <li><a href="#topic-210.4">210.4 Configuring an OpenLDAP server</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#topic-211">Topic 211: E-Mail Services</a>
+      <ul>
+        <li><a href="#topic-211.1">211.1 Using e-mail servers</a></li>
+        <li><a href="#topic-211.2">211.2 Managing E-Mail Delivery</a></li>
+        <li><a href="#topic-211.3">211.3 Managing Mailbox Access</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#topic-212">Topic 212: System Security</a>
+      <ul>
+        <li><a href="#topic-212.1">212.1 Configuring a router</a></li>
+        <li><a href="#topic-212.2">212.2 Managing FTP servers</a></li>
+        <li><a href="#topic-212.3">212.3 Secure shell (SSH)</a></li>
+        <li><a href="#topic-212.4">212.4 Security tasks</a></li>
+        <li><a href="#topic-212.5">212.5 OpenVPN</a></li>
       </ul>
     </li>
     <li><a href="#license">License</a></li>
