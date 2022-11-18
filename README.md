@@ -1105,7 +1105,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Marcos Silvestrini - marcos.silvestrini@gmail.com
+Marcos Silvestrini - marcos.silvestrini@gmail.com \
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](https://github.com/marcossilvestrini/learning-lpic-2-202-450)
