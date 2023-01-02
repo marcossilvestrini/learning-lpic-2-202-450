@@ -135,7 +135,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # MOUNTS
     ol9_lpic2_202.vm.synced_folder ".", "/vagrant", disabled: true
-    ol9_lpic2_202.vm.synced_folder "./security", "/home/vagrant/security"
+    ol9_lpic2_202.vm.synced_folder "../../Security/", "/home/vagrant/security"
     ol9_lpic2_202.vm.synced_folder "./configs", "/home/vagrant/configs"
     ol9_lpic2_202.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 

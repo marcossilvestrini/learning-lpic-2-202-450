@@ -31,7 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # MOUNTS
     centos_lpic_202.vm.synced_folder ".", "/vagrant", disabled: true
-    centos_lpic_202.vm.synced_folder "./security", "/home/vagrant/security"
+    centos_lpic_202.vm.synced_folder "../../Security/", "/home/vagrant/security"
     centos_lpic_202.vm.synced_folder "./configs", "/home/vagrant/configs"
 
     # PROVIDER

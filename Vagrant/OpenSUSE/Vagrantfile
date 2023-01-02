@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # MOUNTS
     openSUSE_lpic_202_450.vm.synced_folder ".", "/vagrant", disabled: true
-    openSUSE_lpic_202_450.vm.synced_folder "./security", "/home/vagrant/security"
+    openSuse_lpic_202.vm.synced_folder "../../Security/", "/home/vagrant/security"
     openSUSE_lpic_202_450.vm.synced_folder "./configs", "/home/vagrant/configs"
 
     # PROVIDER

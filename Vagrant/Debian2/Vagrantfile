@@ -98,7 +98,7 @@ Vagrant.configure("2") do |config|
 
     # MOUNTS
     debian2_lpic_202.vm.synced_folder ".", "/vagrant", disabled: true
-    debian2_lpic_202.vm.synced_folder "./security", "/home/vagrant/security"
+    debian2_lpic_202.vm.synced_folder "../../Security/", "/home/vagrant/security"
     debian2_lpic_202.vm.synced_folder "./configs", "/home/vagrant/configs"
     debian2_lpic_202.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 
