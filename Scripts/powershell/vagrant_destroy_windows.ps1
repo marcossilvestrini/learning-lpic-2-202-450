@@ -21,6 +21,6 @@ Set-Location $debian5
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
 
 #up centos
-Set-Location $ol8
+Set-Location $ol9
 #vagrant destroy -f
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs

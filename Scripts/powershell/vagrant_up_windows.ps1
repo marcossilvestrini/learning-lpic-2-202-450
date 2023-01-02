@@ -17,7 +17,7 @@ $ol9= "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 #up ol8
 Set-Location $ol9
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
-Copy-Item .\.vagrant\machines\ol8-lpic-201\virtualbox\private_key F:\Projetos\vagrant-pk\oracle-linux8
+Copy-Item .\.vagrant\machines\ol8-lpic-201\virtualbox\private_key F:\Projetos\vagrant-pk\oracle-linux9
 
 #up debian 11
 Set-Location $debian
