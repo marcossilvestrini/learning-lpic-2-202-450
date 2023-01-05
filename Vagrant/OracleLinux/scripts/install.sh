@@ -36,16 +36,18 @@ dnf install -y rsync
 dnf install -y tree
 dnf install -y python3-pip
 dnf install -y net-tools
-dnf install -y bind-utils
 dnf install -y traceroute
 dnf install -y lsof
 dnf install -y psmisc
 dnf install -y nmap
 dnf install -y at
 dnf install -y sysstat
-yum install -y stress
-yum install -y iptraf
-yum install -y htop
+dnf install -y stress
+dnf install -y iptraf
+dnf install -y htop
+dnf install -y bind
+dnf install -y bind-utils
+
 
 # SSH,FIREWALLD AND SELINUX
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config

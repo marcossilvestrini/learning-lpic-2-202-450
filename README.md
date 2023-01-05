@@ -229,6 +229,48 @@ dig
 
 #### 207.1 Important Commands
 
+##### rndc - name server control utility
+
+```sh
+#examples
+
+```
+
+##### named-checkconf - named configuration file syntax checking tool
+
+```sh
+#examples
+
+```
+
+#### Install BIND
+
+##### RPM
+
+```sh
+#install server
+yum install -y bind
+
+#install utils
+yum install -y bind-utils
+```
+
+##### Debian
+
+```sh
+#install server
+apt install -y bind9
+
+#install utils
+apt install -u dnsutils
+```
+
+#### Check Status of BIND
+
+```sh
+
+```
+
 <p align="right">(<a href="#topic-207.1">back to sub topic 207.1</a>)</p>
 <p align="right">(<a href="#topic-207">back to topic 207</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

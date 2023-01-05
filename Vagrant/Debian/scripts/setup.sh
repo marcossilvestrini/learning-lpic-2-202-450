@@ -74,6 +74,8 @@ apt-get install -y arpwatch
 apt-get install -y wireless-tools
 apt-get install -y tcpdump
 apt-get install -y mtr
+apt install -y bind9
+apt install -u dnsutils
 
 # Set ssh
 cp -f configs/01-sshd-custom.conf /etc/ssh/sshd_config.d
