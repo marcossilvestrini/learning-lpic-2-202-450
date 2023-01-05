@@ -65,11 +65,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = BOX_NAME
   config.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
   config.vm.box_download_insecure=true
-  config.vbguest.no_install  = true
-  config.vbguest.auto_update = false
-  config.vbguest.no_remote   = true
+  #config.vbguest.no_install  = true
+  #config.vbguest.auto_update = false
+  #config.vbguest.no_remote   = true
 
   #STORAGE
+
   disks_directory = File.join(VAGRANT_ROOT, VAGRANT_DISKS_DIRECTORY)
 
   # create disks before "up" action
@@ -113,14 +114,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "ol9-lpic2-202"  do |ol9_lpic2_202|
 
     # VARIABLE HOSTNAME
-    APP_NAME= "ol9-lpic2-202"
+   APP_NAME= "ol9-lpic2-202"
 
     # HOSTNAME
     ol9_lpic2_202.vm.hostname =APP_NAME
 
-    # NETWORK
-    ol9_lpic2_202.vm.network "public_network",ip: "192.168.0.135",mode: "bridge",bridge: "Marvell AQtion 5Gbit Network Adapter",nic_type: "virtio"
-    ol9_lpic2_202.vm.network "private_network",ip: "172.36.12.220",nic_type: "virtio"
+    # # NETWORK
+    # ol9_lpic2_202.vm.network "public_network" ,ip: "192.168.0.135",mode: "bridge" ,bridge: [
+    #   "ens32",
+    #   "Marvell AQtion 5Gbit Network Adapter",
+    # ]
+    # ol9_lpic2_202.vm.network "private_network", ip: "172.36.12.220"
 
     # MOUNTS
     ol9_lpic2_202.vm.synced_folder ".", "/vagrant", disabled: true
@@ -138,7 +142,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
 
-    ol9_lpic2_202.vm.provision "shell", path: "scripts/install.sh"
+    #ol9_lpic2_202.vm.provision "shell", path: "scripts/install.sh"
 
     #ANSIBLE PROVISIONING
     # ol9_lpic2_202.vm.provision "ansible" do |ansible|
