@@ -194,14 +194,17 @@ man COMMAND
 
 <a name="topic-207.1"></a>
 
+![Mind Map](Images/domain-name-spaces.jpg)
+![Mind Map](Images/dns-types.jpg)
+
 ### 207.1 Basic DNS server configuration
 
 **Weight:** 3
 
 **Description:**
 Description Candidates should be able to configure BIND to function as an
-authoritative and as a recursive, caching-only DNS server. This objective
-includes the ability to manage a running server and configuring logging.
+authoritative and as a recursive, caching-only DNS server.
+This objective includes the ability to manage a running server and configuring logging.
 
 **Key Knowledge Areas:**
 
