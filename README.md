@@ -218,6 +218,9 @@ This objective includes the ability to manage a running server and configuring l
 ```sh
 /etc/named.conf
 /var/named/
+/var/named/named.ca
+/etc/bind/db.root
+/usr/share/dns/root.hints
 rndc
 named-checkconf
 kill
@@ -232,7 +235,8 @@ dig
 ##### rndc - name server control utility
 
 ```sh
-#examples
+#Reload /etc/named.conf
+rndc reload
 
 ```
 
@@ -243,33 +247,57 @@ dig
 
 ```
 
-#### Install BIND
+#### About BIND
 
-##### RPM
-
-```sh
-#install server
-yum install -y bind
-
-#install utils
-yum install -y bind-utils
-```
-
-##### Debian
+##### Install BIND
 
 ```sh
-#install server
-apt install -y bind9
+#RPM
+yum install -y bind bind-utils
 
-#install utils
-apt install -u dnsutils
+#Debian
+apt install -y bind9 dnsutils
 ```
 
-#### Check Status of BIND
+##### Check Status of BIND\named
 
 ```sh
+#RPM
+systemctl status named
 
+#Debian
+systemctl status bind9
+
+#Check listen port 53
+lsof -n -i :53
+lsof -n -i4:53
+lsof -n -i6:53
+netstat -lutna | grep 53
 ```
+
+##### Test BIND local
+
+```sh
+#localhost, config default
+host www.lpi.org localhost
+dig  www.lpi.org @localhost
+
+#another ip configurate in listen-on port 53 { 127.0.0.1; 192.168.0.135};
+host www.lpi.org 192.168.0.135
+dig  www.lpi.org @192.168.0.135
+```
+
+#### Add ip for listen on port 53
+
+![Mind Map](Images/bind-add-listen-on-port.gif)
+
+#### Allow network or ip for remote query
+
+![Mind Map](Images/bind-add-allow-query.gif)
+
+#### Configure DNS Caching Only
+
+![Mind Map](Images/bind-set-only-caching.gif)
 
 <p align="right">(<a href="#topic-207.1">back to sub topic 207.1</a>)</p>
 <p align="right">(<a href="#topic-207">back to topic 207</a>)</p>
