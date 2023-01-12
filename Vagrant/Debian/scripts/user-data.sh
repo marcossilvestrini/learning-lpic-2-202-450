@@ -102,6 +102,11 @@ cp -f configs/cron.d-sysstat /etc/cron.d/sysstat
 systemctl start sysstat
 systemctl enable sysstat
 
+#Set Networkmanager
+#sed -i '/\[main\]/a dns=none' /etc/NetworkManager/NetworkManager.conf
+cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+systemctl restart NetworkManager
+
 #Configure BIND DNS
 #systemctl start named
 
@@ -111,4 +116,5 @@ systemctl enable resolvconf.service
 systemctl start resolvconf.service
 cp -f configs/head /etc/resolvconf/resolv.conf.d/
 resolvconf --enable-updates
+sed -i 's/nameserver 10.0.2.3/nameserver 192.168.0.1/g' /etc/resolvconf/resolv.conf.d/original
 resolvconf -u

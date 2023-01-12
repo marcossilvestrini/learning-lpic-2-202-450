@@ -244,6 +244,9 @@ rndc reload zone ZONE
 #clear cache
 rndc flush
 
+#reloads  the  configuration  file and loads new zones
+rndc reconfig
+
 #Enabled trace
 rndc trace
 ```
@@ -1254,6 +1257,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [Github Badges](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 * [Commands Examples](https://www.geeksforgeeks.org/)
 * [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+* [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
 * [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
 * [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)
 * [LPIC-2 202-450 Learning Material](https://lpic2book.github.io/src/)
