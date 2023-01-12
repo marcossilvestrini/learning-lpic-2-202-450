@@ -138,7 +138,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
 
-    ol9_lpic2_202.vm.provision "shell", path: "scripts/install.sh"
+    ol9_lpic2_202.vm.provision "shell", path: "scripts/user-data.sh"
 
     #ANSIBLE PROVISIONING
     # ol9_lpic2_202.vm.provision "ansible" do |ansible|

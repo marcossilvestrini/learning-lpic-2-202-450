@@ -72,9 +72,21 @@ cp -f configs/sysstat /etc/default/
 systemctl start sysstat sysstat-collect.timer sysstat-summary.timer
 systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
-#Set DNS Server
+#Configure BIND
+
+##Start service
+systemctl start named
+
+## Add ip to listen
+sed -e 's/listen-on port 53 { 127.0.0.1; /listen-on port 53 { 127.0.0.1;192.168.0.135; /' -i /etc/named.conf
+
+##Allow network or ip for query
+sed -e 's/allow-query     { localhost; /allow-query     { localhost;192.168.0.0\/24; /' -i /etc/named.conf
+
+##Set Default DNS Server
 #https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
-sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.1' /etc/resolv.conf
+#sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.1' /etc/resolv.conf
+sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.135' /etc/resolv.conf
 
 #Set Networkmanager
 #sed -i '/\[main\]/a dns=none' /etc/NetworkManager/NetworkManager.conf

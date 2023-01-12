@@ -102,6 +102,9 @@ cp -f configs/cron.d-sysstat /etc/cron.d/sysstat
 systemctl start sysstat
 systemctl enable sysstat
 
+#Configure BIND DNS
+#systemctl start named
+
 #set prefered DNS servers
 apt-get install -y resolvconf
 systemctl enable resolvconf.service

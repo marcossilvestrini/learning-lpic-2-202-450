@@ -4,4 +4,5 @@
 # run "resolvectl status" to see details about the actual nameservers.
 
 #DNS servers
-nameserver 192.168.0.1
+#nameserver 192.168.0.1
+nameserver 192.168.0.135

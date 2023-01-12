@@ -129,7 +129,7 @@ Vagrant.configure("2") do |config|
     end
 
     # PROVISION
-    debian_lpic2_202.vm.provision "shell", path: "scripts/setup.sh"
+    debian_lpic2_202.vm.provision "shell", path: "scripts/user-data.sh"
     debian_lpic2_202.vm.provision "shell", path: "scripts/mounts.sh"
 
   end

@@ -238,13 +238,21 @@ dig
 #Reload /etc/named.conf
 rndc reload
 
+#reload zone
+rndc reload zone ZONE
+
+#clear cache
+rndc flush
+
+#Enabled trace
+rndc trace
 ```
 
 ##### named-checkconf - named configuration file syntax checking tool
 
 ```sh
-#examples
-
+#check if /etc/named.conf is ok
+named-checkconf
 ```
 
 #### About BIND
