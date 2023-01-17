@@ -24,30 +24,16 @@ dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.r
 #dnf -y upgrade
 
 # Install packages
-dnf install -y lshw
-dnf install -y autofs
-dnf install -y wodim
-dnf install -y genisoimage
-dnf install -y udftools
 dnf install -y bash-completion
-dnf install -y usbutils
 dnf install -y vim
-dnf install -y rsync
+dnf install -y htop
+dnf install -y lsof
 dnf install -y tree
-dnf install -y python3-pip
 dnf install -y net-tools
 dnf install -y traceroute
-dnf install -y lsof
-dnf install -y psmisc
-dnf install -y nmap
-dnf install -y at
 dnf install -y sysstat
-dnf install -y stress
-dnf install -y iptraf
-dnf install -y htop
 dnf install -y bind
 dnf install -y bind-utils
-
 
 # SSH,FIREWALLD AND SELINUX
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
@@ -79,19 +65,12 @@ systemctl restart NetworkManager
 
 #Configure BIND
 
-## Add ip to listen
-#sed -e 's/listen-on port 53 { 127.0.0.1; /listen-on port 53 { 127.0.0.1;192.168.0.135; /' -i /etc/named.conf
-
-##Allow network or ip for query
-#sed -e 's/allow-query     { localhost; /allow-query     { localhost;192.168.0.0\/24; /' -i /etc/named.conf
-
-#Set Logging
-cp -f configs/named.conf /etc
+##Set Logging
+cp -f configs/named.conf-caching /etc/named.conf
 
 ##Set Default DNS Server
 #https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
-#sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.1' /etc/resolv.conf
-sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.135' /etc/resolv.conf
+sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.140' /etc/resolv.conf
 
 ##Start service
 systemctl restart named

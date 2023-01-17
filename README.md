@@ -247,6 +247,9 @@ rndc flush
 #reloads  the  configuration  file and loads new zones
 rndc reconfig
 
+#Enable customizade logging
+rndc querylog
+
 #Enabled trace
 rndc trace
 ```
