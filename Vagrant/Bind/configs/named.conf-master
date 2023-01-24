@@ -69,6 +69,11 @@ zone "." IN {
 	file "named.ca";
 };
 
+zone "lpic2.com.br" IN {
+	type master;
+	file "lpic2.zone";
+};
+
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 

@@ -119,7 +119,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_lpic2_202.vm.hostname =APP_NAME
 
     # NETWORK
-    ol9_lpic2_202.vm.network "public_network",ip: "192.168.0.135",mode: "bridge",bridge: "Marvell AQtion 5Gbit Network Adapter",nic_type: "virtio"
+    ol9_lpic2_202.vm.network "public_network",ip: "192.168.0.135",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
     ol9_lpic2_202.vm.network "private_network",ip: "172.36.12.220",nic_type: "virtio"
 
     # MOUNTS

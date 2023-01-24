@@ -34,7 +34,6 @@ unless Vagrant.has_plugin?("vagrant-vbguest")
   system('vagrant plugin install vagrant-vbguest')
 end
 
-
 #Define VM
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = BOX_NAME
@@ -54,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_bind_master.vm.hostname =VM_MASTER_NAME
 
     # NETWORK
-    ol9_bind_master.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Marvell AQtion 5Gbit Network Adapter",nic_type: "virtio"
+    ol9_bind_master.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
     ol9_bind_master.vm.network "private_network",ip: "172.36.12.230",nic_type: "virtio"
 
     # MOUNTS
@@ -86,7 +85,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_bind_slave.vm.hostname =VM_SLAVE_NAME
 
     # NETWORK
-    ol9_bind_slave.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Marvell AQtion 5Gbit Network Adapter",nic_type: "virtio"
+    ol9_bind_slave.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
     ol9_bind_slave.vm.network "private_network",ip: "172.36.12.231",nic_type: "virtio"
 
     # MOUNTS
@@ -117,7 +116,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_bind_caching.vm.hostname =VM_CACHING_NAME
 
     # NETWORK
-    ol9_bind_caching.vm.network "public_network",ip: "192.168.0.145",mode: "bridge",bridge: "Marvell AQtion 5Gbit Network Adapter",nic_type: "virtio"
+    ol9_bind_caching.vm.network "public_network",ip: "192.168.0.145",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
     ol9_bind_caching.vm.network "private_network",ip: "172.36.12.235",nic_type: "virtio"
 
     # MOUNTS

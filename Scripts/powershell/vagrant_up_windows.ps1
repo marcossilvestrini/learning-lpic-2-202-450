@@ -29,6 +29,14 @@ Set-Location $debian5
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\debian5_lpic2_202\virtualbox\private_key F:\Projetos\vagrant-pk\debian5
 
+#Server BIND
+$bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
+Set-Location $bind
+Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
+Copy-Item .\.vagrant\machines\ol9-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-slave
+Copy-Item .\.vagrant\machines\ol9-bind-caching\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-caching
+
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0
 

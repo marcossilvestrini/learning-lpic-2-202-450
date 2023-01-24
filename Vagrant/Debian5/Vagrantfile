@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
     # NETWORK
     debian5_lpic2_202.vm.network "public_network" ,ip: "192.168.0.133",mode: "bridge" ,bridge: [
       "ens32",
-      "Marvell AQtion 5Gbit Network Adapter"
+      "Intel(R) I211 Gigabit Network Connection"
     ]
 
     # MOUNTS

@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # NETWORK
     openSUSE_lpic_202_450.vm.network "public_network" ,ip: "192.168.0.140",mode: "bridge" ,bridge: [
     "ens32",
-    "Marvell AQtion 5Gbit Network Adapter"
+    "Intel(R) I211 Gigabit Network Connection"
     ]
 
     # MOUNTS

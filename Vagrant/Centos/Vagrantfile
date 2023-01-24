@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # NETWORK
     centos_lpic_202.vm.network "public_network" ,ip: "192.168.0.136",mode: "bridge",bridge: [
     "ens32",
-    "Marvell AQtion 5Gbit Network Adapter"
+    "Intel(R) I211 Gigabit Network Connection"
     ]
 
     # MOUNTS

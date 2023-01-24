@@ -36,7 +36,7 @@ dnf install -y bind
 dnf install -y bind-utils
 
 # SSH,FIREWALLD AND SELINUX
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
 systemctl restart sshd
@@ -51,7 +51,7 @@ echo vagrant | $(su -c "gpg -k" -s /bin/bash vagrant)
 dnf config-manager --set-enabled ol9_codeready_builder
 dnf update -y
 dnf install -y xorg-x11-server-Xorg.x86_64 xorg-x11-xauth.x86_64 \
-    xorg-x11-server-utils.x86_64 xorg-x11-utils.x86_64 xorg-x11-apps.x86_64
+    xorg-x11-server-utils.x86_64 xorg-x11-utils.x86_64
 
 #Enable sadc collected system activity
 cp -f configs/sysstat /etc/default/
@@ -70,7 +70,7 @@ systemctl restart NetworkManager
 
 ##Set Default DNS Server
 #https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
-#sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.135' /etc/resolv.conf
+sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.140' /etc/resolv.conf
 
 ##Start service
 systemctl restart named
