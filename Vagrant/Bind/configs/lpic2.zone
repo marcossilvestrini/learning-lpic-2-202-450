@@ -1,0 +1,25 @@
+$TTL 1h
+
+@                   IN      SOA     ol9-bind-master.lpic2.com.br.   admin.lpic2.com.br. (
+                    01      ; serial
+                    28800   ; refresh (8h)
+                    7200    ; retry (2h)
+                    604800  ; expire (7d)
+                    3600    ; negative caching (1h)
+)
+
+
+@                   IN      NS      ol9-bind-master.lpic2.com.br.
+                            NS      ol9-bind-slave.lpic2.com.br.
+                            MX      5       mail
+                            MX      10      mail2
+
+ol9-bind-master     A       192.168.0.140   ;glue record
+ol9-bind-slave      A       192.168.0.141   ;glue record
+internal            A       192.168.0.151
+mail                A       192.168.0.140
+mail2               A       192.168.0.141
+www                 CNAME   ol9-bind-master
+ftp                 CNAME   ol9-bind-slave
+
+@                   IN      TXT     "leanning LPIC2"

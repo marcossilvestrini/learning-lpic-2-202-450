@@ -65,7 +65,7 @@ systemctl restart NetworkManager
 
 #Configure BIND
 
-##Set Logging
+##Config bind caching parameters
 cp -f configs/named.conf-caching /etc/named.conf
 
 ##Set Default DNS Server

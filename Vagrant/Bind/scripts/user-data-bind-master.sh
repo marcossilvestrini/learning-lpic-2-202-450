@@ -34,6 +34,7 @@ dnf install -y traceroute
 dnf install -y sysstat
 dnf install -y bind
 dnf install -y bind-utils
+dnf install -y whois
 
 # SSH,FIREWALLD AND SELINUX
 sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
@@ -65,12 +66,25 @@ systemctl restart NetworkManager
 
 #Configure BIND
 
-##Set Logging
-#cp -f configs/named.conf /etc
+## Stop bind server
+systemctl stop named
+
+##Config Bind master
+cp -f configs/named.conf-master /etc/named.conf
+
+## Set zone file with type records (SOA,NS,MX,A,TXT,etc)
+cp -f configs/lpic2.zone /var/named/lpic2.zone
+chmod 640 /var/named/lpic2.zone
+chown root:named /var/named/lpic2.zone
+
+## Validate zone file
+named-checkzone lpic2.com.br /var/named/lpic2.zone
+
+## Apply changes
+systemctl start named
+rndc reconfig
 
 ##Set Default DNS Server
 #https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
 sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.140' /etc/resolv.conf
-
-##Start service
-systemctl restart named
+echo search lpic2.com.br >> /etc/resolv.conf

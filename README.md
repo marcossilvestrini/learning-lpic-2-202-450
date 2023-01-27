@@ -261,6 +261,20 @@ rndc trace
 named-checkconf
 ```
 
+##### named-checkzone - zone file validity checking or converting tool
+
+```sh
+#check if your zone file is ok
+named-checkzone /vat/named/my-domain-name.zone
+```
+
+##### whois - client for the whois directory service
+
+```sh
+# find infos about nserver
+whois lpi.org
+```
+
 #### About BIND
 
 ##### Install BIND
@@ -1261,6 +1275,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [Commands Examples](https://www.geeksforgeeks.org/)
 * [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 * [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
+* [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 * [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
 * [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)
 * [LPIC-2 202-450 Learning Material](https://lpic2book.github.io/src/)
