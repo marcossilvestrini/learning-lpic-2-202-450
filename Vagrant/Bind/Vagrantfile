@@ -17,11 +17,6 @@ require 'fileutils'
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-# Box metadata location and box name
-BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
-BOX_NAME = "oraclelinux/9"
-
-
 # INSTALL PLUGIN RELLOAD
 unless Vagrant.has_plugin?("vagrant-reload")
   puts 'Installing vagrant-reload Plugin...'
@@ -36,15 +31,19 @@ end
 
 #Define VM
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = BOX_NAME
-  config.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
-  config.vm.box_download_insecure=true
-  config.vbguest.no_install  = true
-  config.vbguest.auto_update = false
-  config.vbguest.no_remote   = true
 
   # VM ol9_bind_master
   config.vm.define "ol9-bind-master"  do |ol9_bind_master|
+    # Box metadata location and box name
+    BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
+    BOX_NAME = "oraclelinux/9"
+    ol9_bind_master.vm.box = BOX_NAME
+    ol9_bind_master.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
+    ol9_bind_master.vm.box_download_insecure=true
+    ol9_bind_master.vbguest.no_install  = true
+    ol9_bind_master.vbguest.auto_update = false
+    ol9_bind_master.vbguest.no_remote   = true
+
 
     # VARIABLE HOSTNAME
     VM_MASTER_NAME= "ol9-bind-master"
@@ -75,39 +74,52 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-  # VM ol9_bind_slave
-  config.vm.define "ol9-bind-slave"  do |ol9_bind_slave|
+  # VM debian_bind_slave
+  config.vm.define "debian-bind-slave"  do |debian_bind_slave|
+    debian_bind_slave.vm.box = "debian/bullseye64"
+    debian_bind_slave.vm.box_download_insecure=true
+    debian_bind_slave.vbguest.no_install  = true
+    debian_bind_slave.vbguest.auto_update = false
+    debian_bind_slave.vbguest.no_remote   = true
 
     # VARIABLE HOSTNAME
-    VM_SLAVE_NAME= "ol9-bind-slave"
+    VM_SLAVE_NAME= "debian-bind-slave"
 
     # HOSTNAME
-    ol9_bind_slave.vm.hostname =VM_SLAVE_NAME
+    debian_bind_slave.vm.hostname =VM_SLAVE_NAME
 
     # NETWORK
-    ol9_bind_slave.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
-    ol9_bind_slave.vm.network "private_network",ip: "172.36.12.231",nic_type: "virtio"
+    debian_bind_slave.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_bind_slave.vm.network "private_network",ip: "172.36.12.231"
 
     # MOUNTS
-    ol9_bind_slave.vm.synced_folder ".", "/vagrant", disabled: true
-    ol9_bind_slave.vm.synced_folder "../../Security/", "/home/vagrant/security"
-    ol9_bind_slave.vm.synced_folder "./configs", "/home/vagrant/configs"
-    ol9_bind_slave.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    debian_bind_slave.vm.synced_folder ".", "/vagrant", disabled: true
+    debian_bind_slave.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    debian_bind_slave.vm.synced_folder "./configs", "/home/vagrant/configs"
+    debian_bind_slave.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 
-    # PROVIDER
-    ol9_bind_slave.vm.provider "virtualbox" do |vb|
+    #PROVIDER
+    debian_bind_slave.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
       vb.name =VM_SLAVE_NAME
       vb.cpus = 2
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    ol9_bind_slave.vm.provision "shell", path: "scripts/user-data-bind-slave.sh"
+    debian_bind_slave.vm.provision "shell", path: "scripts/user-data-bind-slave.sh"
 
   end
 
-  # VM ol9_bind_caching
+  #VM ol9_bind_caching
   config.vm.define "ol9-bind-caching"  do |ol9_bind_caching|
+    BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
+    BOX_NAME = "oraclelinux/9"
+    ol9_bind_caching.vm.box = BOX_NAME
+    ol9_bind_caching.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
+    ol9_bind_caching.vm.box_download_insecure=true
+    ol9_bind_caching.vbguest.no_install  = true
+    ol9_bind_caching.vbguest.auto_update = false
+    ol9_bind_caching.vbguest.no_remote   = true
 
     # VARIABLE HOSTNAME
     VM_CACHING_NAME= "ol9-bind-caching"

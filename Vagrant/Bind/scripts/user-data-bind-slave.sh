@@ -2,6 +2,10 @@
 
 cd /home/vagrant || exit
 
+#update kernel
+dpkg -i configs/Kernel/linux-image-5.18.9-1.0.0-silvestrini_amd64.deb
+update-grub
+
 #Set password account
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
@@ -19,44 +23,46 @@ cp -f configs/.bashrc .
 # Set properties for user root
 cp .bashrc .vimrc /root/
 
-# Enable Epel repo
-dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-#dnf -y upgrade
+# Set Swap memory
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
 
 # Install packages
-dnf install -y bash-completion
-dnf install -y vim
-dnf install -y htop
-dnf install -y lsof
-dnf install -y tree
-dnf install -y net-tools
-dnf install -y traceroute
-dnf install -y sysstat
-dnf install -y bind
-dnf install -y bind-utils
+apt-get install -y sshpass
+apt-get install -y vim
+apt-get install -y tree
+apt-get install -y python3-pip
+apt-get install -y python3-venv
+apt-get install -y net-tools
+apt-get install -y network-manager
+apt-get install -y sysstat
+apt-get install -y htop
+apt-get install -y collectd
+apt install -y bind9
+apt install -u dnsutils
 
-# SSH,FIREWALLD AND SELINUX
-sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+# Set ssh
+cp -f configs/01-sshd-custom.conf /etc/ssh/sshd_config.d
+systemctl restart sshd
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
-systemctl restart sshd
-systemctl stop firewalld
-systemctl disable firewalld
-setenforce Permissive
 
 #Set GnuGP
-echo vagrant | $(su -c "gpg -k" -s /bin/bash vagrant)
+echo vagrant | $(su -c "gpg --batch --gen-key configs/gen-key-script" -s /bin/bash vagrant)
+echo vagrant | $(su -c "gpg --export --armor vagrant > .gnupg/vagrant.pub.key" -s /bin/bash vagrant)
 
 #Install X11 Server
-dnf config-manager --set-enabled ol9_codeready_builder
-dnf update -y
-dnf install -y xorg-x11-server-Xorg.x86_64 xorg-x11-xauth.x86_64 \
-    xorg-x11-server-utils.x86_64 xorg-x11-utils.x86_64
+apt-get install xserver-xorg -y
+Xorg -configure
+mv /root/xorg.conf.new /etc/X11/xorg.conf
 
 #Enable sadc collected system activity
-cp -f configs/sysstat /etc/default/
-systemctl start sysstat sysstat-collect.timer sysstat-summary.timer
-systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
+sed -i 's/false/true/g' /etc/default/sysstat
+cp -f configs/cron.d-sysstat /etc/cron.d/sysstat
+systemctl start sysstat
+systemctl enable sysstat
 
 #Set Networkmanager
 #sed -i '/\[main\]/a dns=none' /etc/NetworkManager/NetworkManager.conf
@@ -65,12 +71,29 @@ systemctl restart NetworkManager
 
 #Configure BIND
 
-##Set Logging
-#cp -f configs/named.conf /etc
+## Stop bind server
+systemctl stop named
 
-##Set Default DNS Server
-#https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
-sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.140' /etc/resolv.conf
+##Config Bind master
+#cp -f configs/named.conf.local-slave /etc/bind/named.conf.local
 
-##Start service
-systemctl restart named
+## Set zone file with type records (SOA,NS,MX,A,TXT,etc)
+#cp -f configs/lpic2.zone /var/named/lpic2.zone
+#chmod 640 /var/named/lpic2.zone
+#chown root:named /var/named/lpic2.zone
+
+## Validate zone file
+#named-checkzone lpic2.com.br /var/named/lpic2.zone
+
+## Apply changes
+#systemctl start named
+#rndc reconfig
+
+#set prefered DNS servers
+apt-get install -y resolvconf
+systemctl enable resolvconf.service
+systemctl start resolvconf.service
+cp -f configs/head /etc/resolvconf/resolv.conf.d/
+resolvconf --enable-updates
+sed -i 's/nameserver 10.0.2.3/nameserver 192.168.0.141/g' /etc/resolvconf/resolv.conf.d/original
+resolvconf -u
