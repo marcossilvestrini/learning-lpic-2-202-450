@@ -1,0 +1,13 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "lpic2.com.br" {
+        type slave;
+        masters { 192.168.0.140; };
+        file "lpic2.zone";
+};

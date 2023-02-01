@@ -2,23 +2,18 @@
 
 cd /home/vagrant || exit
 
-#update kernel
-dpkg -i configs/Kernel/linux-image-5.18.9-1.0.0-silvestrini_amd64.deb
-update-grub
-
 #Set password account
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 #Set profile in /etc/profile
-cp -f configs/profile /etc
+cp -f configs/profile-debian /etc/profile
 
 #Set vim profile
 cp -f configs/.vimrc .
 
 # Set bash session
-rm .bashrc
-cp -f configs/.bashrc .
+cp -f configs/.bashrc-debian ./.bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root/
@@ -30,6 +25,7 @@ mkswap /swapfile
 swapon /swapfile
 
 # Install packages
+apt-get update -y
 apt-get install -y sshpass
 apt-get install -y vim
 apt-get install -y tree
@@ -75,19 +71,13 @@ systemctl restart NetworkManager
 systemctl stop named
 
 ##Config Bind master
-#cp -f configs/named.conf.local-slave /etc/bind/named.conf.local
-
-## Set zone file with type records (SOA,NS,MX,A,TXT,etc)
-#cp -f configs/lpic2.zone /var/named/lpic2.zone
-#chmod 640 /var/named/lpic2.zone
-#chown root:named /var/named/lpic2.zone
-
-## Validate zone file
-#named-checkzone lpic2.com.br /var/named/lpic2.zone
+cp -f configs/named.conf.local /etc/bind/named.conf.local
+#chown root:bind /etc/bind/named.conf.local
+#chmod 644 /etc/bind/named.conf.local
 
 ## Apply changes
-#systemctl start named
-#rndc reconfig
+systemctl start named
+rndc reconfig
 
 #set prefered DNS servers
 apt-get install -y resolvconf
@@ -95,5 +85,5 @@ systemctl enable resolvconf.service
 systemctl start resolvconf.service
 cp -f configs/head /etc/resolvconf/resolv.conf.d/
 resolvconf --enable-updates
-sed -i 's/nameserver 10.0.2.3/nameserver 192.168.0.141/g' /etc/resolvconf/resolv.conf.d/original
+#sed -i 's/nameserver 10.0.2.3/nameserver 192.168.0.141/g' /etc/resolvconf/resolv.conf.d/original
 resolvconf -u
