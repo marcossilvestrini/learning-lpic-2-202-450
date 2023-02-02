@@ -2,14 +2,14 @@
 
 cd /home/vagrant || exit
 
-#Set password account
+# Set password account
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
-#Set profile in /etc/profile
+# Set profile in /etc/profile
 cp -f configs/profile /etc
 
-#Set vim profile
+# Set vim profile
 cp -f configs/.vimrc .
 
 # Set bash session
@@ -45,31 +45,26 @@ systemctl stop firewalld
 systemctl disable firewalld
 setenforce Permissive
 
-#Set GnuGP
+# Set GnuGP
 echo vagrant | $(su -c "gpg -k" -s /bin/bash vagrant)
 
-#Install X11 Server
+# Install X11 Server
 dnf config-manager --set-enabled ol9_codeready_builder
 dnf update -y
 dnf install -y xorg-x11-server-Xorg.x86_64 xorg-x11-xauth.x86_64 \
     xorg-x11-server-utils.x86_64 xorg-x11-utils.x86_64
 
-#Enable sadc collected system activity
+# Enable sadc collected system activity
 cp -f configs/sysstat /etc/default/
 systemctl start sysstat sysstat-collect.timer sysstat-summary.timer
 systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
-#Set Networkmanager
-#sed -i '/\[main\]/a dns=none' /etc/NetworkManager/NetworkManager.conf
-cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
-systemctl restart NetworkManager
-
-#Configure BIND
+# Configure BIND
 
 ## Stop bind server
 systemctl stop named
 
-##Config Bind master
+## Config Bind master
 cp -f configs/named.conf-master /etc/named.conf
 
 ## Set zone file with type records (SOA,NS,MX,A,TXT,etc)
@@ -80,11 +75,17 @@ chown root:named /var/named/lpic2.zone
 ## Validate zone file
 named-checkzone lpic2.com.br /var/named/lpic2.zone
 
-## Apply changes
+## Start service
 systemctl start named
 rndc reconfig
 
-##Set Default DNS Server
-#https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
-sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.140' /etc/resolv.conf
-echo search lpic2.com.br >> /etc/resolv.conf
+# Set Default DNS Server
+
+## Set Networkmanager
+cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+systemctl reload NetworkManager
+
+## Set resolv.conf file
+rm /etc/resolv.conf
+cp configs/resolv.conf.manually-configured /etc
+ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf

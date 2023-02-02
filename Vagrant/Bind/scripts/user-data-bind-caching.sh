@@ -2,14 +2,14 @@
 
 cd /home/vagrant || exit
 
-#Set password account
+# Set password account
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
-#Set profile in /etc/profile
+# Set profile in /etc/profile
 cp -f configs/profile /etc
 
-#Set vim profile
+# Set vim profile
 cp -f configs/.vimrc .
 
 # Set bash session
@@ -53,24 +53,32 @@ dnf update -y
 dnf install -y xorg-x11-server-Xorg.x86_64 xorg-x11-xauth.x86_64 \
     xorg-x11-server-utils.x86_64 xorg-x11-utils.x86_64
 
-#Enable sadc collected system activity
+# Enable sadc collected system activity
 cp -f configs/sysstat /etc/default/
 systemctl start sysstat sysstat-collect.timer sysstat-summary.timer
 systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
-#Set Networkmanager
-#sed -i '/\[main\]/a dns=none' /etc/NetworkManager/NetworkManager.conf
-cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
-systemctl restart NetworkManager
+# Configure BIND
 
-#Configure BIND
+## Stop service
+systemctl stop named
 
 ##Config bind caching parameters
 cp -f configs/named.conf-caching /etc/named.conf
 
-##Set Default DNS Server
-#https://fabianlee.org/2018/10/28/linux-using-sed-to-insert-lines-before-or-after-a-match/
-sed -i '/^nameserver 10.0.2.3/i nameserver 192.168.0.140' /etc/resolv.conf
+## Start service
+systemctl start named
 
-##Start service
-systemctl restart named
+## Reload named.conf
+rndc reconfig
+
+# Set Default DNS Server
+
+## Set Networkmanager
+cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+systemctl reload NetworkManager
+
+## Set resolv.conf file
+rm /etc/resolv.conf
+cp configs/resolv.conf.manually-configured /etc
+ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf
