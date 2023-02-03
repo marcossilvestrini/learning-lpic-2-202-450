@@ -265,7 +265,7 @@ named-checkconf
 
 ```sh
 #check if your zone file is ok
-named-checkzone /vat/named/my-domain-name.zone
+named-checkzone lpic2.com.br /var/named/lpic2.zone
 ```
 
 ##### whois - client for the whois directory service
