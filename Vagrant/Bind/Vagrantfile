@@ -149,4 +149,45 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_bind_caching.vm.provision "shell", path: "scripts/user-data-bind-caching.sh"
 
   end
+
+   #VM ol9_bind_client
+  config.vm.define "ol9-bind-client"  do |ol9_bind_client|
+    BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
+    BOX_NAME = "oraclelinux/9"
+    ol9_bind_client.vm.box = BOX_NAME
+    ol9_bind_client.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
+    ol9_bind_client.vm.box_download_insecure=true
+    ol9_bind_client.vbguest.no_install  = true
+    ol9_bind_client.vbguest.auto_update = false
+    ol9_bind_client.vbguest.no_remote   = true
+
+    # VARIABLE HOSTNAME
+    VM_CLIENT_NAME= "ol9-bind-client"
+
+    # HOSTNAME
+    ol9_bind_client.vm.hostname =VM_CLIENT_NAME
+
+    # NETWORK
+    ol9_bind_client.vm.network "public_network",ip: "192.168.0.150",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
+    ol9_bind_client.vm.network "private_network",ip: "172.36.12.250",nic_type: "virtio"
+
+    # MOUNTS
+    ol9_bind_client.vm.synced_folder ".", "/vagrant", disabled: true
+    ol9_bind_client.vm.synced_folder "./configs", "/home/vagrant/configs"
+    ol9_bind_client.vm.synced_folder "./test", "/home/vagrant/test"
+    ol9_bind_client.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    ol9_bind_client.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+
+    # PROVIDER
+    ol9_bind_client.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_CLIENT_NAME
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    ol9_bind_client.vm.provision "shell", path: "scripts/user-data-bind-client.sh"
+
+  end
 end

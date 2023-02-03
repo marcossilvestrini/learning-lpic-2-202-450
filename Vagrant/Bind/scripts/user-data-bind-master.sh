@@ -26,6 +26,7 @@ dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.r
 # Install packages
 dnf install -y bash-completion
 dnf install -y vim
+dnf install -y sshpass
 dnf install -y htop
 dnf install -y lsof
 dnf install -y tree
@@ -37,7 +38,10 @@ dnf install -y bind-utils
 dnf install -y whois
 
 # SSH,FIREWALLD AND SELINUX
-sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+#sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+rm /etc/ssh/sshd_config.d/90-vagrant.conf
+cp -f configs/01-sshd-custom.conf /etc/ssh/sshd_config.d
+systemctl restart sshd
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
 systemctl restart sshd
@@ -77,6 +81,8 @@ named-checkzone lpic2.com.br /var/named/lpic2.zone
 
 ## Start service
 systemctl start named
+
+## Reload named.conf
 rndc reconfig
 
 # Set Default DNS Server

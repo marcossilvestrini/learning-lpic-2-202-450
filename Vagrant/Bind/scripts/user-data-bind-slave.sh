@@ -26,6 +26,7 @@ swapon /swapfile
 
 # Install packages
 apt-get update -y
+apt-get upgrade -y
 apt-get install -y sshpass
 apt-get install -y vim
 apt-get install -y tree

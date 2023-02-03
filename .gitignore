@@ -17,3 +17,7 @@
 
 #Apps
 *.exe
+
+#Bind
+Vagrant/Bind/test/*
+!Vagrant/Bind/test/.gitkeep
