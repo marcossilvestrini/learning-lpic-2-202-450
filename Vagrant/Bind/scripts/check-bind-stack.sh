@@ -21,7 +21,7 @@ echo -e $LINE >>$FILE_TEST
 
 # Check Bind Master
 echo -e $LINE >>$FILE_TEST
-echo "Check Bind Master...." >>$FILE_TEST
+echo "Check Bind Master..." >>$FILE_TEST
 
 ## Check named.conf
 echo -e $LINE >>$FILE_TEST
@@ -52,7 +52,7 @@ echo -e $LINE >>$FILE_TEST
 # Check Bind Slave
 
 echo -e $LINE >>$FILE_TEST
-echo "Check Bind Slave...." >>$FILE_TEST
+echo "Check Bind Slave..." >>$FILE_TEST
 echo -e $LINE >>$FILE_TEST
 
 ## Check named.conf
@@ -62,7 +62,7 @@ sshpass -p 'vagrant' ssh vagrant@192.168.0.141 -l vagrant sudo cat /etc/bind/nam
 echo -e $LINE >>$FILE_TEST
 
 ## Check file zone
-echo "Check file zone...." >>$FILE_TEST
+echo "Check file zone..." >>$FILE_TEST
 sshpass -p 'vagrant' ssh vagrant@192.168.0.141 -l vagrant sudo ls -lt /var/cache/bind/lpic2.zone >>$FILE_TEST
 sshpass -p 'vagrant' ssh vagrant@192.168.0.141 -l vagrant sudo named-compilezone -f raw -F text -o /tmp/lpic2.txt lpic2.com.br /var/cache/bind/lpic2.zone
 sshpass -p 'vagrant' ssh vagrant@192.168.0.141 -l vagrant sudo cat /tmp/lpic2.txt >>$FILE_TEST
@@ -71,6 +71,13 @@ echo -e $LINE >>$FILE_TEST
 
 ## Check type of records
 echo -e $LINE >>$FILE_TEST
-echo -e "Check type records....\n" >>$FILE_TEST
+echo -e "Check type records...\n" >>$FILE_TEST
 dig -4 @192.168.0.141 lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 6 >>$FILE_TEST
+echo -e $LINE >>$FILE_TEST
+
+## Check tranference zones
+echo -e $LINE >>$FILE_TEST
+echo -e "Check tranference zones...\n" >>$FILE_TEST
+host mail.lpic2.com.br 192.168.0.140
+sshpass -p 'vagrant' ssh vagrant@192.168.0.140 -l vagrant cat /var/named/data/named.run | grep AXFR >>$FILE_TEST
 echo -e $LINE >>$FILE_TEST
