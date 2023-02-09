@@ -32,13 +32,13 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              "text": "$(cat "$SCRIPT_PATH/Vagrant/Bind/test/check-bind-stack.txt")",
+              "text": "Here cat a file with result test",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "$(cat "$SCRIPT_PATH/Vagrant/Bind/test/check-bind-stack.txt")"
+                    "text": "Here cat a file with result test"
                   }
                 }
               ]
