@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  check_certificates:
+  check_bind_stack:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -30,6 +30,7 @@ jobs:
         id: check_bind_stack
         run: |
           export SCRIPT_PATH=$(pwd)
-          cat Vagrant/Bind/test/check-bind-stack.txt
+          echo $SCRIPT_PATH
+          #ls Vagrant/Bind/test/check-bind-stack.txt
 
 
