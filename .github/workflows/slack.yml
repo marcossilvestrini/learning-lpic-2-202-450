@@ -24,10 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      - run: echo "Test file " > test.txt
       - name: Upload to slack step
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
-          path: Vagrant/Bind/test/check-bind-stack.txt
+          path: test.txt
           channel: random
