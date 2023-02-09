@@ -1,0 +1,168 @@
+
+------------------------------------------------------
+
+Check Bind Stack for This Lab...
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check Bind Master...
+
+------------------------------------------------------
+
+Check file /etc/named.conf...
+
+@                   IN      NS      ol9-bind-master.lpic2.com.br.
+                            NS      ol9-bind-slave.lpic2.com.br.
+                            MX      5       mail
+                            MX      10      mail2
+
+ol9-bind-master     A       192.168.0.140   ;glue record
+ol9-bind-slave      A       192.168.0.141   ;glue record
+internal            A       192.168.0.151
+mail                A       192.168.0.140
+mail2               A       192.168.0.141
+www                 CNAME   ol9-bind-master
+ftp                 CNAME   ol9-bind-slave
+
+@                   IN      TXT     "leanning LPIC2"
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check file zone...
+
+zone lpic2.com.br/IN: loaded serial 1
+OK
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check type records...
+
+;; QUESTION SECTION:
+;lpic2.com.br.			IN	ANY
+
+------------------------------------------------------
+
+;; ANSWER SECTION:
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+
+------------------------------------------------------
+
+;; ADDITIONAL SECTION:
+ol9-bind-master.lpic2.com.br. 3600 IN	A	192.168.0.140
+ol9-bind-slave.lpic2.com.br. 3600 IN	A	192.168.0.141
+mail.lpic2.com.br.	3600	IN	A	192.168.0.140
+mail2.lpic2.com.br.	3600	IN	A	192.168.0.141
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check Bind Slave...
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check file /etc/named.conf...
+
+zone "lpic2.com.br" {
+        type slave;
+        masters { 192.168.0.140; };
+        file "lpic2.zone";
+};
+
+------------------------------------------------------
+
+Check file zone...
+-rw-r--r-- 1 bind bind 749 Feb  8 22:32 /var/cache/bind/lpic2.zone
+lpic2.com.br.				      3600 IN SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
+lpic2.com.br.				      3600 IN NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.				      3600 IN NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.				      3600 IN MX	5 mail.lpic2.com.br.
+lpic2.com.br.				      3600 IN MX	10 mail2.lpic2.com.br.
+lpic2.com.br.				      3600 IN TXT	"leanning LPIC2"
+ftp.lpic2.com.br.			      3600 IN CNAME	ol9-bind-slave.lpic2.com.br.
+internal.lpic2.com.br.			      3600 IN A		192.168.0.151
+mail.lpic2.com.br.			      3600 IN A		192.168.0.140
+mail2.lpic2.com.br.			      3600 IN A		192.168.0.141
+ol9-bind-master.lpic2.com.br.		      3600 IN A		192.168.0.140
+ol9-bind-slave.lpic2.com.br.		      3600 IN A		192.168.0.141
+www.lpic2.com.br.			      3600 IN CNAME	ol9-bind-master.lpic2.com.br.
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check type records...
+
+;; ANSWER SECTION:
+lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check transference zones...
+
+client @0x7fb61408c9f8 192.168.0.141#39139 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
+client @0x7fb61408c9f8 192.168.0.141#39139 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 14 records, 362 bytes, 0.001 secs (362000 bytes/sec) (serial 1)
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check Bind Forwarding...
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check file /etc/named.conf...
+
+zone "lpic2.com.br" {
+        type forward;
+        forwarders { 192.168.0.141; };
+};
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check type records...
+
+;; ANSWER SECTION:
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+
+------------------------------------------------------
+
