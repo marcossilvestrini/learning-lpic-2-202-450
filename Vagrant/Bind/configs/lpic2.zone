@@ -16,10 +16,13 @@ $TTL 1h
 
 ol9-bind-master     A       192.168.0.140   ;glue record
 ol9-bind-slave      A       192.168.0.141   ;glue record
-internal            A       192.168.0.151
-mail                A       192.168.0.140
-mail2               A       192.168.0.141
-www                 CNAME   ol9-bind-master
-ftp                 CNAME   ol9-bind-slave
+ol9-bind-forwarding A       192.168.0.142   ;forwarding server
+ol9-bind-caching    A       192.168.0.145   ;caching server
+ol9-bind-client     A       192.168.0.150   ;client server
+silvestrini         A       192.168.0.100   ;my desktop
+mail                A       192.168.0.140   ;mail
+mail2               A       192.168.0.141   ;mail
+www                 CNAME   ol9-bind-master ;http
+ftp                 CNAME   ol9-bind-slave  ;ftp
 
 @                   IN      TXT     "leanning LPIC2"

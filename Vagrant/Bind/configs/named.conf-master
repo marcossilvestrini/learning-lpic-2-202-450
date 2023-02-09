@@ -69,9 +69,15 @@ zone "." IN {
 	file "named.ca";
 };
 
+
 zone "lpic2.com.br" IN {
 	type master;
 	file "lpic2.zone";
+};
+
+zone "0.168.192.in-addr.arpa" IN {
+	type master;
+	file "0.168.192.in-addr.arpa.zone";
 };
 
 include "/etc/named.rfc1912.zones";

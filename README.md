@@ -366,10 +366,46 @@ nslookup
 host
 ```
 
-#### 207.2 Importat Commands
+#### 207.2 Important Commands
+
+##### host
+
+```sh
+host www.lpi.org localhost
+host www.lpi.org 192.168.0.135
+```
+
+##### dig
+
+```sh
+dig  www.lpi.org @localhost
+dig  www.lpi.org @192.168.0.135
+dig -4 @192.168.0.141 lpic2.com.br ANY
+```
+
+##### named-checkzone
+
+```sh
+named-checkzone lpic2.com.br /var/named/lpic2.zone
+```
+
+##### named-compilezone
+
+```sh
+named-compilezone -f raw -F text -o /tmp/lpic2.txt lpic2.com.br /var/cache/bind/lpic2.zone
+```
+
+##### masterfile-format
 
 ```sh
 #Examples
+```
+
+##### nslookup
+
+```sh
+nslookup  ol9-bind-caching
+nslookup  lpic2.com.br
 ```
 
 ![Mind Map](Images/mindmap-207.2.png)

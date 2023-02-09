@@ -7,7 +7,7 @@
       "command": "",
       "windows": {
         "command": [
-          "Set-Location F:\\CERTIFICACAO\\lpic-2-202-450;git pull"
+          "git pull"
         ]
       },
       "presentation": {

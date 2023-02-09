@@ -76,6 +76,11 @@ cp -f configs/lpic2.zone /var/named/lpic2.zone
 chmod 640 /var/named/lpic2.zone
 chown root:named /var/named/lpic2.zone
 
+## Set reverse zone file with type record (PTR)
+cp -f configs/0.168.192.in-addr.arpa.zone /var/named/0.168.192.in-addr.arpa.zone
+chmod 640 /var/named/0.168.192.in-addr.arpa.zone
+chown root:named /var/named/0.168.192.in-addr.arpa.zone
+
 ## Validate zone file
 named-checkzone lpic2.com.br /var/named/lpic2.zone
 

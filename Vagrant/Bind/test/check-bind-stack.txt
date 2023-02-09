@@ -12,7 +12,40 @@ Check Bind Master...
 
 ------------------------------------------------------
 
-Check file /etc/named.conf...
+Check in file /etc/named.conf...
+
+options {
+	listen-on port 53 { 127.0.0.1;192.168.0.140; };
+	listen-on-v6 port 53 { ::1; };
+	directory 	"/var/named";
+	dump-file 	"/var/named/data/cache_dump.db";
+	statistics-file "/var/named/data/named_stats.txt";
+	memstatistics-file "/var/named/data/named_mem_stats.txt";
+	secroots-file	"/var/named/data/named.secroots";
+	recursing-file	"/var/named/data/named.recursing";
+	allow-query     { localhost;192.168.0.0/24; };
+zone "." IN {
+	type hint;
+	file "named.ca";
+};
+*/
+
+zone "lpic2.com.br" IN {
+	type master;
+	file "lpic2.zone";
+};
+
+zone "0.168.192.in-addr.arpa" IN {
+	type master;
+	file "0.168.192.in-addr.arpa.zone";
+};
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Get zones in file /etc/named.conf...
 
 @                   IN      NS      ol9-bind-master.lpic2.com.br.
                             NS      ol9-bind-slave.lpic2.com.br.
@@ -21,20 +54,21 @@ Check file /etc/named.conf...
 
 ol9-bind-master     A       192.168.0.140   ;glue record
 ol9-bind-slave      A       192.168.0.141   ;glue record
-internal            A       192.168.0.151
-mail                A       192.168.0.140
-mail2               A       192.168.0.141
-www                 CNAME   ol9-bind-master
-ftp                 CNAME   ol9-bind-slave
-
-@                   IN      TXT     "leanning LPIC2"
-
-------------------------------------------------------
-
+ol9-bind-forwarding A       192.168.0.142   ;forwarding server
+ol9-bind-caching    A       192.168.0.145   ;caching server
+ol9-bind-client     A       192.168.0.150   ;client server
+silvestrini         A       192.168.0.100   ;my desktop
+mail                A       192.168.0.140   ;mail
+mail2               A       192.168.0.141   ;mail
+www                 CNAME   ol9-bind-master ;http
+ftp                 CNAME   ol9-bind-slave  ;ftp
 
 ------------------------------------------------------
 
-Check file zone...
+
+------------------------------------------------------
+
+Validade file zone...
 
 zone lpic2.com.br/IN: loaded serial 1
 OK
@@ -54,8 +88,8 @@ Check type records...
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 
@@ -90,7 +124,7 @@ zone "lpic2.com.br" {
 ------------------------------------------------------
 
 Check file zone...
--rw-r--r-- 1 bind bind 749 Feb  8 22:32 /var/cache/bind/lpic2.zone
+-rw-r--r-- 1 bind bind 749 Feb  9 14:51 /var/cache/bind/lpic2.zone
 lpic2.com.br.				      3600 IN SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 lpic2.com.br.				      3600 IN NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.				      3600 IN NS	ol9-bind-master.lpic2.com.br.
@@ -114,10 +148,10 @@ Check type records...
 
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
-lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 
 ------------------------------------------------------
@@ -127,8 +161,8 @@ lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 
 Check transference zones...
 
-client @0x7fb61408c9f8 192.168.0.141#39139 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
-client @0x7fb61408c9f8 192.168.0.141#39139 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 14 records, 362 bytes, 0.001 secs (362000 bytes/sec) (serial 1)
+client @0x7f4628695868 192.168.0.141#41671 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
+client @0x7f4628695868 192.168.0.141#41671 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 14 records, 362 bytes, 0.001 secs (362000 bytes/sec) (serial 1)
 
 ------------------------------------------------------
 
@@ -159,10 +193,54 @@ Check type records...
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check Bind Caching...
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check file /etc/named.conf...
+
+options {
+	listen-on port 53 { 127.0.0.1;192.168.0.140; };
+	listen-on-v6 port 53 { ::1; };
+	directory 	"/var/named";
+	dump-file 	"/var/named/data/cache_dump.db";
+	statistics-file "/var/named/data/named_stats.txt";
+	memstatistics-file "/var/named/data/named_mem_stats.txt";
+	secroots-file	"/var/named/data/named.secroots";
+	recursing-file	"/var/named/data/named.recursing";
+	allow-query     { localhost;192.168.0.0/24; };
+zone "." IN {
+	type hint;
+	file "named.ca";
+};
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check type records...
+
+;; ANSWER SECTION:
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 
 ------------------------------------------------------
 
