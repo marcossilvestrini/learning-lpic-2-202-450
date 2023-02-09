@@ -30,7 +30,7 @@ jobs:
         id: check_bind_stack
         run: |
           export SCRIPT_PATH=$(pwd)
-          ls Vagrant/Bind/test
+          ls Vagrant/Bind/
           #ls Vagrant/Bind/test/check-bind-stack.txt
 
 
