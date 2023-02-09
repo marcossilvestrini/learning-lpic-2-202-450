@@ -1,5 +1,4 @@
 #ignore files general
-**/*.vscode
 **/*.log
 **/*.vagrant
 *workspace.code-workspace

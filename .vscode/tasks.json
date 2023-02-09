@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Git pul",
+      "type": "shell",
+      "command": "git pull",
+      "windows": {
+        "command": [
+            "git pull",
+            "git branch"
+        ]
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": { "runOn": "folderOpen" }
+    },
+    {
+      "label": "Vagrant up",
+      "type": "shell",
+      "command": "",
+      "windows": {
+        "command": ".\\Scripts\\powershell\\vagrant_up_windows.ps1"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}
