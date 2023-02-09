@@ -25,24 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Send custom JSON data to Slack workflow
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
+      - name: Upload to slack step
+        uses: adrey/slack-file-upload-action@master
         with:
-          # For posting a rich message using Block Kit
-          payload: |
-            {
-              "text": "Here cat a file with result test",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Here cat a file with result test"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          path: Vagrant/Bind/test/check-bind-stack.txt
+          channel: random
