@@ -9,6 +9,9 @@
 - add social media in README
 - add start count in README
 - add issues count in README
+- add topics of exam in README
+- add mindmaps in README
+- add badges in README
 
 :bug: **Bugfix**:
 
@@ -16,6 +19,5 @@
 
 :sweat_drops: **Chore**:
 
-- add topics of exam in README
-- add mindmaps in README
-- add badges in RTEADME
+- add examples for all topics of course
+- add simulated exam

@@ -366,6 +366,8 @@ nslookup
 host
 ```
 
+![Mind Map](Images/mindmap-207.2.png)
+
 #### 207.2 Important Commands
 
 ##### host
@@ -408,8 +410,6 @@ nslookup  ol9-bind-caching
 nslookup  lpic2.com.br
 ```
 
-![Mind Map](Images/mindmap-207.2.png)
-
 <p align="right">(<a href="#topic-207.2">back to sub topic 207.2</a>)</p>
 <p align="right">(<a href="#topic-207">back to topic 207</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -445,13 +445,13 @@ dnssec-keygen
 dnssec-signzone
 ```
 
+![Mind Map](Images/mindmap-207.3.png)
+
 #### 207.3 Importat Commands
 
 ```sh
 #Examples
 ```
-
-![Mind Map](Images/mindmap-207.3.png)
 
 <p align="right">(<a href="#topic-207.3">back to sub topic 207.3</a>)</p>
 <p align="right">(<a href="#topic-207">back to topic 207</a>)</p>
