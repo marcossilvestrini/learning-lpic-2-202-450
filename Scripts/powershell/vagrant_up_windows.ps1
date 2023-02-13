@@ -7,7 +7,7 @@ Get-Process -Name *ruby* | Stop-Process -Force
 Start-Process -Wait -NoNewWindow -FilePath "E:\Apps\VirtualBox\VBoxManage.exe" `
     -ArgumentList  @("setproperty", "machinefolder", "E:\Servers\VirtualBox")
 # Vagrant home directory for downloadad boxes.
-setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d"
+setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d" >$null
 
 #Vagrant Boxes
 $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
@@ -15,17 +15,17 @@ $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
 $ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 
 #up ol8
-Set-Location $ol9
+# Set-Location $ol9
 # Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 # Copy-Item .\.vagrant\machines\ol9-lpic2-202\virtualbox\private_key F:\Projetos\vagrant-pk\oracle-linux9
 
 #up debian 11
-Set-Location $debian
+# Set-Location $debian
 # Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 # Copy-Item .\.vagrant\machines\debian_lpic2_202\virtualbox\private_key F:\Projetos\vagrant-pk\debian
 
 #up debian 5
-Set-Location $debian5
+# Set-Location $debian5
 # Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 # Copy-Item .\.vagrant\machines\debian5_lpic2_202\virtualbox\private_key F:\Projetos\vagrant-pk\debian5
 
@@ -38,7 +38,6 @@ Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projet
 Copy-Item .\.vagrant\machines\debian-bind-forwarding\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-forwarding
 Copy-Item .\.vagrant\machines\ol9-bind-caching\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-caching
 Copy-Item .\.vagrant\machines\ol9-bind-client\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-client
-
 
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0

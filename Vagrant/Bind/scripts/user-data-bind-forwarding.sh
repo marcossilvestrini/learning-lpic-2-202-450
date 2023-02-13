@@ -82,6 +82,9 @@ rndc flush
 
 # Set Default DNS Server
 
+## Copy host file
+cp -f configs/hosts /etc/hosts
+
 ## Set Networkmanager
 cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
 systemctl reload NetworkManager

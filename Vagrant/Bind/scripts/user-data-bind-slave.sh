@@ -67,7 +67,8 @@ systemctl enable sysstat
 systemctl stop named
 
 ## Config Bind master
-cp -f configs/named.conf.local /etc/bind/named.conf.local
+cp -f configs/named.conf.local-slave /etc/bind/named.conf.local
+cp -f configs/named.conf.options /etc/bind/named.conf.local
 
 ## Apply changes
 systemctl start named
@@ -76,6 +77,9 @@ systemctl start named
 rndc reconfig
 
 # Set Default DNS Server
+
+## Copy host file
+cp -f configs/hosts /etc/hosts
 
 ## Set Networkmanager
 cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/

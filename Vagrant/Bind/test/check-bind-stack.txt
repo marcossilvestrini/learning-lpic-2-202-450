@@ -2,6 +2,7 @@
 ------------------------------------------------------
 
 Check Bind Stack for This Lab...
+Date: 2023-02-13 18:10:28
 
 ------------------------------------------------------
 
@@ -12,10 +13,19 @@ Check Bind Master...
 
 ------------------------------------------------------
 
+Check version of bind 
+
+version.bind.		0	CH	TXT	"Version of this bind server was omitted by Silvestrini"
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
 Check in file /etc/named.conf...
 
 options {
-	listen-on port 53 { 127.0.0.1;192.168.0.140; };
+	listen-on port 53 { 127.0.0.1;ip-master; };
 	listen-on-v6 port 53 { ::1; };
 	directory 	"/var/named";
 	dump-file 	"/var/named/data/cache_dump.db";
@@ -23,22 +33,7 @@ options {
 	memstatistics-file "/var/named/data/named_mem_stats.txt";
 	secroots-file	"/var/named/data/named.secroots";
 	recursing-file	"/var/named/data/named.recursing";
-	allow-query     { localhost;192.168.0.0/24; };
-zone "." IN {
-	type hint;
-	file "named.ca";
-};
-*/
-
-zone "lpic2.com.br" IN {
-	type master;
-	file "lpic2.zone";
-};
-
-zone "0.168.192.in-addr.arpa" IN {
-	type master;
-	file "0.168.192.in-addr.arpa.zone";
-};
+	allow-query     { localhost;public-vlan; };
 
 ------------------------------------------------------
 
@@ -90,8 +85,8 @@ lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 
 ------------------------------------------------------
 
@@ -113,6 +108,15 @@ Check Bind Slave...
 
 ------------------------------------------------------
 
+Check version of bind 
+
+version.bind.		0	CH	TXT	"9.16.37-Debian"
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
 Check file /etc/named.conf...
 
 zone "lpic2.com.br" {
@@ -124,7 +128,7 @@ zone "lpic2.com.br" {
 ------------------------------------------------------
 
 Check file zone...
--rw-r--r-- 1 bind bind 749 Feb  9 14:51 /var/cache/bind/lpic2.zone
+-rw-r--r-- 1 bind bind 925 Feb 13 18:00 /var/cache/bind/lpic2.zone
 lpic2.com.br.				      3600 IN SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 lpic2.com.br.				      3600 IN NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.				      3600 IN NS	ol9-bind-master.lpic2.com.br.
@@ -132,11 +136,14 @@ lpic2.com.br.				      3600 IN MX	5 mail.lpic2.com.br.
 lpic2.com.br.				      3600 IN MX	10 mail2.lpic2.com.br.
 lpic2.com.br.				      3600 IN TXT	"leanning LPIC2"
 ftp.lpic2.com.br.			      3600 IN CNAME	ol9-bind-slave.lpic2.com.br.
-internal.lpic2.com.br.			      3600 IN A		192.168.0.151
 mail.lpic2.com.br.			      3600 IN A		192.168.0.140
 mail2.lpic2.com.br.			      3600 IN A		192.168.0.141
+ol9-bind-caching.lpic2.com.br.		      3600 IN A		192.168.0.145
+ol9-bind-client.lpic2.com.br.		      3600 IN A		192.168.0.150
+ol9-bind-forwarding.lpic2.com.br.	      3600 IN A		192.168.0.142
 ol9-bind-master.lpic2.com.br.		      3600 IN A		192.168.0.140
 ol9-bind-slave.lpic2.com.br.		      3600 IN A		192.168.0.141
+silvestrini.lpic2.com.br.		      3600 IN A		192.168.0.100
 www.lpic2.com.br.			      3600 IN CNAME	ol9-bind-master.lpic2.com.br.
 
 ------------------------------------------------------
@@ -148,10 +155,10 @@ Check type records...
 
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 
 ------------------------------------------------------
@@ -161,8 +168,8 @@ lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 
 Check transference zones...
 
-client @0x7f4628695868 192.168.0.141#41671 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
-client @0x7f4628695868 192.168.0.141#41671 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 14 records, 362 bytes, 0.001 secs (362000 bytes/sec) (serial 1)
+client @0x7fd99802c4d8 192.168.0.141#58027 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
+client @0x7fd99802c4d8 192.168.0.141#58027 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 466 bytes, 0.001 secs (466000 bytes/sec) (serial 1)
 
 ------------------------------------------------------
 
@@ -170,6 +177,15 @@ client @0x7f4628695868 192.168.0.141#41671 (lpic2.com.br): transfer of 'lpic2.co
 ------------------------------------------------------
 
 Check Bind Forwarding...
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+Check version of bind 
+
+version.bind.		0	CH	TXT	"9.16.37-Debian"
 
 ------------------------------------------------------
 
@@ -193,10 +209,10 @@ Check type records...
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 
 ------------------------------------------------------
 
@@ -210,10 +226,19 @@ Check Bind Caching...
 
 ------------------------------------------------------
 
+Check version of bind 
+
+version.bind.		0	CH	TXT	"9.16.23-RH"
+
+------------------------------------------------------
+
+
+------------------------------------------------------
+
 Check file /etc/named.conf...
 
 options {
-	listen-on port 53 { 127.0.0.1;192.168.0.140; };
+	listen-on port 53 { 127.0.0.1;ip-caching; };
 	listen-on-v6 port 53 { ::1; };
 	directory 	"/var/named";
 	dump-file 	"/var/named/data/cache_dump.db";
@@ -221,11 +246,11 @@ options {
 	memstatistics-file "/var/named/data/named_mem_stats.txt";
 	secroots-file	"/var/named/data/named.secroots";
 	recursing-file	"/var/named/data/named.recursing";
-	allow-query     { localhost;192.168.0.0/24; };
-zone "." IN {
-	type hint;
-	file "named.ca";
-};
+	allow-query     { localhost;public-vlan; };
+	zone "." IN {
+		type hint;
+		file "named.ca";
+	};
 
 ------------------------------------------------------
 

@@ -235,6 +235,9 @@ dig
 ##### rndc - name server control utility
 
 ```sh
+#Check version\status of bind
+rndc status
+
 #Reload /etc/named.conf
 rndc reload
 
