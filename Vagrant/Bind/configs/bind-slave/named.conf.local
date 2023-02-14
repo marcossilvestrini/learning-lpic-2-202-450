@@ -6,6 +6,19 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+//My TSIG keys
+
+key "lpic2" {
+	algorithm ECDSAP256SHA256;
+	secret "g86DFcDY0/RMxrZNTBI60t1uLd3FoltG2qbU6txSqSU=";
+};
+
+/*
+server 192.168.0.140 {
+        keys { lpic2; };
+};
+*/
+
 zone "lpic2.com.br" {
         type slave;
         masters { 192.168.0.140; };

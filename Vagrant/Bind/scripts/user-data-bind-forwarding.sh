@@ -1,5 +1,14 @@
 #!/bin/bash
 
+<<'MULTILINE-COMMENT'
+    Requirments: none
+    Description: Script for set environment for labs
+    Author: Marcos Silvestrini
+    Date: 14/02/2023
+MULTILINE-COMMENT
+
+export LANG=C
+
 cd /home/vagrant || exit
 
 # Set password account
@@ -7,13 +16,13 @@ usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 # Set profile in /etc/profile
-cp -f configs/profile-debian /etc/profile
+cp -f configs/commons/profile-debian /etc/profile
 
 # Set vim profile
-cp -f configs/.vimrc .
+cp -f configs/commons/.vimrc .
 
 # Set bash session
-cp -f configs/.bashrc-debian ./.bashrc
+cp -f configs/commons/.bashrc-debian ./.bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root/
@@ -37,11 +46,12 @@ apt-get install -y network-manager
 apt-get install -y sysstat
 apt-get install -y htop
 apt-get install -y collectd
-apt install -y bind9
-apt install -u dnsutils
+apt-get install -y bind9
+apt-get install -y dnsutils
+apt-get install -y xserver-xorg
 
 # Set ssh
-cp -f configs/01-sshd-custom.conf /etc/ssh/sshd_config.d
+cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
 systemctl restart sshd
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
@@ -50,14 +60,13 @@ echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<
 echo vagrant | $(su -c "gpg --batch --gen-key configs/gen-key-script" -s /bin/bash vagrant)
 echo vagrant | $(su -c "gpg --export --armor vagrant > .gnupg/vagrant.pub.key" -s /bin/bash vagrant)
 
-# Install X11 Server
-apt-get install xserver-xorg -y
+# Set X11 Server
 Xorg -configure
 mv /root/xorg.conf.new /etc/X11/xorg.conf
 
 # Enable sadc collected system activity
 sed -i 's/false/true/g' /etc/default/sysstat
-cp -f configs/cron.d-sysstat /etc/cron.d/sysstat
+cp -f configs/commons/cron.d-sysstat /etc/cron.d/sysstat
 systemctl start sysstat
 systemctl enable sysstat
 
@@ -67,8 +76,8 @@ systemctl enable sysstat
 systemctl stop named
 
 ## Config Bind master
-cp -f configs/named.conf.local-forwarding /etc/bind/named.conf.local
-cp -f configs/named.conf.options /etc/bind/named.conf.options
+cp -f configs/bind-forwarding/named.conf.local /etc/bind
+cp -f configs/commons/named.conf.options /etc/bind
 
 ## Apply changes
 systemctl start named
@@ -83,13 +92,13 @@ rndc flush
 # Set Default DNS Server
 
 ## Copy host file
-cp -f configs/hosts /etc/hosts
+cp -f configs/commons/hosts /etc
 
 ## Set Networkmanager
-cp -f configs/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+cp -f configs/commons/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
 systemctl reload NetworkManager
 
 ## Set resolv.conf file
 rm /etc/resolv.conf
-cp configs/resolv.conf.manually-configured /etc
+cp configs/commons/resolv.conf.manually-configured /etc
 ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf

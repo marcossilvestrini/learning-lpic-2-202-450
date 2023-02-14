@@ -10,9 +10,9 @@ Start-Process -Wait -NoNewWindow -FilePath "E:\Apps\VirtualBox\VBoxManage.exe" `
 setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d" >$null
 
 #Vagrant Boxes
-$debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
-$debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
-$ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
+# $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
+# $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
+# $ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 
 #up ol8
 # Set-Location $ol9

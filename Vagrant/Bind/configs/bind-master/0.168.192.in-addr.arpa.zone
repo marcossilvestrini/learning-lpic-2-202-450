@@ -8,12 +8,12 @@ $TTL 1h
                     3600    ; negative caching (1h)
 )
 
-                    NS      ol9-bind-master.lpic2.com.br. ;nameserver
-                    NS      ol9-bind-slave.lpic2.com.br.  ;nameserver
+                    NS      ol9-bind-master.lpic2.com.br. ;primary nameserver
+                    NS      debian-bind-slave.lpic2.com.br.  ;secondary nameserver
 
 1                   PTR     router.lpic2.com.br.
 140                 PTR     ol9-bind-master.lpic2.com.br.
-141                 PTR     ol9-bind-slave.lpic2.com.br.
-142                 PTR     ol9-bind-forwarding.com.br.
+141                 PTR     debian-bind-slave.lpic2.com.br.
+142                 PTR     debian-bind-forwarding.com.br.
 145                 PTR     ol9-bind-caching.lpic2.com.br.
 150                 PTR     ol9-bind-client.lpic2.com.br.

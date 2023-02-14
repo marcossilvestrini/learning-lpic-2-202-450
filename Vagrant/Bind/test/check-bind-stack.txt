@@ -2,7 +2,8 @@
 ------------------------------------------------------
 
 Check Bind Stack for This Lab...
-Date: 2023-02-13 18:10:28
+
+Date: 2023-02-14 15:47:51
 
 ------------------------------------------------------
 
@@ -42,21 +43,6 @@ options {
 
 Get zones in file /etc/named.conf...
 
-@                   IN      NS      ol9-bind-master.lpic2.com.br.
-                            NS      ol9-bind-slave.lpic2.com.br.
-                            MX      5       mail
-                            MX      10      mail2
-
-ol9-bind-master     A       192.168.0.140   ;glue record
-ol9-bind-slave      A       192.168.0.141   ;glue record
-ol9-bind-forwarding A       192.168.0.142   ;forwarding server
-ol9-bind-caching    A       192.168.0.145   ;caching server
-ol9-bind-client     A       192.168.0.150   ;client server
-silvestrini         A       192.168.0.100   ;my desktop
-mail                A       192.168.0.140   ;mail
-mail2               A       192.168.0.141   ;mail
-www                 CNAME   ol9-bind-master ;http
-ftp                 CNAME   ol9-bind-slave  ;ftp
 
 ------------------------------------------------------
 
@@ -81,10 +67,10 @@ Check type records...
 ------------------------------------------------------
 
 ;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 
@@ -92,7 +78,7 @@ lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 
 ;; ADDITIONAL SECTION:
 ol9-bind-master.lpic2.com.br. 3600 IN	A	192.168.0.140
-ol9-bind-slave.lpic2.com.br. 3600 IN	A	192.168.0.141
+debian-bind-slave.lpic2.com.br.	3600 IN	A	192.168.0.141
 mail.lpic2.com.br.	3600	IN	A	192.168.0.140
 mail2.lpic2.com.br.	3600	IN	A	192.168.0.141
 
@@ -128,21 +114,21 @@ zone "lpic2.com.br" {
 ------------------------------------------------------
 
 Check file zone...
--rw-r--r-- 1 bind bind 925 Feb 13 18:00 /var/cache/bind/lpic2.zone
+-rw-r--r-- 1 bind bind 947 Feb 14 18:34 /var/cache/bind/lpic2.zone
 lpic2.com.br.				      3600 IN SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.				      3600 IN NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.				      3600 IN NS	ol9-bind-master.lpic2.com.br.
+lpic2.com.br.				      3600 IN NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.				      3600 IN MX	5 mail.lpic2.com.br.
 lpic2.com.br.				      3600 IN MX	10 mail2.lpic2.com.br.
-lpic2.com.br.				      3600 IN TXT	"leanning LPIC2"
+lpic2.com.br.				      3600 IN TXT	"leanning LPIC2 Exam 202-450"
+debian-bind-forwarding.lpic2.com.br.	      3600 IN A		192.168.0.142
+debian-bind-slave.lpic2.com.br.		      3600 IN A		192.168.0.141
 ftp.lpic2.com.br.			      3600 IN CNAME	ol9-bind-slave.lpic2.com.br.
 mail.lpic2.com.br.			      3600 IN A		192.168.0.140
 mail2.lpic2.com.br.			      3600 IN A		192.168.0.141
 ol9-bind-caching.lpic2.com.br.		      3600 IN A		192.168.0.145
 ol9-bind-client.lpic2.com.br.		      3600 IN A		192.168.0.150
-ol9-bind-forwarding.lpic2.com.br.	      3600 IN A		192.168.0.142
 ol9-bind-master.lpic2.com.br.		      3600 IN A		192.168.0.140
-ol9-bind-slave.lpic2.com.br.		      3600 IN A		192.168.0.141
 silvestrini.lpic2.com.br.		      3600 IN A		192.168.0.100
 www.lpic2.com.br.			      3600 IN CNAME	ol9-bind-master.lpic2.com.br.
 
@@ -158,8 +144,8 @@ lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 2
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 
 ------------------------------------------------------
 
@@ -168,8 +154,8 @@ lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
 
 Check transference zones...
 
-client @0x7fd99802c4d8 192.168.0.141#58027 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
-client @0x7fd99802c4d8 192.168.0.141#58027 (lpic2.com.br): transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 466 bytes, 0.001 secs (466000 bytes/sec) (serial 1)
+client @0x7f1c146bd588 192.168.0.141#44723 (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
+client @0x7f1c146bd588 192.168.0.141#44723 (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 500 bytes, 0.001 secs (500000 bytes/sec) (serial 1)
 
 ------------------------------------------------------
 
@@ -207,12 +193,12 @@ zone "lpic2.com.br" {
 Check type records...
 
 ;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 
 ------------------------------------------------------
 
@@ -260,12 +246,12 @@ options {
 Check type records...
 
 ;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	TXT	"leanning LPIC2"
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	NS	ol9-bind-slave.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 
 ------------------------------------------------------
 

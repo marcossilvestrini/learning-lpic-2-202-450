@@ -1,0 +1,28 @@
+$TTL 1h
+
+@                      IN      SOA     ol9-bind-master.lpic2.com.br.   admin.lpic2.com.br. (
+                       01      ; serial
+                       28800   ; refresh (8h)
+                       7200    ; retry (2h)
+                       604800  ; expire (7d)
+                       3600    ; negative caching (1h)
+)
+
+
+@                      IN      NS      ol9-bind-master.lpic2.com.br.
+                               NS      debian-bind-slave.lpic2.com.br.
+                               MX      5       mail
+                               MX      10      mail2
+
+ol9-bind-master        A       192.168.0.140   ;glue record
+debian-bind-slave      A       192.168.0.141   ;glue record
+debian-bind-forwarding A       192.168.0.142   ;forwarding server
+ol9-bind-caching       A       192.168.0.145   ;caching server
+ol9-bind-client        A       192.168.0.150   ;client server
+silvestrini            A       192.168.0.100   ;my desktop
+mail                   A       192.168.0.140   ;mail
+mail2                  A       192.168.0.141   ;mail
+www                    CNAME   ol9-bind-master ;http
+ftp                    CNAME   ol9-bind-slave  ;ftp
+
+@                      IN      TXT     "leanning LPIC2 Exam 202-450"

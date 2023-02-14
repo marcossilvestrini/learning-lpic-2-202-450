@@ -373,14 +373,14 @@ host
 
 #### 207.2 Important Commands
 
-##### host
+##### host - DNS lookup utility
 
 ```sh
 host www.lpi.org localhost
 host www.lpi.org 192.168.0.135
 ```
 
-##### dig
+##### dig - DNS lookup utility
 
 ```sh
 dig  www.lpi.org @localhost
@@ -388,25 +388,7 @@ dig  www.lpi.org @192.168.0.135
 dig -4 @192.168.0.141 lpic2.com.br ANY
 ```
 
-##### named-checkzone
-
-```sh
-named-checkzone lpic2.com.br /var/named/lpic2.zone
-```
-
-##### named-compilezone
-
-```sh
-named-compilezone -f raw -F text -o /tmp/lpic2.txt lpic2.com.br /var/cache/bind/lpic2.zone
-```
-
-##### masterfile-format
-
-```sh
-#Examples
-```
-
-##### nslookup
+##### nslookup - query Internet name servers interactively
 
 ```sh
 nslookup  ol9-bind-caching
@@ -450,7 +432,16 @@ dnssec-signzone
 
 ![Mind Map](Images/mindmap-207.3.png)
 
-#### 207.3 Importat Commands
+#### 207.3 Important Commands
+
+##### dnssec-keygen - DNSSEC key generation tool
+
+```sh
+#Generate key
+dnssec-keygen -a ECDSAP256SHA256 -b 512 lpic2.com.br
+```
+
+##### dnssec-signzone
 
 ```sh
 #Examples
