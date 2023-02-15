@@ -95,9 +95,14 @@ named-checkzone lpic2.com.br /var/named/lpic2.zone
 
 ## Start service
 systemctl start named
+systemctl enable named
 
 ## Reload named.conf
 rndc reconfig
+
+## Sign DNSSEC key
+cp configs/bind-master/Klpic2.com.br.+013+29838.* /var/named
+dnssec-signzone -P -o lpic2.com.br /var/named/lpic2.zone /var/named/Klpic2.com.br.+013+29838.private
 
 # Set Default DNS Server
 

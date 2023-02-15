@@ -26,3 +26,5 @@ www                    CNAME   ol9-bind-master ;http
 ftp                    CNAME   ol9-bind-slave  ;ftp
 
 @                      IN      TXT     "leanning LPIC2 Exam 202-450"
+
+lpic2.com.br. IN DNSKEY 256 3 13 qzYHNPMPd6QjO66oHI4RL95LBSb3wRuEGJSXgByHJalof0DBJOucDKE1 MMudvv7eNoOabO+m91rQKUbRw6n/Vg==

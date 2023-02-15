@@ -81,6 +81,7 @@ cp -f configs/commons/named.conf.options /etc/bind
 
 ## Apply changes
 systemctl start named
+systemctl enable named
 
 ## Reload named.conf
 chown root:bind /etc/bind/rndc.key

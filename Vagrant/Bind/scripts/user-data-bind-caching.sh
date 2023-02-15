@@ -80,6 +80,7 @@ cp -f configs/bind-caching/named.conf /etc
 
 ## Start service
 systemctl start named
+systemctl enable named
 
 ## Reload named.conf
 rndc reconfig

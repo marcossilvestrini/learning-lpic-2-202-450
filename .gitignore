@@ -10,6 +10,7 @@
 **/*.ppk
 **/*pk_centos
 **/*private*
+!Klpic2.com.br.+013+29838.private
 
 #Linux kernel
 **/Kernel

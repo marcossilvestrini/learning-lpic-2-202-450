@@ -81,6 +81,7 @@ cp -f configs/commons/named.conf.options /etc/bind
 
 ## Apply changes
 systemctl start named
+systemctl enable named
 
 ## Check config
 named-checkconf /etc/bind/named.conf

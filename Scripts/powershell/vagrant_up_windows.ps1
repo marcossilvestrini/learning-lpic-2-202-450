@@ -32,7 +32,7 @@ setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d" >$null
 #Server BIND
 $bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
 Set-Location $bind
-Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+Start-Process -Wait -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
 Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
 Copy-Item .\.vagrant\machines\debian-bind-forwarding\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-forwarding

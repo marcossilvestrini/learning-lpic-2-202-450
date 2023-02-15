@@ -434,23 +434,25 @@ dnssec-signzone
 
 #### 207.3 Important Commands
 
-##### dnssec-keygen - DNSSEC key generation tool
-
-```sh
-#Generate key
-dnssec-keygen -a ECDSAP256SHA256 -b 512 lpic2.com.br
-```
-
 ##### tsig-keygen \ ddns-confgen - ddns key generation tool
 
 ```sh
+# Generate TSIG key
 tsig-keygen lpic2.com.br
+```
+
+##### dnssec-keygen - DNSSEC key generation tool
+
+```sh
+#Generate DNSSEC key
+dnssec-keygen -a ECDSAP256SHA256 -b 1024 -n ZONE lpic2.com.br
 ```
 
 ##### dnssec-signzone
 
 ```sh
-#Examples
+#Sign DNSSEC key
+dnssec-signzone -P -o lpic2.com.br lpic2.zone
 ```
 
 <p align="right">(<a href="#topic-207.3">back to sub topic 207.3</a>)</p>

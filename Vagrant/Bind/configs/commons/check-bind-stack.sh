@@ -126,7 +126,7 @@ dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 6 >>$FILE_TES
 echo $LINE >>$FILE_TEST
 
 # Check Bind Caching
-echo "\nCheck Bind Caching..." >>$FILE_TEST
+echo -e "\nCheck Bind Caching..." >>$FILE_TEST
 echo -e "$LINE\n" >>$FILE_TEST
 
 ## Check version of bind
