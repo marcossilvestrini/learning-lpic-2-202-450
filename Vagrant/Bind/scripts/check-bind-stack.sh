@@ -47,8 +47,7 @@ echo -e $LINE >>$FILE_TEST
 ## Get zones
 echo -e $LINE >>$FILE_TEST
 echo -e "Get zones in file /etc/named.conf...\n" >>$FILE_TEST
-sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /var/named/lpic2.zone |
-    grep -ws "@                   IN      NS      ol9-bind-master.lpic2.com.br." -A 14 >>$FILE_TEST
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /var/named/lpic2.zone | grep -ws "IN      NS      ol9-bind-master.lpic2.com.br." -A 14 >>$FILE_TEST
 echo -e $LINE >>$FILE_TEST
 
 ## Check file zone
@@ -101,7 +100,8 @@ echo -e $LINE >>$FILE_TEST
 ## Check transference zones
 echo -e $LINE >>$FILE_TEST
 echo -e "Check transference zones...\n" >>$FILE_TEST
-host mail.lpic2.com.br $IP_MASTER >/dev/null 2>&1
+#host mail.lpic2.com.br $IP_MASTER >/dev/null 2>&1
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_SLAVE -l vagrant sudo rndc retransfer lpic2.com.br
 sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /var/named/data/named.run | grep AXFR >>$FILE_TEST
 echo -e $LINE >>$FILE_TEST
 

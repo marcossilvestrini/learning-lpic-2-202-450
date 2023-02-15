@@ -83,7 +83,9 @@ cp -f configs/commons/named.conf.options /etc/bind
 systemctl start named
 
 ## Reload named.conf
-rndc reconfig
+chown root:bind /etc/bind/rndc.key
+chmod 640 /etc/bind/rndc.key
+rndc reload
 
 # Set Default DNS Server
 

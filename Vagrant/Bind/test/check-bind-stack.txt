@@ -3,7 +3,7 @@
 
 Check Bind Stack for This Lab...
 
-Date: 2023-02-14 15:47:51
+Date: 2023-02-14 21:21:47
 
 ------------------------------------------------------
 
@@ -43,6 +43,21 @@ options {
 
 Get zones in file /etc/named.conf...
 
+@                      IN      NS      ol9-bind-master.lpic2.com.br.
+                               NS      debian-bind-slave.lpic2.com.br.
+                               MX      5       mail
+                               MX      10      mail2
+
+ol9-bind-master        A       192.168.0.140   ;glue record
+debian-bind-slave      A       192.168.0.141   ;glue record
+debian-bind-forwarding A       192.168.0.142   ;forwarding server
+ol9-bind-caching       A       192.168.0.145   ;caching server
+ol9-bind-client        A       192.168.0.150   ;client server
+silvestrini            A       192.168.0.100   ;my desktop
+mail                   A       192.168.0.140   ;mail
+mail2                  A       192.168.0.141   ;mail
+www                    CNAME   ol9-bind-master ;http
+ftp                    CNAME   ol9-bind-slave  ;ftp
 
 ------------------------------------------------------
 
@@ -105,6 +120,15 @@ version.bind.		0	CH	TXT	"9.16.37-Debian"
 
 Check file /etc/named.conf...
 
+key "lpic2.com.br" {
+	algorithm hmac-sha256;
+	secret "aIYTlJfNDaIvBEvTk7zjCm3beP3RzLAiJPtFvs5/mkE=";
+};
+
+server 192.168.0.140 {
+        keys { lpic2.com.br; };
+};
+
 zone "lpic2.com.br" {
         type slave;
         masters { 192.168.0.140; };
@@ -114,7 +138,7 @@ zone "lpic2.com.br" {
 ------------------------------------------------------
 
 Check file zone...
--rw-r--r-- 1 bind bind 947 Feb 14 18:34 /var/cache/bind/lpic2.zone
+-rw-r--r-- 1 bind bind 947 Feb 14 20:48 /var/cache/bind/lpic2.zone
 lpic2.com.br.				      3600 IN SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 lpic2.com.br.				      3600 IN NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.				      3600 IN NS	debian-bind-slave.lpic2.com.br.
@@ -140,12 +164,12 @@ www.lpic2.com.br.			      3600 IN CNAME	ol9-bind-master.lpic2.com.br.
 Check type records...
 
 ;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 
 ------------------------------------------------------
 
@@ -154,8 +178,10 @@ lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 
 Check transference zones...
 
-client @0x7f1c146bd588 192.168.0.141#44723 (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started (serial 1)
-client @0x7f1c146bd588 192.168.0.141#44723 (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 500 bytes, 0.001 secs (500000 bytes/sec) (serial 1)
+client @0x7f74c852a358 192.168.0.141#43249/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
+client @0x7f74c852a358 192.168.0.141#43249/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 585 bytes, 0.001 secs (585000 bytes/sec) (serial 1)
+client @0x7f74c852d598 192.168.0.141#35881/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
+client @0x7f74c852d598 192.168.0.141#35881/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 585 bytes, 0.001 secs (585000 bytes/sec) (serial 1)
 
 ------------------------------------------------------
 
@@ -171,7 +197,6 @@ Check Bind Forwarding...
 
 Check version of bind 
 
-version.bind.		0	CH	TXT	"9.16.37-Debian"
 
 ------------------------------------------------------
 
@@ -180,10 +205,6 @@ version.bind.		0	CH	TXT	"9.16.37-Debian"
 
 Check file /etc/named.conf...
 
-zone "lpic2.com.br" {
-        type forward;
-        forwarders { 192.168.0.141; };
-};
 
 ------------------------------------------------------
 
@@ -197,8 +218,8 @@ lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 
 ------------------------------------------------------
 
@@ -214,7 +235,6 @@ Check Bind Caching...
 
 Check version of bind 
 
-version.bind.		0	CH	TXT	"9.16.23-RH"
 
 ------------------------------------------------------
 
@@ -223,20 +243,6 @@ version.bind.		0	CH	TXT	"9.16.23-RH"
 
 Check file /etc/named.conf...
 
-options {
-	listen-on port 53 { 127.0.0.1;ip-caching; };
-	listen-on-v6 port 53 { ::1; };
-	directory 	"/var/named";
-	dump-file 	"/var/named/data/cache_dump.db";
-	statistics-file "/var/named/data/named_stats.txt";
-	memstatistics-file "/var/named/data/named_mem_stats.txt";
-	secroots-file	"/var/named/data/named.secroots";
-	recursing-file	"/var/named/data/named.recursing";
-	allow-query     { localhost;public-vlan; };
-	zone "." IN {
-		type hint;
-		file "named.ca";
-	};
 
 ------------------------------------------------------
 
@@ -248,10 +254,10 @@ Check type records...
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	TXT	"leanning LPIC2 Exam 202-450"
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
+lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+lpic2.com.br.		3600	IN	MX	10 mail2.lpic2.com.br.
 
 ------------------------------------------------------
 

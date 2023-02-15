@@ -441,6 +441,12 @@ dnssec-signzone
 dnssec-keygen -a ECDSAP256SHA256 -b 512 lpic2.com.br
 ```
 
+##### tsig-keygen \ ddns-confgen - ddns key generation tool
+
+```sh
+tsig-keygen lpic2.com.br
+```
+
 ##### dnssec-signzone
 
 ```sh

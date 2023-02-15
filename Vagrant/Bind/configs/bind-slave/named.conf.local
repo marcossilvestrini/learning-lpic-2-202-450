@@ -8,16 +8,14 @@
 
 //My TSIG keys
 
-key "lpic2" {
-	algorithm ECDSAP256SHA256;
-	secret "g86DFcDY0/RMxrZNTBI60t1uLd3FoltG2qbU6txSqSU=";
+key "lpic2.com.br" {
+	algorithm hmac-sha256;
+	secret "aIYTlJfNDaIvBEvTk7zjCm3beP3RzLAiJPtFvs5/mkE=";
 };
 
-/*
 server 192.168.0.140 {
-        keys { lpic2; };
+        keys { lpic2.com.br; };
 };
-*/
 
 zone "lpic2.com.br" {
         type slave;

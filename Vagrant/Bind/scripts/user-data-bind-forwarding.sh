@@ -86,6 +86,8 @@ systemctl start named
 named-checkconf /etc/bind/named.conf
 
 ## Reload named.conf
+chown root:bind /etc/bind/rndc.key
+chmod 640 /etc/bind/rndc.key
 rndc reload
 rndc flush
 
