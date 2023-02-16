@@ -40,8 +40,8 @@ echo $LINE >>$FILE_TEST
 
 ## Check named.conf
 echo -e "Check file /etc/named.conf...\n" >>$FILE_TEST
-sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /etc/named.conf | grep -ws "options {" -A 9 >>$FILE_TEST
-sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /etc/named.conf | grep -ws "zone "."" -A 14 >>$FILE_TEST
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /etc/named.conf | grep -ws "options {" -A 22 >>$FILE_TEST
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo cat /etc/named.conf | grep -ws "zone " -A 3 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
 ## Get zones
@@ -59,7 +59,7 @@ echo $LINE >>$FILE_TEST
 echo -e "Check type records...\n" >>$FILE_TEST
 dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "QUESTION SECTION" -A 1 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
-dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 6 >>$FILE_TEST
+dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 20 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "ADDITIONAL SECTION" -A 4 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
@@ -93,11 +93,6 @@ sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_SLAVE -l vagran
 sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_SLAVE -l vagrant sudo cat /tmp/lpic2.txt >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
-## Check type of records
-echo -e "Check type records...\n" >>$FILE_TEST
-dig -4 @$IP_SLAVE lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 6 >>$FILE_TEST
-echo $LINE >>$FILE_TEST
-
 ## Check transference zones
 echo -e "Check transference zones...\n" >>$FILE_TEST
 #host mail.lpic2.com.br $IP_MASTER >/dev/null 2>&1
@@ -120,13 +115,8 @@ echo -e "Check file /etc/named.conf...\n" >>$FILE_TEST
 sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_FORWARDING -l vagrant sudo cat /etc/bind/named.conf.local | grep -ws "lpic2.com.br" -A 14 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
-## Check type of records
-echo -e "Check type records...\n" >>$FILE_TEST
-dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 6 >>$FILE_TEST
-echo $LINE >>$FILE_TEST
-
 # Check Bind Caching
-echo "\nCheck Bind Caching..." >>$FILE_TEST
+echo -e "\nCheck Bind Caching..." >>$FILE_TEST
 echo -e "$LINE\n" >>$FILE_TEST
 
 ## Check version of bind
@@ -141,7 +131,14 @@ sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_CACHING -l vagr
 sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_CACHING -l vagrant sudo cat /etc/named.conf | grep -ws "zone "."" -A 3 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
-## Check type of records
-echo -e "Check type records...\n" >>$FILE_TEST
-dig -4 @$IP_MASTER lpic2.com.br ANY | grep -ws "ANSWER SECTION" -A 6 >>$FILE_TEST
+## Test bind Stack
+echo -e "Test external resolution in Bind Master" >>$FILE_TEST
+#flush all cache of bind before...
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo rndc flush
+dig www.lpi.org @$IP_MASTER ANY >>$FILE_TEST
+echo $LINE >>$FILE_TEST
+echo -e "Test external resolution in Bind Slave" >>$FILE_TEST
+#flush all cache of bind before...
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_SLAVE -l vagrant sudo rndc flush
+dig www.lpi.org @$IP_SLAVE ANY >>$FILE_TEST
 echo $LINE >>$FILE_TEST

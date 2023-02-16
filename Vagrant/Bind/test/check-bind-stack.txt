@@ -1,6 +1,7 @@
+
 ------------------------------------------------------
 Check Bind Stack for This Lab
-Date: 2023-02-15 17:24:14
+Date: 2023-02-16 17:41:26
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -54,10 +55,10 @@ Check type records...
 ------------------------------------------------------
 ;; ANSWER SECTION:
 lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	RRSIG	SOA 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. ojqyQVDe3BuwZ2a+JC/4mvgdEPu0V4CnQ3vL/NAPZCbGLa4KEwSUf/Gs 4W4+KMQTqLtSok8h123AjTRbull6SA==
+lpic2.com.br.		3600	IN	RRSIG	SOA 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. +vCQtZ1wGI/3+gMWlXrobTsX5pR0fa2hk5s2wq8LhtOyD8eNC/+QZPs8 XbE2DcuuXGYdin/VWda8polovR1Vsw==
 lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
 lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	RRSIG	NS 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. zSjA3Edux5Y3iUd7OwsANZKR32x8TJaNzxNWcy2mYUD0GGcI7SdisQ6Z Y6QboXB0VE0ntDJtDqXBLRKFuooeyQ==
+lpic2.com.br.		3600	IN	RRSIG	NS 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. vFbWWnPxgtJDguQ3ruZXLbphazcdg/OMh0ALJxH5MOdxiWa4sfpAGN/a Z1hlBK1nU4zaky0dPD1YfhqCKmd6KA==
 lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 ------------------------------------------------------
 ;; ADDITIONAL SECTION:
@@ -100,110 +101,95 @@ zone "lpic2.com.br" {
 ------------------------------------------------------
 Check file zone...
 
--rw-r--r-- 1 bind bind 5606 Feb 15 17:17 /var/cache/bind/lpic2.zone
+-rw-r--r-- 1 bind bind 5606 Feb 16 20:30 /var/cache/bind/lpic2.zone
 lpic2.com.br.				      3600 IN SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.				      3600 IN RRSIG	SOA 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. ojqyQVDe3BuwZ2a+JC/4mvgdEPu0V4CnQ3vL/NAPZCbGLa4KEwSUf/Gs 4W4+KMQTqLtSok8h123AjTRbull6SA==
-; resign=20230317184120
+lpic2.com.br.				      3600 IN RRSIG	SOA 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. +vCQtZ1wGI/3+gMWlXrobTsX5pR0fa2hk5s2wq8LhtOyD8eNC/+QZPs8 XbE2DcuuXGYdin/VWda8polovR1Vsw==
+; resign=20230318192415
 lpic2.com.br.				      3600 IN NS	ol9-bind-master.lpic2.com.br.
 lpic2.com.br.				      3600 IN NS	debian-bind-slave.lpic2.com.br.
-lpic2.com.br.				      3600 IN RRSIG	NS 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. zSjA3Edux5Y3iUd7OwsANZKR32x8TJaNzxNWcy2mYUD0GGcI7SdisQ6Z Y6QboXB0VE0ntDJtDqXBLRKFuooeyQ==
-; resign=20230317184120
+lpic2.com.br.				      3600 IN RRSIG	NS 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. vFbWWnPxgtJDguQ3ruZXLbphazcdg/OMh0ALJxH5MOdxiWa4sfpAGN/a Z1hlBK1nU4zaky0dPD1YfhqCKmd6KA==
+; resign=20230318192415
 lpic2.com.br.				      3600 IN MX	5 mail.lpic2.com.br.
 lpic2.com.br.				      3600 IN MX	10 mail2.lpic2.com.br.
-lpic2.com.br.				      3600 IN RRSIG	MX 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. gcmVIgGehDPwBwlIC2IxDCY8uFGy6z4dqg60LdsUtvor4KcMp7UbxA7R bM3aFAFcnxIMnbHovz5n0dSfgLqScg==
-; resign=20230317184120
+lpic2.com.br.				      3600 IN RRSIG	MX 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. LZcXQczsj3Oen2WST1YVju9dU3Lo0KhAwzeOFrGMsynbdBa/S0XIVD3/ sSpj1G+NGEZgAKkdxbS0Fda2wnHilg==
+; resign=20230318192415
 lpic2.com.br.				      3600 IN TXT	"leanning LPIC2 Exam 202-450"
-lpic2.com.br.				      3600 IN RRSIG	TXT 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. BRuxScJhNrmHE49s3JccEkFzvQlrZZZ1dpOEw1ekFNCWj7hZPid0f/u4 +oeovTIYr8eZDg7GnjwhgGhKjK79rw==
-; resign=20230317184120
+lpic2.com.br.				      3600 IN RRSIG	TXT 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. 0es6SkmBWjINVZmCHPb6tpKLNZoNRaiz+jOXEeIXmsUYb2D22aIvAwwu tBCEJTPfGOmR1qV4mg0BpbiY2zn/bw==
+; resign=20230318192415
 lpic2.com.br.				      3600 IN NSEC	debian-bind-forwarding.lpic2.com.br. NS SOA MX TXT RRSIG NSEC DNSKEY
-lpic2.com.br.				      3600 IN RRSIG	NSEC 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. oFeJHdfV2NHsy1wi7TP66pmX/kB9609Ya6fsdZ+Vvn3rk2BJhngSv+Yv mSl8joUx4kW6nDwzngt2agj1lj3RMQ==
-; resign=20230317184120
+lpic2.com.br.				      3600 IN RRSIG	NSEC 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. F0RUSn07RieSUZBZUAn51Jnfpgghb0QRqaPT7OL/4m5rWbYBloNJefRS EZntAUz/qWHmNxWSFgmFCTrSZQpYow==
+; resign=20230318192415
 lpic2.com.br.				      3600 IN DNSKEY	256 3 13 qzYHNPMPd6QjO66oHI4RL95LBSb3wRuEGJSXgByHJalof0DBJOucDKE1 MMudvv7eNoOabO+m91rQKUbRw6n/Vg==
-lpic2.com.br.				      3600 IN RRSIG	DNSKEY 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. 0AewDflVCmXPjPW1k7lTl5AmQCXqZXDhmGTtsbOn7/UEMQhmC1HSOhDI t4TTz4AEotf7RRBx9ylEFVhL8BQmBw==
-; resign=20230317184120
+lpic2.com.br.				      3600 IN RRSIG	DNSKEY 13 3 3600 20230318192415 20230216192415 29838 lpic2.com.br. Sn8Z0rds7ynUzWvc+rcZww2VzscKVWFcAIHL30oZu56r1Jb0lxlbp3w8 kMijygzN3AERIwAm24fKlKsbEGASrg==
+; resign=20230318192415
 debian-bind-forwarding.lpic2.com.br.	      3600 IN A		192.168.0.142
-debian-bind-forwarding.lpic2.com.br.	      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. YMo1JZh0DZWYUyRYnm8R1LmhN1rE0Msrg44aHYdWc766syCemJrX/zG2 S/I89aJCs9HyUWff/gVrsjiuxIyaZg==
-; resign=20230317184120
+debian-bind-forwarding.lpic2.com.br.	      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. TsI/zHTj6lPo5vPXsDyypdGPfV1VOggcHjOu/ybgjFVW44i+6HkOb8kG vAE0jakb1cvHfl3h1PtT8IdpHrt8Jw==
+; resign=20230318192415
 debian-bind-forwarding.lpic2.com.br.	      3600 IN NSEC	debian-bind-slave.lpic2.com.br. A RRSIG NSEC
-debian-bind-forwarding.lpic2.com.br.	      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. Hl18noUTggBso256+WfqmyzJLI4XAUdU/g1zitFdD1pA4SBSdbv/4Ctq hMoC6xCqFmksR3OI+givPKGjGKxE4w==
-; resign=20230317184120
+debian-bind-forwarding.lpic2.com.br.	      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. j4vRe7d4vPC3etoqlfH3vNAhZVc/zJ51mMkNbzce+TEeGbMRuM4l6Rkv FMsEd5GHoyUlRsq97jD1LNIvrCtQKQ==
+; resign=20230318192415
 debian-bind-slave.lpic2.com.br.		      3600 IN A		192.168.0.141
-debian-bind-slave.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. AQSKipx5+106aDRslpX3HYdA0AjQFGZ/seCjohLeS5//f0TndCd1L9t/ t67c4tj01MsGmJBiO5oRieU9SXukcQ==
-; resign=20230317184120
+debian-bind-slave.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. Ixjlap00Vv2WsspVSaMTKBiG5jJTEZpCPZx9kfSBCxG0GLtniVY6l2Cm NvnXPP68rmYc/7dCtTsLuixGRNxxBA==
+; resign=20230318192415
 debian-bind-slave.lpic2.com.br.		      3600 IN NSEC	ftp.lpic2.com.br. A RRSIG NSEC
-debian-bind-slave.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. PA6kQZ6eHZfPJE9MrZF5kY11TmWrZRtQn5SqnLcwtCINmOrrG3jR0mGO 2gNQpjIEkA8NUgHlp2BNdyfgzcUbSA==
-; resign=20230317184120
+debian-bind-slave.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. djobSyjn/KWjS65uai473K4A7o8mS0zyuz5k/QOI7BDiQR5qV4P3cKTq 5oTAq9e64j3G5ZcVvql+Sr7A99wxag==
+; resign=20230318192415
 ftp.lpic2.com.br.			      3600 IN CNAME	ol9-bind-slave.lpic2.com.br.
-ftp.lpic2.com.br.			      3600 IN RRSIG	CNAME 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. 4jZBKDkg+jIdTFDG3fjyJEeTwRPd1fSqrp9leEsUJWKiAQj37qmzCtck 9+MseX5HddDe5M/GpAsygkZMQnMgoQ==
-; resign=20230317184120
+ftp.lpic2.com.br.			      3600 IN RRSIG	CNAME 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. twb7XWMxr6Ko9KYjkA/YVM0QKAAp3ujh7YJXCbaJAE5Go1hzaZpre8XI MQ6YqPhJS9tHkDQ2RJ1hS3y+fXDSHA==
+; resign=20230318192415
 ftp.lpic2.com.br.			      3600 IN NSEC	mail.lpic2.com.br. CNAME RRSIG NSEC
-ftp.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. GRGDkT0L+1e+pV5gMTbdTKFm8JAcJG/Gi3yz9c3ATI8yuUL42Du1TyDA eJlG9RLksff1majs/ytMIKDaS5Qsww==
-; resign=20230317184120
+ftp.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. pEE5zr1613Sl7uftmZUcEtRV0lQyqQ0dp+5aGXaJfTQy0DhF02BbHaPr MPK5zvfxSvhNYplnl0fJz3j8skbhYg==
+; resign=20230318192415
 mail.lpic2.com.br.			      3600 IN A		192.168.0.140
-mail.lpic2.com.br.			      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. wJ6XCJvj7Ru4x3PAhOKx77sYUA7QzZQaMBGtdLJPvckNQgU2eT8nOoDT /ifyNVNgFbPP4tNS3JBJiYitrMbe+A==
-; resign=20230317184120
+mail.lpic2.com.br.			      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. mF+VPAHkgb8ryXzLloDxawtpxTcHmIItNFtwVy51PYrEUhjeScnq7rhN xEE80o7OidT/BokAIO6x4tmHgZDXGQ==
+; resign=20230318192415
 mail.lpic2.com.br.			      3600 IN NSEC	mail2.lpic2.com.br. A RRSIG NSEC
-mail.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. S6cym9TUXun0DuW3Gf0MxSn8y7Aaj6xlClxxV/78lOKUfLQXbk6L1o9b /sjHgevEv2NciEJr8XuEx79A5ffgBQ==
-; resign=20230317184120
+mail.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. NIEJuBgZM4zEfmGo8wTk3CbHImIPaCuzE9M17+iXff1/CUFXh5MDRkw9 Va3gjstAQZW0QpG3Vm9IIWvcgN9Zqw==
+; resign=20230318192415
 mail2.lpic2.com.br.			      3600 IN A		192.168.0.141
-mail2.lpic2.com.br.			      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. 4HNDV18I5aRnsnn4taJVG+dNr59FU0bBr1YAIjzov52/FJvqSUeTgASR dufJ9FRA26J2Quxv7Mxr0mxoa4DEYA==
-; resign=20230317184120
+mail2.lpic2.com.br.			      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. hKmMRiHQGBejJr5HCz/hZghIple7FQdnS4ad+JqL0aGYQz4t+BYKuCvn G1zAqWQijCffA1ARTsxO9kx3TLanPw==
+; resign=20230318192415
 mail2.lpic2.com.br.			      3600 IN NSEC	ol9-bind-caching.lpic2.com.br. A RRSIG NSEC
-mail2.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. Zvpi3pS66gB9i+fD83UQT5ou/gf7L2Xp1pLIs0gkAdwt99b78ZTwHPUI RGz934nc0CzdOl3tpte7k0JS6e3LqQ==
-; resign=20230317184120
+mail2.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. ZBU/cNWxifqOM7Y3ZlQz3Q5lqNAYA/FJuy24PFHjlfVNH3Wz9iTSD0G4 vSknMaljqVok/LnRAKDfEhEcSYdH6g==
+; resign=20230318192415
 ol9-bind-caching.lpic2.com.br.		      3600 IN A		192.168.0.145
-ol9-bind-caching.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. AULEWFPibJFlfvbxqm9LAjv4xI3oRVrpYch6gninv1TOYX2o3lh3WkyG XgnrxvDcOIKVH9LSrWS2Qjg4La211A==
-; resign=20230317184120
+ol9-bind-caching.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. R8r2hovnbWAFdkfDF3fVYEYPJGW1dRf1vF4Q2B3GyZMFgazBAlYAna4A AbEpkPHO0Ga1F4FaUP/10+yUKotozA==
+; resign=20230318192415
 ol9-bind-caching.lpic2.com.br.		      3600 IN NSEC	ol9-bind-client.lpic2.com.br. A RRSIG NSEC
-ol9-bind-caching.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. NBw4jZQCtr5QIr47ZKeMIjP5d2kIqM3u2BQbnhbQYZAsjlUsq7OKfPjV hMFpvPm+WmLh+OyodEq00UHeOroX3g==
-; resign=20230317184120
+ol9-bind-caching.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. +c9iqJfxMeJjOFRhhLGlEEhZYvwfl5gE1jSIUg0B7ysAjxWbeTvjSY3S yf5Q0F/Rp64jeY0EY5skiKqi3NO2EA==
+; resign=20230318192415
 ol9-bind-client.lpic2.com.br.		      3600 IN A		192.168.0.150
-ol9-bind-client.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. nHCCMvPrE2gYa4EFM1HbwMwenuD9o/2wx6Wv2QBCODBEdvMSAfVWO4wV /nR5l/Mv9uj15gsc4JZPOsufDUkjJw==
-; resign=20230317184120
+ol9-bind-client.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. xRy6VxQGkkHwkDB015L7ubsRixC6nyDz0PQDtgUfPfLJwKRUA9aVbdJt G1SabcFK8kJN1xzPNVvxjbBVcYjIrQ==
+; resign=20230318192415
 ol9-bind-client.lpic2.com.br.		      3600 IN NSEC	ol9-bind-master.lpic2.com.br. A RRSIG NSEC
-ol9-bind-client.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. dIEhj0V3jtDKV4mAg19bYYwvxow7R+RKdo03IN9395P33hzS8jQ/aRc5 MdfM2SSLU7WrdFzmKuvAaBZdMsGRHg==
-; resign=20230317184120
+ol9-bind-client.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. TiIAmkoRJCSUWOC0diztA32wbWBb6C+4uucvZboXXr/dibTM0ttDfrUX Ut2E5HjxOlJPsESOgrxxCMBocHCXeA==
+; resign=20230318192415
 ol9-bind-master.lpic2.com.br.		      3600 IN A		192.168.0.140
-ol9-bind-master.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. PpuCXDqcbF3MCOWvswg/MB3ukM5Tb9t7ofI7YrNOQCvn9W+HQfkanpSI ssgpr2eXbDvcMXnMKrGE7d5d01MmJw==
-; resign=20230317184120
+ol9-bind-master.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. 1b3E7LbsoHBl827xawQHgiCgww8KSKKpkLknXNuP7vAy6lN1nTR4n+zw 4t07lvV7qS2OU8ZN4mvW0v6X4iNb0w==
+; resign=20230318192415
 ol9-bind-master.lpic2.com.br.		      3600 IN NSEC	silvestrini.lpic2.com.br. A RRSIG NSEC
-ol9-bind-master.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. UkIXj/Aod9+6MyZ01NnAYFF2135pYO63fW5Mlga9gxN8iuWj0OXE1JzF 38WUt7m9SPb1pAwFVktdZmMXkgYijQ==
-; resign=20230317184120
+ol9-bind-master.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. /vRnPC4GugBBCSEIOm4ljU1y+wgoIgfaBvN0MG9M8t+4o7wbMnKwcstL rnop0z7SIu0Sk3UNSSuHtEIbEcsqmg==
+; resign=20230318192415
 silvestrini.lpic2.com.br.		      3600 IN A		192.168.0.100
-silvestrini.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. RoxOSglIaLMy99bpLsd5kazwzcLbD2YeB6grjhuXIowEEIGqsHR5/a05 m8yl7CrHSrU6ChYkkgUT7FfvmkKCYw==
-; resign=20230317184120
+silvestrini.lpic2.com.br.		      3600 IN RRSIG	A 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. wCu/pxI4v19Ev+kj4iQu3cE1HXJHxAyZDA/9cfPdOL18wEHAhQEDsJQb UatM0rDKKwxYLh0IBIdvYVeY1/R+DQ==
+; resign=20230318192415
 silvestrini.lpic2.com.br.		      3600 IN NSEC	www.lpic2.com.br. A RRSIG NSEC
-silvestrini.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. HkCJh9ZtF9Qg5R9m9Wds7lU6sgRyWYfJYccr3A9QkSwiAZ/izCLQq+V+ CwWe6lskrZb+VOHkioyqZq+rqILDcg==
-; resign=20230317184120
+silvestrini.lpic2.com.br.		      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. 0RtlT7cNNsuVLpf4yUoGibkvXVnBVrI3FpaRW6lJHXaT147lsuuQHkwa +bLeviMCQIHpiX1mPm9ykO4xS9mfhA==
+; resign=20230318192415
 www.lpic2.com.br.			      3600 IN CNAME	ol9-bind-master.lpic2.com.br.
-www.lpic2.com.br.			      3600 IN RRSIG	CNAME 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. cZ0oigpuJqTv9Q4w1z8FvhDSTF33rUgpMBppySJ8/i+j1NPmVhOd08ll poJTb9LExeK+yjJGd6BAeH3/vOdBIA==
-; resign=20230317184120
+www.lpic2.com.br.			      3600 IN RRSIG	CNAME 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. Jv2dD3A9qBCn5aerBzysLdeF3d/VjC8cLmF7b/eCaXsL4k6LXft9f2Hn ZqcxXdxfRZsd0ndzTOedweQpvfeBoQ==
+; resign=20230318192415
 www.lpic2.com.br.			      3600 IN NSEC	lpic2.com.br. CNAME RRSIG NSEC
-www.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230317184120 20230215184120 29838 lpic2.com.br. QQ3Ai6NexuqvSXKjA1L/Kn9C3IDyqEqVvp4R7gNIDgQj6s/E5YJDDYqF AU4Ygjm0Ss/z0ejbuWqznKVsvwFz5A==
-; resign=20230317184120
-------------------------------------------------------
-Check type records...
-
-;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	RRSIG	DNSKEY 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. 0AewDflVCmXPjPW1k7lTl5AmQCXqZXDhmGTtsbOn7/UEMQhmC1HSOhDI t4TTz4AEotf7RRBx9ylEFVhL8BQmBw==
-lpic2.com.br.		3600	IN	DNSKEY	256 3 13 qzYHNPMPd6QjO66oHI4RL95LBSb3wRuEGJSXgByHJalof0DBJOucDKE1 MMudvv7eNoOabO+m91rQKUbRw6n/Vg==
-lpic2.com.br.		3600	IN	RRSIG	NSEC 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. oFeJHdfV2NHsy1wi7TP66pmX/kB9609Ya6fsdZ+Vvn3rk2BJhngSv+Yv mSl8joUx4kW6nDwzngt2agj1lj3RMQ==
-lpic2.com.br.		3600	IN	NSEC	debian-bind-forwarding.lpic2.com.br. NS SOA MX TXT RRSIG NSEC DNSKEY
-lpic2.com.br.		3600	IN	RRSIG	TXT 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. BRuxScJhNrmHE49s3JccEkFzvQlrZZZ1dpOEw1ekFNCWj7hZPid0f/u4 +oeovTIYr8eZDg7GnjwhgGhKjK79rw==
+www.lpic2.com.br.			      3600 IN RRSIG	NSEC 13 4 3600 20230318192415 20230216192415 29838 lpic2.com.br. e9NlUx6MQPqg+pgzNkdu4Q3Bv4KoVkvvmBj0X4FegMLCAw4NDVEYDwVc F/5ExT259i+3shWqh4qTqO8PUdoPSg==
+; resign=20230318192415
 ------------------------------------------------------
 Check transference zones...
 
-client @0x7f9f0400cf28 192.168.0.141#60021/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
-client @0x7f9f0400cf28 192.168.0.141#60021/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 585 bytes, 0.001 secs (585000 bytes/sec) (serial 1)
-client @0x7f9f04054cf8 192.168.0.141#40747/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
-client @0x7f9f04054cf8 192.168.0.141#40747/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 17 records, 585 bytes, 0.001 secs (585000 bytes/sec) (serial 1)
-client @0x7f77f0354868 192.168.0.141#35467/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
-client @0x7f77f0354868 192.168.0.141#35467/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 55 records, 3893 bytes, 0.001 secs (3893000 bytes/sec) (serial 1)
-client @0x7f77f035cc38 192.168.0.141#34107/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
-client @0x7f77f035cc38 192.168.0.141#34107/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 55 records, 3893 bytes, 0.001 secs (3893000 bytes/sec) (serial 1)
-client @0x7f77e80dd438 192.168.0.141#39653/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
-client @0x7f77e80dd438 192.168.0.141#39653/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 55 records, 3893 bytes, 0.001 secs (3893000 bytes/sec) (serial 1)
+client @0x7fb38007c1d8 192.168.0.141#49751/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
+client @0x7fb38007c1d8 192.168.0.141#49751/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 55 records, 3893 bytes, 0.001 secs (3893000 bytes/sec) (serial 1)
+client @0x7fb3800d9f28 192.168.0.141#56345/key lpic2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR started: TSIG lpic2.com.br (serial 1)
+client @0x7fb3800d9f28 192.168.0.141#56345/key lpi
+c2.com.br (lpic2.com.br): view mylpic2: transfer of 'lpic2.com.br/IN': AXFR ended: 1 messages, 55 records, 3893 bytes, 0.001 secs (3893000 bytes/sec) (serial 1)
 ------------------------------------------------------
 
 Check Bind Forwarding
@@ -219,16 +205,6 @@ zone "lpic2.com.br" {
         type forward;
         forwarders { 192.168.0.141; };
 };
-------------------------------------------------------
-Check type records...
-
-;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	RRSIG	SOA 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. ojqyQVDe3BuwZ2a+JC/4mvgdEPu0V4CnQ3vL/NAPZCbGLa4KEwSUf/Gs 4W4+KMQTqLtSok8h123AjTRbull6SA==
-lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	RRSIG	NS 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. zSjA3Edux5Y3iUd7OwsANZKR32x8TJaNzxNWcy2mYUD0GGcI7SdisQ6Z Y6QboXB0VE0ntDJtDqXBLRKFuooeyQ==
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
 ------------------------------------------------------
 
 Check Bind Caching...
@@ -255,13 +231,46 @@ options {
 		file "named.ca";
 	};
 ------------------------------------------------------
-Check type records...
+Test external resolution in Bind Master
+
+; <<>> DiG 9.16.23-RH <<>> www.lpi.org @192.168.0.140 ANY
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 5238
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 9e87a56fee2054f60100000063ee9dfe4b450f3d2cee2c9f (good)
+;; QUESTION SECTION:
+;www.lpi.org.			IN	ANY
+
+;; Query time: 1202 msec
+;; SERVER: 192.168.0.140#53(192.168.0.140)
+;; WHEN: Thu Feb 16 18:19:58 -03 2023
+;; MSG SIZE  rcvd: 68
+
+------------------------------------------------------
+Test external resolution in Bind Slave
+
+; <<>> DiG 9.16.23-RH <<>> www.lpi.org @192.168.0.141 ANY
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10632
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: d4668a7177e4c8cd0100000063ee9e010ab96335c05fc0cb (good)
+;; QUESTION SECTION:
+;www.lpi.org.			IN	ANY
 
 ;; ANSWER SECTION:
-lpic2.com.br.		3600	IN	SOA	ol9-bind-master.lpic2.com.br. admin.lpic2.com.br. 1 28800 7200 604800 3600
-lpic2.com.br.		3600	IN	RRSIG	SOA 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. ojqyQVDe3BuwZ2a+JC/4mvgdEPu0V4CnQ3vL/NAPZCbGLa4KEwSUf/Gs 4W4+KMQTqLtSok8h123AjTRbull6SA==
-lpic2.com.br.		3600	IN	NS	debian-bind-slave.lpic2.com.br.
-lpic2.com.br.		3600	IN	NS	ol9-bind-master.lpic2.com.br.
-lpic2.com.br.		3600	IN	RRSIG	NS 13 3 3600 20230317184120 20230215184120 29838 lpic2.com.br. zSjA3Edux5Y3iUd7OwsANZKR32x8TJaNzxNWcy2mYUD0GGcI7SdisQ6Z Y6QboXB0VE0ntDJtDqXBLRKFuooeyQ==
-lpic2.com.br.		3600	IN	MX	5 mail.lpic2.com.br.
+www.lpi.org.		600	IN	A	65.39.134.147
+
+;; Query time: 2684 msec
+;; SERVER: 192.168.0.141#53(192.168.0.141)
+;; WHEN: Thu Feb 16 18:20:01 -03 2023
+;; MSG SIZE  rcvd: 84
+
 ------------------------------------------------------

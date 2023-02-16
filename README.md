@@ -278,7 +278,7 @@ named-checkzone lpic2.com.br /var/named/lpic2.zone
 whois lpi.org
 ```
 
-#### About BIND
+#### About BIND - Berkeley Internet Domain Server
 
 ##### Install BIND
 

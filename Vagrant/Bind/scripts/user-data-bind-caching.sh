@@ -34,6 +34,7 @@ dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.r
 dnf install -y bash-completion
 dnf install -y sshpass
 dnf install -y vim
+dnf install -y dos2unix
 dnf install -y htop
 dnf install -y lsof
 dnf install -y tree
@@ -72,14 +73,17 @@ systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
 # Configure BIND
 
-## Stop service
-systemctl stop named
+#-rw-r-----. 1 root named 1722 Nov 16 08:44 /etc/named.conf
+cp -f configs/bind-caching/named.conf /etc
+dos2unix /etc/named.conf
+chown root:named /etc/named.conf
+chmod 640 /etc/named.conf
 
 ##Config bind caching parameters
 cp -f configs/bind-caching/named.conf /etc
 
 ## Start service
-systemctl start named
+systemctl restart named
 systemctl enable named
 
 ## Reload named.conf

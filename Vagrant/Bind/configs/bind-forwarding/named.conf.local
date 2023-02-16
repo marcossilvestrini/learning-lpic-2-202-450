@@ -9,4 +9,5 @@
 zone "lpic2.com.br" {
         type forward;
         forwarders { 192.168.0.141; };
+        forward only;
 };

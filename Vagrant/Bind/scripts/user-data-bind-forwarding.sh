@@ -38,6 +38,7 @@ apt-get update -y
 apt-get upgrade -y
 apt-get install -y sshpass
 apt-get install -y vim
+apt-get install -y dos2unix
 apt-get install -y tree
 apt-get install -y python3-pip
 apt-get install -y python3-venv
@@ -72,23 +73,18 @@ systemctl enable sysstat
 
 # Configure BIND
 
-## Stop bind server
-systemctl stop named
-
 ## Config Bind master
 cp -f configs/bind-forwarding/named.conf.local /etc/bind
 cp -f configs/commons/named.conf.options /etc/bind
 
 ## Apply changes
-systemctl start named
+systemctl restart named
 systemctl enable named
 
 ## Check config
 named-checkconf /etc/bind/named.conf
 
 ## Reload named.conf
-chown root:bind /etc/bind/rndc.key
-chmod 640 /etc/bind/rndc.key
 rndc reload
 rndc flush
 
