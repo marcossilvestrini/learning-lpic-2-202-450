@@ -32,19 +32,18 @@ jobs:
           export SCRIPT_PATH=$(pwd)
           cat Vagrant/Bind/test/check-bind-stack.txt
   slack_upload_job:
-    runs-on: ubuntu-latest
-    name: Upload test file
-    steps:
-      - name: Checkout
-      - uses: actions/checkout@v3      
-      - run: cat Vagrant/Bind/test/check-bind-stack.txt > check_bind_stack.txt              
-      - name: Upload to slack step
-        id: send_check_test_bind_stack
-        uses: adrey/slack-file-upload-action@master
-        with:
-          token: ${{ secrets.SLACK_BOT_TOKEN }}
-          path: check_bind_stack.txt
-          channel: app-github
+      runs-on: ubuntu-latest
+      name: Upload test file
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - run: echo "Test file " > test.txt
+        - name: Upload to slack step
+          uses: adrey/slack-file-upload-action@master
+          with:
+            token: ${{ secrets.SLACK_TOKEN }}
+            path: test.txt
+            channel: app-github
 
 
 
