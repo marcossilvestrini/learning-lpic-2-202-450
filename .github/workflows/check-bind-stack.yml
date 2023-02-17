@@ -43,7 +43,7 @@ jobs:
         with:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           path: test.zip
-          channel: general
+          channel: app-github
 
 
 
