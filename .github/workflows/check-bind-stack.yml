@@ -36,15 +36,15 @@ jobs:
     name: Upload test file
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - run: echo "Test file by Silvestrini. This test is content of file" > test.zip
-      - run: ls -lt Vagrant/Bind/test
+      - uses: actions/checkout@v3
+      #- run: echo "Test file by Silvestrini. This test is content of file" > test.zip
+      - run: cat Vagrant/Bind/test/check-bind-stack.txt > check_bind_stack.txt              
       - name: Upload to slack step
         id: send_check_test_bind_stack
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
-          path: test.zip
+          path: check_bind_stack.txt
           channel: app-github
 
 
