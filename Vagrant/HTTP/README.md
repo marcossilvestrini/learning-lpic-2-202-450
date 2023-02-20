@@ -1,7 +1,7 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Check Bind Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml)
-# BIND - Berkeley Internet Domain Server
+[![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml)
+# HTTP
 
 ![202-450 Linux Engineer](../../Images/dns-tree.jpg)
 
@@ -43,40 +43,24 @@
 
 ## About Project
 
-This project up a stack of Bind server for labs.
+This project up a stack of HTTP server for labs.
 
 ## Whats is?
 
-### Stack of Bind Servers
-
-#### Bind master
-
-Server bind for master(type master)
-
-#### Bind slave
-
-Server bind for slave (type slave)
-
-#### Bind forwarding
-
-Server bind for forwarding(type forward)
-
-#### Bind caching
-
-Server bind for caching(type hint)
+foo
 
 ### Vagrant
 
-I use vagrant for provision all bind server in this project.
+I use vagrant for provision all http server in this project.
 
 ### Shell
 
-I use vagrant shell provisioner for configure bind service and others tools
+I use vagrant shell provisioner for configure http service and others tools
 of this stack
 
 ### Git Actions (pipelines)
 
-I use git actions for create a pipeline for my test in bind stack
+I use git actions for create a pipeline for my test in http stack
 
 ### Slack API
 
@@ -118,7 +102,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-2-202-450.git
 ## Usage
 
 ```sh
-cd Vagrant/Bind
+cd Vagrant/http
 vagrant up
 ```
 
@@ -128,31 +112,10 @@ vagrant up
 
 ## Roadmap
 
-* [x] Create Vagrant file(IaC) with bind servers
-  * [x] Master server
-  * [x] Slave server
-  * [x] Forwarding server
-  * [x] Caching server
-  * [x] Client server
-* [x] Create Script for Configure Bind Stack
-  * [x] Master server
-    * [x] Modify /etc/named.conf
-    * [x] Create zone lpic2.com.br
-    * [x] Create PTR zone
-    * [x] Create acl
-    * [x] Create View
-    * [x] Configure TSIg
-    * [x] Configure DNSSEC
-    * [x] Configure DNS jail (dns chroot)
-  * [x] Slave server
-    * [x] Modify /etc/named.conf.local
-  * [x] Forwarding server
-    * [x] Modify /etc/named.conf.local
-  * [x] Caching server
-    * [x] Modify /etc/named.conf
-* [x] Create script for test stack configuration
-* [x] Create pipeline\git action for print test
-* [x] Create pipeline\git action for send test in slack chanel
+* [ ] foo
+* [ ] foo
+* [ ] foo
+* [ ] foo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -186,8 +149,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 
 ## Acknowledgments
 
-* [Bind](https://www.isc.org/bind/)
-* [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
+* [http](https://www.isc.org/http/)
+* [http Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
 * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

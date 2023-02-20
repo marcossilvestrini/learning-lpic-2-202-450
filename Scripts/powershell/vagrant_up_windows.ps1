@@ -30,14 +30,22 @@ setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d" >$null
 # Copy-Item .\.vagrant\machines\debian5_lpic2_202\virtualbox\private_key F:\Projetos\vagrant-pk\debian5
 
 #Server BIND
-$bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
-Set-Location $bind
+# $bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
+# Set-Location $bind
+# Start-Process -Wait -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+# Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
+# Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
+# Copy-Item .\.vagrant\machines\debian-bind-forwarding\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-forwarding
+# Copy-Item .\.vagrant\machines\ol9-bind-caching\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-caching
+# Copy-Item .\.vagrant\machines\ol9-bind-client\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-client
+
+
+#Servers HTTP
+$http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
+Set-Location $http
 Start-Process -Wait -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
-Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
-Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
-Copy-Item .\.vagrant\machines\debian-bind-forwarding\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-forwarding
-Copy-Item .\.vagrant\machines\ol9-bind-caching\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-caching
-Copy-Item .\.vagrant\machines\ol9-bind-client\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-client
+Copy-Item .\.vagrant\machines\ol9-apache-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-master
+
 
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0
