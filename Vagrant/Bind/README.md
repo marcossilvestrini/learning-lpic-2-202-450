@@ -1,12 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![MIT License][license-shield]][license-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
+[![Check Bind Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml)
 # BIND - Berkeley Internet Domain Server
 
 ![202-450 Linux Engineer](../../Images/dns-tree.jpg)
