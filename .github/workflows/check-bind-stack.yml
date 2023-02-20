@@ -33,7 +33,7 @@ jobs:
           cat Vagrant/Bind/test/check-bind-stack.txt
   slack_upload_job:
       runs-on: ubuntu-latest
-      name: Upload test file
+      name: Upload test stack bind
       steps:
         - name: Checkout
           uses: actions/checkout@v3
