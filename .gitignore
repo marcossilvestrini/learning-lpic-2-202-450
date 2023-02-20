@@ -24,4 +24,5 @@ Vagrant/Bind/test/*
 !Vagrant/Bind/test/check-bind-stack.txt
 
 #Slack
-Slack/*.py
+Slack/silvestrini.py
+*__pycache__*

@@ -12,4 +12,5 @@ slack-cleaner2 = "*"
 python_version = "3.10"
 
 [scripts]
-clean = "python delete.py"
+clean-appgithub = "python clean_app-github.py"
+clean-all = "python clean_all.py"
