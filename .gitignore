@@ -22,3 +22,6 @@
 Vagrant/Bind/test/*
 !Vagrant/Bind/test/.gitkeep
 !Vagrant/Bind/test/check-bind-stack.txt
+
+#Slack
+Slack/delete.py
