@@ -66,8 +66,8 @@ echo $LINE >>$FILE_TEST
 
 ## Check DNSSEC
 echo -e "Check DNSSEC for zone...\n" >>$FILE_TEST
-sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant \
-    sudo sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant sudo dig lpic2.com.br DNSKEY +multiline | grep "3600 IN" -A 3 >>$FILE_TEST
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_MASTER -l vagrant \ 
+    sudo dig lpic2.com.br DNSKEY +multiline | grep "3600 IN" -A 3 >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
 # Check Bind Slave
