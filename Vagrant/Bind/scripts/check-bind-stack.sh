@@ -1,8 +1,8 @@
 #!/bin/bash
 <<'SCRIPT-FUNCTION'
-    Description: Script for learnning about iostat command
+    Description: Script for check stack of bind
     Author: Marcos Silvestrini
-    Date: 12/05/2022
+    Date: 20/02/2023
 SCRIPT-FUNCTION
 
 #Set localizations for prevent bugs in operations
