@@ -138,7 +138,7 @@ vagrant up
   * [x] Master server
     * [x] Modify /etc/named.conf
     * [x] Create zone lpic2.com.br
-    * [x] CreaTE PTR zone
+    * [x] Create PTR zone
     * [x] Create acl
     * [x] Create View
     * [x] Configure TSIg
