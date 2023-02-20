@@ -24,4 +24,4 @@ Vagrant/Bind/test/*
 !Vagrant/Bind/test/check-bind-stack.txt
 
 #Slack
-Slack/delete.py
+Slack/*.py

@@ -10,3 +10,6 @@ slack-cleaner2 = "*"
 
 [requires]
 python_version = "3.10"
+
+[scripts]
+clean = "python delete.py"
