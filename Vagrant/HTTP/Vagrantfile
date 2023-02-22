@@ -32,37 +32,37 @@ end
 #Define VM
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  # VM ol9_apache_master
-  config.vm.define "ol9-apache-master"  do |ol9_apache_master|
+  # VM ol9_apache_ha
+  config.vm.define "ol9-apache-ha"  do |ol9_apache_ha|
     # Box metadata location and box name
     BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
     BOX_NAME = "oraclelinux/9"
-    ol9_apache_master.vm.box = BOX_NAME
-    ol9_apache_master.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
-    ol9_apache_master.vm.box_download_insecure=true
-    ol9_apache_master.vbguest.no_install  = true
-    ol9_apache_master.vbguest.auto_update = false
-    ol9_apache_master.vbguest.no_remote   = true
+    ol9_apache_ha.vm.box = BOX_NAME
+    ol9_apache_ha.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
+    ol9_apache_ha.vm.box_download_insecure=true
+    ol9_apache_ha.vbguest.no_install  = true
+    ol9_apache_ha.vbguest.auto_update = false
+    ol9_apache_ha.vbguest.no_remote   = true
 
 
     # VARIABLE HOSTNAME
-    VM_MASTER_NAME= "ol9-apache-master"
+    VM_MASTER_NAME= "ol9-apache-ha"
 
     # HOSTNAM
-    ol9_apache_master.vm.hostname =VM_MASTER_NAME
+    ol9_apache_ha.vm.hostname =VM_MASTER_NAME
 
     # NETWORK
-    ol9_apache_master.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
-    ol9_apache_master.vm.network "private_network",ip: "172.36.12.230",nic_type: "virtio"
+    ol9_apache_ha.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
+    ol9_apache_ha.vm.network "private_network",ip: "172.36.12.230",nic_type: "virtio"
 
     # MOUNTS
-    ol9_apache_master.vm.synced_folder ".", "/vagrant", disabled: true
-    ol9_apache_master.vm.synced_folder "../../Security/", "/home/vagrant/security"
-    ol9_apache_master.vm.synced_folder "./configs", "/home/vagrant/configs"
-    ol9_apache_master.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    ol9_apache_ha.vm.synced_folder ".", "/vagrant", disabled: true
+    ol9_apache_ha.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    ol9_apache_ha.vm.synced_folder "./configs", "/home/vagrant/configs"
+    ol9_apache_ha.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 
     # PROVIDER
-    ol9_apache_master.vm.provider "virtualbox" do |vb|
+    ol9_apache_ha.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
       vb.name =VM_MASTER_NAME
       vb.memory = 2048
@@ -70,47 +70,50 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    ol9_apache_master.vm.provision "shell", path: "scripts/user-data-ol9.sh"
+    ol9_apache_ha.vm.provision "shell", path: "scripts/user-data-ol9.sh"
 
-    # CONFIGURE HTTP
-    ol9_apache_master.vm.provision "shell", path: "scripts/user-data-ol9-apache-master.sh"
+    # CONFIGURE APACHE HTTP
+    ol9_apache_ha.vm.provision "shell", path: "scripts/user-data-ol9-apache-ha.sh"
 
   end
 
-  # # VM debian_bind_slave
-  # config.vm.define "debian-bind-slave"  do |debian_bind_slave|
-  #   debian_bind_slave.vm.box = "debian/bullseye64"
-  #   debian_bind_slave.vm.box_download_insecure=true
-  #   debian_bind_slave.vbguest.no_install  = true
-  #   debian_bind_slave.vbguest.auto_update = false
-  #   debian_bind_slave.vbguest.no_remote   = true
+  # VM debian_apache_node01
+  config.vm.define "debian-apache-node01"  do |debian_apache_node01|
+    debian_apache_node01.vm.box = "debian/bullseye64"
+    debian_apache_node01.vm.box_download_insecure=true
+    debian_apache_node01.vbguest.no_install  = true
+    debian_apache_node01.vbguest.auto_update = false
+    debian_apache_node01.vbguest.no_remote   = true
 
-  #   # VARIABLE HOSTNAME
-  #   VM_SLAVE_NAME= "debian-bind-slave"
+    # VARIABLE HOSTNAME
+    VM_SLAVE_NAME= "debian-apache-node01"
 
-  #   # HOSTNAME
-  #   debian_bind_slave.vm.hostname =VM_SLAVE_NAME
+    # HOSTNAME
+    debian_apache_node01.vm.hostname =VM_SLAVE_NAME
 
-  #   # NETWORK
-  #   debian_bind_slave.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
-  #   debian_bind_slave.vm.network "private_network",ip: "172.36.12.231"
+    # NETWORK
+    debian_apache_node01.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_apache_node01.vm.network "private_network",ip: "172.36.12.231"
 
-  #   # MOUNTS
-  #   debian_bind_slave.vm.synced_folder ".", "/vagrant", disabled: true
-  #   debian_bind_slave.vm.synced_folder "../../Security/", "/home/vagrant/security"
-  #   debian_bind_slave.vm.synced_folder "./configs", "/home/vagrant/configs"
-  #   debian_bind_slave.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    # MOUNTS
+    debian_apache_node01.vm.synced_folder ".", "/vagrant", disabled: true
+    debian_apache_node01.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    debian_apache_node01.vm.synced_folder "./configs", "/home/vagrant/configs"
+    debian_apache_node01.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 
-  #   #PROVIDER
-  #   debian_bind_slave.vm.provider "virtualbox" do |vb|
-  #     vb.linked_clone = true
-  #     vb.name =VM_SLAVE_NAME
-  #     vb.cpus = 2
-  #   end
+    #PROVIDER
+    debian_apache_node01.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_SLAVE_NAME
+      vb.cpus = 2
+    end
 
-  #   # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-  #   debian_bind_slave.vm.provision "shell", path: "scripts/user-data-bind-slave.sh"
-  # end
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    debian_apache_node01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+    # CONFIGURE APACHE HTTP
+    debian_apache_node01.vm.provision "shell", path: "scripts/user-data-debian-apache-node01.sh"
+  end
 
   # # VM debian_bind_forwarding
   # config.vm.define "debian-bind-forwarding"  do |debian_bind_forwarding|

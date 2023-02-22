@@ -44,7 +44,8 @@ setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d" >$null
 $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
 Set-Location $http
 Start-Process -Wait -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
-Copy-Item .\.vagrant\machines\ol9-apache-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-master
+Copy-Item .\.vagrant\machines\ol9-apache-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-ha
+Copy-Item .\.vagrant\machines\debian-apache-node01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node01
 
 
 #Fix powershell error
