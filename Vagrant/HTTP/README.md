@@ -3,7 +3,7 @@
 [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml)
 # HTTP
 
-![202-450 Linux Engineer](../../Images/dns-tree.jpg)
+![202-450 Linux Engineer](../../Images/web-servers.jpg)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -47,13 +47,14 @@ This project up a stack of HTTP server for labs.
 
 ## Whats is?
 
-foo
+I this project, I up a stack of HTTP server with apache and nginx.
+
 
 ### Vagrant
 
-I use vagrant for provision all http server in this project.
+ I use vagrant for provision all http server in this project.
 
-### Shell
+### Shell provisioner
 
 I use vagrant shell provisioner for configure http service and others tools
 of this stack
@@ -102,7 +103,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-2-202-450.git
 ## Usage
 
 ```sh
-cd Vagrant/http
+cd Vagrant/HTTP
 vagrant up
 ```
 
@@ -112,10 +113,16 @@ vagrant up
 
 ## Roadmap
 
-* [ ] foo
-* [ ] foo
-* [ ] foo
-* [ ] foo
+* [x] Create IaC for VM for stack
+  * [x] Create Vagrantfile with VM's
+    * [x] Create vm ol9-apache-ha
+    * [x] Create vm debian-apache-node01
+* [x] Install and Configure Apache
+  * [x] Create script for install and configure apache in server ol9-apache-ha
+  * [x] Create script for install and configure apache in server debian-apache-node01
+* [ ] Create script for test apache stack
+* [ ] Create pipeline for print test
+* [ ] Create pipeline for send test in slack channel
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

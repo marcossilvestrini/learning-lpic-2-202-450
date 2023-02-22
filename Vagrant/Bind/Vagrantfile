@@ -102,6 +102,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_bind_slave.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
       vb.name =VM_SLAVE_NAME
+      vb.memory = 2048
       vb.cpus = 2
     end
 
@@ -137,6 +138,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_bind_forwarding.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
       vb.name =VM_FORWARDING_NAME
+      vb.memory = 2048
       vb.cpus = 2
     end
 

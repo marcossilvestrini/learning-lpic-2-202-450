@@ -1,0 +1,31 @@
+$TTL 1h
+
+@                      IN      SOA     ol9-bind-master.lpic2.com.br.   admin.lpic2.com.br. (
+                       01      ; serial
+                       28800   ; refresh (8h)
+                       7200    ; retry (2h)
+                       604800  ; expire (7d)
+                       3600    ; negative caching (1h)
+)
+
+
+@                      IN      NS      ol9-bind-master.lpic2.com.br.
+                               NS      debian-bind-slave.lpic2.com.br.
+                               MX      5       mail
+                               MX      10      mail2
+
+ol9-bind-master        A       192.168.0.140   ;glue record
+debian-bind-slave      A       192.168.0.141   ;glue record
+ol9-apache-ha          A       192.168.0.142   ;server apache http ha
+debian-apache-node01   A       192.168.0.143   ;server apache http node 1
+silvestrini            A       192.168.0.100   ;my desktop
+mail                   A       192.168.0.140   ;mail
+mail2                  A       192.168.0.141   ;mail
+www                    CNAME   ol9-apache-ha   ;http
+ftp                    CNAME   ol9-bind-slave  ;ftp
+
+@                      IN      TXT     "leanning LPIC2 Exam 202-450 - Bind"
+@                      IN      TXT     "leanning LPIC2 Exam 202-450 - HTTP"
+
+lpic2.com.br. IN DNSKEY 256 3 13 qzYHNPMPd6QjO66oHI4RL95LBSb3wRuEGJSXgByHJalof0DBJOucDKE1 MMudvv7eNoOabO+m91rQKUbRw6n/Vg==
+

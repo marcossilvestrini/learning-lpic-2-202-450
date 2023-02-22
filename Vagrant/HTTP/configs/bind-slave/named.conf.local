@@ -1,0 +1,24 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+//My TSIG keys
+
+key "lpic2.com.br" {
+	algorithm hmac-sha256;
+	secret "aIYTlJfNDaIvBEvTk7zjCm3beP3RzLAiJPtFvs5/mkE=";
+};
+
+server 192.168.0.140 {
+        keys { lpic2.com.br; };
+};
+
+zone "lpic2.com.br" {
+        type slave;
+        masters { 192.168.0.140; };
+        file "lpic2.zone";
+};
