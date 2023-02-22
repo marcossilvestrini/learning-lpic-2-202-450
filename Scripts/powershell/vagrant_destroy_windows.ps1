@@ -3,10 +3,11 @@ Get-Process -Name *vagrant* | Stop-Process -Force
 Get-Process -Name *ruby* | Stop-Process -Force
 
 #Vagrant Boxes
-$debian  = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
+$debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
 $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
-$ol9     = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
-$bind    = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
+$ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
+$bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
+$http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
 
 #Destroy debian 11
 Set-Location $debian
@@ -22,4 +23,8 @@ Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.
 
 #Destroy bind stack
 Set-Location $bind
+Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
+
+#Destroy http stack
+Set-Location $http
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs

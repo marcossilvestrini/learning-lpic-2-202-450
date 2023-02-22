@@ -12,4 +12,8 @@ export LANG=C
 cd /home/vagrant || exit
 
 # Install packages
-sudo apt install apache2
+apt install -y w3m
+apt install -y apache2
+
+# Up apache
+systemctl start apache2

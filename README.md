@@ -508,8 +508,46 @@ httpd, apache2
 
 #### 208.1 Important Commands
 
+##### apachectl
+
 ```sh
-Examples
+# start apache
+apachectl status
+
+# stop apache
+apachectl status
+
+# check apache status
+apachectl status
+
+# check apache config
+apachectl configtest
+```
+
+##### httpd
+
+```sh
+# show apache infos
+httpd -V
+
+# show apache version
+httpd -v
+```
+
+##### apache2
+
+```sh
+# show apache version
+apache2 -v
+```
+
+##### Show apache process (Debian\RPM)
+
+```sh
+ps aux | grep http
+ps aux | grep apache
+pstree -p |grep httpd
+pstree -p |grep apache2
 ```
 
 <p align="right">(<a href="#topic-208.1">back to sub topic 208.1</a>)</p>

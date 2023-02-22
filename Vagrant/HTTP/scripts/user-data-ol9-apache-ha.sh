@@ -13,3 +13,6 @@ cd /home/vagrant || exit
 
 # Install packages
 dnf install -y httpd
+
+# Up apache service
+apachectl start

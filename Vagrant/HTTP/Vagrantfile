@@ -29,21 +29,24 @@ unless Vagrant.has_plugin?("vagrant-vbguest")
   system('vagrant plugin install vagrant-vbguest')
 end
 
-#Define VM
+# GLOBAL BOX CONFIGURATIONS
+BOX_OL_URL = "https://oracle.github.io/vagrant-projects/boxes"
+BOX_OL_NAME = "oraclelinux/9"
+BOX_DEBIAN_NAME = "debian/bullseye64"
+
+#DEFINE VM
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # GLOBAL VMGUEST CONFIGURATIONS
+  config.vbguest.no_install  = true
+  config.vbguest.auto_update = false
+  config.vbguest.no_remote   = true
+  config.vm.box_download_insecure=true
 
   # VM ol9_bind_master
   config.vm.define "ol9-bind-master"  do |ol9_bind_master|
-    # Box metadata location and box name
-    BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
-    BOX_NAME = "oraclelinux/9"
-    ol9_bind_master.vm.box = BOX_NAME
-    ol9_bind_master.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
-    ol9_bind_master.vm.box_download_insecure=true
-    ol9_bind_master.vbguest.no_install  = true
-    ol9_bind_master.vbguest.auto_update = false
-    ol9_bind_master.vbguest.no_remote   = true
-
+    ol9_bind_master.vm.box = BOX_OL_NAME
+    ol9_bind_master.vm.box_url = "#{BOX_OL_URL}/#{BOX_OL_NAME}.json"
 
     # VARIABLE HOSTNAME
     VM_MASTER_NAME= "ol9-bind-master"
@@ -58,8 +61,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # MOUNTS
     ol9_bind_master.vm.synced_folder ".", "/vagrant", disabled: true
     ol9_bind_master.vm.synced_folder "../../Security/", "/home/vagrant/security"
-    ol9_bind_master.vm.synced_folder "./configs", "/home/vagrant/configs"
     ol9_bind_master.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    ol9_bind_master.vm.synced_folder "./configs", "/home/vagrant/configs"
 
     # PROVIDER
     ol9_bind_master.vm.provider "virtualbox" do |vb|
@@ -76,11 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VM debian_bind_slave
   config.vm.define "debian-bind-slave"  do |debian_bind_slave|
-    debian_bind_slave.vm.box = "debian/bullseye64"
-    debian_bind_slave.vm.box_download_insecure=true
-    debian_bind_slave.vbguest.no_install  = true
-    debian_bind_slave.vbguest.auto_update = false
-    debian_bind_slave.vbguest.no_remote   = true
+    debian_bind_slave.vm.box = BOX_DEBIAN_NAME
 
     # VARIABLE HOSTNAME
     VM_SLAVE_NAME= "debian-bind-slave"
@@ -95,8 +94,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # MOUNTS
     debian_bind_slave.vm.synced_folder ".", "/vagrant", disabled: true
     debian_bind_slave.vm.synced_folder "../../Security/", "/home/vagrant/security"
-    debian_bind_slave.vm.synced_folder "./configs", "/home/vagrant/configs"
     debian_bind_slave.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    debian_bind_slave.vm.synced_folder "./configs", "/home/vagrant/configs"
 
     #PROVIDER
     debian_bind_slave.vm.provider "virtualbox" do |vb|
@@ -112,22 +111,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VM ol9_apache_ha
   config.vm.define "ol9-apache-ha"  do |ol9_apache_ha|
-    # Box metadata location and box name
-    BOX_URL = "https://oracle.github.io/vagrant-projects/boxes"
-    BOX_NAME = "oraclelinux/9"
-    ol9_apache_ha.vm.box = BOX_NAME
-    ol9_apache_ha.vm.box_url = "#{BOX_URL}/#{BOX_NAME}.json"
-    ol9_apache_ha.vm.box_download_insecure=true
-    ol9_apache_ha.vbguest.no_install  = true
-    ol9_apache_ha.vbguest.auto_update = false
-    ol9_apache_ha.vbguest.no_remote   = true
-
+    ol9_apache_ha.vm.box = BOX_OL_NAME
+    ol9_apache_ha.vm.box_url = "#{BOX_OL_URL}/#{BOX_OL_NAME}.json"
 
     # VARIABLE HOSTNAME
-    VM_MASTER_NAME= "ol9-apache-ha"
+    VM_HA_NAME= "ol9-apache-ha"
 
     # HOSTNAM
-    ol9_apache_ha.vm.hostname =VM_MASTER_NAME
+    ol9_apache_ha.vm.hostname =VM_HA_NAME
 
     # NETWORK
     ol9_apache_ha.vm.network "public_network",ip: "192.168.0.142",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
@@ -142,7 +133,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # PROVIDER
     ol9_apache_ha.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
-      vb.name =VM_MASTER_NAME
+      vb.name =VM_HA_NAME
       vb.memory = 2048
       vb.cpus = 2
     end
@@ -157,17 +148,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VM debian_apache_node01
   config.vm.define "debian-apache-node01"  do |debian_apache_node01|
-    debian_apache_node01.vm.box = "debian/bullseye64"
-    debian_apache_node01.vm.box_download_insecure=true
-    debian_apache_node01.vbguest.no_install  = true
-    debian_apache_node01.vbguest.auto_update = false
-    debian_apache_node01.vbguest.no_remote   = true
+    debian_apache_node01.vm.box = BOX_DEBIAN_NAME
 
     # VARIABLE HOSTNAME
-    VM_SLAVE_NAME= "debian-apache-node01"
+    VM_NODE01_NAME= "debian-apache-node01"
 
     # HOSTNAME
-    debian_apache_node01.vm.hostname =VM_SLAVE_NAME
+    debian_apache_node01.vm.hostname =VM_NODE01_NAME
 
     # NETWORK
     debian_apache_node01.vm.network "public_network",ip: "192.168.0.143",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
@@ -182,7 +169,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #PROVIDER
     debian_apache_node01.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
-      vb.name =VM_SLAVE_NAME
+      vb.name =VM_NODE01_NAME
       vb.memory = 2048
       vb.cpus = 2
     end
