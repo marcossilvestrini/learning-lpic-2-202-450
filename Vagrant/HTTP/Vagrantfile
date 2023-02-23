@@ -181,4 +181,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_apache_node01.vm.provision "shell", path: "scripts/user-data-debian-apache-node01.sh"
   end
 
+  # VM debian_client
+  config.vm.define "debian-http-client"  do |debian_http_client|
+    debian_http_client.vm.box = BOX_DEBIAN_NAME
+
+    # VARIABLE HOSTNAME
+    VM_CLIENT_NAME= "debian-http-client"
+
+    # HOSTNAME
+    debian_http_client.vm.hostname =VM_CLIENT_NAME
+
+    # NETWORK
+    debian_http_client.vm.network "public_network",ip: "192.168.0.150",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_http_client.vm.network "private_network",ip: "172.36.12.240"
+
+    # MOUNTS
+    debian_http_client.vm.synced_folder ".", "/vagrant", disabled: true
+    debian_http_client.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    debian_http_client.vm.synced_folder "./configs", "/home/vagrant/configs"
+    debian_http_client.vm.synced_folder "./test", "/home/vagrant/test"
+    debian_http_client.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+
+    #PROVIDER
+    debian_http_client.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_CLIENT_NAME
+      vb.memory = 8192
+      vb.cpus = 3
+    end
+
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    debian_http_client.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+    # CONFIGURE CLIENT HTTP CLIENT
+    debian_http_client.vm.provision "shell", path: "scripts/user-data-debian-http-client.sh"
+
+    # CHECK HTTP STACK
+    debian_http_client.vm.provision "shell", path: "scripts/check-http-stack.sh"
+  end
+
 end

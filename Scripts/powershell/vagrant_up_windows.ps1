@@ -48,6 +48,7 @@ Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos
 Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
 Copy-Item .\.vagrant\machines\ol9-apache-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-ha
 Copy-Item .\.vagrant\machines\debian-apache-node01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node01
+Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
 
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0

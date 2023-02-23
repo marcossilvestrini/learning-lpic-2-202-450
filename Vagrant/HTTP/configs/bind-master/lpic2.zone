@@ -18,11 +18,13 @@ ol9-bind-master        A       192.168.0.140   ;glue record
 debian-bind-slave      A       192.168.0.141   ;glue record
 ol9-apache-ha          A       192.168.0.142   ;server apache http ha
 debian-apache-node01   A       192.168.0.143   ;server apache http node 1
+debian-http-client     A       192.168.0.150   ;server http client
 silvestrini            A       192.168.0.100   ;my desktop
 mail                   A       192.168.0.140   ;mail
 mail2                  A       192.168.0.141   ;mail
-www                    CNAME   ol9-apache-ha   ;http
 ftp                    CNAME   ol9-bind-slave  ;ftp
+www                    CNAME   ol9-apache-ha   ;http
+skynet                 CNAME   www             ;apache ha
 
 @                      IN      TXT     "leanning LPIC2 Exam 202-450 - Bind"
 @                      IN      TXT     "leanning LPIC2 Exam 202-450 - HTTP"

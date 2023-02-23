@@ -556,6 +556,34 @@ pstree -p |grep apache2
 
 <a name="topic-208.2"></a>
 
+#### About apache Configurations
+
+```sh
+# Schema of process up (module mpn_*)
+# event
+```
+
+![image](https://user-images.githubusercontent.com/62715900/221008036-c2f8d29f-23ab-4997-aefc-10393829f9f3.png)
+![image](https://user-images.githubusercontent.com/62715900/221005929-03570a4b-c06b-4ca8-917f-f67fe5d7f8b2.png)
+
+```sh
+# Configuration file RPM
+/etc/httpd/httpd.conf
+
+# Configuration file Debian
+/etc/apache2/httpd.conf
+
+# ServerRoot RPM
+/etc/httpd
+
+# ServerRoot Debian
+/etc/apache2
+
+# Document root (index.html)
+/var/www/html
+
+```
+
 ### 208.2 Apache configuration for HTTPS
 
 **Weight:** 3
@@ -1356,6 +1384,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 * [W3Techs](https://w3techs.com/)
+* [Apache](https://www.apache.org/)
+* [Apache Directives](https://httpd.apache.org/docs/2.4/mod/directives.html)
 * [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
 * [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)
 * [LPIC-2 202-450 Learning Material](https://lpic2book.github.io/src/)

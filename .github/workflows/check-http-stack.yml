@@ -46,6 +46,3 @@ jobs:
             token: ${{ secrets.SLACK_BOT_TOKEN }}
             path: result-check-bind-stack.txt
             channel: appgithub
-
-
-
