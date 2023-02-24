@@ -42,11 +42,15 @@ sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_HA -l vagrant \
     sudo httpd -v >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
-#check status code apache
-#curl -LI http://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s
+## Check http status code
+echo -e "Check http status code of Apache HA...\n" >>$FILE_TEST
+curl -LI http://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo $LINE >>$FILE_TEST
 
-#test php
-#curl -LI http://skynet.lpic2.com.br/info.php -o /dev/null -w '%{http_code}\n' -s
+## Check php status
+echo -e "Check php status of Apache HA...\n" >>$FILE_TEST
+curl -LI http://skynet.lpic2.com.br/info.php -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo $LINE >>$FILE_TEST
 
 # Check Apache  NODE01
 echo $LINE >>$FILE_TEST
@@ -54,7 +58,7 @@ echo "Check Apache NODE01..." >>$FILE_TEST
 echo -e "$LINE\n" >>$FILE_TEST
 
 ## Check status
-echo -e "Check version of Apache NODE01...\n" >>$FILE_TEST
+echo -e "Check status of Apache NODE01...\n" >>$FILE_TEST
 sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_NODE01 -l vagrant \
     sudo systemctl status apache2 | grep "Active" >>$FILE_TEST
 echo $LINE >>$FILE_TEST
@@ -63,4 +67,14 @@ echo $LINE >>$FILE_TEST
 echo -e "Check version of Apache NODE01...\n" >>$FILE_TEST
 sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_NODE01 -l vagrant \
     sudo apache2 -v >>$FILE_TEST
+echo $LINE >>$FILE_TEST
+
+## Check http status code
+echo -e "Check http status code of Apache NODE01...\n" >>$FILE_TEST
+curl -LI http://debian-apache-node01.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo $LINE >>$FILE_TEST
+
+## Check php status
+echo -e "Check php status of Apache NODE01...\n" >>$FILE_TEST
+curl -LI http://debian-apache-node01.lpic2.com.br/info.php -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
 echo $LINE >>$FILE_TEST
