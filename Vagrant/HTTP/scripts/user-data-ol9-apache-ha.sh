@@ -11,9 +11,8 @@ export LANG=C
 
 cd /home/vagrant || exit
 
-# Install packages
+# Install Apache
 dnf install -y httpd
-dnf install -y php
 
 # Tunning apache
 
@@ -28,6 +27,11 @@ chmod 644 /etc/httpd/conf/httpd.conf
 cp -f configs/apache-ha/00-mpn-conf /etc/httpd/conf.modules.d
 dos2unix /etc/httpd/conf.modules.d
 chmod 644 /etc/httpd/conf.modules.d
+
+# Install php
+dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
+cp -f configs/apache-ha/info.php /var/www/html/
+systemctl restart php-fpm
 
 # Restart apache service
 apachectl restart

@@ -42,6 +42,12 @@ sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_HA -l vagrant \
     sudo httpd -v >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
+#check status code apache
+#curl -LI http://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s
+
+#test php
+#curl -LI http://skynet.lpic2.com.br/info.php -o /dev/null -w '%{http_code}\n' -s
+
 # Check Apache  NODE01
 echo $LINE >>$FILE_TEST
 echo "Check Apache NODE01..." >>$FILE_TEST
