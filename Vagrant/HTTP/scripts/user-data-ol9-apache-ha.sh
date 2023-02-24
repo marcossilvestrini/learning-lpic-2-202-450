@@ -24,14 +24,22 @@ dos2unix /etc/httpd/conf/httpd.conf
 chmod 644 /etc/httpd/conf/httpd.conf
 
 ## Configure MPM mod
-cp -f configs/apache-ha/00-mpn-conf /etc/httpd/conf.modules.d
-dos2unix /etc/httpd/conf.modules.d
-chmod 644 /etc/httpd/conf.modules.d
+cp -f configs/apache-ha/00-mpm.conf /etc/httpd/conf.modules.d
+dos2unix /etc/httpd/conf.modules.d/00-mpm.conf
+chmod 644 /etc/httpd/conf.modules.d/00-mpm.conf
+
+## Set index.html
+cp -f configs/commons/index.html /var/www/html/
 
 # Install php
 dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
-cp -f configs/apache-ha/info.php /var/www/html/
-systemctl restart php-fpm
+cp -f configs/commons/info.php /var/www/html/
+
+# Install perl
+dnf install -y mod_perl-2.0.12-1.el8.x86_64
+mkdir /var/www/perl
+cp -f configs/commons/app.pl /var/www/perl
+chmod 755 /var/www/perl/app.pl
 
 # Restart apache service
 apachectl restart
