@@ -44,5 +44,5 @@ jobs:
           uses: adrey/slack-file-upload-action@master
           with:
             token: ${{ secrets.SLACK_BOT_TOKEN }}
-            path: result-check-bind-stack.txt
+            path: result-check-http-stack.txt
             channel: appgithub
