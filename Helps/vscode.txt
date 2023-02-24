@@ -12,3 +12,6 @@ ctr+k, U
 
 #save without Formatting
 ctr+k, ctr+shift+s
+
+# Set X11 Forwarding
+https://yunusmuhammad007.medium.com/jetson-nano-vs-code-x11-forwarding-over-ssh-d97fd2290973

@@ -40,6 +40,7 @@ apt-get install -y sshpass
 apt-get install -y vim
 apt-get install -y dos2unix
 apt-get install -y tree
+apt-get install -y curl
 apt-get install -y psmisc
 apt-get install -y xserver-xorg
 apt-get install -y python3-pip

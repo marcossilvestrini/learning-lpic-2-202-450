@@ -13,6 +13,7 @@ cd /home/vagrant || exit
 
 # Install packages
 dnf install -y httpd
+dnf install -y php
 
 # Tunning apache
 

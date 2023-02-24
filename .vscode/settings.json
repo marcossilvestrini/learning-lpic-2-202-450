@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "apachectl"
+    ],
+    "remote.SSH.remoteServerListenOnSocket": false,
+    "remote.SSH.defaultForwardedPorts": [
+
+    ]
+}

@@ -14,6 +14,7 @@ cd /home/vagrant || exit
 # Install packages
 apt install -y w3m
 apt install -y apache2
+apt install -y php
 
 # Tunning apache
 

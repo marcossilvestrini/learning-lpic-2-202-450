@@ -38,6 +38,7 @@ dnf install -y sshpass
 dnf install -y htop
 dnf install -y lsof
 dnf install -y tree
+dnf install -y curl
 dnf install -y net-tools
 dnf install -y traceroute
 dnf install -y sysstat
