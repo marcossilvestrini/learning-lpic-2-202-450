@@ -29,5 +29,8 @@ cp -f configs/commons/index.html /var/www/html/
 apt install -y php
 cp -f configs/commons/info.php /var/www/html/
 
+# Install mod_perl
+# apt install -y libapache2-mod-perl2
+
 # Restart apache
 systemctl restart apache2

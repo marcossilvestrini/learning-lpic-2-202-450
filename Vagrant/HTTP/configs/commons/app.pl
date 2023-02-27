@@ -1,11 +1,10 @@
-#!/usr/bin/perl
-# Includes
-use Net::Domain qw(hostname hostfqdn hostdomain);
+#!/bin/bash
 
-# Test perl
-print "Content-Type: text/html\n\n";
-print ("<h1>Perl is working!</h1>");
+# Header
+echo "Content-type: text/html"
 
-# Get a hostname
-my $host = hostname();
-print "The host name is $host \n";
+# Header end
+echo ""
+
+# Content to display in the navigator
+echo "<html><body>Hello World!</body></html>"

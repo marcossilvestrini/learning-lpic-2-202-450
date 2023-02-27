@@ -28,18 +28,19 @@ cp -f configs/apache-ha/00-mpm.conf /etc/httpd/conf.modules.d
 dos2unix /etc/httpd/conf.modules.d/00-mpm.conf
 chmod 644 /etc/httpd/conf.modules.d/00-mpm.conf
 
-## Set index.html
+## Install http app
 cp -f configs/commons/index.html /var/www/html/
 
-# Install php
+# Install php app
 dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
 cp -f configs/commons/info.php /var/www/html/
 
-# Install perl
-dnf install -y mod_perl-2.0.12-1.el8.x86_64
-mkdir /var/www/perl
-cp -f configs/commons/app.pl /var/www/perl
-chmod 755 /var/www/perl/app.pl
+# Configure CGI
+#cp -f configs/apache-ha/cgi-enabled.conf /etc/httpd/conf.d/
+mkdir /var/www/html/cgi-enabled
+
+# Install perl app
+#cp configs/commons/app.pl /var/www/cgi-bin/
 
 # Restart apache service
 apachectl restart
