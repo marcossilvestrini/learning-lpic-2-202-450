@@ -18,6 +18,3 @@ export PATH
 
 TZ='America/Sao_Paulo'
 export TZ
-
-# Set X11 Forwarding
-export DISPLAY=localhost:10.0

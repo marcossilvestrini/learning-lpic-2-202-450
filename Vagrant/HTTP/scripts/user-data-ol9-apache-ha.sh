@@ -12,6 +12,7 @@ export LANG=C
 cd /home/vagrant || exit
 
 # Install Apache
+dnf install -y policycoreutils-python-utils
 dnf install -y httpd
 
 # Tunning apache
@@ -30,17 +31,22 @@ chmod 644 /etc/httpd/conf.modules.d/00-mpm.conf
 
 ## Install http app
 cp -f configs/commons/index.html /var/www/html/
+dos2unix /var/www/html/index.html
 
 # Install php app
 dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
 cp -f configs/commons/info.php /var/www/html/
+dos2unix /var/www/html/info.php
 
-# Configure CGI
-#cp -f configs/apache-ha/cgi-enabled.conf /etc/httpd/conf.d/
-mkdir /var/www/html/cgi-enabled
-
-# Install perl app
-#cp configs/commons/app.pl /var/www/cgi-bin/
+# Install perl app (https://techexpert.tips/apache/perl-cgi-apache/)
+dnf install -y perl
+cp configs/apache-ha/perl.conf /etc/httpd/conf.d/
+dos2unix /etc/httpd/conf.d/perl.conf
+chmod 644 /etc/httpd/conf.d/perl.conf
+mkdir /var/www/perl
+cp configs/commons/app.pl /var/www/perl/
+dos2unix /var/www//var/www/perl/app.pl
+chmod -R 755 /var/www/perl/app.pl
 
 # Restart apache service
 apachectl restart

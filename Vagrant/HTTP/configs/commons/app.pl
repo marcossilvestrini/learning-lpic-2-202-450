@@ -1,10 +1,3 @@
-#!/bin/bash
-
-# Header
-echo "Content-type: text/html"
-
-# Header end
-echo ""
-
-# Content to display in the navigator
-echo "<html><body>Hello World!</body></html>"
+#!/usr/bin/env perl
+print "Content-Type: text/html\n\n";
+print ("<h1>Perl is working!</h1>");
