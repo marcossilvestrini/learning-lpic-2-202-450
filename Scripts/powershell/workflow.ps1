@@ -10,5 +10,3 @@ Set-Location $repository
 git add .
 git commit -m "Start Pepilines"
 git push origin main
-
-Start-Sleep 30
