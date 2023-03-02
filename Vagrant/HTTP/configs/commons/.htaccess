@@ -1,0 +1,9 @@
+AuthType Basic
+AuthName "Restricted Files"
+# (Following line optional)
+AuthBasicProvider file
+AuthUserFile "/var/www/html/topsecret/.htpasswd"
+AuthGroupFile "/var/www/html/topsecret/.htgroup"
+#Require valid-user
+#Require user vagrant
+Require group suport

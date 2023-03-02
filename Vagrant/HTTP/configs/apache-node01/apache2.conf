@@ -169,7 +169,7 @@ Include ports.conf
 
 <Directory /var/www/>
 	Options Indexes FollowSymLinks
-	AllowOverride None
+	AllowOverride All
 	Require all granted
 </Directory>
 

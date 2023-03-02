@@ -1393,6 +1393,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [W3Techs](https://w3techs.com/)
 * [Apache](https://www.apache.org/)
 * [Apache Directives](https://httpd.apache.org/docs/2.4/mod/directives.html)
+* [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 * [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
 * [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)
 * [LPIC-2 202-450 Learning Material](https://lpic2book.github.io/src/)
