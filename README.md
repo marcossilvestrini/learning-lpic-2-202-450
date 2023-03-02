@@ -541,6 +541,13 @@ httpd -v
 apache2 -v
 ```
 
+##### htpasswd
+
+```sh
+# Create authentication file
+echo "vagrant" | htpasswd -c -i /var/www/html/jail-site/.htpasswd vagrant
+```
+
 ##### Show apache process (Debian\RPM)
 
 ```sh

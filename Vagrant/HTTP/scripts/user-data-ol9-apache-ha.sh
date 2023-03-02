@@ -45,8 +45,20 @@ dos2unix /etc/httpd/conf.d/perl.conf
 chmod 644 /etc/httpd/conf.d/perl.conf
 mkdir /var/www/perl
 cp configs/commons/app.pl /var/www/perl/
-dos2unix /var/www//var/www/perl/app.pl
+dos2unix /var/www/perl/app.pl
 chmod -R 755 /var/www/perl/app.pl
 
+# Create sites for autentication rules
+mkdir {/var/www/html/topsecret,/var/www/html/admin}
+cp configs/apache-ha/topsecret.conf /etc/httpd/conf.d/
+dos2unix /etc/httpd/conf.d/topsecret.conf
+chmod 644 /etc/httpd/conf.d/topsecret.conf
+
+# Set user autentication for sites
+echo "vagrant" | htpasswd -c -i /var/www/html/topsecret/.htpasswd vagrant
+echo "silvestrini" | htpasswd -i /var/www/html/topsecret/.htpasswd silvestrini
+echo "lpic2" | htpasswd -i /var/www/html/topsecret/.htpasswd lpic2
+
 # Restart apache service
+apachectl configtest
 apachectl restart
