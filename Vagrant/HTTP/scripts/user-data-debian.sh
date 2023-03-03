@@ -17,15 +17,19 @@ usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 # Set profile in /etc/profile
 cp -f configs/commons/profile-debian /etc/profile
+dos2unix /etc/profile
 
 # Set vim profile
 cp -f configs/commons/.vimrc .
+dos2unix .vimrc
 
 # Set bash session
 cp -f configs/commons/.bashrc-debian ./.bashrc
+dos2unix .bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root
+dos2unix /root/.vimrc
 
 # Set Swap memory
 fallocate -l 4G /swapfile
@@ -53,6 +57,7 @@ apt-get install -y collectd
 
 # Set ssh
 cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
+dos2unix /etc/ssh/sshd_config.d/01-sshd-custom.conf
 systemctl restart sshd
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
@@ -68,6 +73,7 @@ mv /root/xorg.conf.new /etc/X11/xorg.conf
 # Enable sadc collected system activity
 sed -i 's/false/true/g' /etc/default/sysstat
 cp -f configs/commons/cron.d-sysstat /etc/cron.d/sysstat
+dos2unix /etc/cron.d/sysstat
 systemctl start sysstat
 systemctl enable sysstat
 
@@ -75,12 +81,15 @@ systemctl enable sysstat
 
 ## Copy host file
 cp -f configs/commons/hosts /etc
+dos2unix /etc/hosts
 
 ## Set Networkmanager
 cp -f configs/commons/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+dos2unix /etc/NetworkManager/conf.d/01-NetworkManager-custom.conf
 systemctl reload NetworkManager
 
 ## Set resolv.conf file
 rm /etc/resolv.conf
 cp configs/commons/resolv.conf.manually-configured /etc
+dos2unix /etc/resolv.conf.manually-configured
 ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf

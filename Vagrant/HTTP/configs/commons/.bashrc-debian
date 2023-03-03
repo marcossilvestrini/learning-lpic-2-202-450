@@ -106,7 +106,7 @@ fi
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-comletion/bash_completion
+        . /usr/share/bash-completion/bash_completion
     elif [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
     fi
@@ -114,6 +114,3 @@ fi
 
 TZ='America/Sao_Paulo'
 export TZ
-
-# Set X11 Forwarding
-export DISPLAY=localhost:10.0

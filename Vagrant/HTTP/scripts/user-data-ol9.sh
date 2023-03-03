@@ -17,15 +17,19 @@ usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 # Set profile in /etc/profile
 cp -f configs/commons/profile /etc
+dos2unix etc/profile
 
 # Set vim profile
 cp -f configs/commons/.vimrc .
+dos2unix .vimrc
 
 # Set bash session
 cp -f configs/commons/.bashrc .
+dos2unix .bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root/
+dos2unix /root/.vimrc
 
 # Enable Epel repo
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
@@ -46,6 +50,7 @@ dnf install -y sysstat
 # SSH,FIREWALLD AND SELINUX
 rm /etc/ssh/sshd_config.d/90-vagrant.conf
 cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
+dos2unix /etc/ssh/sshd_config.d
 systemctl restart sshd
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
@@ -65,6 +70,7 @@ dnf install -y xorg-x11-server-Xorg.x86_64 xorg-x11-xauth.x86_64 \
 
 # Enable sadc collected system activity
 cp -f configs/commons/sysstat /etc/default/
+dos2unix /etc/default/sysstat
 systemctl start sysstat sysstat-collect.timer sysstat-summary.timer
 systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
@@ -72,12 +78,15 @@ systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
 ## Copy host file
 cp -f configs/commons/hosts /etc
+dos2unix /etc/hosts
 
 ## Set Networkmanager
 cp -f configs/commons/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+dos2unix /etc/NetworkManager/conf.d/01-NetworkManager-custom.conf
 systemctl reload NetworkManager
 
 ## Set resolv.conf file
 rm /etc/resolv.conf
 cp configs/commons/resolv.conf.manually-configured /etc
+dos2unix  /etc/resolv.conf.manually-configured
 ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf

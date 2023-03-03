@@ -86,6 +86,3 @@ fi
 
 #Set timezone
 sudo timedatectl set-timezone America/Sao_Paulo
-
-# Set X11 Forwarding
-export DISPLAY=localhost:10.0
