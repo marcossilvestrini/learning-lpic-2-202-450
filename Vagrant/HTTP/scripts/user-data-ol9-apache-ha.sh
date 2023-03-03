@@ -68,6 +68,12 @@ dos2unix /var/www/html/topsecret/.htgroup
 cp configs/commons/.htaccess_admin /var/www/html/admin/.htaccess
 dos2unix /var/www/html/admin/.htaccess
 
+# Set virtualhost sites
+mkdir {/var/www/html/skynet,/var/www/html/skynet/music,/var/www/html/skynet/store}
+cp configs/apache-ha/index-main.html /var/www/html/skynet/index.html
+cp configs/apache-ha/index-store.html /var/www/html/skynet/music/index.html
+cp configs/apache-ha/index-music.html /var/www/html/skynet/music/index.html
+
 # Restart apache service
 apachectl configtest
 apachectl restart
