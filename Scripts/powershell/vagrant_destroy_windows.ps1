@@ -9,7 +9,7 @@ $ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 $bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
 $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
 
-# Folder virtualbox machines artefacts
+# Folder vagrant virtualbox machines artefacts
 $virtualboxFolder = "E:\Servers\VirtualBox"
 $vmFolders=@(
     "$virtualboxFolder\ol9-bind-master",    
