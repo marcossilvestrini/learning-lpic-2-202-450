@@ -23,11 +23,13 @@ silvestrini            A       192.168.0.100   ;my desktop
 mail                   A       192.168.0.140   ;mail
 mail2                  A       192.168.0.141   ;mail
 ftp                    CNAME   ol9-bind-slave  ;ftp
-www                    CNAME   ol9-apache-ha   ;http
-skynet                 CNAME   www             ;apache ha
+www                    CNAME   ol9-apache-ha   ;http - apache ha
+skynet                 CNAME   www             ;http - apache ha - skynet main page
+music                  CNAME   www             ;http - apache ha - music main page
+store                  CNAME   www             ;http - apache ha - store main page
 
-@                      IN      TXT     "leanning LPIC2 Exam 202-450 - Bind"
-@                      IN      TXT     "leanning LPIC2 Exam 202-450 - HTTP"
+@                      IN      TXT     "leaning LPIC2 Exam 202-450 - Bind"
+@                      IN      TXT     "leaning LPIC2 Exam 202-450 - HTTP"
 
 lpic2.com.br. IN DNSKEY 256 3 13 qzYHNPMPd6QjO66oHI4RL95LBSb3wRuEGJSXgByHJalof0DBJOucDKE1 MMudvv7eNoOabO+m91rQKUbRw6n/Vg==
 

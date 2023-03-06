@@ -17,15 +17,19 @@ usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 # Set profile in /etc/profile
 cp -f configs/commons/profile-debian /etc/profile
+dos2unix /etc/profile
 
 # Set vim profile
 cp -f configs/commons/.vimrc .
+dos2unix .vimrc
 
 # Set bash session
-cp -f configs/commons/.bashrc-debian ./.bashrc
+cp -f configs/commons/.bashrc-debian .bashrc
+dos2unix .bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root
+
 
 # Set Swap memory
 fallocate -l 4G /swapfile

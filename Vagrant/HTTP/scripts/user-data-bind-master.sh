@@ -16,13 +16,16 @@ usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 # Set profile in /etc/profile
-cp -f configs/commons/profile /etc
+cp -f configs/commons/profile-ol9 /etc/profile
+dos2unix /etc/profile
 
 # Set vim profile
 cp -f configs/commons/.vimrc .
+dos2unix .vimrc
 
 # Set bash session
-cp -f configs/commons/.bashrc .
+cp -f configs/commons/.bashrc-ol9 .bashrc
+dos2unix .bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root/
@@ -119,12 +122,15 @@ rndc reload
 
 ## Copy host file
 cp -f configs/commons/hosts /etc
+dos2unix /etc/hosts
 
 ## Set Networkmanager
 cp -f configs/commons/01-NetworkManager-custom.conf /etc/NetworkManager/conf.d/
+dos2unix /etc/NetworkManager/conf.d/01-NetworkManager-custom.conf
 systemctl reload NetworkManager
 
 ## Set resolv.conf file
 rm /etc/resolv.conf
 cp configs/commons/resolv.conf.manually-configured /etc
+dos2unix  /etc/resolv.conf.manually-configured
 ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf
