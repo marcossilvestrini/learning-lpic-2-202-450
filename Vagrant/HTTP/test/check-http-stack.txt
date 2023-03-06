@@ -1,6 +1,6 @@
 ------------------------------------------------------
 Check HTTP Stack for This Lab
-Date: 2023-03-03 16:46:54
+Date: 2023-03-06 17:35:59
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -9,7 +9,7 @@ Check Apache HA...
 
 Check Status of Apache HA...
 
-     Active: active (running) since Fri 2023-03-03 16:31:50 -03; 15min ago
+     Active: active (running) since Mon 2023-03-06 17:31:16 UTC; 4min 43s ago
 ------------------------------------------------------
 Check version of Apache HA...
 
@@ -31,16 +31,19 @@ Check Apache NODE01...
 
 Check status of Apache NODE01...
 
+     Active: active (running) since Mon 2023-03-06 17:33:35 UTC; 2min 25s ago
 ------------------------------------------------------
 Check version of Apache NODE01...
 
+Server version: Apache/2.4.54 (Debian)
+Server built:   2022-06-09T04:26:43
 ------------------------------------------------------
 Check http status code of Apache NODE01...
-000
+200
 ------------------------------------------------------
 Check php status of Apache NODE01...
-000
+200
 ------------------------------------------------------
 Check perl status of Apache NODE01...
-000
+200
 ------------------------------------------------------
