@@ -16,20 +16,19 @@ usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
 # Set profile in /etc/profile
-cp -f configs/commons/profile /etc
-dos2unix etc/profile
+cp -f configs/commons/profile-ol9 /etc/profile
+dos2unix /etc/profile
 
 # Set vim profile
 cp -f configs/commons/.vimrc .
 dos2unix .vimrc
 
 # Set bash session
-cp -f configs/commons/.bashrc .
+cp -f configs/commons/.bashrc-ol9 .bashrc
 dos2unix .bashrc
 
 # Set properties for user root
 cp .bashrc .vimrc /root/
-dos2unix /root/.vimrc
 
 # Enable Epel repo
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
