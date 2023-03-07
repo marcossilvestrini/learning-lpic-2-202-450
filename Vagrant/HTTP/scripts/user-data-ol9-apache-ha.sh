@@ -60,7 +60,9 @@ echo "lpic2" | htpasswd -i /var/www/html/topsecret/.htpasswd lpic2
 
 # Set sites for autentication rules(mod_authn)
 cp configs/commons/.htaccess /var/www/html/topsecret
+cp configs/commons/.htaccess /etc/httpd/logs
 dos2unix /var/www/html/topsecret/.htaccess
+dos2unix /etc/httpd/logs/.htaccess
 cp configs/commons/.htgroup /var/www/html/topsecret
 dos2unix /var/www/html/topsecret/.htgroup
 
@@ -68,11 +70,16 @@ dos2unix /var/www/html/topsecret/.htgroup
 cp configs/commons/.htaccess_admin /var/www/html/admin/.htaccess
 dos2unix /var/www/html/admin/.htaccess
 
-# Set virtualhost sites
+# Create SKYNET and set: Virtualhost, alias and redirects
+cp configs/apache-ha/site-skynet.conf /etc/httpd/conf.d/
+dos2unix /etc/httpd/conf.d/site-skynet.conf
+chmod 644 /etc/httpd/conf.d/site-skynet.conf
 mkdir {/var/www/html/skynet,/var/www/html/skynet/music,/var/www/html/skynet/store}
 cp configs/apache-ha/index-main.html /var/www/html/skynet/index.html
 cp configs/apache-ha/index-store.html /var/www/html/skynet/store/index.html
 cp configs/apache-ha/index-music.html /var/www/html/skynet/music/index.html
+mkdir /var/www/html/skynet/docs
+touch /var/www/html/skynet/docs/doc{1..6}
 
 # Restart apache service
 apachectl configtest

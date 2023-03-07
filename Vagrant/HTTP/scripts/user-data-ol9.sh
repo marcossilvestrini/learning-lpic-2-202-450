@@ -25,10 +25,10 @@ dos2unix .vimrc
 
 # Set bash session
 cp -f configs/commons/.bashrc-ol9 .bashrc
-dos2unix .bashrc
+dos2unix .bashrc .vimrc
 
 # Set properties for user root
-cp .bashrc .vimrc /root/
+cp -f .bashrc .vimrc /root/
 
 # Enable Epel repo
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y

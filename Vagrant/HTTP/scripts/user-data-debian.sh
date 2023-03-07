@@ -28,7 +28,7 @@ cp -f configs/commons/.bashrc-debian .bashrc
 dos2unix .bashrc
 
 # Set properties for user root
-cp .bashrc .vimrc /root
+cp -f .bashrc .vimrc /root
 
 # Set Swap memory
 fallocate -l 4G /swapfile
