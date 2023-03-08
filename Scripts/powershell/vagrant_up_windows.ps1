@@ -14,7 +14,6 @@ $scriptPath=$PSScriptRoot
 $semafore="$scriptPath\vagrant-up.silvestrini"
 New-Item -ItemType File -Path $semafore -Force >$null
 
-
 #Vagrant Boxes
 # $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
 # $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
@@ -59,5 +58,5 @@ Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Proje
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0
 
-# Remove Semafore
+#Remove Semafore
 Remove-Item -Force $semafore

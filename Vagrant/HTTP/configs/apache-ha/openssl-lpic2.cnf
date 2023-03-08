@@ -11,7 +11,7 @@ distinguished_name = my_req_dn_prompt
 
 # Minimum of 4 bytes are needed for common name
 commonName         = Common Name
-commonName_default = lpic2.com.br
+commonName_default = ol9-apache-ha
 
 # ISO2 country code only
 countryName         = Country Name

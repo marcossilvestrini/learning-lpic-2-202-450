@@ -7,6 +7,7 @@ While( Test-Path $semafore ){
     Start-Sleep 1
     If($timeout -gt 300){break;}
 }
+Start-Sleep 10
 $scriptPath=$PSScriptRoot
 $file="$scriptPath\workflow.txt"
 $repository=(($file | Split-Path -Parent)|Split-Path -Parent)|Split-Path -Parent

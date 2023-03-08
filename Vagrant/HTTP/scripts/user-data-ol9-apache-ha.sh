@@ -86,19 +86,25 @@ touch /var/www/html/skynet/docs/doc{1..6}
 # Generate SSL certificates
 
 ## Create Key Pair and certificate signing request(crs)
-cp configs/apache-ha/openssl-lpic2.cnf  /etc/ssl/
-dos2unix /etc/ssl/openssl-lpic2.cnf
-#openssl genrsa -passout pass:vagrant -des3 -out /etc/ssl/certs/lpic2.com.br.key 4096
-#openssl req -new -key /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crs -config /etc/ssl/openssl-lpic2.cnf -batch
-openssl req -new -nodes -config /etc/ssl/openssl-lpic2.cnf -batch -newkey rsa:4096 \
--keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crs
+rm /etc/ssl/certs/lpic2*
+openssl req -new -nodes -newkey rsa:4096 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
+-keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.csr
 
 ## Check crs file
-openssl req -in /etc/ssl/certs/lpic2.com.br.crs -text -noout
+openssl req -in /etc/ssl/certs/lpic2.com.br.csr -text -noout
 
 ## Signing Certificates
-openssl req -new -x509 -days 30 -nodes -config /etc/ssl/openssl-lpic2.cnf -batch -newkey rsa:4096 \
--keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.cert
+openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
+-keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crt
+
+## Generate client certificate
+openssl pkcs12 -password pass:vagrant  -export -in /etc/ssl/certs/lpic2.com.br.crt  \
+-password pass:vagrant \
+-inkey /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.p12
 
 # Restart apache service
 apachectl configtest
