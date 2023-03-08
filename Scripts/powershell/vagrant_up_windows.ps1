@@ -9,6 +9,12 @@ Start-Process -Wait -NoNewWindow -FilePath "E:\Apps\VirtualBox\VBoxManage.exe" `
 # Vagrant home directory for downloadad boxes.
 setx VAGRANT_HOME "E:\Apps\Vagrant\vagrant.d" >$null
 
+# Semafore for vagrant process
+$scriptPath=$PSScriptRoot
+$semafore="$scriptPath\vagrant-up.silvestrini"
+New-Item -ItemType File -Path $semafore -Force >$null
+
+
 #Vagrant Boxes
 # $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
 # $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
@@ -52,3 +58,6 @@ Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Proje
 
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0
+
+# Remove Semafore
+Remove-Item -Force $semafore

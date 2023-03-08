@@ -1,4 +1,12 @@
-# Script for executin pipeline for build ant test
+# # Script for executin pipeline for build ant test
+$scriptPath=$PSScriptRoot
+$semafore="$scriptPath\vagrant-up.silvestrini"
+$timeout=0
+While( Test-Path $semafore ){    
+    $timeout++
+    Start-Sleep 1
+    If($timeout -gt 300){break;}
+}
 $scriptPath=$PSScriptRoot
 $file="$scriptPath\workflow.txt"
 $repository=(($file | Split-Path -Parent)|Split-Path -Parent)|Split-Path -Parent
