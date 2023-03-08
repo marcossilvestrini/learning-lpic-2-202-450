@@ -15,21 +15,6 @@ cd /home/vagrant || exit
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
-# Set profile in /etc/profile
-cp -f configs/commons/profile-ol9 /etc/profile
-dos2unix /etc/profile
-
-# Set vim profile
-cp -f configs/commons/.vimrc .
-dos2unix .vimrc
-
-# Set bash session
-cp -f configs/commons/.bashrc-ol9 .bashrc
-dos2unix .bashrc .vimrc
-
-# Set properties for user root
-cp -f .bashrc .vimrc /root/
-
 # Enable Epel repo
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 
@@ -45,6 +30,21 @@ dnf install -y curl
 dnf install -y net-tools
 dnf install -y traceroute
 dnf install -y sysstat
+
+# Set profile in /etc/profile
+cp -f configs/commons/profile-ol9 /etc/profile
+dos2unix /etc/profile
+
+# Set vim profile
+cp -f configs/commons/.vimrc .
+dos2unix .vimrc
+
+# Set bash session
+cp -f configs/commons/.bashrc-ol9 .bashrc
+dos2unix .bashrc .vimrc
+
+# Set properties for user root
+cp -f .bashrc .vimrc /root/
 
 # SSH,FIREWALLD AND SELINUX
 rm /etc/ssh/sshd_config.d/90-vagrant.conf

@@ -15,6 +15,24 @@ cd /home/vagrant || exit
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
+# Install packages
+apt-get update -y
+apt-get upgrade -y
+apt-get install -y sshpass
+apt-get install -y vim
+apt-get install -y dos2unix
+apt-get install -y tree
+apt-get install -y curl
+apt-get install -y psmisc
+apt-get install -y xserver-xorg
+apt-get install -y python3-pip
+apt-get install -y python3-venv
+apt-get install -y net-tools
+apt-get install -y network-manager
+apt-get install -y sysstat
+apt-get install -y htop
+apt-get install -y collectd
+
 # Set profile in /etc/profile
 cp -f configs/commons/profile-debian /etc/profile
 dos2unix /etc/profile
@@ -35,24 +53,6 @@ fallocate -l 4G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-
-# Install packages
-apt-get update -y
-apt-get upgrade -y
-apt-get install -y sshpass
-apt-get install -y vim
-apt-get install -y dos2unix
-apt-get install -y tree
-apt-get install -y curl
-apt-get install -y psmisc
-apt-get install -y xserver-xorg
-apt-get install -y python3-pip
-apt-get install -y python3-venv
-apt-get install -y net-tools
-apt-get install -y network-manager
-apt-get install -y sysstat
-apt-get install -y htop
-apt-get install -y collectd
 
 # Set ssh
 cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
