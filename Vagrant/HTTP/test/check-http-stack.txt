@@ -1,6 +1,6 @@
 ------------------------------------------------------
 Check HTTP Stack for This Lab
-Date: 2023-03-08 17:15:43
+Date: 2023-03-09 18:51:01
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -9,7 +9,7 @@ Check Apache HA...
 
 Check Status of Apache HA...
 
-     Active: active (running) since Wed 2023-03-08 17:10:44 -03; 4min 58s ago
+     Active: failed (Result: exit-code) since Thu 2023-03-09 18:35:16 -03; 15min ago
 ------------------------------------------------------
 Check version of Apache HA...
 
@@ -17,13 +17,16 @@ Server version: Apache/2.4.53 (Oracle Linux Server)
 Server built:   Feb 28 2023 00:00:00
 ------------------------------------------------------
 Check http status code of Apache HA...
-200
+000
+------------------------------------------------------
+Check https status code of Apache HA...
+000
 ------------------------------------------------------
 Check php status of Apache HA...
-404
+000
 ------------------------------------------------------
 Check perl status of Apache HA...
-200
+000
 ------------------------------------------------------
 ------------------------------------------------------
 Check Apache NODE01...
@@ -31,19 +34,16 @@ Check Apache NODE01...
 
 Check status of Apache NODE01...
 
-     Active: active (running) since Wed 2023-03-08 17:13:16 -03; 2min 27s ago
 ------------------------------------------------------
 Check version of Apache NODE01...
 
-Server version: Apache/2.4.54 (Debian)
-Server built:   2022-06-09T04:26:43
 ------------------------------------------------------
 Check http status code of Apache NODE01...
-200
+000
 ------------------------------------------------------
 Check php status of Apache NODE01...
-200
+000
 ------------------------------------------------------
 Check perl status of Apache NODE01...
-200
+000
 ------------------------------------------------------

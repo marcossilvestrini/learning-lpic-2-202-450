@@ -21,8 +21,5 @@ cd /home/vagrant || exit
 # apt update -y
 #apt install -y google-chrome-stable
 
-# Install firefox
+## Install firefox
 apt install -y firefox-esr
-
-# Copy client certificate
-sshpass -p 'vagrant' scp -o StrictHostKeyChecking=no vagrant@192.168.0.142:/etc/ssl/certs/lpic2.com.br.p12 .
