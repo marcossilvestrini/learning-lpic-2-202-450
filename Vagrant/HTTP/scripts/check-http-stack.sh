@@ -47,6 +47,11 @@ echo -e "Check http status code of Apache HA..." >>$FILE_TEST
 curl -LI http://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
+## Check https status code
+echo -e "Check https status code of Apache HA..." >>$FILE_TEST
+curl -LI https://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo $LINE >>$FILE_TEST
+
 ## Check php status
 echo -e "Check php status of Apache HA..." >>$FILE_TEST
 curl -LI http://skynet.lpic2.com.br/info.php -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
