@@ -31,25 +31,6 @@ cp -f configs/apache-ha/00-mpm.conf /etc/httpd/conf.modules.d
 dos2unix /etc/httpd/conf.modules.d/00-mpm.conf
 chmod 644 /etc/httpd/conf.modules.d/00-mpm.conf
 
-## Install http app
-cp -f configs/commons/index.html /var/www/html/
-dos2unix /var/www/html/index.html
-
-# Install php app
-dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
-cp -f configs/commons/info.php /var/www/html/
-dos2unix /var/www/html/info.php
-
-# Install perl app (https://techexpert.tips/apache/perl-cgi-apache/)
-dnf install -y perl
-cp configs/apache-ha/perl.conf /etc/httpd/conf.d/
-dos2unix /etc/httpd/conf.d/perl.conf
-chmod 644 /etc/httpd/conf.d/perl.conf
-mkdir /var/www/perl
-cp configs/commons/app.pl /var/www/perl/
-dos2unix /var/www/perl/app.pl
-chmod -R 755 /var/www/perl/app.pl
-
 # Create user autentication db for sites
 mkdir /etc/httpd/htpasswd
 echo "vagrant" | htpasswd -c -i /etc/httpd/htpasswd/.htpasswd vagrant
@@ -106,6 +87,26 @@ openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
 openssl pkcs12 -password pass:vagrant  -export -in /etc/ssl/certs/lpic2.com.br.crt  \
 -password pass:vagrant \
 -inkey /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.p12
+
+## Install http app
+cp -f configs/commons/index.html /var/www/html/
+dos2unix /var/www/html/index.html
+
+# Install php app
+dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
+mkdir /var/www/html/skynet/php
+cp -f configs/commons/info.php /var/www/html/skynet/php
+dos2unix /var/www/html/skynet/php/info.php
+
+# Install perl app (https://techexpert.tips/apache/perl-cgi-apache/)
+dnf install -y perl
+cp configs/apache-ha/perl.conf /etc/httpd/conf.d/
+dos2unix /etc/httpd/conf.d/perl.conf
+chmod 644 /etc/httpd/conf.d/perl.conf
+mkdir /var/www/html/skynet/perl
+cp configs/commons/app.pl /var/www/html/skynet/perl
+dos2unix /var/www/html/skynet/perl/app.pl
+chmod -R 755 /var/www/html/skynet/perl/app.pl
 
 # Restart apache service
 apachectl configtest

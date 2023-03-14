@@ -42,24 +42,22 @@ sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_HA -l vagrant \
     sudo httpd -v >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
-## Check http status code
-echo -e "Check http status code of Apache HA..." >>$FILE_TEST
-curl -LI http://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
-echo $LINE >>$FILE_TEST
-
 ## Check https status code
-echo -e "Check https status code of Apache HA..." >>$FILE_TEST
-curl -LI https://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo -e "Check https status code of Apache HA...\n" >>$FILE_TEST
+echo -e "Site: https://skynet.lpic2.com.br...\n"
+curl -LI -k https://skynet.lpic2.com.br -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
 ## Check php status
-echo -e "Check php status of Apache HA..." >>$FILE_TEST
-curl -LI http://skynet.lpic2.com.br/info.php -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo -e "Check php status of Apache HA...\n" >>$FILE_TEST
+echo "Aplication: http://skynet.lpic2.com.br/info.php...\n"
+curl -LI -k https://skynet.lpic2.com.br/php/info.php -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
 ## Check perl status
 echo -e "Check perl status of Apache HA..." >>$FILE_TEST
-curl -LI http://skynet.lpic2.com.br/perl/app.pl -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
+echo -e "Site: https://skynet.lpic2.com.br/perl/app.pl...\n"
+curl -LI -k https://skynet.lpic2.com.br/perl/app.pl -o /dev/null -w '%{http_code}\n' -s >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
 # Check Apache  NODE01
