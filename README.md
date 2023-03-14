@@ -624,8 +624,29 @@ SSLProtocol, SSLCipherSuite, ServerTokens, ServerSignature, TraceEnable
 
 #### 208.2 Important Commands
 
+##### openssl
+
 ```sh
-Examples
+## Create Key Pair and certificate signing request(crs)
+rm /etc/ssl/certs/lpic2*
+openssl req -new -nodes -newkey rsa:4096 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
+-keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.csr 2>/dev/null
+
+## Check crs file
+openssl req -in /etc/ssl/certs/lpic2.com.br.csr -text -noout
+
+## Signing Certificates
+openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
+-keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crt 2>/dev/null
+
+## Generate client certificate
+openssl pkcs12 -password pass:vagrant  -export -in /etc/ssl/certs/lpic2.com.br.crt  \
+-password pass:vagrant \
+-inkey /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.p12
 ```
 
 <p align="right">(<a href="#topic-208.2">back to sub topic 208.2</a>)</p>
