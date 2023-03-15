@@ -66,32 +66,32 @@ cp configs/apache-ha/index-finance.html /var/www/html/skynet/finance/index.html
 mkdir /var/www/html/skynet/docs
 touch /var/www/html/skynet/docs/doc{1..6}
 
-# Generate SSL certificates
+# # Generate SSL certificates
 
-## Create Key Pair and certificate signing request(crs)
-rm /etc/ssl/certs/lpic2*
-openssl req -new -nodes -newkey rsa:4096 \
--passout pass:vagrant \
--subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc. /OU=IT Department/CN=lpic2.com.br" \
--keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.csr 2>/dev/null
+# ## Create Key Pair and certificate signing request(crs)
+# rm /etc/ssl/certs/lpic2*
+# openssl req -new -nodes -newkey rsa:4096 \
+# -passout pass:vagrant \
+# -subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc. /OU=IT Department/CN=lpic2.com.br" \
+# -keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.csr 2>/dev/null
 
-## Check crs file
-openssl req -in /etc/ssl/certs/lpic2.com.br.csr -text -noout
+# ## Check crs file
+# openssl req -in /etc/ssl/certs/lpic2.com.br.csr -text -noout
 
-## Signing Certificates
-openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
--passout pass:vagrant \
--subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=LPIC2 Inc. /OU=IT Department/CN=lpic2.com.br" \
--keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crt 2>/dev/null
+# ## Signing Certificates
+# openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
+# -passout pass:vagrant \
+# -subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=LPIC2 Inc. /OU=IT Department/CN=lpic2.com.br" \
+# -keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crt 2>/dev/null
 
-## Generate client certificate
-openssl pkcs12 -export \
--in /etc/ssl/certs/lpic2.com.br.crt  \
--password pass:vagrant \
--inkey /etc/ssl/certs/lpic2.com.br.key \
--out /etc/ssl/certs/lpic2.com.br.p12
+# ## Generate client certificate
+# openssl pkcs12 -export \
+# -in /etc/ssl/certs/lpic2.com.br.crt  \
+# -password pass:vagrant \
+# -inkey /etc/ssl/certs/lpic2.com.br.key \
+# -out /etc/ssl/certs/lpic2.com.br.p12
 
-#########--------Begin new version Generate Certificates-------------#######
+##################----Begin New Version----###################
 
 # Creating the Certificate Authority's Certificate and Keys
 
@@ -162,7 +162,7 @@ openssl verify -CAfile /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
 /etc/ssl/certs/lpic2.com.br-client-cert.pem
 certtool -i < /etc/ssl/certs/lpic2.com.br-client-cert.pem
 
-#########------------------End new version----------------------------#######
+##################----End New Version----###################
 
 
 ## Install http app
