@@ -91,7 +91,7 @@ touch /var/www/html/skynet/docs/doc{1..6}
 # -inkey /etc/ssl/certs/lpic2.com.br.key \
 # -out /etc/ssl/certs/lpic2.com.br.p12
 
-##################----Begin New Version----###################
+#######----Begin New Version Generate Certificates----######
 
 # Creating the Certificate Authority's Certificate and Keys
 
@@ -105,7 +105,6 @@ openssl req -new -x509 -nodes -days 30 \
 -subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=lpic2.com.br" \
 -key /etc/ssl/certs/lpic2.com.br-ca-key.pem \
 -out /etc/ssl/certs/lpic2.com.br-ca-cert.pem
-
 
 # Creating the Server's Certificate and Keys
 
@@ -162,7 +161,13 @@ openssl verify -CAfile /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
 /etc/ssl/certs/lpic2.com.br-client-cert.pem
 certtool -i < /etc/ssl/certs/lpic2.com.br-client-cert.pem
 
-##################----End New Version----###################
+## Copy certificates to clients
+# cp -f  /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+# /etc/ssl/certs/lpic2.com.br-server-cert.pem \
+# /etc/ssl/certs/lpic2.com.br-client-cert.p12 \
+# configs/commons/
+
+#######----End New Version Generate Certificates----######
 
 
 ## Install http app

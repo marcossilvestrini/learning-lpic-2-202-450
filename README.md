@@ -651,11 +651,15 @@ openssl pkcs12 -password pass:vagrant  -export -in /etc/ssl/certs/lpic2.com.br.c
 
 #### Import Certificates in Firefox
 
-![Import Certificates in Firefox](Images/import-ca-certificate.gif)
-
 ##### Import CA Authority Certificate
 
+![Import Certificates in Firefox](Images/import-ca-certificate.gif)
+
+
+##### Import Server Certificate
+
 ##### Import User Certificate
+
 
 <p align="right">(<a href="#topic-208.2">back to sub topic 208.2</a>)</p>
 <p align="right">(<a href="#topic-208">back to topic 208</a>)</p>

@@ -23,3 +23,6 @@ cd /home/vagrant || exit
 
 ## Install firefox
 apt install -y firefox-esr
+
+## Certificate utils
+apt install -y libnss3-tools
