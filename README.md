@@ -627,17 +627,17 @@ SSLProtocol, SSLCipherSuite, ServerTokens, ServerSignature, TraceEnable
 ##### openssl
 
 ```sh
-## Create Key Pair and certificate signing request(crs)
+# Create Key Pair and certificate signing request(crs)
 rm /etc/ssl/certs/lpic2*
 openssl req -new -nodes -newkey rsa:4096 \
 -passout pass:vagrant \
 -subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
 -keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.csr 2>/dev/null
 
-## Check crs file
+# Check crs file
 openssl req -in /etc/ssl/certs/lpic2.com.br.csr -text -noout
 
-## Signing Certificates
+# Signing Certificates
 openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
 -passout pass:vagrant \
 -subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
@@ -648,6 +648,14 @@ openssl pkcs12 -password pass:vagrant  -export -in /etc/ssl/certs/lpic2.com.br.c
 -password pass:vagrant \
 -inkey /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.p12
 ```
+
+#### Import Certificates in Firefox
+
+![Import Certificates in Firefox](Images/import-ca-certificate.gif)
+
+##### Import CA Authority Certificate
+
+##### Import User Certificate
 
 <p align="right">(<a href="#topic-208.2">back to sub topic 208.2</a>)</p>
 <p align="right">(<a href="#topic-208">back to topic 208</a>)</p>

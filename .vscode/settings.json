@@ -1,6 +1,12 @@
 {
     "cSpell.words": [
-        "apachectl"
+        "apachectl",
+        "htpasswd",
+        "noout",
+        "passout",
+        "Paulo",
+        "pstree",
+        "SSLCA"
     ],
     "remote.SSH.remoteServerListenOnSocket": false,
     "remote.SSH.defaultForwardedPorts": [

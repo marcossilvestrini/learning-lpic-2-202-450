@@ -27,6 +27,7 @@ www                    CNAME   ol9-apache-ha   ;http - apache ha
 skynet                 CNAME   www             ;http - apache ha - skynet main page
 music                  CNAME   www             ;http - apache ha - music main page
 store                  CNAME   www             ;http - apache ha - store main page
+finance                CNAME   www             ;http - apache ha - finance main page
 
 @                      IN      TXT     "leaning LPIC2 Exam 202-450 - Bind"
 @                      IN      TXT     "leaning LPIC2 Exam 202-450 - HTTP"

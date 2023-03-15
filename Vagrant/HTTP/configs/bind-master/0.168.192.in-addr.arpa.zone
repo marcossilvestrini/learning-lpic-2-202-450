@@ -12,7 +12,9 @@ $TTL 1h
                     NS      debian-bind-slave.lpic2.com.br.  ;secondary nameserver
 
 1                   PTR     router.lpic2.com.br.
+100                 PTR     silvestrini.lpic2.com.br.
 140                 PTR     ol9-bind-master.lpic2.com.br.
 141                 PTR     debian-bind-slave.lpic2.com.br.
 142                 PTR     ol9-apache-ha.com.br.
 143                 PTR     debian-apache-node01.lpic2.com.br.
+150                 PTR     debian-apache-node01.lpic2.com.br.

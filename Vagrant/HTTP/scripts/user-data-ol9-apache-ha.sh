@@ -15,7 +15,7 @@ cd /home/vagrant || exit
 dnf install -y policycoreutils-python-utils
 dnf install -y httpd
 dnf install -y mod_ssl
-dnf install -y easy-rsa
+dnf install -y gnutls-utils
 
 # Tunning apache
 
@@ -58,10 +58,11 @@ dos2unix /var/www/html/admin/.htaccess
 cp configs/apache-ha/site-skynet.conf /etc/httpd/conf.d/
 dos2unix /etc/httpd/conf.d/site-skynet.conf
 chmod 644 /etc/httpd/conf.d/site-skynet.conf
-mkdir {/var/www/html/skynet,/var/www/html/skynet/music,/var/www/html/skynet/store}
+mkdir {/var/www/html/skynet,/var/www/html/skynet/music,/var/www/html/skynet/store,/var/www/html/skynet/finance}
 cp configs/apache-ha/index-main.html /var/www/html/skynet/index.html
 cp configs/apache-ha/index-store.html /var/www/html/skynet/store/index.html
 cp configs/apache-ha/index-music.html /var/www/html/skynet/music/index.html
+cp configs/apache-ha/index-finance.html /var/www/html/skynet/finance/index.html
 mkdir /var/www/html/skynet/docs
 touch /var/www/html/skynet/docs/doc{1..6}
 
@@ -71,7 +72,7 @@ touch /var/www/html/skynet/docs/doc{1..6}
 rm /etc/ssl/certs/lpic2*
 openssl req -new -nodes -newkey rsa:4096 \
 -passout pass:vagrant \
--subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc. /OU=IT Department/CN=lpic2.com.br" \
 -keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.csr 2>/dev/null
 
 ## Check crs file
@@ -80,13 +81,89 @@ openssl req -in /etc/ssl/certs/lpic2.com.br.csr -text -noout
 ## Signing Certificates
 openssl req -new -x509 -days 30 -nodes -newkey rsa:4096 \
 -passout pass:vagrant \
--subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=Silvestrini Inc. /OU=IT Department/CN=lpic2.com.br" \
+-subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=LPIC2 Inc. /OU=IT Department/CN=lpic2.com.br" \
 -keyout /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.crt 2>/dev/null
 
 ## Generate client certificate
-openssl pkcs12 -password pass:vagrant  -export -in /etc/ssl/certs/lpic2.com.br.crt  \
+openssl pkcs12 -export \
+-in /etc/ssl/certs/lpic2.com.br.crt  \
 -password pass:vagrant \
--inkey /etc/ssl/certs/lpic2.com.br.key -out /etc/ssl/certs/lpic2.com.br.p12
+-inkey /etc/ssl/certs/lpic2.com.br.key \
+-out /etc/ssl/certs/lpic2.com.br.p12
+
+#########--------Begin new version Generate Certificates-------------#######
+
+# Creating the Certificate Authority's Certificate and Keys
+
+## Generate a private key for the CA:
+rm /etc/ssl/certs/*.pem
+openssl genrsa 2048  > /etc/ssl/certs/lpic2.com.br-ca-key.pem
+
+## Generate the X509 certificate for the CA:
+openssl req -new -x509 -nodes -days 30 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=lpic2.com.br" \
+-key /etc/ssl/certs/lpic2.com.br-ca-key.pem \
+-out /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+
+
+# Creating the Server's Certificate and Keys
+
+## Generate the private key and certificate request:
+openssl req -newkey rsa:2048 -nodes -days 30 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=ol9-apache-ha" \
+-keyout /etc/ssl/certs/lpic2.com.br-server-key.pem \
+-out /etc/ssl/certs/lpic2.com.br-server-req.pem 2>/dev/null
+
+## Generate the X509 certificate for the server:
+openssl x509 -req -days 30 -set_serial 01 \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=ol9-apache-ha" \
+-in /etc/ssl/certs/lpic2.com.br-server-req.pem \
+-out /etc/ssl/certs/lpic2.com.br-server-cert.pem \
+-CA /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+-CAkey /etc/ssl/certs/lpic2.com.br-ca-key.pem
+
+# Creating the Client's Certificate and Keys
+
+## Generate the private key and certificate request:
+openssl req -newkey rsa:2048 -nodes -days 30 \
+-passout pass:vagrant \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=finance" \
+-keyout /etc/ssl/certs/lpic2.com.br-client-key.pem \
+-out /etc/ssl/certs/lpic2.com.br-client-req.pem 2>/dev/null
+
+## Generate the X509 certificate for the client:
+openssl x509 -req -days 30 -set_serial 01 \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=finance" \
+-in /etc/ssl/certs/lpic2.com.br-client-req.pem \
+-out /etc/ssl/certs/lpic2.com.br-client-cert.pem \
+-CA /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+-CAkey /etc/ssl/certs/lpic2.com.br-ca-key.pem
+
+## Generate the pkc12 certificate for the client:
+openssl pkcs12 -export \
+-password pass:vagrant \
+-inkey /etc/ssl/certs/lpic2.com.br-client-key.pem \
+-in /etc/ssl/certs/lpic2.com.br-client-cert.pem \
+-out /etc/ssl/certs/lpic2.com.br-client-cert.p12
+
+# Verifying the Certificates
+
+## Verify the server certificate:
+openssl verify -CAfile /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+/etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+/etc/ssl/certs/lpic2.com.br-server-cert.pem
+certtool -i < /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+
+## Verify the client certificate:
+openssl verify -CAfile /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+/etc/ssl/certs/lpic2.com.br-ca-cert.pem \
+/etc/ssl/certs/lpic2.com.br-client-cert.pem
+certtool -i < /etc/ssl/certs/lpic2.com.br-client-cert.pem
+
+#########------------------End new version----------------------------#######
+
 
 ## Install http app
 cp -f configs/commons/index.html /var/www/html/
