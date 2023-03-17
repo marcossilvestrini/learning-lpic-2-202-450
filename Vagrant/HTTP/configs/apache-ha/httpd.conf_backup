@@ -2,7 +2,7 @@
 # This is the main Apache HTTP server configuration file.  It contains the
 # configuration directives that give the server its instructions.
 # See <URL:http://httpd.apache.org/docs/2.4/> for detailed information.
-# In particular, see
+# In particular, see 
 # <URL:http://httpd.apache.org/docs/2.4/mod/directives.html>
 # for a discussion of each configuration directive.
 #
@@ -11,7 +11,7 @@
 #
 # Do NOT simply read the instructions in here without understanding
 # what they do.  They're here only as hints or reminders.  If you are unsure
-# consult the online docs. You have been warned.
+# consult the online docs. You have been warned.  
 #
 # Configuration and logfile names: If the filenames you specify for many
 # of the server's control files begin with "/" (or "drive:/" for Win32), the
@@ -33,29 +33,6 @@
 #
 ServerRoot "/etc/httpd"
 
-########## BEGIN MY CONFIGURATION LPIC2 #########
-
-# MinSpareServers Directive
-# https://httpd.apache.org/docs/2.4/mod/prefork.html
-# Minimum number of idle child server processes
-MinSpareServers 1
-
-# MaxSpareServers Directive
-# https://httpd.apache.org/docs/2.4/mod/prefork.html
-# Maximum number of idle child server processes
-MaxSpareServers 5
-
-# Startservers Directive
-# https://httpd.apache.org/docs/2.4/mod/mpm_common.html#startservers
-# # Number of child server processes created at startup
-StartServers 7
-
-# MaxClients Diretive
-# Maximum number of client connection simultaneous
-MaxClients 30
-
-########## END MY CONFIGURATION LPIC2 #########
-
 #
 # Listen: Allows you to bind Apache to specific IP addresses and/or
 # ports, instead of the default. See also the <VirtualHost>
@@ -68,7 +45,6 @@ MaxClients 30
 #
 #Listen 12.34.56.78:80
 Listen 80
-
 
 #
 # Dynamic Shared Object (DSO) Support
@@ -86,7 +62,7 @@ Include conf.modules.d/*.conf
 
 #
 # If you wish httpd to run as a different user or group, you must run
-# httpd as root initially and it will switch.
+# httpd as root initially and it will switch.  
 #
 # User/Group: The name (or #number) of the user/group to run httpd as.
 # It is usually good practice to create a dedicated user and group for
@@ -112,7 +88,7 @@ Group apache
 # e-mailed.  This address appears on some server-generated pages, such
 # as error documents.  e.g. admin@your-domain.com
 #
-ServerAdmin admin@lpic2.com.br
+ServerAdmin root@localhost
 
 #
 # ServerName gives the name and port that the server uses to identify itself.
@@ -125,7 +101,7 @@ ServerAdmin admin@lpic2.com.br
 
 #
 # Deny access to the entirety of your server's filesystem. You must
-# explicitly permit access to web content directories in other
+# explicitly permit access to web content directories in other 
 # <Directory> blocks below.
 #
 <Directory />
@@ -177,36 +153,13 @@ DocumentRoot "/var/www/html"
     # It can be "All", "None", or any combination of the keywords:
     #   Options FileInfo AuthConfig Limit
     #
-    AllowOverride All
+    AllowOverride None
 
     #
     # Controls who can get stuff from this server.
     #
     Require all granted
-    
 </Directory>
-
-#
-# Virtualhost Main site
-#
-<VirtualHost 192.168.0.142>
-        ServerName www.lpic2.com.br        
-        DocumentRoot /var/www/html
-        Redirect / https://www.lpic2.com.br
-        Alias /logs /var/log/httpd
-</VirtualHost>
-<VirtualHost 192.168.0.142:443>
-        ServerName www.lpic2.com.br
-        DocumentRoot /var/www/html
-        Alias /logs /var/log/httpd
-        SSLEngine on        
-        SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
-        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem     
-
-        # enable HTTP/2, if available
-        Protocols h2 http/1.1
-</VirtualHost>
-
 
 #
 # DirectoryIndex: sets the file that Apache will serve if a directory
@@ -217,8 +170,8 @@ DocumentRoot "/var/www/html"
 </IfModule>
 
 #
-# The following lines prevent .htaccess and .htpasswd files from being
-# viewed by Web clients.
+# The following lines prevent .htaccess and .htpasswd files from being 
+# viewed by Web clients. 
 #
 <Files ".ht*">
     Require all denied
@@ -238,7 +191,7 @@ ErrorLog "logs/error_log"
 # Possible values include: debug, info, notice, warn, error, crit,
 # alert, emerg.
 #
-LogLevel debug
+LogLevel warn
 
 <IfModule log_config_module>
     #
@@ -267,20 +220,12 @@ LogLevel debug
     # (Combined Logfile Format) you can use the following directive.
     #
     CustomLog "logs/access_log" combined
-    CustomLog "logs/access_commom_log"common
-
-    ########## BEGIN MY CONFIGURATION LPIC2 #########
-    # Create my customlog configuration
-    LogFormat "%a %t %r %f %s \"%{User-Agent}i\"" lpic2
-    CustomLog "logs/lpic2.log" lpic2
-    ########### END MY CONFIGURATION LPIC2 ##########
-
 </IfModule>
 
 <IfModule alias_module>
     #
-    # Redirect: Allows you to tell clients about documents that used to
-    # exist in your server's namespace, but do not anymore. The client
+    # Redirect: Allows you to tell clients about documents that used to 
+    # exist in your server's namespace, but do not anymore. The client 
     # will make a new request for the document at its new location.
     # Example:
     # Redirect permanent /foo http://www.example.com/bar
@@ -297,14 +242,13 @@ LogLevel debug
     # the filesystem path.
 
     #
-    # ScriptAlias: This controls which directories contain server scripts.
+    # ScriptAlias: This controls which directories contain server scripts. 
     # ScriptAliases are essentially the same as Aliases, except that
     # documents in the target directory are treated as applications and
     # run by the server when requested rather than as documents sent to the
     # client.  The same rules about trailing "/" apply to ScriptAlias
     # directives as to Alias.
     #
-
     ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
 
 </IfModule>
@@ -357,7 +301,6 @@ LogLevel debug
     # For type maps (negotiated resources):
     #AddHandler type-map var
 
-
     #
     # Filters allow you to process content before it is sent to the client.
     #
@@ -370,7 +313,7 @@ LogLevel debug
 
 #
 # Specify a default charset for all content served; this enables
-# interpretation of all content as UTF-8 by default.  To use the
+# interpretation of all content as UTF-8 by default.  To use the 
 # default browser choice (ISO-8859-1), or to allow the META tags
 # in HTML content to override this choice, comment out this
 # directive:
@@ -398,10 +341,10 @@ AddDefaultCharset UTF-8
 #
 
 #
-# EnableMMAP and EnableSendfile: On systems that support it,
+# EnableMMAP and EnableSendfile: On systems that support it, 
 # memory-mapping or the sendfile syscall may be used to deliver
 # files.  This usually improves server performance, but must
-# be turned off when serving from networked-mounted
+# be turned off when serving from networked-mounted 
 # filesystems or if support for these functions is otherwise
 # broken on your system.
 # Defaults if commented: EnableMMAP On, EnableSendfile Off
@@ -413,4 +356,3 @@ EnableSendfile on
 #
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
 IncludeOptional conf.d/*.conf
-
