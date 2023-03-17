@@ -16,12 +16,22 @@ dnf install -y policycoreutils-python-utils
 dnf install -y httpd
 dnf install -y mod_ssl
 dnf install -y gnutls-utils
+dnf install -y ca-certificates
+
+# Set OpenSSL (/etc/httpd/conf.d/ssl.conf)
+#-rw-r--r--. 1 root root 8720 Feb 28 08:41 /etc/httpd/conf.d/ssl.conf
+# cp -p /etc/httpd/conf.d/ssl.conf configs/apache-ha/ssl.conf_backup
+# cp -f configs/apache-ha/ssl.conf /etc/httpd/conf.d/
+# dos2unix /etc/httpd/conf.d/ssl.conf
+# chmod 644 /etc/httpd/conf.d/ssl.conf
+# systemctl daemon-reload
+
 
 # Tunning apache
 
 ## Configure /etc/httpd/conf/httpd.conf
 #-rw-r--r--. 1 root root 12005 Oct  6 07:39 /etc/httpd/conf/httpd.conf
-cp -p /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf_backup
+cp -p /etc/httpd/conf/httpd.conf configs/apache-ha/httpd.conf_backup
 cp -f configs/apache-ha/httpd.conf /etc/httpd/conf/
 dos2unix /etc/httpd/conf/httpd.conf
 chmod 644 /etc/httpd/conf/httpd.conf
@@ -111,13 +121,13 @@ openssl req -new -x509 -nodes -days 30 \
 ## Generate the private key and certificate request:
 openssl req -newkey rsa:2048 -nodes -days 30 \
 -passout pass:vagrant \
--subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=ol9-apache-ha" \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=www.lpic2.com.br" \
 -keyout /etc/ssl/certs/lpic2.com.br-server-key.pem \
 -out /etc/ssl/certs/lpic2.com.br-server-req.pem 2>/dev/null
 
 ## Generate the X509 certificate for the server:
 openssl x509 -req -days 30 -set_serial 01 \
--subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=ol9-apache-ha" \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=www.lpic2.com.br" \
 -in /etc/ssl/certs/lpic2.com.br-server-req.pem \
 -out /etc/ssl/certs/lpic2.com.br-server-cert.pem \
 -CA /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
@@ -128,24 +138,25 @@ openssl x509 -req -days 30 -set_serial 01 \
 ## Generate the private key and certificate request:
 openssl req -newkey rsa:2048 -nodes -days 30 \
 -passout pass:vagrant \
--subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=finance" \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=finance.lpic2.com.br" \
 -keyout /etc/ssl/certs/lpic2.com.br-client-key.pem \
 -out /etc/ssl/certs/lpic2.com.br-client-req.pem 2>/dev/null
 
 ## Generate the X509 certificate for the client:
 openssl x509 -req -days 30 -set_serial 01 \
--subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=finance" \
+-subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=LPIC2 Inc./OU=IT Department/CN=finance.lpic2.com.br" \
 -in /etc/ssl/certs/lpic2.com.br-client-req.pem \
 -out /etc/ssl/certs/lpic2.com.br-client-cert.pem \
 -CA /etc/ssl/certs/lpic2.com.br-ca-cert.pem \
 -CAkey /etc/ssl/certs/lpic2.com.br-ca-key.pem
 
 ## Generate the pkc12 certificate for the client:
-openssl pkcs12 -export \
--password pass:vagrant \
+openssl pkcs12 \
+-export \
 -inkey /etc/ssl/certs/lpic2.com.br-client-key.pem \
 -in /etc/ssl/certs/lpic2.com.br-client-cert.pem \
--out /etc/ssl/certs/lpic2.com.br-client-cert.p12
+-out /etc/ssl/certs/lpic2.com.br-client-cert.p12 \
+-password pass:vagrant 
 
 # Verifying the Certificates
 
@@ -189,6 +200,12 @@ mkdir /var/www/html/skynet/perl
 cp configs/commons/app.pl /var/www/html/skynet/perl
 dos2unix /var/www/html/skynet/perl/app.pl
 chmod -R 755 /var/www/html/skynet/perl/app.pl
+
+# Reload Daemon(for systemctl units only)
+systemctl daemon-reload
+
+# Update trusted certificates
+update-ca-trust
 
 # Restart apache service
 apachectl configtest

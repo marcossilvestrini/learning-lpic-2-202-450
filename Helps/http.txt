@@ -1,0 +1,165 @@
+# Tunning HTTP Services
+
+----------------------------------------------------------------------------------------
+/etc/httpd/conf.d/ssl.conf
+----------------------------------------------------------------------------------------
+
+# intermediate configuration
+SSLProtocol             all -SSLv3 -TLSv1 -TLSv1.1
+SSLCipherSuite          ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
+SSLHonorCipherOrder     off
+SSLSessionTickets       off
+SSLUseStapling On
+SSLStaplingCache "shmcb:logs/ssl_stapling(32768)"
+
+----------------------------------------------------------------------------------------
+cp -f configs/apache-ha/ssl.conf /etc/httpd/conf.d/
+dos2unix /etc/httpd/conf.d/ssl.conf
+chmod 644 /etc/httpd/conf.d/ssl.conf
+systemctl daemon-reload
+apachectl configtest
+apachectl restart
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+httpd.conf
+----------------------------------------------------------------------------------------
+
+#
+# Virtualhost Main site
+#
+<VirtualHost 192.168.0.142>
+        ServerName www.lpic2.com.br        
+        DocumentRoot /var/www/html
+        Redirect / https://www.lpic2.com.br
+        Alias /logs /var/log/httpd
+</VirtualHost>
+<VirtualHost 192.168.0.142:443>
+        ServerName www.lpic2.com.br
+        DocumentRoot /var/www/html
+        Alias /logs /var/log/httpd
+        SSLEngine on
+        SSLCACertificateFile /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+        SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
+        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem        
+	    <Directory "/var/www/html/skynet/finance">
+                SSLVerifyClient require
+        </Directory>
+	  
+        # enable HTTP/2, if available
+        Protocols h2 http/1.1
+</VirtualHost>
+
+----------------------------------------------------------------------------------------
+cp -f configs/apache-ha/httpd.conf /etc/httpd/conf/
+dos2unix /etc/httpd/conf/httpd.conf
+chmod 644 /etc/httpd/conf/httpd.conf
+apachectl configtest
+apachectl restart
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+site-skynet.conf
+----------------------------------------------------------------------------------------
+
+# Logs
+LogFormat "%a %t %r %f %s \"%{User-Agent}i\"" skynet
+
+# Skynet main site
+<Directory "/var/www/html/skynet">   
+        Options Indexes FollowSymLinks    
+        Require all granted
+</Directory>
+
+# Virtualhost, alias and redirects - Site skynet.lpic2.com.br
+<VirtualHost 192.168.0.142>
+        ServerName skynet.lpic2.com.br
+        DocumentRoot /var/www/html/skynet
+        CustomLog "logs/access_skynet.log" skynet
+        Alias  /docs /var/www/html/skynet/docs
+        Redirect / https://skynet.lpic2.com.br
+        Redirect /music /music
+        Redirect /store /store
+        Redirect /php https://skynet.lpic2.com.br/php/info.php
+        Redirect /perl  https://skynet.lpic2.com.br/perl/app.pl
+</VirtualHost>
+<VirtualHost 192.168.0.142:443>
+        ServerName skynet.lpic2.com.br
+        DocumentRoot /var/www/html/skynet
+        CustomLog "logs/access_skynet.log" skynet
+        Alias  /docs /var/www/html/skynet/docs
+        SSLEngine on        
+        SSLCACertificateFile /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+        SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
+        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem        
+</VirtualHost>
+
+# Virtualhost, alias and redirects - Site music.lpic2.com.br
+<VirtualHost 192.168.0.142>
+        ServerName music.lpic2.com.br
+        DocumentRoot /var/www/html/skynet/music
+        CustomLog "logs/access_skynet_music.log" skynet
+        Redirect / https://music.lpic2.com.br     
+</VirtualHost>
+<VirtualHost 192.168.0.142:443>
+        ServerName music.lpic2.com.br
+        DocumentRoot /var/www/html/skynet/music
+        CustomLog "logs/access_skynet_music.log" skynet        
+        SSLEngine on
+        SSLCACertificateFile /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+        SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
+        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem
+</VirtualHost>
+
+#Virtualhost, alias and redirects - Site store.lpic2.com.br
+<VirtualHost 192.168.0.142>
+        ServerName store.lpic2.com.br
+        DocumentRoot /var/www/html/skynet/store
+        CustomLog "logs/access_skynet_store.log" skynet
+        Redirect / https://store.lpic2.com.br 
+</VirtualHost>
+<VirtualHost 192.168.0.142:443>
+        ServerName store.lpic2.com.br
+        DocumentRoot /var/www/html/skynet/store
+        CustomLog "logs/access_skynet_store.log" skynet
+        SSLEngine on
+        SSLCACertificateFile /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+        SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
+        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem
+</VirtualHost>
+
+#Virtualhost, alias and redirects - Site finance.lpic2.com.br
+<VirtualHost 192.168.0.142>
+        ServerName finance.lpic2.com.br
+        DocumentRoot /var/www/html/skynet/finance
+        CustomLog "logs/access_skynet_finance.log" skynet
+        Redirect / https://finance.lpic2.com.br
+</VirtualHost>
+<VirtualHost 192.168.0.142:443>
+        ServerName finance.lpic2.com.br
+        DocumentRoot /var/www/html/skynet/finance
+        CustomLog "logs/access_skynet_finance.log" skynet
+        SSLEngine on
+        SSLCACertificateFile /etc/ssl/certs/lpic2.com.br-ca-cert.pem
+        SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
+        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem   
+        <Directory "/var/www/html/skynet/finance">
+                SSLVerifyClient require
+        </Directory>
+</VirtualHost>
+
+----------------------------------------------------------------------------------------
+cp configs/apache-ha/site-skynet.conf /etc/httpd/conf.d/
+dos2unix /etc/httpd/conf.d/site-skynet.conf
+chmod 644 /etc/httpd/conf.d/site-skynet.conf
+apachectl configtest
+apachectl restart
+
+----------------------------------------------------------------------------------------
+commands
+----------------------------------------------------------------------------------------
+scp /etc/ssl/certs/lpic2.com.br-ca-cert.pem  /etc/ssl/certs/lpic2.com.br-client-cert.p12 vagrant@192.168.0.150:~/
+
+

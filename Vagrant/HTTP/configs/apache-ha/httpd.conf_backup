@@ -201,14 +201,12 @@ DocumentRoot "/var/www/html"
         Alias /logs /var/log/httpd
         SSLEngine on        
         SSLCertificateFile /etc/ssl/certs/lpic2.com.br-server-cert.pem
-        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem
+        SSLCertificateKeyFile /etc/ssl/certs/lpic2.com.br-server-key.pem     
+
         # enable HTTP/2, if available
         Protocols h2 http/1.1
 </VirtualHost>
 
-# Custom configuration - Silvestrini -  2023-03-16
-ServerTokens Prod
-SSLStaplingCache "shmcb:logs/ssl_stapling(32768)"
 
 #
 # DirectoryIndex: sets the file that Apache will serve if a directory
@@ -415,3 +413,4 @@ EnableSendfile on
 #
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
 IncludeOptional conf.d/*.conf
+
