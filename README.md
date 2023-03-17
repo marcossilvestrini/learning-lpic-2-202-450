@@ -1438,6 +1438,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [Apache Directives](https://httpd.apache.org/docs/2.4/mod/directives.html)
 * [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 * [Strong Ciphers for Apache, nginx and Lighttpd](https://cipherlist.eu/)
+* [SSL Tutorials](https://www.golinuxcloud.com/blog/)
 * [SSL Config Mozilla](https://ssl-config.mozilla.org/)
 * [LPIC-2 202-450 Objectives](https://www.lpi.org/our-certifications/exam-202-objectives)
 * [LPIC-2 202-450 Wiki](https://wiki.lpi.org/wiki/LPIC-2_Objectives_V4.5#Objectives:_Exam_202)

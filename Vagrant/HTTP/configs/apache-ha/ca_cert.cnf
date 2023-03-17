@@ -1,0 +1,17 @@
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_ca
+prompt = no
+
+[req_distinguished_name]
+countryName             = BR
+stateOrProvinceName     = Sao Paulo
+localityName            = Sao Paulo 
+organizationName        = LPIC2 Inc.
+commonName              = rootca.lpic2.com.br
+emailAddress			= admin@lpic2.com.br
+
+[ v3_ca ]
+basicConstraints=critical,CA:TRUE
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer

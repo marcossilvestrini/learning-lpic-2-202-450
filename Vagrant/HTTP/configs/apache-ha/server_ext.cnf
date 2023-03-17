@@ -1,0 +1,11 @@
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[alt_names]
+IP.1 = 192.168.0.142
+IP.2 = 192.168.0.143
+DNS.1 = ol9-apache-ha.lpic2.com.br
+DNS.2 = debian-apache-node01.lpic2.com.br
