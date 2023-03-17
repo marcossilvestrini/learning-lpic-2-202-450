@@ -1,6 +1,6 @@
 ------------------------------------------------------
 Check HTTP Stack for This Lab
-Date: 2023-03-17 10:41:34
+Date: 2023-03-17 15:23:30
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -9,7 +9,7 @@ Check Apache HA...
 
 Check Status of Apache HA...
 
-     Active: active (running) since Fri 2023-03-17 10:36:38 -03; 4min 56s ago
+     Active: active (running) since Fri 2023-03-17 15:18:51 -03; 4min 39s ago
 ------------------------------------------------------
 Check version of Apache HA...
 
@@ -39,7 +39,7 @@ Check Apache NODE01...
 
 Check status of Apache NODE01...
 
-     Active: active (running) since Fri 2023-03-17 10:38:59 -03; 2min 36s ago
+     Active: active (running) since Fri 2023-03-17 15:21:02 -03; 2min 29s ago
 ------------------------------------------------------
 Check version of Apache NODE01...
 
