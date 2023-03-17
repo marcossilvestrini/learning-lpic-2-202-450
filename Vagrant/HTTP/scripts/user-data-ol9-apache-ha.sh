@@ -57,6 +57,7 @@ touch /var/www/html/admin/admin_file{1..3}
 # Set sites for autentication rules(mod_authn)
 cp configs/commons/.htaccess /var/www/html/topsecret
 cp configs/commons/.htaccess /var/log/httpd
+chmod 755 /var/log/httpd/
 dos2unix /var/www/html/topsecret/.htaccess
 dos2unix /var/log/httpd/.htaccess
 
