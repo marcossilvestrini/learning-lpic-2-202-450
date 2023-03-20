@@ -1,11 +1,14 @@
 --------------------------------LINUX-----------------------------------
+# Get permission in octal notation (numerical notation)
+stat -c '%a' /etc/squid/squid.conf
+
 # sync files
 rsync -avzh --exclude=.vagrant --exclude=.git --progress /mnt/projects/alura/alura-lpi/Debian_Ubuntu/boxes/Ubuntu/desktop/Vagrantfile /home/marcos.silvestrini/vagrant-ubuntu-desktop
 
 # Copy files remote machines
 scp /etc/ssl/certs/lpic2.com.br-server-cert.pem /etc/ssl/certs/lpic2.com.br-client-cert.p12 vagrant@192.168.0.150:~/
 
-# Copy files vagrant machine
+# Copy files in vagrant remote machines
 vagrant scp ~/vagrant-protheus-core/install/license.zip ol8-protheus:/totvs/install
 
 # Set Timezone
@@ -61,7 +64,6 @@ d$: Cut everything from the cursor to the end of the line
 Putting (Pasting)
 P (uppercase): Paste before your cursor
 p (lowercase): Paste after your cursor
-
 
 
 -------------------------------WINDÃO--------------------------------

@@ -144,6 +144,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # CONFIGURE APACHE HTTP
     ol9_apache_ha.vm.provision "shell", path: "scripts/user-data-ol9-apache-ha.sh"
 
+    # GENERATE CERTIFICATES FOR APACHE
+    ol9_apache_ha.vm.provision "shell", path: "scripts/generate-certificates.sh" 
   end
 
   # VM debian_apache_node01

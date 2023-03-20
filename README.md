@@ -705,8 +705,14 @@ http_access
 
 #### 208.3 Important Commands
 
+##### squid
+
 ```sh
-Examples
+# Get squid version
+squid -v
+
+# Reconfigure squid
+squid -k reconfigure
 ```
 
 <p align="right">(<a href="#topic-208.3">back to sub topic 208.3</a>)</p>
