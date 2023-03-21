@@ -151,6 +151,9 @@ systemctl daemon-reload
 # Update trusted certificates
 update-ca-trust
 
+# Copy certificates for share
+cp -p /etc/ssl/certs/lpic2.com.br-ca-cert.pem /etc/ssl/certs/lpic2.com.br-client-cert.p12 configs/commons
+
 # Restart apache service
 apachectl configtest
 apachectl restart

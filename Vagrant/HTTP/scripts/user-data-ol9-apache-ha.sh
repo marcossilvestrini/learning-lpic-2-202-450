@@ -124,10 +124,20 @@ cp -f configs/apache-ha/squid.conf /etc/squid
 dos2unix /etc/squid/squid.conf
 chmod 640 /etc/squid/squid.conf
 
-# Create cache directories
+## Create cache directories
 squid -z
 
+## Set ACL's
+cp configs/commons/squid-banned-sites /etc/squid
+dos2unix /etc/squid/squid-banned-sites
+chmod 644 /etc/squid/squid-banned-sites
+
+## Create autentication file
+echo "vagrant" | htpasswd -c -i /etc/squid/.htpasswd vagrant
+echo "silvestrini" | htpasswd -i /etc/squid/.htpasswd silvestrini
+echo "lpic2" | htpasswd -i /etc/squid/.htpasswd lpic2
+
 ## Reload squid configuration
-squid -k reconfigure
+#squid -k reconfigure
 systemctl enable squid
 systemctl restart squid

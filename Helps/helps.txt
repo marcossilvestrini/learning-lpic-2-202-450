@@ -7,6 +7,11 @@ rsync -avzh --exclude=.vagrant --exclude=.git --progress /mnt/projects/alura/alu
 
 # Copy files remote machines
 scp /etc/ssl/certs/lpic2.com.br-server-cert.pem /etc/ssl/certs/lpic2.com.br-client-cert.p12 vagrant@192.168.0.150:~/
+sshpass -p "vagrant" scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null /etc/ssl/certs/lpic2.com.br-server-cert.pem /etc/ssl/certs/lpic2.com.br-client-cert.p12 vagrant@192.168.0.150:~/
+
+# Use sshpass for commands without iteractions
+sshpass -p "password" scp -r user@example.com:/some/remote/path /some/local/path
+sshpass -f "/path/to/passwordfile" scp -r user@example.com:/some/remote/path /some/local/path
 
 # Copy files in vagrant remote machines
 vagrant scp ~/vagrant-protheus-core/install/license.zip ol8-protheus:/totvs/install

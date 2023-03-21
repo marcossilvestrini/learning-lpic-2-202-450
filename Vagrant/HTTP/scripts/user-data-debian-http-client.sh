@@ -26,3 +26,7 @@ apt install -y firefox-esr
 
 ## Certificate utils
 apt install -y libnss3-tools
+
+# Copy certificates
+cp configs/commons/lpic2.com.br-ca-cert.pem configs/commons/lpic2.com.br-client-cert.p12 .
+dos2unix lpic2.com.br-ca-cert.pem

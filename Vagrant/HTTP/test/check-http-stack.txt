@@ -1,6 +1,6 @@
 ------------------------------------------------------
 Check HTTP Stack for This Lab
-Date: 2023-03-20 15:20:54
+Date: 2023-03-21 15:51:26
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -9,7 +9,7 @@ Check Apache HA...
 
 Check Status of Apache HA...
 
-     Active: active (running) since Mon 2023-03-20 15:13:54 -03; 7min ago
+     Active: active (running) since Tue 2023-03-21 15:46:18 -03; 5min ago
 ------------------------------------------------------
 Check version of Apache HA...
 
@@ -39,12 +39,12 @@ Check Apache NODE01...
 
 Check status of Apache NODE01...
 
-     Active: active (running) since Mon 2023-03-20 15:18:00 -03; 2min 57s ago
+     Active: active (running) since Tue 2023-03-21 15:48:54 -03; 2min 36s ago
 ------------------------------------------------------
 Check version of Apache NODE01...
 
-Server version: Apache/2.4.54 (Debian)
-Server built:   2022-06-09T04:26:43
+Server version: Apache/2.4.56 (Debian)
+Server built:   2023-03-08T03:05:04
 ------------------------------------------------------
 Check http status code of Apache NODE01...
 Site: http://debian-apache-node01.lpic2.com.br...
