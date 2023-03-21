@@ -130,4 +130,4 @@ squid -z
 ## Reload squid configuration
 squid -k reconfigure
 systemctl enable squid
-systemctl start squid
+systemctl restart squid
