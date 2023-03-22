@@ -25,15 +25,14 @@ body:
       placeholder: Tell us what you see!
       value: "A bug happened!"
     validations:
-      required: true
-  - type: dropdown
+      required: true  
+  - type: textarea
     id: version
     attributes:
       label: Version
       description: What version of our software are you running?
-      options:
-        - Latest (Default)
-        - Others
+      placeholder: v1.0.0
+      value: "v1.0.0"
     validations:
       required: true
   - type: dropdown
