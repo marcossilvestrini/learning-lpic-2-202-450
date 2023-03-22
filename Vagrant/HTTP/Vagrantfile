@@ -160,8 +160,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_nginx_ha.vm.hostname =VM_HA_NGINX_NAME
 
     # NETWORK
-    ol9_nginx_ha.vm.network "public_network",ip: "192.168.0.144",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
-    ol9_nginx_ha.vm.network "private_network",ip: "172.36.12.234",nic_type: "virtio"
+    ol9_nginx_ha.vm.network "public_network",ip: "192.168.0.143",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
+    ol9_nginx_ha.vm.network "private_network",ip: "172.36.12.233",nic_type: "virtio"
 
     # MOUNTS
     ol9_nginx_ha.vm.synced_folder ".", "/vagrant", disabled: true
@@ -181,9 +181,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_nginx_ha.vm.provision "shell", path: "scripts/user-data-ol9.sh"
 
     # CONFIGURE NGINX HTTP
-    ol9_nginx_ha.vm.provision "shell", path: "scripts/user-data-ol9-nginx-ha.sh"
-
-    
+    ol9_nginx_ha.vm.provision "shell", path: "scripts/user-data-ol9-nginx-ha.sh"    
   end
 
   # VM debian_apache_node01
@@ -197,8 +195,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_apache_node01.vm.hostname =VM_NODE01_NAME
 
     # NETWORK
-    debian_apache_node01.vm.network "public_network",ip: "192.168.0.143",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
-    debian_apache_node01.vm.network "private_network",ip: "172.36.12.233"
+    debian_apache_node01.vm.network "public_network",ip: "192.168.0.144",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_apache_node01.vm.network "private_network",ip: "172.36.12.234"
 
     # MOUNTS
     debian_apache_node01.vm.synced_folder ".", "/vagrant", disabled: true

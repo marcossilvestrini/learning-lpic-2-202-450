@@ -16,5 +16,6 @@ $TTL 1h
 140                 PTR     ol9-bind-master.lpic2.com.br.
 141                 PTR     debian-bind-slave.lpic2.com.br.
 142                 PTR     ol9-apache-ha.com.br.
-143                 PTR     debian-apache-node01.lpic2.com.br.
+143                 PTR     ol9-nginx-ha.com.br.
+144                 PTR     debian-apache-node01.lpic2.com.br.
 150                 PTR     debian-apache-node01.lpic2.com.br.
