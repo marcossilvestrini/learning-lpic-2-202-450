@@ -748,8 +748,20 @@ nginx
 
 #### 208.4 Important Commands
 
+#### nginx
+
 ```sh
-Examples
+# get version
+nginx -v
+
+# check configuration
+nginx -t
+
+# stop nginx
+nginx -s stop
+
+# reload configuration
+nginx -s reload
 ```
 
 <p align="right">(<a href="#topic-208.4">back to sub topic 208.4</a>)</p>

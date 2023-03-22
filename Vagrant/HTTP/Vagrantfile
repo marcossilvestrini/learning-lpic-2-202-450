@@ -135,7 +135,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.linked_clone = true
       vb.name =VM_HA_NAME
       vb.memory = 2048
-      vb.cpus = 2
+      vb.cpus = 1
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
@@ -174,7 +174,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.linked_clone = true
       vb.name =VM_HA_NGINX_NAME
       vb.memory = 2048
-      vb.cpus = 2
+      vb.cpus = 1
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
