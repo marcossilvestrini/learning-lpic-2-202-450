@@ -52,6 +52,7 @@ Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagran
 Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
 Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
 Copy-Item .\.vagrant\machines\ol9-apache-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-ha
+Copy-Item .\.vagrant\machines\ol9-nginx-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-nginx-ha
 Copy-Item .\.vagrant\machines\debian-apache-node01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node01
 Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
 

@@ -12,8 +12,8 @@ LANG=C
 cd /home/vagrant || exit
 
 #Variables
-IP_HA="192.168.0.142"
-IP_NODE01="192.168.0.143"
+IP_APACHE_HA="192.168.0.142"
+IP_NODE01="192.168.0.144"
 
 # File for outputs testing
 FILE_TEST=test/check-http-stack.txt
@@ -32,13 +32,13 @@ echo -e "$LINE\n" >>$FILE_TEST
 
 ## Check status
 echo -e "Check Status of Apache HA...\n" >>$FILE_TEST
-sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_HA -l vagrant \
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_APACHE_HA -l vagrant \
     sudo apachectl status | grep "Active" >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 
 ## Check version of apache
 echo -e "Check version of Apache HA...\n" >>$FILE_TEST
-sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_HA -l vagrant \
+sshpass -p 'vagrant' ssh -o StrictHostKeyChecking=no vagrant@$IP_APACHE_HA -l vagrant \
     sudo httpd -v >>$FILE_TEST
 echo $LINE >>$FILE_TEST
 

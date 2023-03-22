@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="bvMxqJy8REenpndCrTQX" name="Page-1">
-        <mxGraphModel dx="1103" dy="1584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
+        <mxGraphModel dx="1103" dy="1642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -15,8 +15,8 @@
                         <mxPoint x="340" y="-445" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="108" value="" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
-                    <mxGeometry x="570" y="-420" width="50" height="40" as="geometry"/>
+                <mxCell id="108" value="php-fpm" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="-415" width="90" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="113" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.7;exitY=0.983;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="8" target="108" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -38,7 +38,7 @@
                         <mxPoint x="446.00194077712564" y="-363.78679656440363" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="118" value="&lt;pre style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; overflow-wrap: normal; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 6px; word-break: normal;&quot;&gt;&lt;br&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#CCCCCC;rounded=1;arcSize=50;strokeWidth=1;spacing=4;shadow=1;sketch=0;" parent="1" vertex="1">
+                <mxCell id="118" value="&lt;pre style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; overflow-wrap: normal; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 6px; word-break: normal;&quot;&gt;/var/log/nginx&lt;/pre&gt;" style="whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#CCCCCC;rounded=1;arcSize=50;strokeWidth=1;spacing=4;shadow=1;sketch=0;" parent="1" vertex="1">
                     <mxGeometry x="330" y="-350" width="140" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="121" value="/etc/nginx/nginx.conf" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
