@@ -148,6 +148,44 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ol9_apache_ha.vm.provision "shell", path: "scripts/generate-certificates.sh" 
   end
 
+   # VM ol9_nginx_ha
+   config.vm.define "ol9-nginx-ha"  do |ol9_nginx_ha|
+    ol9_nginx_ha.vm.box = BOX_OL_NAME
+    ol9_nginx_ha.vm.box_url = "#{BOX_OL_URL}/#{BOX_OL_NAME}.json"
+
+    # VARIABLE HOSTNAME
+    VM_HA_NGINX_NAME= "ol9-nginx-ha"
+
+    # HOSTNAM
+    ol9_nginx_ha.vm.hostname =VM_HA_NGINX_NAME
+
+    # NETWORK
+    ol9_nginx_ha.vm.network "public_network",ip: "192.168.0.144",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
+    ol9_nginx_ha.vm.network "private_network",ip: "172.36.12.234",nic_type: "virtio"
+
+    # MOUNTS
+    ol9_nginx_ha.vm.synced_folder ".", "/vagrant", disabled: true
+    ol9_nginx_ha.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    ol9_nginx_ha.vm.synced_folder "./configs", "/home/vagrant/configs"
+    ol9_nginx_ha.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+
+    # PROVIDER
+    ol9_nginx_ha.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_HA_NGINX_NAME
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    ol9_nginx_ha.vm.provision "shell", path: "scripts/user-data-ol9.sh"
+
+    # CONFIGURE NGINX HTTP
+    ol9_nginx_ha.vm.provision "shell", path: "scripts/user-data-ol9-nginx-ha.sh"
+
+    
+  end
+
   # VM debian_apache_node01
   config.vm.define "debian-apache-node01"  do |debian_apache_node01|
     debian_apache_node01.vm.box = BOX_DEBIAN_NAME
