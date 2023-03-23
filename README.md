@@ -841,7 +841,7 @@ securing NFS.
 * TCP Wrappers
 * Awareness of NFSv4
 
-#### 202.2 Cited Objects
+#### 209.2 Cited Objects
 
 ```sh
 /etc/exports
