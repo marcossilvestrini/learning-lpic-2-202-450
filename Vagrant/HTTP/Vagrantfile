@@ -219,37 +219,37 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VM debian_apache_node02
   config.vm.define "debian-apache-node02"  do |debian_apache_node02|
-  debian_apache_node02.vm.box = BOX_DEBIAN_NAME
+    debian_apache_node02.vm.box = BOX_DEBIAN_NAME
 
-  # VARIABLE HOSTNAME
-  VM_NODE02_NAME= "debian-apache-node02"
+    # VARIABLE HOSTNAME
+    VM_NODE02_NAME= "debian-apache-node02"
 
-  # HOSTNAME
-  debian_apache_node02.vm.hostname =VM_NODE02_NAME
+    # HOSTNAME
+    debian_apache_node02.vm.hostname =VM_NODE02_NAME
 
-  # NETWORK
-  debian_apache_node02.vm.network "public_network",ip: "192.168.0.145",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
-  debian_apache_node02.vm.network "private_network",ip: "172.36.12.235"
+    # NETWORK
+    debian_apache_node02.vm.network "public_network",ip: "192.168.0.145",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_apache_node02.vm.network "private_network",ip: "172.36.12.235"
 
-  # MOUNTS
-  debian_apache_node02.vm.synced_folder ".", "/vagrant", disabled: true
-  debian_apache_node02.vm.synced_folder "../../Security/", "/home/vagrant/security"
-  debian_apache_node02.vm.synced_folder "./configs", "/home/vagrant/configs"
-  debian_apache_node02.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
+    # MOUNTS
+    debian_apache_node02.vm.synced_folder ".", "/vagrant", disabled: true
+    debian_apache_node02.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    debian_apache_node02.vm.synced_folder "./configs", "/home/vagrant/configs"
+    debian_apache_node02.vm.synced_folder "../../Scripts/lpic2/", "/home/vagrant/scripts"
 
-  #PROVIDER
-  debian_apache_node02.vm.provider "virtualbox" do |vb|
-    vb.linked_clone = true
-    vb.name =VM_NODE02_NAME
-    vb.memory = 2048
-    vb.cpus = 1
-  end
+    #PROVIDER
+    debian_apache_node02.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_NODE02_NAME
+      vb.memory = 2048
+      vb.cpus = 1
+    end
 
-  # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-  debian_apache_node02.vm.provision "shell", path: "scripts/user-data-debian.sh"
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    debian_apache_node02.vm.provision "shell", path: "scripts/user-data-debian.sh"
 
-  # CONFIGURE APACHE HTTP
-  debian_apache_node02.vm.provision "shell", path: "scripts/user-data-debian-apache-node01.sh"
+    # CONFIGURE APACHE HTTP
+    debian_apache_node02.vm.provision "shell", path: "scripts/user-data-debian-apache-node01.sh"
   end
 
   # VM debian_client
