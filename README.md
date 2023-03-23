@@ -871,8 +871,6 @@ Examples
 
 ## Topic 210: Network Client Management
 
-
-
 <a name="topic-210.1"></a>
 
 ### 210.1 DHCP configuration
