@@ -19,6 +19,7 @@ debian-bind-slave      A       192.168.0.141   ;glue record
 ol9-apache-ha          A       192.168.0.142   ;server apache http ha
 ol9-nginx-ha           A       192.168.0.143   ;server nginx http ha
 debian-apache-node01   A       192.168.0.144   ;server apache http node 1
+debian-apache-node02   A       192.168.0.145   ;server apache http node 2
 debian-http-client     A       192.168.0.150   ;server http client
 silvestrini            A       192.168.0.100   ;my desktop
 mail                   A       192.168.0.140   ;mail
@@ -29,6 +30,7 @@ skynet                 CNAME   www             ;http - apache ha - skynet main p
 music                  CNAME   www             ;http - apache ha - music main page
 store                  CNAME   www             ;http - apache ha - store main page
 finance                CNAME   www             ;http - apache ha - finance main page
+loadbalance            CNAME   ol9-nginx-ha    ;http - nginx loadbalance 
 
 @                      IN      TXT     "leaning LPIC2 Exam 202-450 - Bind"
 @                      IN      TXT     "leaning LPIC2 Exam 202-450 - HTTP"

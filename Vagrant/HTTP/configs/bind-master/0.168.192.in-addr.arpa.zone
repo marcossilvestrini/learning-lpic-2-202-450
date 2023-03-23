@@ -18,4 +18,5 @@ $TTL 1h
 142                 PTR     ol9-apache-ha.com.br.
 143                 PTR     ol9-nginx-ha.com.br.
 144                 PTR     debian-apache-node01.lpic2.com.br.
+145                 PTR     debian-apache-node02.lpic2.com.br.
 150                 PTR     debian-apache-node01.lpic2.com.br.

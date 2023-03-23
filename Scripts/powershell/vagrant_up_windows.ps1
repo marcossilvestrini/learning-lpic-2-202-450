@@ -54,6 +54,7 @@ Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projet
 Copy-Item .\.vagrant\machines\ol9-apache-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-ha
 Copy-Item .\.vagrant\machines\ol9-nginx-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-nginx-ha
 Copy-Item .\.vagrant\machines\debian-apache-node01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node01
+Copy-Item .\.vagrant\machines\debian-apache-node02\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node02
 Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
 
 #Fix powershell error
