@@ -48,6 +48,25 @@ http_access deny manager
 # INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
 #
 
+# MY CUSTOM RULE(S)
+auth_param basic realm Please login for use this proxy
+auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/.htpasswd
+
+# MY ACL -LPIC2
+acl debian-client src 192.168.0.150
+acl dest-linux dstdomain .gnu.org .opensource.org .debian.org .centos.org .getfedora.org .opensuse.org .ubuntu.com .kernel.org
+acl dest-lpic2 dstdomain .lpi.org .lpic2.com.br
+acl work-time time MTWHF 09:00-20:00
+acl banned-sites url_regex -i "/etc/squid/squid-banned-sites"
+acl autentication proxy_auth REQUIRED
+
+# MY RULES - LPIC2
+http_access allow debian-client dest-lpic2
+http_access allow debian-client dest-linux
+http_access deny debian-client
+http_access deny banned-sites work-time
+http_access allow autentication
+
 # Example rule allowing access from your local networks.
 # Adapt localnet in the ACL section to list your (internal) IP networks
 # from where browsing should be allowed
@@ -61,7 +80,7 @@ http_access deny all
 http_port 3128
 
 # Uncomment and adjust the following to add a disk cache directory.
-#cache_dir ufs /var/spool/squid 100 16 256
+cache_dir ufs /var/spool/squid 100 16 256
 
 # Leave coredumps in the first cache dir
 coredump_dir /var/spool/squid

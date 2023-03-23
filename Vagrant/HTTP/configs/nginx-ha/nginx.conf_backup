@@ -38,9 +38,11 @@ http {
     server {
         listen       80;
         listen       [::]:80;
-        server_name  _;
-        root         /usr/share/nginx/html;
-
+        #server_name  _;
+        server_name www.lpic2.com.br lpic2.com.br;
+        #root         /usr/share/nginx/html;
+        root         /var/www/html;
+        
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
 
@@ -51,6 +53,26 @@ http {
         error_page 500 502 503 504 /50x.html;
         location = /50x.html {
         }
+
+        # Reverse Proxy
+        location / {
+            proxy_pass http://debian-apache-node01:80;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_set_header Host $host;
+        }
+
+        # PHP
+        location ~ \.(php|phar)(/.*)?$ {
+            fastcgi_split_path_info ^(.+\.(?:php|phar))(/.*)$;
+            fastcgi_intercept_errors on;
+            fastcgi_index  index.php;
+            include        fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  PATH_INFO $fastcgi_path_info;
+            fastcgi_pass   php-fpm;
+        }
+        
     }
 
 # Settings for a TLS enabled server.

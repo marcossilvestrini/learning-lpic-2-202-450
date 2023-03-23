@@ -113,16 +113,36 @@ vagrant up
 
 ## Roadmap
 
-* [x] Create IaC for VM for stack
-  * [x] Create Vagrantfile with VM's
-    * [x] Create vm ol9-apache-ha
-    * [x] Create vm debian-apache-node01
+* [x] Create IaC for provision Virtual Machines of Stack(Vagrant)
+  * [x] Create vm ol9-apache-ha
+  * [x] Create vm ol9-nginx-ha
+  * [x] Create vm debian-apache-node01
+  * [x] Create vm debian-apache-node02
 * [x] Install and Configure Apache
   * [x] Create script for install and configure apache in server ol9-apache-ha
   * [x] Create script for install and configure apache in server debian-apache-node01
-* [ ] Create script for test apache stack
-* [ ] Create pipeline for print test
-* [ ] Create pipeline for send test in slack channel
+  * [x] Create script for install and configure apache in server debian-apache-node02
+  * [x] Configure Https for all sites
+  * [x] Configure Virtual host for all sites
+  * [x] Configure authentication and authorization modules for sites(.htaccess,.htpasswd)
+* [x] Create Script for Generate Certificates
+  * [x] Generate a CA Root certificate
+  * [x] Generate a Self-Signed Server certificate  
+  * [x] Generate a Self-Signed Client certificate
+* [x] Create script for Install and Configure Squid Proxy
+  * [x] Install squid
+  * [x] Configure Squid
+* [x] Install and Configure Nginx
+  * [x] Create script for install and configure apache in server ol9-nginx-ha
+  * [x] Configure Reverse Proxy(loadbalance)
+* [x] Create script for test Apache Stack
+  * [x] Check Service is Running
+  * [x] Check Version
+  * [x] Check Status HTTP
+  * [x] Check Status Module PHP
+  * [x] Check Status Module Perl
+* [x] Create pipeline for print test
+* [x] Create pipeline for send test in slack channel
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -158,7 +178,10 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 
 * [http](https://www.isc.org/http/)
 * [http Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
-* [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+* [Apache](https://www.apache.org/)
+* [Nginx](https://www.nginx.com/)
+* [Openssh](https://www.openssh.com/)
+* [Squid](http://www.squid-cache.org/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

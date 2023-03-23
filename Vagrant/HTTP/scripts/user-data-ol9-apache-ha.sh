@@ -9,6 +9,10 @@ MULTILINE-COMMENT
 
 export LANG=C
 
+#Variables
+PRIVATE_IP=$(ip add show | grep 192.168.0 | cut -c 10-22)
+MACHINE_NAME=$(hostname -f)
+
 cd /home/vagrant || exit
 
 # Install Apache
@@ -66,28 +70,45 @@ dos2unix /var/log/httpd/.htaccess
 cp configs/commons/.htaccess_admin /var/www/html/admin/.htaccess
 dos2unix /var/www/html/admin/.htaccess
 
+# Create Main Site - www.lpic2.com.br and set: Virtualhost, alias and redirects
+cp -f configs/commons/index.html /var/www/html/
+sed -i "s/var_ip/$PRIVATE_IP/g" "/var/www/html/index.html"
+sed -i "s/var_hostname/$MACHINE_NAME/g" "/var/www/html/index.html"
+dos2unix /var/www/html/index.html
+
 # Create SKYNET and set: Virtualhost, alias and redirects
 cp configs/apache-ha/site-skynet.conf /etc/httpd/conf.d/
 dos2unix /etc/httpd/conf.d/site-skynet.conf
 chmod 644 /etc/httpd/conf.d/site-skynet.conf
 mkdir {/var/www/html/skynet,/var/www/html/skynet/music,/var/www/html/skynet/store}
+
+## Site skynet.lpic2.com.br
 cp configs/apache-ha/index-main.html /var/www/html/skynet/index.html
-cp configs/apache-ha/index-music.html /var/www/html/skynet/music/index.html
-cp configs/apache-ha/index-store.html /var/www/html/skynet/store/index.html
+sed -i "s/var_ip/$PRIVATE_IP/g" "/var/www/html/skynet/index.html"
+sed -i "s/var_hostname/$MACHINE_NAME/g" "/var/www/html/skynet/index.html"
 mkdir /var/www/html/skynet/docs
 touch /var/www/html/skynet/docs/doc{1..6}
+
+## Site music.lpic2.com.br
+cp configs/apache-ha/index-music.html /var/www/html/skynet/music/index.html
+sed -i "s/var_ip/$PRIVATE_IP/g" "/var/www/html/skynet/music/index.html"
+sed -i "s/var_hostname/$MACHINE_NAME/g" "/var/www/html/skynet/music/index.html"
+
+## Site store.lpic2.com.br
+cp configs/apache-ha/index-store.html /var/www/html/skynet/store/index.html
+sed -i "s/var_ip/$PRIVATE_IP/g" "/var/www/html/skynet/store/index.html"
+sed -i "s/var_hostname/$MACHINE_NAME/g" "/var/www/html/skynet/store/index.html"
 
 # Create FINANCE and set: Virtualhost, alias and redirects
 cp configs/apache-ha/site-finance.conf /etc/httpd/conf.d/
 dos2unix /etc/httpd/conf.d/site-finance.conf
 chmod 644 /etc/httpd/conf.d/site-finance.conf
+
+## Create site - finance.lpic2.com.br
 mkdir /var/www/html/finance
 cp configs/apache-ha/index-finance.html /var/www/html/finance/index.html
-
-
-## Install http app
-cp -f configs/commons/index.html /var/www/html/
-dos2unix /var/www/html/index.html
+sed -i "s/var_ip/$PRIVATE_IP/g" "/var/www/html/finance/index.html"
+sed -i "s/var_hostname/$MACHINE_NAME/g" "/var/www/html/finance/index.html"
 
 # Install php app
 dnf install -y php-{common,gmp,fpm,curl,intl,pdo,mbstring,gd,xml,cli,zip,mysqli}
