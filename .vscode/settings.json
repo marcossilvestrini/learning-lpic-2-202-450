@@ -3,6 +3,7 @@
         "apachectl",
         "htpasswd",
         "loadbalance",
+        "nameserver",
         "noout",
         "passout",
         "Paulo",

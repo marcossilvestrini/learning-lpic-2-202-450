@@ -14,6 +14,10 @@ $scriptPath=$PSScriptRoot
 $semafore="$scriptPath\vagrant-up.silvestrini"
 New-Item -ItemType File -Path $semafore -Force >$null
 
+# SSH
+$ssh_path="$(($scriptPath | Split-Path -Parent)| Split-Path -Parent)\Security"
+Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
+
 #Vagrant Boxes
 # $debian = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian"
 # $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
@@ -63,7 +67,7 @@ Set-Location $fs
 Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
 Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
-Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-debian-client01
+Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
 
 
 #Fix powershell error

@@ -76,6 +76,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # SET DNS BIND
     ol9_server01.vm.provision "shell", path: "scripts/user-data-bind-master.sh"
 
+    # INSTALL AND CONFIGURE SAMBA
+    ol9_server01.vm.provision "shell", path: "scripts/samba-server.sh"
+
   end
 
   # VM debian_server01
@@ -95,7 +98,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # MOUNTS
     debian_server01.vm.synced_folder ".", "/vagrant", disabled: true
     debian_server01.vm.synced_folder "../../Security/", "/home/vagrant/security"
-    debian_server01.vm.synced_folder "./scripts/lpic2/", "/home/vagrant/scripts"
+    debian_server01.vm.synced_folder "./scripts", "/home/vagrant/scripts"
     debian_server01.vm.synced_folder "./configs", "/home/vagrant/configs"
 
     #PROVIDER
@@ -107,7 +110,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    debian_server01.vm.provision "shell", path: "scripts/user-debian.sh"
+    debian_server01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+    # INSTALL AND CONFIGURE SAMBA
+    debian_server01.vm.provision "shell", path: "scripts/samba-server.sh"
   end
 
 
@@ -129,7 +135,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_client01.vm.synced_folder ".", "/vagrant", disabled: true
     debian_client01.vm.synced_folder "../../Security/", "/home/vagrant/security"
     debian_client01.vm.synced_folder "./configs", "/home/vagrant/configs"
-    debian_client01.vm.synced_folder "./scripts/lpic2/", "/home/vagrant/scripts"
+    debian_client01.vm.synced_folder "./scripts", "/home/vagrant/scripts"
     debian_client01.vm.synced_folder "./test", "/home/vagrant/test"
 
     #PROVIDER
@@ -142,6 +148,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
     debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+    # INSTALL AND CONFIGURE SAMBA CLIENT AND SHARES
+    debian_server01.vm.provision "shell", path: "scripts/samba-client.sh"
     
   end
 

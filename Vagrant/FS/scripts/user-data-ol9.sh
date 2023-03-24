@@ -30,11 +30,6 @@ dnf install -y tree
 dnf install -y net-tools
 dnf install -y traceroute
 dnf install -y sysstat
-dnf install -y bind
-dnf install -y bind-utils
-dnf install -y whois
-dnf install -y bind-dnssec-utils
-dnf install -y bind-chroot
 
 # Set profile in /etc/profile
 cp -f configs/commons/profile-ol9 /etc/profile
@@ -43,10 +38,12 @@ dos2unix /etc/profile
 # Set vim profile
 cp -f configs/commons/.vimrc .
 dos2unix .vimrc
+chown vagrant:vagrant .vimrc
 
 # Set bash session
 cp -f configs/commons/.bashrc-ol9 .bashrc
 dos2unix .bashrc .vimrc
+chown root:root .bashrc .vimrc
 
 # Set properties for user root
 cp -f .bashrc .vimrc /root/

@@ -74,6 +74,14 @@ p (lowercase): Paste after your cursor
 -------------------------------WINDÃO--------------------------------
 
 -----------------------------------------
+# Create local user (powershell as admin)
+$Pwd = Read-Host -AsSecureString
+New-LocalUser "vagrant" -Password $Pwd -FullName "Vagrant user" -Description "Vagrant user for labs"
+Add-LocalGroupMember -Group "Administrators" -Member "vagrant"
+Get-LocalGroupMember -Group "Administrators"
+-----------------------------------------
+
+-----------------------------------------
 # Windows - Open terminal tabs
 wt -d "" -p "Command Promt" vagrant status ; split-pane -d "" vagrant status
 -----------------------------------------

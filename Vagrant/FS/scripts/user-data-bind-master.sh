@@ -11,6 +11,13 @@ export LANG=C
 
 cd /home/vagrant || exit
 
+# Install packages
+dnf install -y bind
+dnf install -y bind-utils
+dnf install -y whois
+dnf install -y bind-dnssec-utils
+dnf install -y bind-chroot
+
 # Configure BIND
 
 ## Stop bind

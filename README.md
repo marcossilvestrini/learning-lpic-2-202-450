@@ -813,8 +813,58 @@ mount.cifs
 
 #### 209.1 Important Commands
 
+##### smbpasswd
+
 ```sh
-Examples
+# create user
+smbpasswd -a vagrant
+yes vagrant|head -n 2|smbpasswd -a -s vagrant
+
+# delete user 
+smbpasswd -x vagrant
+```
+
+##### pdbedit - manage the SAM database (Database of Samba Users)
+
+```sh
+# list samba users
+pdbedit -L -v
+pdbedit -L
+```
+
+##### testparm
+
+```sh
+# check samba configurations
+testparm -v
+```
+
+##### smbclient
+
+```sh
+# connect in home samba server
+smbclient //debian-server01/vagrant -U vagrant -password vagrant
+
+# list files in home samba server
+smbclient -L //debian-server01 -U vagrant
+```
+
+##### smbstatus
+
+```sh
+# get samba informations
+smbstatus
+smbstatus -S
+
+# get samba informations in specific user
+smbstatus -u vagrant
+```
+
+##### mount
+
+```sh
+# mount cifs filesystem
+mount -t cifs -o username=vagrant,password=vagrant //ol9-server01/vagrant /mnt/ol9-server01
 ```
 
 <p align="right">(<a href="#topic-209.1">back to sub topic 209.1</a>)</p>

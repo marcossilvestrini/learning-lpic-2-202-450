@@ -1,6 +1,6 @@
 $TTL 1h
 
-@                   IN      SOA     ol9-bind-master.lpic2.com.br.   admin.lpic2.com.br. (
+@                   IN      SOA     ol9-server01.lpic2.com.br.   admin.lpic2.com.br. (
                     01      ; serial
                     28800   ; refresh (8h)
                     7200    ; retry (2h)
@@ -8,8 +8,7 @@ $TTL 1h
                     3600    ; negative caching (1h)
 )
 
-                    NS      ol9-bind-master.lpic2.com.br. ;primary nameserver
-                    NS      debian-bind-slave.lpic2.com.br.  ;secondary nameserver
+                    NS      ol9-server01.lpic2.com.br. ;primary nameserver                    
 
 1                   PTR     router.lpic2.com.br.
 100                 PTR     silvestrini.lpic2.com.br.

@@ -32,6 +32,9 @@ apt-get install -y network-manager
 apt-get install -y sysstat
 apt-get install -y htop
 apt-get install -y collectd
+apt-get install -y smbclient
+apt-get install -y cifs-utils
+
 
 # Set profile in /etc/profile
 cp -f configs/commons/profile-debian /etc/profile
@@ -40,6 +43,7 @@ dos2unix /etc/profile
 # Set vim profile
 cp -f configs/commons/.vimrc .
 dos2unix .vimrc
+chown vagrant:vagrant .vimrc
 
 # Set bash session
 cp -f configs/commons/.bashrc-debian .bashrc
@@ -62,7 +66,7 @@ cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
 
 # Set GnuGP
-echo vagrant | $(su -c "gpg --batch --gen-key configs/gen-key-script" -s /bin/bash vagrant)
+echo vagrant | $(su -c "gpg --batch --gen-key configs/commons/gen-key-script" -s /bin/bash vagrant)
 echo vagrant | $(su -c "gpg --export --armor vagrant > .gnupg/vagrant.pub.key" -s /bin/bash vagrant)
 
 # Set X11 Server
