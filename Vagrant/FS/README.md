@@ -1,9 +1,10 @@
 <h1><a name="readme-top"></a></h1>
 
 [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml) [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml)
-# HTTP
 
-![202-450 Linux Engineer](../../Images/web-servers.jpg)
+# FILE SHARING
+
+![202-450 Linux Engineer](../../Images/file_sharing.jpg)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -43,11 +44,11 @@
 
 ## About Project
 
-This project up a stack of HTTP server for labs.
+This project up a stack of File share servers with Samba and NFS for labs.
 
 ## Whats is?
 
-In this project, I up a stack of HTTP server with apache and nginx.
+In this project, I up a stack of File share servers with Samba and NFS.
 
 ### Vagrant
 
@@ -55,7 +56,7 @@ In this project, I up a stack of HTTP server with apache and nginx.
 
 ### Shell provisioner
 
-I use vagrant shell provisioner for configure http service and others tools of this stack
+I use vagrant shell provisioner for configure samba service, nfs and others tools of this stack
 
 ### Git Actions (pipelines)
 
@@ -111,36 +112,12 @@ vagrant up
 
 ## Roadmap
 
-* [x] Create IaC for provision Virtual Machines of Stack(Vagrant)
-  * [x] Create vm ol9-apache-ha
-  * [x] Create vm ol9-nginx-ha
-  * [x] Create vm debian-apache-node01
-  * [x] Create vm debian-apache-node02
-* [x] Install and Configure Apache
-  * [x] Create script for install and configure apache in server ol9-apache-ha
-  * [x] Create script for install and configure apache in server debian-apache-node01
-  * [x] Create script for install and configure apache in server debian-apache-node02
-  * [x] Configure Https for all sites
-  * [x] Configure Virtual host for all sites
-  * [x] Configure authentication and authorization modules for sites(.htaccess,.htpasswd)
-* [x] Create Script for Generate Certificates
-  * [x] Generate a CA Root certificate
-  * [x] Generate a Self-Signed Server certificate  
-  * [x] Generate a Self-Signed Client certificate
-* [x] Create script for Install and Configure Squid Proxy
-  * [x] Install squid
-  * [x] Configure Squid
-* [x] Install and Configure Nginx
-  * [x] Create script for install and configure apache in server ol9-nginx-ha
-  * [x] Configure Reverse Proxy(loadbalance)
-* [x] Create script for test Apache Stack
-  * [x] Check Service is Running
-  * [x] Check Version
-  * [x] Check Status HTTP
-  * [x] Check Status Module PHP
-  * [x] Check Status Module Perl
-* [x] Create pipeline for print test
-* [x] Create pipeline for send test in slack channel
+* [x] Install And Configure Samba
+  * [x] Install Samba
+  * [x] Configure Samba
+* [x] Install And Configure Samba
+  * [x] Install NFS
+  * [x] Configure NFS
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -174,12 +151,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 
 ## Acknowledgments
 
-* [http](https://www.isc.org/http/)
-* [http Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
-* [Apache](https://www.apache.org/)
-* [Nginx](https://www.nginx.com/)
-* [Openssh](https://www.openssh.com/)
-* [Squid](http://www.squid-cache.org/)
+* [Samba](samba.org)
+* [NFS](https://linux-nfs.org/wiki/index.php/Main_Page)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

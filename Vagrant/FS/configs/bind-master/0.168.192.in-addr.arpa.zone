@@ -13,10 +13,6 @@ $TTL 1h
 
 1                   PTR     router.lpic2.com.br.
 100                 PTR     silvestrini.lpic2.com.br.
-140                 PTR     ol9-bind-master.lpic2.com.br.
-141                 PTR     debian-bind-slave.lpic2.com.br.
-142                 PTR     ol9-apache-ha.com.br.
-143                 PTR     ol9-nginx-ha.com.br.
-144                 PTR     debian-apache-node01.lpic2.com.br.
-145                 PTR     debian-apache-node02.lpic2.com.br.
-150                 PTR     debian-http-client.lpic2.com.br.
+140                 PTR     ol9-server01.lpic2.com.br.
+141                 PTR     debian-server01.lpic2.com.br.
+150                 PTR     debian-client01.lpic2.com.br.
