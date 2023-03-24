@@ -46,16 +46,25 @@ New-Item -ItemType File -Path $semafore -Force >$null
 
 
 #Servers HTTP
-$http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
-Set-Location $http
+# $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
+# Set-Location $http
+# Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+# Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
+# Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
+# Copy-Item .\.vagrant\machines\ol9-apache-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-ha
+# Copy-Item .\.vagrant\machines\ol9-nginx-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-nginx-ha
+# Copy-Item .\.vagrant\machines\debian-apache-node01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node01
+# Copy-Item .\.vagrant\machines\debian-apache-node02\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node02
+# Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
+
+#Servers FILE SHARING
+$fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
+Set-Location $fs
 Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
-Copy-Item .\.vagrant\machines\ol9-bind-master\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-master
-Copy-Item .\.vagrant\machines\debian-bind-slave\virtualbox\private_key F:\Projetos\vagrant-pk\debian-bind-slave
-Copy-Item .\.vagrant\machines\ol9-apache-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-apache-ha
-Copy-Item .\.vagrant\machines\ol9-nginx-ha\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-nginx-ha
-Copy-Item .\.vagrant\machines\debian-apache-node01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node01
-Copy-Item .\.vagrant\machines\debian-apache-node02\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node02
-Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
+Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
+Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
+Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-debian-client01
+
 
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0

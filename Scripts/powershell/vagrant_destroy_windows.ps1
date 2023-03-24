@@ -39,6 +39,10 @@ Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.
 Set-Location $http
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
 
+#Destroy fs stack
+Set-Location $fs
+Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
+
 # Delete folder virtualbox machines artefacts
 $vmFolders | ForEach-Object {
     If(Test-Path $_){
