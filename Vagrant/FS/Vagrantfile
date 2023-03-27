@@ -150,7 +150,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
 
     # INSTALL AND CONFIGURE SAMBA CLIENT AND SHARES
-    debian_server01.vm.provision "shell", path: "scripts/samba-client.sh"
+    debian_client01.vm.provision "shell", path: "scripts/samba-client.sh"
     
   end
 
