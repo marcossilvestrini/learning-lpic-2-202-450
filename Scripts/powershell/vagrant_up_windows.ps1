@@ -1,3 +1,17 @@
+<#
+.Synopsis
+   Up lab for learning
+.DESCRIPTION
+   Set folder of virtualbox VM's
+   Create a semafore for vagrant up
+   Copy public key for vagrant shared folder
+   This script is used for create a new lab with vagrant.
+   Create all VM's in Vagrantfile  
+   Copy all private key of VM's for F:\Projetos\vagrant_pk folder   
+.EXAMPLE
+   & vagrant_up_windows.ps1
+#>
+
 #Stop vagrant process
 Get-Process -Name *vagrant* | Stop-Process -Force
 Get-Process -Name *ruby* | Stop-Process -Force

@@ -1,3 +1,15 @@
+<#
+.Synopsis
+   Destroy lab for learning
+.DESCRIPTION
+   This script is used for destroy lab with vagrant.
+   Destroy and delete all VM's in Vagrantfile
+   Delete all folders with VM's in Vagrantfile
+.EXAMPLE
+   & vagrant_destroy_windows.ps1
+#>
+
+
 #Stop vagrant process
 Get-Process -Name *vagrant* | Stop-Process -Force
 Get-Process -Name *ruby* | Stop-Process -Force
