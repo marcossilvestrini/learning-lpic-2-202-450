@@ -26,7 +26,8 @@
 ## Browsing/Identification ###
 
 # Change this to the workgroup/NT-domain name your Samba server will part of
-   workgroup = WORKGROUP
+   #workgroup = WORKGROUP
+   workgroup = silvestrini
 
 #### Networking ####
 

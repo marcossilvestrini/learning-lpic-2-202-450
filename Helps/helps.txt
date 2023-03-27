@@ -74,8 +74,9 @@ p (lowercase): Paste after your cursor
 -------------------------------WINDÃO--------------------------------
 
 -----------------------------------------
-# Create local user (powershell as admin)
-$Pwd = Read-Host -AsSecureString
+# Create local user vagrant (powershell as admin)
+#$Pwd = Read-Host -AsSecureString
+$Pwd = ConvertTo-SecureString "vagrant" -AsPlainText -Force
 New-LocalUser "vagrant" -Password $Pwd -FullName "Vagrant user" -Description "Vagrant user for labs"
 Add-LocalGroupMember -Group "Administrators" -Member "vagrant"
 Get-LocalGroupMember -Group "Administrators"

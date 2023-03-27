@@ -61,7 +61,7 @@ Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
 # Copy-Item .\.vagrant\machines\debian-apache-node02\virtualbox\private_key F:\Projetos\vagrant-pk\debian-apache-node02
 # Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
 
-#Servers FILE SHARING
+# Up Servers FILE SHARING
 $fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
 Set-Location $fs
 Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
