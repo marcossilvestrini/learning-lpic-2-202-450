@@ -11,7 +11,7 @@
 if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))  
 {  
   $arguments = "& '" +$myinvocation.mycommand.definition + "'"
-  Start-Process -Wait powershell -Verb runAs -ArgumentList $arguments
+  Start-Process -Wait powershell -Verb runAs -WindowStyle Hidden -ArgumentList $arguments
   Break
 }
 
