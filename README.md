@@ -860,6 +860,38 @@ smbstatus -S
 smbstatus -u vagrant
 ```
 
+##### nmblookup
+
+```sh
+# check status of samba\netbios server
+nmblookup -S windows-server
+nmblookup -A 192.168.0.100
+```
+
+##### samba-tool
+
+```sh
+# list samba stack process(pdc,dns,etc)
+samba-tool processes
+```
+
+##### smbcontrol
+
+```sh
+# reload config - smbd,nmbd,winbindd
+smbcontrol all reload-config
+
+# stop smbd
+smbcontrol smbd shutdown
+```
+
+##### net
+
+```sh
+# show share of specific user
+net -S debian-server01 -U vagrant share
+```
+
 ##### mount
 
 ```sh
