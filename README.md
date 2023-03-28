@@ -1,5 +1,7 @@
 <h1><a name="readme-top"></a></h1>
 
+[![Check bind Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml) [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml) [![Release](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/release.yml)
+
 [![MIT License][license-shield]][license-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -895,8 +897,14 @@ net -S debian-server01 -U vagrant share
 ##### mount
 
 ```sh
-# mount cifs filesystem
+# mount cifs remote share linux
 mount -t cifs -o username=vagrant,password=vagrant //ol9-server01/vagrant /mnt/ol9-server01
+
+# mount cifs remote filesystem windows
+mount -t cifs -o vers=2.0,username=vagrant,password=vagrant //silvestrini/Projetos /mnt/windows-project
+
+# mount NFS remote share linux
+mount -t nfs debian-server01:/var/log /mnt/nfs-debian-server01-logs
 ```
 
 <p align="right">(<a href="#topic-209.1">back to sub topic 209.1</a>)</p>
@@ -941,8 +949,51 @@ portmapper
 
 #### 209.2 Important Commands
 
+##### showmounts
+
 ```sh
-Examples
+# Show NFS mount table
+showmount -e
+showmount -e debian-server01
+```
+
+##### rpcinfo
+
+```sh
+# Check NFS server
+rpcinfo -p
+```
+
+##### exportfs
+
+```sh
+# Mount all shares
+exportfs -a
+
+# Mount share temporarily
+exportfs debian-client01:/opt -o ro,sync
+
+# List mount table
+exportfs
+
+# Update mount table
+exportfs -r
+
+# Remove mount table
+exportfs -ua
+```
+
+##### nfsstat
+
+```sh
+# List statistcs of NFS server
+nfsstat -s
+
+# List statistcs of NFS client
+nfsstat -c
+
+# Show mount points
+nfsstat -m
 ```
 
 <p align="right">(<a href="#topic-209.2">back to sub topic 209.2</a>)</p>

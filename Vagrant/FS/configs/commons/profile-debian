@@ -34,4 +34,4 @@ if [ -d /etc/profile.d ]; then
 fi
 
 #Set timezone
-sudo timedatectl set-timezone America/Sao_Paulo
+timedatectl set-timezone America/Sao_Paulo

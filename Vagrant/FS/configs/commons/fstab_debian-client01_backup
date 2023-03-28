@@ -11,9 +11,3 @@ home_vagrant_configs /home/vagrant/configs vboxsf uid=1000,gid=1000,_netdev 0 0
 home_vagrant_scripts /home/vagrant/scripts vboxsf uid=1000,gid=1000,_netdev 0 0
 home_vagrant_test /home/vagrant/test vboxsf uid=1000,gid=1000,_netdev 0 0
 #VAGRANT-END
-
-#LPIC2 shares -BEGIN
-//debian-server01/vagrant   /mnt/debian-server01    cifs    user,credentials=/home/vagrant/.samba-access    0  0
-//ol9-server01/vagrant   /mnt/ol9-server01    cifs    user,credentials=/home/vagrant/.samba-access    0  0
-//silvestrini/Projetos   /mnt/windows-project    cifs    user,credentials=/home/vagrant/.samba-access    0  0
-#LPIC2 shares -END

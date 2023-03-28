@@ -85,4 +85,4 @@ if [ -n "${BASH_VERSION-}" ]; then
 fi
 
 #Set timezone
-sudo timedatectl set-timezone America/Sao_Paulo
+timedatectl set-timezone America/Sao_Paulo

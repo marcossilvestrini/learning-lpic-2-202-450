@@ -20,6 +20,7 @@ $debian5 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Debian5"
 $ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 $bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
 $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
+$fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
 
 # Folder vagrant virtualbox machines artefacts
 $virtualboxFolder = "E:\Servers\VirtualBox"
@@ -27,8 +28,13 @@ $vmFolders=@(
     "$virtualboxFolder\ol9-bind-master",    
     "$virtualboxFolder\debian-bind-slave",  
     "$virtualboxFolder\debian-apache-node01",
+    "$virtualboxFolder\debian-apache-node02",
     "$virtualboxFolder\ol9-apache-ha",  
-    "$virtualboxFolder\debian-http-client"
+    "$virtualboxFolder\ol9-nginx-ha",  
+    "$virtualboxFolder\debian-http-client",
+    "$virtualboxFolder\ol9-server01",    
+    "$virtualboxFolder\debian-server01",
+    "$virtualboxFolder\debian-client01"
 )
 
 #Destroy debian 11
@@ -58,7 +64,7 @@ Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.
 # Delete folder virtualbox machines artefacts
 $vmFolders | ForEach-Object {
     If(Test-Path $_){
-        If( (Get-ChildItem -Recurse $_).Count -lt 2 ){
+        If( (Get-ChildItem -Recurse $_).Count -lt 3 ){            
             Remove-Item $_ -Recurse -Force
         }        
     }

@@ -114,6 +114,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # INSTALL AND CONFIGURE SAMBA
     debian_server01.vm.provision "shell", path: "scripts/samba-server.sh"
+
+    # INSTALL AND CONFIGURE NFS
+    debian_server01.vm.provision "shell", path: "scripts/nfs-server.sh"
   end
 
 
@@ -149,8 +152,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
     debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
 
-    # INSTALL AND CONFIGURE SAMBA CLIENT AND SHARES
-    debian_client01.vm.provision "shell", path: "scripts/samba-client.sh"
+    # CONFIGURE SAMBA AND NFS MOUNT POINTS
+    debian_client01.vm.provision "shell", path: "scripts/user-data-client.sh"
     
   end
 

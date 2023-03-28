@@ -26,8 +26,7 @@
 ## Browsing/Identification ###
 
 # Change this to the workgroup/NT-domain name your Samba server will part of
-   #workgroup = WORKGROUP
-   workgroup = silvestrini
+   workgroup = WORKGROUP
 
 #### Networking ####
 
@@ -168,7 +167,7 @@
 #======================= Share Definitions =======================
 
 [homes]
-   comment = Home File Sharing LPIC2
+   comment = Home Directories
    browseable = no
 
 # By default, the home directories are exported read-only. Change the
@@ -210,30 +209,6 @@
 ;   browseable = no
 ;   create mask = 0600
 ;   directory mask = 0700
-
-# BEGIN MY CONFIGURATION - LPIC2
-
-[Public]
-   comment = Samba Public Share TMP
-   path = /tmp
-   browseable = yes
-   writable= yes
-   guest ok = yes
-
-[Logs]
-   comment = Samba Log Share
-   path = /var/log
-   browseable = no
-   read only = yes
-   valid users = vagrant
-
-[Hideshare$]
-   comment = Samba Hide Share
-   path = /etc
-   guest ok = no
-   
-
-# END MY CONFIGURATION - LPIC2
 
 [printers]
    comment = All Printers
