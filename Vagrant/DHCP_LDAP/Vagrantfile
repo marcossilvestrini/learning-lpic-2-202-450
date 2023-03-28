@@ -1,0 +1,149 @@
+#
+# LICENSE UPL 1.0
+#
+# Copyright (c) 1982-2020 Oracle and/or its affiliates. All rights reserved.
+#
+# Since: January, 2020
+# Author: gerald.venzl@oracle.com
+# Description: Creates an Oracle Linux virtual machine.
+#
+# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+#
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+# INSTALL PLUGIN RELLOAD
+unless Vagrant.has_plugin?("vagrant-reload")
+  puts 'Installing vagrant-reload Plugin...'
+  system('vagrant plugin install vagrant-reload')
+end
+
+# INSTALL PLUGIN VBguest
+unless Vagrant.has_plugin?("vagrant-vbguest")
+  puts 'Installing vagrant-vbguest Plugin...'
+  system('vagrant plugin install vagrant-vbguest')
+end
+
+# GLOBAL BOX CONFIGURATIONS
+BOX_OL_URL = "https://oracle.github.io/vagrant-projects/boxes"
+BOX_OL_NAME = "oraclelinux/9"
+BOX_DEBIAN_NAME = "debian/bullseye64"
+
+#DEFINE VM
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # GLOBAL VMGUEST CONFIGURATIONS
+  config.vbguest.no_install  = true
+  config.vbguest.auto_update = false
+  config.vbguest.no_remote   = true
+  config.vm.box_download_insecure=true
+
+  # VM ol9_server01
+  config.vm.define "ol9-server01"  do |ol9_server01|
+    ol9_server01.vm.box = BOX_OL_NAME
+    ol9_server01.vm.box_url = "#{BOX_OL_URL}/#{BOX_OL_NAME}.json"
+
+    # VARIABLE HOSTNAME
+    VM_OL9_SERVER01= "ol9-server01"
+
+    # HOSTNAM
+    ol9_server01.vm.hostname =VM_OL9_SERVER01
+
+    # NETWORK
+    ol9_server01.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
+    ol9_server01.vm.network "private_network",ip: "172.36.12.230",nic_type: "virtio"
+
+    # MOUNTS
+    ol9_server01.vm.synced_folder ".", "/vagrant", disabled: true
+    ol9_server01.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    ol9_server01.vm.synced_folder "./scripts", "/home/vagrant/scripts"
+    ol9_server01.vm.synced_folder "./configs", "/home/vagrant/configs"
+    
+    # PROVIDER
+    ol9_server01.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_OL9_SERVER01
+      vb.memory = 2048
+      vb.cpus = 1
+    end
+
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    ol9_server01.vm.provision "shell", path: "scripts/user-data-ol9.sh"
+
+    # SET DNS BIND
+    ol9_server01.vm.provision "shell", path: "scripts/user-data-bind-master.sh"
+
+  end
+
+  # VM debian_server01
+  config.vm.define "debian-server01"  do |debian_server01|
+    debian_server01.vm.box = BOX_DEBIAN_NAME
+
+    # VARIABLE HOSTNAME
+    VM_DEBIAN_SERVER01= "debian-server01"
+
+    # HOSTNAME
+    debian_server01.vm.hostname =VM_DEBIAN_SERVER01
+
+    # NETWORK
+    debian_server01.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_server01.vm.network "private_network",ip: "172.36.12.231"
+
+    # MOUNTS
+    debian_server01.vm.synced_folder ".", "/vagrant", disabled: true
+    debian_server01.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    debian_server01.vm.synced_folder "./scripts", "/home/vagrant/scripts"
+    debian_server01.vm.synced_folder "./configs", "/home/vagrant/configs"
+
+    #PROVIDER
+    debian_server01.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_DEBIAN_SERVER01
+      vb.memory = 2048
+      vb.cpus = 1
+    end
+
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    debian_server01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+  end
+
+
+  # VM debian_client01
+  config.vm.define "debian-client01"  do |debian_client01|
+    debian_client01.vm.box = BOX_DEBIAN_NAME
+
+    # VARIABLE HOSTNAME
+    VM_CLIENT01= "debian-client01"
+
+    # HOSTNAME
+    debian_client01.vm.hostname =VM_CLIENT01
+
+    # NETWORK
+    debian_client01.vm.network "public_network",ip: "192.168.0.150",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
+    debian_client01.vm.network "private_network",ip: "172.36.12.240"
+
+    # MOUNTS
+    debian_client01.vm.synced_folder ".", "/vagrant", disabled: true
+    debian_client01.vm.synced_folder "../../Security/", "/home/vagrant/security"
+    debian_client01.vm.synced_folder "./configs", "/home/vagrant/configs"
+    debian_client01.vm.synced_folder "./scripts", "/home/vagrant/scripts"
+    debian_client01.vm.synced_folder "./test", "/home/vagrant/test"
+
+    #PROVIDER
+    debian_client01.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name =VM_CLIENT01
+      vb.memory = 2048
+      vb.cpus = 1
+    end
+
+    # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
+    debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+  end
+
+end

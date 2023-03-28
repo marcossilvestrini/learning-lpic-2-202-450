@@ -1,0 +1,28 @@
+$TTL 1h
+
+@                      IN      SOA     ol9-server01.lpic2.com.br.   admin.lpic2.com.br. (
+                       01      ; serial
+                       28800   ; refresh (8h)
+                       7200    ; retry (2h)
+                       604800  ; expire (7d)
+                       3600    ; negative caching (1h)
+)
+
+
+@                      IN      NS      ol9-server01.lpic2.com.br.                               
+                               MX      5       mail
+                               MX      10      mail2
+
+ol9-server01           A       192.168.0.140   ;glue record, server
+debian-server01        A       192.168.0.141   ;server
+debian-client01        A       192.168.0.150   ;server client
+silvestrini            A       192.168.0.100   ;my desktop
+mail                   A       192.168.0.140   ;mail
+mail2                  A       192.168.0.141   ;mail
+ftp                    CNAME   ol9-server01    ;ftp
+www                    CNAME   ol9-server01    ;server
+@                      IN      TXT     "leaning LPIC2 Exam 202-450 - Bind"
+@                      IN      TXT     "leaning LPIC2 Exam 202-450 - HTTP"
+
+lpic2.com.br. IN DNSKEY 256 3 13 qzYHNPMPd6QjO66oHI4RL95LBSb3wRuEGJSXgByHJalof0DBJOucDKE1 MMudvv7eNoOabO+m91rQKUbRw6n/Vg==
+

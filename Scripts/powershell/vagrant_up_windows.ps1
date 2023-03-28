@@ -52,7 +52,7 @@ Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
 # Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 # Copy-Item .\.vagrant\machines\debian5_lpic2_202\virtualbox\private_key F:\Projetos\vagrant-pk\debian5
 
-#Server BIND
+#Up Servers BIND
 # $bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
 # Set-Location $bind
 # Start-Process -Wait -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
@@ -63,7 +63,7 @@ Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
 # Copy-Item .\.vagrant\machines\ol9-bind-client\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-bind-client
 
 
-#Servers HTTP
+#Up Servers HTTP
 # $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
 # Set-Location $http
 # Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
@@ -76,8 +76,16 @@ Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
 # Copy-Item .\.vagrant\machines\debian-http-client\virtualbox\private_key F:\Projetos\vagrant-pk\debian-http-client
 
 # Up Servers FILE SHARING
-$fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
-Set-Location $fs
+# $fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
+# Set-Location $fs
+# Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+# Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
+# Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
+# Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
+
+# Up Servers DHCP,PAM, LDAP
+$dhcp_ldap = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\DHCP_LDAP"
+Set-Location $dhcp_ldap
 Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
 Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
