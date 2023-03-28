@@ -54,7 +54,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # NETWORK
     ol9_server01.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
-    ol9_server01.vm.network "private_network",ip: "172.36.12.230",nic_type: "virtio"
+    ol9_server01.vm.network "private_network",ip: "172.36.12.3",nic_type: "virtio",mac: "080027f3066a"
 
     # MOUNTS
     ol9_server01.vm.synced_folder ".", "/vagrant", disabled: true
@@ -90,7 +90,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # NETWORK
     debian_server01.vm.network "public_network",ip: "192.168.0.141",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
-    debian_server01.vm.network "private_network",ip: "172.36.12.231"
+    debian_server01.vm.network "private_network",ip: "172.36.12.2",mac: "080027f3066b"
 
     # MOUNTS
     debian_server01.vm.synced_folder ".", "/vagrant", disabled: true
@@ -109,8 +109,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
     debian_server01.vm.provision "shell", path: "scripts/user-data-debian.sh"
 
-  end
+    # INSTALL AND CONFIGURE DHCP SERVER
+    # debian_server01.vm.provision "shell", path: "scripts/dhcp-server.sh"
 
+  end
 
   # VM debian_client01
   config.vm.define "debian-client01"  do |debian_client01|
@@ -124,7 +126,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # NETWORK
     debian_client01.vm.network "public_network",ip: "192.168.0.150",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
-    debian_client01.vm.network "private_network",ip: "172.36.12.240"
+    debian_client01.vm.network "private_network",type: "dhcp",mac: "080027f3066c"
 
     # MOUNTS
     debian_client01.vm.synced_folder ".", "/vagrant", disabled: true
