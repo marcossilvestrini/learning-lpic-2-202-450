@@ -1038,8 +1038,24 @@ radvd.conf
 
 #### 210.1 Important Commands
 
+##### dhclient
+
 ```sh
-Examples
+#Release an IP address for the `eth2` interface
+dhclient -r eth2
+
+# Get an IP address for the `eth2` interface:
+dhclient eth2
+```
+
+##### dhcrelay
+
+```sh
+#Release an IP address for the `eth2` interface
+dhclient -r eth2
+
+# Get an IP address for the `eth2` interface:
+dhclient eth2
 ```
 
 <p align="right">(<a href="#topic-210.1">back to sub topic 210.1</a>)</p>
@@ -1062,6 +1078,8 @@ using various available methods. This includes basic SSSD functionality.
 * passwd and shadow passwords
 * Use sssd for LDAP authentication
 
+![PAM](IMages/pam.jpg)
+
 #### 210.2 Cited Objects
 
 ```sh
@@ -1071,6 +1089,60 @@ nsswitch.conf
 pam_unix, pam_cracklib, pam_limits, pam_listfile, pam_sss
 sssd.conf
 ```
+
+#### About PAM
+
+##### Sintaxe configuration Files in /etc/pam.d
+
+```sh
+type  control   module <PARAMS>
+```
+
+Example /etc/pam.d/nologin:
+
+```sh
+auth  required  pam_nologin.so
+```
+
+##### Some importants Configs
+
+###### Types
+
+*auth* - check authenticity of user
+*account* - check if user can use service
+*password* - difines referring updates of authentication
+*session* - some procedure what should be done after login,before user grants access
+
+###### Control
+
+*requisite* - if module fail,all process is interrupted
+*required* - if module failed, the access is deny, but others modules load with success
+*sufficient* -  if module success, others failed modules is ignored. Failed is not fatal
+*optional* - success or failed is not relevant.
+
+###### Modules
+
+*pam_unix.so* -  user passwords (passwd\shadow)
+*pam_limits.so* -  limitations of ressources
+*pam_ldap.so* - access with LDAP
+*pam_cracklib.so* - check of weak passwords
+*pam_listfile.so* - use of external files for control
+*pam_sss.so* - Use SSSD(System Security Services Daemon)
+*pam_krb5.so* - Use Kerberos 5 for authentications
+*pam_userdb.so* - Use Datafiles .db
+*pam_nologin.so* - Use /etc/nologin
+*pam_time.so* - Ressources of control per time
+*pam_console.so* - Access Control of user console
+
+##### Directory of PAM Modules
+
+###### Debian
+
+`/usr/lib/x86_64-linux-gnu/security/`
+
+###### RPM
+
+`/usr/lib64/security/`
 
 ![Mind Map](Images/mindmap-210.2.png)
 

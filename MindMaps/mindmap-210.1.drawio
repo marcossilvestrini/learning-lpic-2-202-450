@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="bvMxqJy8REenpndCrTQX" name="Page-1">
-        <mxGraphModel dx="1351" dy="1662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
+        <mxGraphModel dx="1351" dy="1696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -16,7 +16,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="83" value="&lt;pre style=&quot;box-sizing: border-box ; font-family: , , &amp;quot;sf mono&amp;quot; , &amp;quot;menlo&amp;quot; , &amp;quot;consolas&amp;quot; , &amp;quot;liberation mono&amp;quot; , monospace ; font-size: 13.6px ; margin-top: 0px ; margin-bottom: 0px ; overflow-wrap: normal ; padding: 16px ; overflow: auto ; line-height: 1.45 ; border-radius: 6px ; word-break: normal ; color: rgb(201 , 209 , 217)&quot;&gt;/etc/dhcp/dhcpd.conf&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="-580" width="170" height="50" as="geometry"/>
+                    <mxGeometry x="100" y="-580" width="160" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="84" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;" parent="1" source="8" target="83" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -48,27 +48,35 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="96" value="radvd" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="-290" width="70" height="40" as="geometry"/>
+                    <mxGeometry x="310" y="-290" width="70" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="97" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8" target="96" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="400" y="-460" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="98" value="/etc/default/isc-dhcp-server" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" vertex="1" parent="1">
+                <mxCell id="98" value="/etc/default/isc-dhcp-server" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
                     <mxGeometry x="520" y="-580" width="170" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="99" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;" edge="1" parent="1" target="98" source="8">
+                <mxCell id="99" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;" parent="1" source="8" target="98" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="500" y="-440" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="100" value="dhcpclient" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" vertex="1" parent="1">
-                    <mxGeometry x="520" y="-353.21" width="100.96" height="43.21" as="geometry"/>
+                <mxCell id="100" value="dhclient" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" parent="1" vertex="1">
+                    <mxGeometry x="435" y="-300" width="85" height="36.21" as="geometry"/>
                 </mxCell>
-                <mxCell id="101" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;exitX=1;exitY=1;exitDx=0;exitDy=0;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="100" source="8">
+                <mxCell id="101" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8" target="100" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="450.00194077712564" y="-389.9967965644036" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="102" value="dhcrelay" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};fillColor=#647687;fontColor=#CCCCCC;strokeColor=#314354;shadow=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="-380" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;exitX=1;exitY=1;exitDx=0;exitDy=0;fillColor=#647687;strokeColor=#314354;shadow=1;fontColor=#CCCCCC;sketch=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="102" source="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="450.9619407771256" y="-448.78679656440363" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>

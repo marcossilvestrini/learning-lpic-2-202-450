@@ -110,7 +110,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_server01.vm.provision "shell", path: "scripts/user-data-debian.sh"
 
     # INSTALL AND CONFIGURE DHCP SERVER
-    # debian_server01.vm.provision "shell", path: "scripts/dhcp-server.sh"
+    debian_server01.vm.provision "shell", path: "scripts/dhcp-server.sh"
 
   end
 
@@ -126,7 +126,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # NETWORK
     debian_client01.vm.network "public_network",ip: "192.168.0.150",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection"
-    debian_client01.vm.network "private_network",type: "dhcp",mac: "080027f3066c"
+    debian_client01.vm.network "private_network",type: "dhcp",ip: "172.36.12.1",mac: "080027f3066c"
 
     # MOUNTS
     debian_client01.vm.synced_folder ".", "/vagrant", disabled: true
@@ -145,6 +145,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
     debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+
+    # INSTALL AND CONFIGURE DHCP Client
+    debian_client01.vm.provision "shell", path: "scripts/dhcp-client.sh"
 
   end
 

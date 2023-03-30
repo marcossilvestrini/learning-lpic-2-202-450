@@ -4,9 +4,8 @@
 #
 
 # option definitions common to all supported networks...
-option domain-name "example.org";
-option domain-name-servers ns1.example.org, ns2.example.org;
-
+option domain-name "lpic2.com.br";
+option domain-name-servers ol9-server01, 1.1.1.1;
 default-lease-time 600;
 max-lease-time 7200;
 
@@ -18,7 +17,7 @@ ddns-update-style none;
 
 # If this DHCP server is the official DHCP server for the local
 # network, the authoritative directive should be uncommented.
-#authoritative;
+authoritative;
 
 # Use this to send dhcp log messages to a different log file (you also
 # have to hack syslog.conf to complete the redirection).
@@ -26,6 +25,35 @@ ddns-update-style none;
 
 # No service will be given on this subnet, but declaring it helps the 
 # DHCP server to understand the network topology.
+
+############ BEGIN MY CONFIG LPIC2 ##############
+
+## Set DHCP Range
+subnet 172.36.12.0  netmask 255.255.255.0 {
+	range 172.36.12.100 172.36.12.200;
+	option routers 172.36.12.2;
+}
+
+## Set DHCP clients
+host debian-client01 {
+	hardware ethernet 08:00:27:f3:06:6c;
+	fixed-address 172.36.12.120;
+}
+
+## Set bootp
+allow booting;
+allow bootp;
+
+host debian-client02 {
+	hardware ethernet 08:00:27:f3:06:6d;
+	fixed-address 172.36.12.150;
+    filename "vmlinuz.lpic2.com.br";
+    server-name "ol9-server01";
+}
+
+
+############ BEGIN MY CONFIG LPIC2 ##############
+
 
 #subnet 10.152.187.0 netmask 255.255.255.0 {
 #}
