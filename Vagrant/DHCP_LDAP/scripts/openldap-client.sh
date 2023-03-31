@@ -15,7 +15,8 @@ DISTRO=$(cat /etc/*release | grep -ws NAME=)
 # Install DHCP Server
 if [[ $DISTRO == *"Debian"* ]]; then
     apt-get install -y jxplorer
+    apt-get install -y ldap-utils
+    
 else
     dnf install -y jxplorer
 fi
-
