@@ -1,0 +1,14 @@
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc=lpic2,dc=com,dc=br
+
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=admin,dc=lpic2,dc=com,dc=br
+
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}S7BFfkPA6IC9FlnSVh1lAvHMg5+M8Fus

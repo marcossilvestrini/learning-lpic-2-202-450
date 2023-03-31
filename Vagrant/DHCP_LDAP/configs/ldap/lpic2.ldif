@@ -1,0 +1,101 @@
+# lpic2.com.br
+dn: dc=lpic2,dc=com,dc=br
+objectClass: dcObject
+objectClass: organization
+dc: lpic2
+o: exemplo de aula
+
+# admin, lpic2.com.br
+dn: cn=admin,dc=lpic2,dc=com,dc=br
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP Administrator
+userPassword: vagrant
+
+# suporte, lpic2.com.br
+dn: ou=suporte,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: suporte
+
+# desenvolvimento, lpic2.com.br
+dn: ou=desenvolvimento,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: desenvolvimento
+
+# testes, lpic2.com.br
+dn: ou=testes,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: testes
+
+# gerentes, suporte, lpic2.com.br
+dn: ou=gerentes,ou=suporte,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: gerentes
+
+# funcionarios, suporte, lpic2.com.br
+dn: ou=funcionarios,ou=suporte,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: funcionarios
+
+# gerentes, desenvolvimento, lpic2.com.br
+dn: ou=gerentes,ou=desenvolvimento,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: gerentes
+
+# funcionarios, desenvolvimento, lpic2.com.br
+dn: ou=funcionarios,ou=desenvolvimento,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: funcionarios
+
+# gerentes, testes, lpic2.com.br
+dn: ou=gerentes,ou=testes,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: gerentes
+
+# funcionarios, testes, lpic2.com.br
+dn: ou=funcionarios,ou=testes,dc=lpic2,dc=com,dc=br
+objectClass: organizationalUnit
+ou: funcionarios
+
+# Marcos, gerentes, suporte, lpic2.com.br
+dn: cn=Marcos,ou=gerentes,ou=suporte,dc=lpic2,dc=com,dc=br
+objectClass: inetOrgPerson
+cn: Marcos
+sn: Silvestrini
+mail: marcos@lpic2.com.br
+
+# Carlos, gerentes, desenvolvimento, lpic2.com.br
+dn: cn=Carlos,ou=gerentes,ou=desenvolvimento,dc=lpic2,dc=com,dc=br
+objectClass: inetOrgPerson
+cn: Carlos
+sn: Sanches
+mail: carlos@lpic2.com.br
+
+# Daiana, gerentes, testes, lpic2.com.br
+dn: cn=Daiana,ou=gerentes,ou=testes,dc=lpic2,dc=com,dc=br
+objectClass: inetOrgPerson
+cn: Daiana
+sn: Silva
+mail: daiana@lpic2.com.br
+
+# Paulo, funcionarios, suporte, lpic2.com.br
+dn: cn=Paulo,ou=funcionarios,ou=suporte,dc=lpic2,dc=com,dc=br
+objectClass: inetOrgPerson
+cn: Paulo
+sn: Santos
+mail: paulosantos@lpic2.com.br
+
+# Beatriz, funcionarios, desenvolvimento, lpic2.com.br
+dn: cn=Beatriz,ou=funcionarios,ou=desenvolvimento,dc=lpic2,dc=com,dc=br
+objectClass: inetOrgPerson
+cn: Beatriz
+sn: Motta
+mail: beatrizmotta@lpic2.com.br
+
+# Carlos1, funcionarios, testes, lpic2.com.br
+dn: cn=Carlos1,ou=funcionarios,ou=testes,dc=lpic2,dc=com,dc=br
+objectClass: inetOrgPerson
+cn: Carlos
+sn: Almeida
+mail: carlosalmeida@lpic2.com.br

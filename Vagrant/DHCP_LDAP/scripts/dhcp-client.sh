@@ -21,11 +21,27 @@ fi
 
 # Configure DHCP Client
 
+## Set default lease
+# -rw-r--r-- 1 root root 1735 May 27  2021 /etc/dhcp/dhclient.conf
+cp configs/dhcp/dhclient.conf /etc/dhcp
+dos2unix /etc/dhcp/dhclient.conf
+chmod 644 /etc/dhcp/dhclient.conf
+
+## Down link
+ip link set eth2 down
+
 ## Clear interface eth2 configuration
 ip addr flush eth2
 
+## Delete old leases
+rm -f /var/lib/dhcp/*
+
 ## Release an IP address for the `eth2` interface
-# dhclient -r eth2
+dhclient -r -v eth2
 
 ## Get an IP address for the `eth2` interface:
-dhclient eth2
+dhclient -v eth2
+#dhclient -4 -d -v -cf /etc/dhcp/dhclient.conf eth2
+
+# Restart services
+#/etc/init.d/networking restart

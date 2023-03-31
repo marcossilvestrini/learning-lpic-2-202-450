@@ -1,0 +1,4 @@
+dn: cn=Beatriz,ou=funcionarios,ou=desenvolvimento,dc=lpic2,dc=com,dc=br
+changetype: modify
+replace: mail
+mail: beatriz.motta@lpic2.com.br

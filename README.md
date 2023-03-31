@@ -9,7 +9,6 @@
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
 # LEARNNING LPIC-2 202-450
 
 ![202-450 Linux Engineer](Images/lpic2-202-450.jpg)
@@ -24,7 +23,7 @@
     <a href="https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues">Request Feature</a>
 </p>
 
-## Sumary
+## Summary
 
 <details>
   <summary><b>TABLE OF CONTENT</b></summary>
@@ -1174,7 +1173,7 @@ SMART devices.
 * Change user passwords
 * Querying the LDAP directory
 
-#### 203.2 Cited Objects
+#### 210.3 Cited Objects
 
 ```sh
 ldapsearch
@@ -1185,11 +1184,71 @@ ldapdelete
 
 ![Mind Map](Images/mindmap-210.3.png)
 
-
 #### 210.3 Important Commands
 
+##### ldapadd
+
 ```sh
-Examples
+# Add database
+ldapadd -a -x -w vagrant -D "cn=admin,dc=lpic2,dc=com,dc=br" -f configs/ldap/lpic2.ldif
+```
+
+##### ldapmodify
+
+```sh
+# Import\Modify database
+ldapmodify -Y EXTERNAL -H ldapi:/// -f configs/ldap/db.ldif
+
+# Modify atribute of dn
+ldapmodify -x -w vagrant -D "cn=admin,dc=lpic2,dc=com,dc=br" -f configs/ldap/modify_employee.ldif
+
+# Delete  dn
+ldapmodify -x -w vagrant -D "cn=admin,dc=lpic2,dc=com,dc=br" -f configs/ldap/delete_employee.ldif
+
+# Add dn
+ldapmodify -x -w vagrant -D "cn=admin,dc=lpic2,dc=com,dc=br" -f configs/ldap/add_employee.ldif
+```
+
+##### ldapsearch
+
+```sh
+# Find out what backend databases 
+ldapsearch -H ldapi:/// -Y EXTERNAL -b "cn=config" -LLL -Q "olcDatabase=*" dn
+
+# Find specific dc
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br"
+
+# Find specific cn
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" cn=Marcos
+
+# Find specific sn
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" cn=silvestrini
+
+# Find specific mail
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" mail=*carlos*
+
+# Find with logical operator
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" "(| (cn=marcos) (cn=carlos))"
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" '(& (cn=marcos) (! (sn=Almeida)))'
+```
+
+##### ldapdelete
+
+```sh
+# Delete entry
+ldapdelete -x -w vagrant -h localhost -D "cn=admin,dc=lpic2,dc=com,dc=br" "cn=Carlos1,ou=funcionarios,ou=testes,dc=lpic2,dc=com,dc=br"
+```
+
+##### ldapasswd
+
+```sh
+# Example
+## Creat create cn user 
+ldapadd -x -w vagrant -D "cn=admin,dc=lpic2,dc=com,dc=br" -f configs/ldap/user.ldif
+
+## Modify password
+ldappasswd -x -w vagrant -h localhost -D "cn=admin,dc=lpic2,dc=com,dc=br" \
+  -s newpassword "uid=skynet,ou=funcionarios,ou=suporte,dc=lpic2,dc=com,dc=br"
 ```
 
 <p align="right">(<a href="#topic-210.3">back to sub topic 210.3</a>)</p>
@@ -1237,8 +1296,36 @@ loglevel
 
 #### 210.4 Important Commands
 
+##### slappasswd
+
 ```sh
-Examples
+# Set openlad db password
+slappasswd
+```
+
+##### slaptest
+
+```sh
+# Check openldap configuration
+slaptest
+slaptest -f /etc/ldap/slapd.conf
+```
+
+##### slapcat
+
+```sh
+# Check openldap Default database
+slapcat -b cn=config
+
+# Check openldap databases
+slapcat -f  /etc/ldap/slapd.conf
+```
+
+##### slapindex
+
+```sh
+# Reindex entries in a SLAPD database
+slapindex -f /etc/ldap/slapd.conf
 ```
 
 <p align="right">(<a href="#topic-210.4">back to sub topic 210.4</a>)</p>
@@ -1268,7 +1355,7 @@ e-mail servers.
 * Basic knowledge of the SMTP protocol
 * Awareness of sendmail and exim
 
-#### 204.1 Cited Objects
+#### 211.1 Cited Objects
 
 ```sh
 Configuration files and commands for postfix
@@ -1342,7 +1429,7 @@ Candidates should be able to install and configure POP and IMAP daemons.
 * Basic TLS configuration for Dovecot
 * Awareness of Courier
 
-#### 204.3  Cited Object
+#### 211.3  Cited Object
 
 ```sh
 /etc/dovecot/
@@ -1639,6 +1726,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [Distro Watch](https://distrowatch.com/)
 * [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 * [Download Packages](https://pkgs.org/)
+* [Install Packages](https://installati.one/)
 * [Guide Install Packages](https://installati.one/)
 * [Bugzila](https://bugzilla.kernel.org/)
 * [Command Not Found](https://command-not-found.com/)

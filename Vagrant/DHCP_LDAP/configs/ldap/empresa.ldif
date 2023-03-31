@@ -1,0 +1,125 @@
+# empresa.com
+dn: dc=empresa,dc=com
+objectClass: dcObject
+objectClass: organization
+dc: empresa
+o: exercicio 
+
+# admin, empresa.com
+dn: cn=admin,dc=empresa,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP Administrator
+userPassword: vagrant
+
+# filial1, empresa.com
+dn: ou=filial1,dc=empresa,dc=com
+objectClass: organizationalUnit
+ou: filial1
+
+# filial2, empresa.com
+dn: ou=filial2,dc=empresa,dc=com
+objectClass: organizationalUnit
+ou: filial2
+
+# administrativo, filial1, empresa.com
+dn: ou=administrativo,ou=filial1,dc=empresa,dc=com
+objectClass: organizationalUnit
+ou: administrativo
+
+# producao, filial1, empresa.com
+dn: ou=producao,ou=filial1,dc=empresa,dc=com
+objectClass: organizationalUnit
+ou: producao
+
+# administrativo, filial2, empresa.com
+dn: ou=administrativo,ou=filial2,dc=empresa,dc=com
+objectClass: organizationalUnit
+ou: administrativo
+
+# producao, filial2, empresa.com
+dn: ou=producao,ou=filial2,dc=empresa,dc=com
+objectClass: organizationalUnit
+ou: producao
+
+# Antonio Lopes, administrativo, filial1, empresa.com
+dn: cn=Antonio,ou=administrativo,ou=filial1,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Antonio
+sn: Lopes
+mail: antonio.lopes@empresa.com
+telephoneNumber: 551199991111
+
+# Luciano Silva, administrativo, filial1, empresa.com
+dn: cn=Luciano,ou=administrativo,ou=filial1,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Luciano
+sn: Silva
+mail: luciano.silva@empresa.com
+telephoneNumber: 5511999992222
+
+# Maria Souza, administrativo, filial1, empresa.com
+dn: cn=Maria,ou=administrativo,ou=filial1,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Maria
+sn: Souza
+mail: maria.souza@empresa.com
+telephoneNumber: 5511999993333
+
+# Claudia Silva, producao, filial1, empresa.com
+dn: cn=Claudia,ou=producao,ou=filial1,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Claudia
+sn: Silva
+mail: claudia.silva@empresa.com
+telephoneNumber: 5511999994444
+
+# Maria Moreira, producao, filial1, empresa.com
+dn: cn=Maria,ou=producao,ou=filial1,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Maria
+sn: Moreira
+mail: maria.moreira@empresa.com
+telephoneNumber: 5511999995555
+
+# Jorge Almeida, producao, filial1, empresa.com
+dn: cn=Jorge,ou=producao,ou=filial1,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Jorge
+sn: Almeida
+mail: jorge.almeida@empresa.com
+telephoneNumber: 5511999996666
+
+# Elaine Silva, administrativo, filial2, empresa.com
+dn: cn=Elaine,ou=administrativo,ou=filial2,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Elaine
+sn: Silva
+mail: elaine.silva@empresa.com
+telephoneNumber: 5585999991111
+
+# Mario Siqueira, administrativo, filial2, empresa.com
+dn: cn=Mario,ou=administrativo,ou=filial2,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Mario
+sn: Siqueira
+mail: mario.siqueira@empresa.com
+telephoneNumber: 5585999992222
+
+# Eduardo Lopes, producao, filial2, empresa.com
+dn: cn=Eduardo,ou=producao,ou=filial2,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Eduardo
+sn: Lopes
+mail: eduardo.lopes@empresa.com
+telephoneNumber: 5585999993333
+
+# Maria Silva, producao, filial2, empresa.com
+dn: cn=Maria,ou=producao,ou=filial2,dc=empresa,dc=com
+objectClass: inetOrgPerson
+cn: Maria
+sn: Silva
+mail: maria.silva@empresa.com
+telephoneNumber: 5585999994444
+

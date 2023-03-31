@@ -1,0 +1,13 @@
+dn: uid=skynet,ou=funcionarios,ou=suporte,dc=lpic2,dc=com,dc=br
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: skynet
+uid: skynet
+uidNumber: 1090
+gidNumber: 1090
+homeDirectory: /home/skynet
+loginShell: /bin/bash
+gecos: skynet
+userPassword: skynet
