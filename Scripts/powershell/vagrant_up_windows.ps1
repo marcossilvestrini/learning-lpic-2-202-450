@@ -84,13 +84,21 @@ Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
 # Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
 
 # Up Servers DHCP,PAM, LDAP
-$dhcp_ldap = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\DHCP_LDAP"
-Set-Location $dhcp_ldap
+# $dhcp_ldap = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\DHCP_LDAP"
+# Set-Location $dhcp_ldap
+# Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+# Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
+# Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
+# Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
+
+
+# Up Servers Mail
+$mail = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\MAIL"
+Set-Location $mail
 Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
 Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
 Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
-
 
 #Fix powershell error
 $Env:VAGRANT_PREFER_SYSTEM_BIN += 0

@@ -1,4 +1,7 @@
 --------------------------------LINUX-----------------------------------
+# Generate ssh key
+ssh-keygen -t ecdsa -b 521
+
 # Get permission in octal notation (numerical notation)
 stat -c '%a' /etc/squid/squid.conf
 

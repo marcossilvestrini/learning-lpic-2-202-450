@@ -1,0 +1,15 @@
+$TTL 1h
+
+@                   IN      SOA     ol9-server01.lpic2.com.br.   admin.lpic2.com.br. (
+                    01      ; serial
+                    28800   ; refresh (8h)
+                    7200    ; retry (2h)
+                    604800  ; expire (7d)
+                    3600    ; negative caching (1h)
+)
+
+                    NS      ol9-server01.lpic2.com.br. ;primary nameserver                    
+
+2                 PTR     ol9-server01.lpic2.com.br.
+3                 PTR     debian-server01.lpic2.com.br.
+4                 PTR     debian-client01.lpic2.com.br.
