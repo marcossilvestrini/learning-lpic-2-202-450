@@ -40,6 +40,7 @@ protocols = imap pop3
 
 # Greeting message for clients.
 #login_greeting = Dovecot ready.
+login_greeting = Welcome to LPIC2 Course - by Marcos Silvestrini
 
 # Space separated list of trusted network ranges. Connections from these
 # IPs are allowed to override their IP addresses and ports (for logging and
