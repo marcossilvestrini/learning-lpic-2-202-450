@@ -2,9 +2,9 @@
 
 [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml) [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml)
 
-# FILE SHARING
+# DHCP - OpenLDAP
 
-![202-450 Linux Engineer](../../Images/file_sharing.jpg)
+![202-450 Linux Engineer](../../Images/openldap.png)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -44,15 +44,18 @@
 
 ## About Project
 
-This project up a stack of File share servers with Samba and NFS for labs.
+This project up and configuration a stack of:
+
+* DHCP Server
+* OpenLDAP Server
 
 ## Whats is?
 
-In this project, I up a stack of File share servers with Samba and NFS.
+In this project, I up a stack of DHCP Server, OpenLDAP.
 
 ### Vagrant
 
- I use vagrant for provision all http server in this project.
+ I use vagrant for provision all servers in this project.
 
 ### Shell provisioner
 
@@ -102,7 +105,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-2-202-450.git
 ## Usage
 
 ```sh
-cd Vagrant/HTTP
+cd Vagrant/DHCP_LDAP
 vagrant up
 ```
 
@@ -112,12 +115,14 @@ vagrant up
 
 ## Roadmap
 
-* [x] Install And Configure Samba
-  * [x] Install Samba
-  * [x] Configure Samba
-* [x] Install And Configure Samba
-  * [x] Install NFS
-  * [x] Configure NFS
+* [x] Install And Configure ISC DHCP Server
+  * [x] Install DHCP Server
+  * [x] Configure DHCP Server
+* [x] Install And Configure OpenLDAP
+  * [x] Install OpenLDAP
+  * [x] Configure OpenLDAP
+  * [x] Append Test .ldif Database in OpenLDAP 
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,8 +156,9 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 
 ## Acknowledgments
 
-* [Samba](samba.org)
-* [NFS](https://linux-nfs.org/wiki/index.php/Main_Page)
+* [ISC DHCP](https://www.isc.org/dhcp/)
+* [OpenLDAP](https://www.openldap.org/)
+* [PAM](https://www.ibm.com/docs/en/aix/7.2?topic=system-pluggable-authentication-modules)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

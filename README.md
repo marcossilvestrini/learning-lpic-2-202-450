@@ -1490,7 +1490,37 @@ Dovecot vacation extension
 
 ![Mind Map](Images/mindmap-211.2.png)
 
-#### 211.2 Important Commands
+<p align="right">(<a href="#topic-211.2">back to sub topic 211.2</a>)</p>
+<p align="right">(<a href="#topic-211">back to topic 211</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a name="topic-211.3"></a>
+
+### 211.3 Managing Mailbox
+
+**Weight:** 2
+
+**Description:**
+Candidates should be able to install and configure POP and IMAP daemons.
+
+**Key Knowledge Areas:**
+
+* Dovecot IMAP and POP3 configuration and administration
+* Basic TLS configuration for Dovecot
+* Awareness of Courier
+
+#### 211.3  Cited Object
+
+```sh
+/etc/dovecot/
+dovecot.conf
+doveconf
+doveadm
+```
+
+![Mind Map](Images/mindmap-211.3.png)
+
+#### 211.3 Important Commands
 
 ##### doveconf
 
@@ -1523,37 +1553,6 @@ doveadm who
 # Test user connection
 doveadm auth test vagrant
 ```
-
-
-<p align="right">(<a href="#topic-211.2">back to sub topic 211.2</a>)</p>
-<p align="right">(<a href="#topic-211">back to topic 211</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<a name="topic-211.3"></a>
-
-### 211.3 Managing Mailbox
-
-**Weight:** 2
-
-**Description:**
-Candidates should be able to install and configure POP and IMAP daemons.
-
-**Key Knowledge Areas:**
-
-* Dovecot IMAP and POP3 configuration and administration
-* Basic TLS configuration for Dovecot
-* Awareness of Courier
-
-#### 211.3  Cited Object
-
-```sh
-/etc/dovecot/
-dovecot.conf
-doveconf
-doveadm
-```
-
-![Mind Map](Images/mindmap-211.3.png)
 
 <p align="right">(<a href="#topic-211.3">back to sub topic 211.3</a>)</p>
 <p align="right">(<a href="#topic-211">back to topic 211</a>)</p>

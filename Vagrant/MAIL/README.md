@@ -2,9 +2,9 @@
 
 [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-bind-stack.yml) [![Check http Stack](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/check-http-stack.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-2-202-450/actions/workflows/powershell.yml)
 
-# FILE SHARING
+# POSTFIX - DOVECOT
 
-![202-450 Linux Engineer](../../Images/file_sharing.jpg)
+![202-450 Linux Engineer](../../Images/postfix-dovecot.png)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -44,19 +44,33 @@
 
 ## About Project
 
-This project up a stack of File share servers with Samba and NFS for labs.
+This project up a stack of servers with Postfix and Dovecot for labs.
 
 ## Whats is?
 
-In this project, I up a stack of File share servers with Samba and NFS.
+In this project, I up a stack of servers with Postfix and Dovecot.
 
+Servers:
+
+* ol9-server01
+  * dns bind
+  * postfix
+  * dovecot
+
+* debian-server01
+  * postfix
+
+* debian-client01
+  * dovecot
+  * thunderbird
+  
 ### Vagrant
 
- I use vagrant for provision all http server in this project.
+ I use vagrant for provision all servers in this project.
 
 ### Shell provisioner
 
-I use vagrant shell provisioner for configure samba service, nfs and others tools of this stack
+I use vagrant shell provisioner for configure postfix service, dovecot and others tools of this stack
 
 ### Git Actions (pipelines)
 
@@ -112,12 +126,21 @@ vagrant up
 
 ## Roadmap
 
-* [x] Install And Configure Samba
-  * [x] Install Samba
-  * [x] Configure Samba
-* [x] Install And Configure Samba
-  * [x] Install NFS
-  * [x] Configure NFS
+* [x] Install And Configure Postfix
+  * [x] Install Postfix
+  * [x] Configure Postfix
+    * [x] Configure Canonical Maps
+    * [x] Configure Aliases
+* [x] Install And Configure Dovecot
+  * [x] Install Dovecot
+  * [x] Generate certificates for MTA
+  * [x] Configure Dovecot
+    * [x] Set files /etc/dovecot/conf.d
+    * [x] Create rules per user in ~/.dovecot.sieve
+    * [x] Enable IMAP and POP3 support
+* [x] Install And Postfix Client
+  * [x] Install dovecot utils
+  * [x] Install thunderbird
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,8 +174,9 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 
 ## Acknowledgments
 
-* [Samba](samba.org)
-* [NFS](https://linux-nfs.org/wiki/index.php/Main_Page)
+* [Postfix](https://www.postfix.org/)
+* [Dovecot](https://www.dovecot.org/)
+* [Sieve Language](http://sieve.info/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

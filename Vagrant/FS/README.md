@@ -52,7 +52,7 @@ In this project, I up a stack of File share servers with Samba and NFS.
 
 ### Vagrant
 
- I use vagrant for provision all http server in this project.
+ I use vagrant for provision all File system server in this project.
 
 ### Shell provisioner
 
