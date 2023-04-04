@@ -144,13 +144,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
     ol9_server02.vm.provision "shell", path: "scripts/user-data-ol9.sh"
-
-    # SET DNS BIND
-    ol9_server02.vm.provision "shell", path: "scripts/user-data-bind-master.sh"
-
-    # SET POSTFIX MAIL SERVER 
-    ol9_server02.vm.provision "shell", path: "scripts/mail-server.sh"
-
+    
   end
 
   # VM debian_client01
