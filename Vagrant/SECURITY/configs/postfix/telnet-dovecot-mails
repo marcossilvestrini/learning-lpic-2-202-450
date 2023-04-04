@@ -1,0 +1,113 @@
+# connect in postfix server mail local
+telnet 0 25
+
+# connect in postfix server remote
+telnet ol9-server01 25
+
+# Connect pop3 remote 
+telnet ol9-server01 110
+
+# Connect imap remote 
+telnet ol9-server01 143
+
+# send mail examples
+
+# simple test
+HELO lpic2.com.br
+MAIL FROM: silvestrini
+RCPT TO: vagrant
+DATA
+Message for test postfix by Silvestrini
+Learning about postfix mail server
+.
+
+# teste aliases
+
+HELO lpic2.com.br
+MAIL FROM: silvestrini
+RCPT TO: devops
+DATA
+Hi guys,deploy in execution
+Please, not commit in none branch!!!!
+.
+
+# Test redirect with filter curriculum in subject
+
+HELO lpic2.com.br
+MAIL FROM: vagrant@lpic2.com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Test Postfix Mail Server - Filter word in Subject: curriculum
+From: vagrant@lpic2.com.br
+To: silvestrini@lpic2.com.br
+Message send by Postfix Mail Server
+Learning LPIC2 
+Postfix
+Davecot
+Sieve
+.
+
+# Test rule with vagrant in from
+
+HELO lpic2.com.br
+MAIL FROM: vagrant@lpic2.com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Test Postfix Mail Server
+From: vagrant@lpic2.com.br
+To: silvestrini@lpic2.com.br
+Message send by Postfix Mail Server
+Learning LPIC2 
+Postfix
+Davecot
+Sieve
+.
+
+# Test rule0 with facebook in from and subject with notification
+
+HELO lpic2.com.br
+MAIL FROM: facebook@com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Facebook notification
+From: facebook@com.br
+To: silvestrini@lpic2.com.br
+Message send by Postfix Mail Server
+Learning LPIC2 
+Postfix
+Davecot
+Sieve
+.
+
+
+# Test rule with auto response  vocation
+
+HELO lpic2.com.br
+MAIL FROM: skynet@lpic2.com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Auto-Response Vacation
+From: vagrant@com.br
+To: silvestrini@lpic2.com.br
+Help me with lpic2, please!!!
+.
+
+
+# Test POP receive mailbox messages
+user vagrant
+pass vagrant
+list
+retr MESSAGE_NUMBER_HERE
+
+# Test IMAP receive mailbox messages
+. login vagrant vagrant
+. list "" "*"
+. status INBOX (messages)
+. select INBOX
+. FETCH 3 BODY[]
+
+# view message
+cat /var/mail/vagrant
+
+# View log
+grep C6D913008D9D /var/log/mail*

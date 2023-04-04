@@ -1,0 +1,31 @@
+[ req ]
+default_bits = 3072
+encrypt_key = yes
+distinguished_name = req_dn
+x509_extensions = cert_type
+prompt = no
+
+[ req_dn ]
+# country (2 letter code)
+C=BR
+
+# State or Province Name (full name)
+ST=Sao Paulo
+
+# Locality Name (eg. city)
+L=Sao Paulo
+
+# Organization (eg. company)
+O=LPIC2
+
+# Organizational Unit Name (eg. section)
+OU=IMAP\POP3 server
+
+# Common Name (*.example.com is also possible)
+CN=lpic2.com.br
+
+# E-mail contact
+emailAddress=vagrant@lpic2.com.br
+
+[ cert_type ]
+nsCertType = server

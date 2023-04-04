@@ -21,7 +21,8 @@ $ol9 = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\OracleLinux"
 $bind = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\Bind"
 $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
 $fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
-$dhcp_ldap = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\\DHCP_LDAP"
+$dhcp_ldap = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\DHCP_LDAP"
+$mail = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\MAIL"
 
 # Folder vagrant virtualbox machines artefacts
 $virtualboxFolder = "E:\Servers\VirtualBox"
@@ -64,6 +65,10 @@ Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.
 
 #Destroy dhcp_ldap stack
 Set-Location $dhcp_ldap
+Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
+
+#Destroy mail stack
+Set-Location $mail
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
 
 # Delete folder virtualbox machines artefacts

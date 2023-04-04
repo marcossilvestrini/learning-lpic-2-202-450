@@ -93,10 +93,19 @@ Copy-Item -Force "$env:USERPROFILE\.ssh\id_ecdsa.pub" -Destination $ssh_path
 
 
 # Up Servers Mail
-$mail = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\MAIL"
-Set-Location $mail
+# $mail = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\MAIL"
+# Set-Location $mail
+# Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
+# Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
+# Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
+# Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
+
+
+$security = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\SECURITY"
+Set-Location $security
 Start-Process -Wait -WindowStyle Minimized -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "up"  -Verb RunAs
 Copy-Item .\.vagrant\machines\ol9-server01\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server01
+Copy-Item .\.vagrant\machines\ol9-server02\virtualbox\private_key F:\Projetos\vagrant-pk\ol9-server02
 Copy-Item .\.vagrant\machines\debian-server01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-server01
 Copy-Item .\.vagrant\machines\debian-client01\virtualbox\private_key F:\Projetos\vagrant-pk\debian-client01
 
