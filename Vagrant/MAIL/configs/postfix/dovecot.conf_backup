@@ -39,7 +39,7 @@ protocols = imap pop3
 #instance_name = dovecot
 
 # Greeting message for clients.
-login_greeting = Welcome to LPIC2 Course - by Marcos Silvestrini
+#login_greeting = Dovecot ready.
 
 # Space separated list of trusted network ranges. Connections from these
 # IPs are allowed to override their IP addresses and ports (for logging and

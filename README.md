@@ -1077,7 +1077,7 @@ using various available methods. This includes basic SSSD functionality.
 * passwd and shadow passwords
 * Use sssd for LDAP authentication
 
-![PAM](IMages/pam.jpg)
+![PAM](Images/pam.jpg)
 
 #### 210.2 Cited Objects
 
@@ -1340,6 +1340,39 @@ slapindex -f /etc/ldap/slapd.conf
 
 ![SMTP Structure](Images/smtp_structure.png)
 
+### Default email ports
+
+#### SMTP Ports
+
+The available SMTP ports are four and each of them underlies a different type
+of encryption for email sending.
+
+* **25** – This port serves to send messages in plain text, although if the mail server supports it, it can be encrypted with TLS.
+Therefore, many Internet service providers block it, as it represents a security risk.
+
+* Port **2525** is an alternative to the SMTP port 25 and can be encrypted over TLS.
+
+* **587** – This is the port IANA registered as the secure SMTP port, and it requires an\
+xplicit TLS connection. However, if the email server does not support TLS, the message will
+be sent in plain text.
+
+* Port **465** works over an implicit SSL connection and if the server does not support it,\
+the operation will be aborted.
+
+#### POP3 ports
+
+* Port **110** is the default POP3 port and it is not encrypted.\
+
+* The encrypted port for POP3 is **995** and works over TLS/SSL.
+
+#### IMAP ports
+
+By default IMAP works on two ports like POP3:
+
+* **143** – this is the default port which does not provide any encryption.\
+
+* Port **993** is the secure port for IMAP and it works over TLS/SSL encryption.
+
 ### 211.1 Using e-mail servers
 
 **Weight:** 4
@@ -1459,9 +1492,38 @@ Dovecot vacation extension
 
 #### 211.2 Important Commands
 
+##### doveconf
+
 ```sh
-Examples
+# View all dovecot configuration
+doveconf
+
+# View default  dovecot configuration
+doveconf -d
+
+# View only not default dovecot configuration
+doveconf -n
 ```
+
+##### doveadm
+
+```sh
+# View dovecot service status
+doveadm service status
+
+# View all dovecot configuration
+doveadm config
+
+# Reload dovecot configuration
+doveadm reload
+
+# List connections
+doveadm who
+
+# Test user connection
+doveadm auth test vagrant
+```
+
 
 <p align="right">(<a href="#topic-211.2">back to sub topic 211.2</a>)</p>
 <p align="right">(<a href="#topic-211">back to topic 211</a>)</p>

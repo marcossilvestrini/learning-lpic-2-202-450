@@ -4,6 +4,11 @@ telnet 0 25
 # connect in postfix server remote
 telnet ol9-server01 25
 
+# Connect pop3 remote 
+telnet ol9-server01 110
+
+# Connect imap remote 
+telnet ol9-server01 143
 
 # send mail examples
 
@@ -26,7 +31,7 @@ Hi guys,deploy in execution
 Please, not commit in none branch!!!!
 .
 
-# Test redirect whith filter curriculum in subject
+# Test redirect with filter curriculum in subject
 
 HELO lpic2.com.br
 MAIL FROM: vagrant@lpic2.com.br
@@ -75,6 +80,21 @@ Sieve
 .
 
 
+# Test rule with auto response  vocation
+
+HELO lpic2.com.br
+MAIL FROM: skynet@lpic2.com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Auto-Response Vacation
+From: vagrant@com.br
+To: silvestrini@lpic2.com.br
+Help me with lpic2, please!!!
+.
+
+
+# Test POP receive mailbox messages
+user silvestrini
 
 
 # view message

@@ -74,6 +74,26 @@ newaliases
 
 ## Configure MTA - Dovicot
 
+## Generate ssl certificates
+rm -f /etc/pki/dovecot/private/dovecot.pem
+rm -f /etc/pki/dovecot/certs/dovecot.pem
+
+if [[ $DISTRO == *"Debian"* ]]; then
+    . /usr/share/dovecot/mkcert.sh
+else
+    cp configs/postfix/dovecot-openssl.cnf /etc/pki/dovecot
+    dos2unix /etc/pki/dovecot/dovecot-openssl.cnf
+    chmod 644 /etc/pki/dovecot/dovecot-openssl.cnf
+    . /usr/libexec/dovecot/mkcert.sh >/dev/null 2>&1
+fi
+
+### Configure file /etc/dovecot/dovecot.conf
+#-rw-r--r-- 1 root root 4401 Jul 31  2022 /etc/dovecot/dovecot.conf
+cp /etc/dovecot/dovecot.conf configs/postfix/dovecot.conf_backup
+cp configs/postfix/dovecot.conf /etc/dovecot
+dos2unix /etc/dovecot/dovecot.conf
+chmod 644 /etc/dovecot/dovecot.conf
+
 ### Set access to dovecot
 chgrp mail /usr/libexec/dovecot/dovecot-lda
 chmod 2755 /usr/libexec/dovecot/dovecot-lda
@@ -82,9 +102,16 @@ chmod 2755 /usr/libexec/dovecot/dovecot-lda
 cp configs/postfix/10-mail.conf  /etc/dovecot/conf.d/
 cp configs/postfix/15-lda.conf  /etc/dovecot/conf.d/
 cp configs/postfix/90-sieve.conf  /etc/dovecot/conf.d/
+cp configs/postfix/10-ssl.conf  /etc/dovecot/conf.d/
+cp configs/postfix/10-auth.conf /etc/dovecot/conf.d
+cp configs/postfix/10-master.conf /etc/dovecot/conf.d
 dos2unix /etc/dovecot/conf.d/10-mail.conf
 dos2unix /etc/dovecot/conf.d/15-lda.conf
 dos2unix /etc/dovecot/conf.d/90-sieve.conf
+dos2unix /etc/dovecot/conf.d/10-ssl.conf
+dos2unix /etc/dovecot/conf.d/10-auth.conf
+dos2unix /etc/dovecot/conf.d/10-master.conf
+
 
 ### Set rules for user vagrant
 rm -rf mail
@@ -97,6 +124,14 @@ rm -rf /home/silvestrini/mail
 cp configs/postfix/.dovecot.sieve /home/silvestrini
 dos2unix /home/silvestrini/.dovecot.sieve
 chown silvestrini:silvestrini /home/silvestrini/.dovecot.sieve
+
+
+### Set rules for user skynet
+rm -rf /home/skynet/mail
+cp configs/postfix/.dovecot.sieve /home/skynet
+dos2unix /home/skynet/.dovecot.sieve
+chown skynet:skynet /home/skynet/.dovecot.sieve
+
 
 ### Restart dovecot service
 systemctl restart dovecot
