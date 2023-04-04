@@ -1338,6 +1338,8 @@ slapindex -f /etc/ldap/slapd.conf
 
 <a name="topic-211.1"></a>
 
+![SMTP Structure](Images/smtp_structure.png)
+
 ### 211.1 Using e-mail servers
 
 **Weight:** 4
@@ -1355,6 +1357,19 @@ e-mail servers.
 * Basic knowledge of the SMTP protocol
 * Awareness of sendmail and exim
 
+#### Nomenclatures
+
+*SMTP:* Simple Mail Transfer Protocol
+
+*MTA*: Mail Transfer Agent
+
+*MDA*: Mail Delivery Agent
+
+*MUA*: Mail User Agent
+
+*MX*: Mail Exchange
+
+
 #### 211.1 Cited Objects
 
 ```sh
@@ -1370,8 +1385,46 @@ mail-related logs in /var/log/
 
 #### 211.1 Important commands
 
+##### postfix
+
 ```sh
-Examples
+# Reload postfix configuration
+postfix reload
+
+# Start\Stop postfix configuration
+postfix start
+postfix stop
+
+# Resend mails
+postfix flush
+```
+
+##### postqueue
+
+```sh
+# List the mail queue
+postqueue -p
+```
+
+##### postmap
+
+```sh
+# Set canonical maps
+postmap /etc/postfix/send_canonical
+```
+
+##### postconf
+
+```sh
+# View postfix configuration enable
+postconf -d
+```
+
+##### postsuper
+
+```sh
+# Delete all queued messages
+postsuper -d ALL
 ```
 
 <p align="right">(<a href="#topic-211.1">back to sub topic 211.1</a>)</p>

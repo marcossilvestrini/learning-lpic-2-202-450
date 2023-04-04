@@ -76,6 +76,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # SET DNS BIND
     ol9_server01.vm.provision "shell", path: "scripts/user-data-bind-master.sh"
 
+    # SET POSTFIX MAIL SERVER 
+    ol9_server01.vm.provision "shell", path: "scripts/mail-server.sh"
+
   end
 
   # VM debian_server01

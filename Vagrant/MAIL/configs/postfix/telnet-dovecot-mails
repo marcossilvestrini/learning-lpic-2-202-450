@@ -1,0 +1,84 @@
+# connect in postfix server mail local
+telnet 0 25
+
+# connect in postfix server remote
+telnet ol9-server01 25
+
+
+# send mail examples
+
+# simple test
+HELO lpic2.com.br
+MAIL FROM: silvestrini
+RCPT TO: vagrant
+DATA
+Message for test postfix by Silvestrini
+Learning about postfix mail server
+.
+
+# teste aliases
+
+HELO lpic2.com.br
+MAIL FROM: silvestrini
+RCPT TO: devops
+DATA
+Hi guys,deploy in execution
+Please, not commit in none branch!!!!
+.
+
+# Test redirect whith filter curriculum in subject
+
+HELO lpic2.com.br
+MAIL FROM: vagrant@lpic2.com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Test Postfix Mail Server - Filter word in Subject: curriculum
+From: vagrant@lpic2.com.br
+To: silvestrini@lpic2.com.br
+Message send by Postfix Mail Server
+Learning LPIC2 
+Postfix
+Davecot
+Sieve
+.
+
+# Test rule with vagrant in from
+
+HELO lpic2.com.br
+MAIL FROM: vagrant@lpic2.com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Test Postfix Mail Server
+From: vagrant@lpic2.com.br
+To: silvestrini@lpic2.com.br
+Message send by Postfix Mail Server
+Learning LPIC2 
+Postfix
+Davecot
+Sieve
+.
+
+# Test rule0 with facebook in from and subject with notification
+
+HELO lpic2.com.br
+MAIL FROM: facebook@com.br
+RCPT TO: silvestrini@lpic2.com.br
+DATA
+Subject: Facebook notification
+From: facebook@com.br
+To: silvestrini@lpic2.com.br
+Message send by Postfix Mail Server
+Learning LPIC2 
+Postfix
+Davecot
+Sieve
+.
+
+
+
+
+# view message
+cat /var/mail/vagrant
+
+# View log
+grep C6D913008D9D /var/log/mail*
