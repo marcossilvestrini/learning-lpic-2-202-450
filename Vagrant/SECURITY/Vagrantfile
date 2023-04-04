@@ -137,7 +137,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # PROVIDER
     ol9_server02.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
-      vb.name =VM_ol9_server02
+      vb.name =VM_OL9_SERVER02
       vb.memory = 2048
       vb.cpus = 1
     end
