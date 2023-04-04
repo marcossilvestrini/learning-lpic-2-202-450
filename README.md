@@ -158,11 +158,11 @@ Use this repository for get learning about LPIC2 202-450 exam
 
 * [x] Create repository
 * [x] Update vagrant box oracle 8 for oracle 9
-* [ ] Create examples about Topic 207
-* [ ] Create examples about Topic 208
-* [ ] Create examples about Topic 209
-* [ ] Create examples about Topic 210
-* [ ] Create examples about Topic 211
+* [x] Create examples about Topic 207
+* [x] Create examples about Topic 208
+* [x] Create examples about Topic 209
+* [x] Create examples about Topic 210
+* [x] Create examples about Topic 211
 * [ ] Create examples about Topic 212
 * [ ] Upload simulated itexam
 
@@ -1393,6 +1393,10 @@ e-mail servers.
 #### Nomenclatures
 
 *SMTP:* Simple Mail Transfer Protocol
+
+*POP3:* Post Office Protocol
+
+*IMAP:* Internet Message Access Protocol
 
 *MTA*: Mail Transfer Agent
 
