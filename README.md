@@ -1488,7 +1488,7 @@ keep, fileinto, redirect, reject, discard, stop
 Dovecot vacation extension
 ```
 
-![Mind Map](Images/mindmap-204.2.png)
+![Mind Map](Images/mindmap-211.2.png)
 
 #### 211.2 Important Commands
 
