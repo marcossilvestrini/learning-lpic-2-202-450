@@ -1077,7 +1077,7 @@ using various available methods. This includes basic SSSD functionality.
 * passwd and shadow passwords
 * Use sssd for LDAP authentication
 
-![PAM](Images/pam.jpg)
+![PAM](foo/pam.jpg)
 
 #### 210.2 Cited Objects
 
