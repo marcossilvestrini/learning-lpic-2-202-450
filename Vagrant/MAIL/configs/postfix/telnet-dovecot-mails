@@ -94,8 +94,17 @@ Help me with lpic2, please!!!
 
 
 # Test POP receive mailbox messages
-user silvestrini
+user vagrant
+pass vagrant
+list
+retr MESSAGE_NUMBER_HERE
 
+# Test IMAP receive mailbox messages
+. login vagrant vagrant
+. list "" "*"
+. status INBOX (messages)
+. select INBOX
+. FETCH 3 BODY[]
 
 # view message
 cat /var/mail/vagrant
