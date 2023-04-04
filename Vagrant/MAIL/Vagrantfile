@@ -147,7 +147,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
 
     # SET POSTFIX MAIL CLIENT UTILS
-    ol9_server01.vm.provision "shell", path: "scripts/mail-client.sh"
+    debian_client01.vm.provision "shell", path: "scripts/mail-client.sh"
 
   end
 

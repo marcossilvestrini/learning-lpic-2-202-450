@@ -14,9 +14,9 @@ $TTL 1h
                                MX      10      mail2
 
 ol9-server01           A       192.168.0.140   ;glue record, server
-ol9-server01           A       172.16.12.2     ;glue record, server
+ol9-server01           A       172.36.12.2     ;glue record, server
 debian-server01        A       192.168.0.141   ;bind server
-debian-server01        A       172.16.12.3     ;server
+debian-server01        A       172.36.12.3     ;server
 debian-client01        A       192.168.0.150   ;client server
 debian-client01        A       172.36.12.4     ;client server
 silvestrini            A       192.168.0.100   ;my desktop
