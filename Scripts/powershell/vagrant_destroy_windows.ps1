@@ -23,18 +23,20 @@ $http = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\HTTP"
 $fs = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\FS"
 $dhcp_ldap = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\DHCP_LDAP"
 $mail = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\MAIL"
+$security = "F:\CERTIFICACAO\lpic-2-202-450\Vagrant\SECURITY"
 
 # Folder vagrant virtualbox machines artefacts
 $virtualboxFolder = "E:\Servers\VirtualBox"
 $vmFolders=@(
-    "$virtualboxFolder\ol9-bind-master",    
-    "$virtualboxFolder\debian-bind-slave",  
+    "$virtualboxFolder\ol9-bind-master",
+    "$virtualboxFolder\debian-bind-slave",
     "$virtualboxFolder\debian-apache-node01",
     "$virtualboxFolder\debian-apache-node02",
-    "$virtualboxFolder\ol9-apache-ha",  
-    "$virtualboxFolder\ol9-nginx-ha",  
+    "$virtualboxFolder\ol9-apache-ha",
+    "$virtualboxFolder\ol9-nginx-ha",
     "$virtualboxFolder\debian-http-client",
-    "$virtualboxFolder\ol9-server01",    
+    "$virtualboxFolder\ol9-server01",
+    "$virtualboxFolder\ol9-server02",
     "$virtualboxFolder\debian-server01",
     "$virtualboxFolder\debian-client01"
 )
@@ -69,6 +71,10 @@ Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.
 
 #Destroy mail stack
 Set-Location $mail
+Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
+
+#Destroy security stack
+Set-Location $security
 Start-Process -Wait -WindowStyle Hidden  -FilePath "E:\Apps\Vagrant\bin\vagrant.exe" -ArgumentList "destroy -f"  -Verb RunAs
 
 # Delete folder virtualbox machines artefacts
