@@ -54,7 +54,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # NETWORK
     ol9_server01.vm.network "public_network",ip: "192.168.0.140",mode: "bridge",bridge: "Intel(R) I211 Gigabit Network Connection",nic_type: "virtio"
-    #ol9_server01.vm.network "private_network",ip: "172.16.32.2",nic_type: "virtio",mac: "080027f3066a"
+    ol9_server01.vm.network "private_network",ip: "172.16.32.2",nic_type: "virtio",mac: "080027f3066a"
 
     # MOUNTS
     ol9_server01.vm.synced_folder ".", "/vagrant", disabled: true
@@ -71,10 +71,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    ol9_server01.vm.provision "shell", path: "scripts/user-data-ol9.sh"
+    ol9_server01.vm.provision "shell", path: "scripts/userdata-ol9.sh"
 
     # SET DNS BIND
-    ol9_server01.vm.provision "shell", path: "scripts/user-data-bind-master.sh"
+    ol9_server01.vm.provision "shell", path: "scripts/userdata-bind-master.sh"
 
     # SET POSTFIX MAIL SERVER 
     ol9_server01.vm.provision "shell", path: "scripts/mail-server.sh"
@@ -110,7 +110,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    debian_server01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+    debian_server01.vm.provision "shell", path: "scripts/userdata-debian.sh"
+
+    # SET SPECIFICS CONFIGS FOR THIS VM
+    debian_server01.vm.provision "shell", path: "scripts/userdata-debian-server01.sh"    
 
   end
 
@@ -143,7 +146,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    ol9_server02.vm.provision "shell", path: "scripts/user-data-ol9.sh"
+    ol9_server02.vm.provision "shell", path: "scripts/userdata-ol9.sh"
+
+    # SET NETWORK ROUTES
+    ol9_server02.vm.provision "shell", path: "scripts/userdata-ol9-server02.sh"
     
   end
 
@@ -177,7 +183,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # SSH,FIREWALLD,SELINUX, UPDATES AND PROFILE
-    debian_client01.vm.provision "shell", path: "scripts/user-data-debian.sh"
+    debian_client01.vm.provision "shell", path: "scripts/userdata-debian.sh"
+
+    # SET NETWORK ROUTES
+    debian_client01.vm.provision "shell", path: "scripts/userdata-debian-client01.sh"
 
   end
 

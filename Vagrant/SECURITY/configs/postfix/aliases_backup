@@ -95,3 +95,7 @@ decode:		root
 
 # Person who should get root's mail
 #root:		marc
+
+# LPIC2 Postfix configurations
+learning:	silvestrini
+devops:	vagrant

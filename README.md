@@ -1601,8 +1601,49 @@ ip6tables
 
 #### 212.1 Important Commands
 
+
+##### iptables
+
 ```sh
-Examples
+# Show rules in default table (table filter)
+iptables -L -n -v
+
+# Show rule sin specific table
+iptables -L -n -t nat
+
+# Create a new rule for deny ping for all INPUT
+iptables -t filter -A INPUT -p icmp -j DROP
+iptables -t filter -A FORWARD -p icmp -j DROP
+
+# Create a new rule for deny ping for specif ip
+iptables -t filter -A INPUT -p icmp -d 192.168.0.100 -j DROP
+
+# Create a new rule for allow ping for specif ip
+iptables -t filter -A INPUT -p icmp -d 192.168.0.100  -j ACCEPT
+
+#Insert one  or  more rules in the selected chain as the given rule number
+iptables -t filter -I INPUT 1 -p icmp -d 192.168.0.100
+
+# Create a new rule for deny specific tcp port for all destination INPUT
+iptables -t filter -A INPUT -p tcp --dport 1234 -j  DROP
+
+# Create a new rule for deny specific tcp port for all source INPUT
+iptables -t filter -A INPUT -p tcp --sport 1234 -j  DROP
+
+# Delete rule for deny ping for all INPUT
+iptables -t filter -D INPUT -p icmp -j DROP
+
+# Clear all rules in specific chain
+iptables -F -t filter OUTPUT
+
+# Rule for DROP all in chain INPUT
+iptables -P INPUT DROP
+
+# Create VNAT rule in chain POSTROUTING
+iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j SNAT --to-source <YOUR_PUBLIC_IP>
+iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j SNAT --to-source 192.168.0.141
+iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j MASQUERADE
+
 ```
 
 <p align="right">(<a href="#topic-212.1">back to sub topic 212.1</a>)</p>

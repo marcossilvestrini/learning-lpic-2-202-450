@@ -15,29 +15,25 @@ cd /home/vagrant || exit
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) vagrant
 usermod --password $(echo vagrant | openssl passwd -1 -stdin) root
 
-# Install packages
-apt-get update -y
-apt-get upgrade -y
-apt-get install -y sshpass
-apt-get install -y vim
-apt-get install -y dos2unix
-apt-get install -y tree
-apt-get install -y curl
-apt-get install -y psmisc
-apt-get install -y xserver-xorg
-apt-get install -y python3-pip
-apt-get install -y python3-venv
-apt-get install -y net-tools
-apt-get install -y network-manager
-apt-get install -y sysstat
-apt-get install -y htop
-apt-get install -y collectd
-apt-get install -y smbclient
-apt-get install -y cifs-utils
+# Enable Epel repo
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 
+# Install packages
+dnf update -y
+dnf install -y bash-completion
+dnf install -y vim
+dnf install -y dos2unix
+dnf install -y sshpass
+dnf install -y htop
+dnf install -y lsof
+dnf install -y tree
+dnf install -y net-tools
+dnf install -y telnet
+dnf install -y traceroute
+dnf install -y sysstat
 
 # Set profile in /etc/profile
-cp -f configs/commons/profile-debian /etc/profile
+cp -f configs/commons/profile-ol9 /etc/profile
 dos2unix /etc/profile
 
 # Set vim profile
@@ -46,39 +42,39 @@ dos2unix .vimrc
 chown vagrant:vagrant .vimrc
 
 # Set bash session
-cp -f configs/commons/.bashrc-debian .bashrc
-dos2unix .bashrc
+cp -f configs/commons/.bashrc-ol9 .bashrc
+dos2unix .bashrc .vimrc
+chown root:root .bashrc .vimrc
 
 # Set properties for user root
-cp -f .bashrc .vimrc /root
+cp -f .bashrc .vimrc /root/
 
-# Set Swap memory
-fallocate -l 4G /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-
-# Set ssh
+# SSH,FIREWALLD AND SELINUX
+rm /etc/ssh/sshd_config.d/90-vagrant.conf
 cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
-dos2unix /etc/ssh/sshd_config.d/01-sshd-custom.conf
+dos2unix /etc/ssh/sshd_config.d
 systemctl restart sshd
 cat security/id_ecdsa.pub >>.ssh/authorized_keys
 echo vagrant | $(su -c "ssh-keygen -q -t ecdsa -b 521 -N '' -f .ssh/id_ecdsa <<<y >/dev/null 2>&1" -s /bin/bash vagrant)
+systemctl restart sshd
+systemctl stop firewalld
+systemctl disable firewalld
+setenforce Permissive
 
 # Set GnuGP
-echo vagrant | $(su -c "gpg --batch --gen-key configs/commons/gen-key-script" -s /bin/bash vagrant)
-echo vagrant | $(su -c "gpg --export --armor vagrant > .gnupg/vagrant.pub.key" -s /bin/bash vagrant)
+echo vagrant | $(su -c "gpg -k" -s /bin/bash vagrant)
 
-# Set X11 Server
-Xorg -configure
-mv /root/xorg.conf.new /etc/X11/xorg.conf
+# Install X11 Server
+dnf config-manager --set-enabled ol9_codeready_builder
+dnf update -y
+dnf install -y xorg-x11-server-Xorg.x86_64 xorg-x11-xauth.x86_64 \
+    xorg-x11-server-utils.x86_64 xorg-x11-utils.x86_64
 
 # Enable sadc collected system activity
-sed -i 's/false/true/g' /etc/default/sysstat
-cp -f configs/commons/cron.d-sysstat /etc/cron.d/sysstat
-dos2unix /etc/cron.d/sysstat
-systemctl start sysstat
-systemctl enable sysstat
+cp -f configs/commons/sysstat /etc/default/
+dos2unix /etc/default/sysstat
+systemctl start sysstat sysstat-collect.timer sysstat-summary.timer
+systemctl enable sysstat sysstat-collect.timer sysstat-summary.timer
 
 # Set Default DNS Server
 
@@ -94,5 +90,5 @@ systemctl reload NetworkManager
 ## Set resolv.conf file
 rm /etc/resolv.conf
 cp configs/commons/resolv.conf.manually-configured /etc
-dos2unix /etc/resolv.conf.manually-configured
+dos2unix  /etc/resolv.conf.manually-configured
 ln -s /etc/resolv.conf.manually-configured /etc/resolv.conf

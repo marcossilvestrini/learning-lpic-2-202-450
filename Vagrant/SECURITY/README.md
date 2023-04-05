@@ -125,9 +125,9 @@ vagrant up
 
 ## Roadmap
 
-* [ ] Install And Configure iptables
-  * [ ] Install iptables
-  * [ ] Configure iptables
+* [ ] Configure iptables
+  * [ ] Configure Routes
+  * [ ] Configure Rules in iptables
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
