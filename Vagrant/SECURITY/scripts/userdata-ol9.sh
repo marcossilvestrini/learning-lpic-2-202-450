@@ -28,6 +28,7 @@ dnf install -y htop
 dnf install -y lsof
 dnf install -y tree
 dnf install -y net-tools
+dnf install -y bind-utils
 dnf install -y telnet
 dnf install -y traceroute
 dnf install -y sysstat

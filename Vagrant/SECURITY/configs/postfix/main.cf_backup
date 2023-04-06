@@ -99,7 +99,7 @@ mail_owner = postfix
 # $mydomain is used as a default value for many other configuration
 # parameters.
 #
-mydomain = lpic2.com.br
+#mydomain = domain.tld
 
 # SENDING MAIL
 # 
@@ -116,7 +116,6 @@ mydomain = lpic2.com.br
 #
 #myorigin = $myhostname
 #myorigin = $mydomain
-myorigin = lpic2.com.br
 
 # RECEIVING MAIL
 
@@ -130,10 +129,10 @@ myorigin = lpic2.com.br
 #
 # Note: you need to stop/start Postfix when this parameter changes.
 #
-inet_interfaces = all
+#inet_interfaces = all
 #inet_interfaces = $myhostname
 #inet_interfaces = $myhostname, localhost
-#telnetinet_interfaces = localhost
+inet_interfaces = localhost
 
 # Enable IPv4, and IPv6 if supported
 inet_protocols = all
@@ -181,12 +180,7 @@ inet_protocols = all
 #
 # See also below, section "REJECTING MAIL FOR UNKNOWN LOCAL USERS".
 #
-mydestination = $myhostname,
- localhost.$mydomain,
- localhost,
- lpic2.com.br,
- 192.168.0.0/24,
- 172.36.12.0/24
+mydestination = $myhostname, localhost.$mydomain, localhost
 #mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 #mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain,
 #	mail.$mydomain, www.$mydomain, ftp.$mydomain
@@ -289,7 +283,6 @@ unknown_local_recipient_reject_code = 550
 #mynetworks = 168.100.189.0/28, 127.0.0.0/8
 #mynetworks = $config_directory/mynetworks
 #mynetworks = hash:/etc/postfix/network_table
-mynetworks =  192.168.0.0/24, 172.36.12.0/24
 
 # The relay_domains parameter restricts what destinations this system will
 # relay mail to.  See the smtpd_recipient_restrictions description in
@@ -319,7 +312,7 @@ mynetworks =  192.168.0.0/24, 172.36.12.0/24
 # list this system as their primary or backup MX host. See the
 # permit_mx_backup restriction description in postconf(5).
 #
-relay_domains = $mydestination, lpic2.com.br
+#relay_domains = $mydestination
 
 # INTERNET OR INTRANET
 
@@ -440,8 +433,8 @@ alias_database = hash:/etc/aliases
 # mailbox file relative to a user's home directory. The default
 # mailbox file is /var/spool/mail/user or /var/mail/user.  Specify
 # "Maildir/" for qmail-style delivery (the / is required).
-# 
-home_mailbox= Mailbox
+#
+#home_mailbox = Mailbox
 #home_mailbox = Maildir/
  
 # The mail_spool_directory parameter specifies the directory where
@@ -471,10 +464,7 @@ home_mailbox= Mailbox
 # ALIAS THAT FORWARDS MAIL FOR ROOT TO A REAL USER.
 #
 #mailbox_command = /some/where/procmail
-#mailbox_command = /some/where/procmail -a "$EXTENSION"'
-#mailbox_command = /usr/libexec/dovecot/deliver -f "$SENDER" -a "$ORIGINAL_RECIPIENT"
-mailbox_command = /usr/libexec/dovecot/dovecot-lda -f "$SENDER" -a "$RECIPIENT"
-											   
+#mailbox_command = /some/where/procmail -a "$EXTENSION"
 
 # The mailbox_transport specifies the optional transport in master.cf
 # to use after processing aliases and .forward files. This parameter
@@ -746,7 +736,3 @@ smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
 smtp_tls_security_level = may
 meta_directory = /etc/postfix
 shlib_directory = /usr/lib64/postfix
-
-###################LPIC2 CONTENT #########################
-sender_canonical_maps = hash:/etc/postfix/sender_canonical
-

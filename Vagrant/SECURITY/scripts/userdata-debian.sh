@@ -30,6 +30,7 @@ apt-get install -y python3-venv
 apt-get install -y net-tools
 apt-get install -y network-manager
 apt-get install -y dnsutils
+apt-get install -y tcpdump
 apt-get install -y sysstat
 apt-get install -y htop
 apt-get install -y collectd
