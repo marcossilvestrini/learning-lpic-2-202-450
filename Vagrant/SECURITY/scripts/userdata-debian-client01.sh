@@ -11,5 +11,9 @@ export LANG=C
 
 cd /home/vagrant || exit
 
+# Install packages
+
+apt-get install -y ftp
+
 # Route 172.16.32.0/24 - 192.168.0.141
 route add -net 172.16.32.0/24 gw 192.168.0.141

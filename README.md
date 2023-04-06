@@ -1639,11 +1639,29 @@ iptables -F -t filter OUTPUT
 # Rule for DROP all in chain INPUT
 iptables -P INPUT DROP
 
-# Create VNAT rule in chain POSTROUTING
+# Create SNAT rule in chain POSTROUTING
 iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j SNAT --to-source <YOUR_PUBLIC_IP>
 iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j SNAT --to-source 192.168.0.141
 iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j MASQUERADE
 
+# Create DNAT rule in chain PREROUTING
+iptables -t nat -A PREROUTING -p tcp --dport 1234 -j DNAT --to-destination 192.168.0.150:1234
+iptables -t nat -A PREROUTING -p tcp --dport 4321 -j DNAT --to-destination 192.168.0.150:1234
+iptables -t nat -A PREROUTING -p tcp --dport 6789 -j REDIRECT --to-port 1111
+```
+
+##### iptables-save
+
+```sh
+# Save actual rules permanently in file
+iptables-save  > /etc/iptables.rules
+```
+
+##### iptables-restore
+
+```sh
+# Restore rules from file
+iptables-restore <  /etc/iptables.rules
 ```
 
 <p align="right">(<a href="#topic-212.1">back to sub topic 212.1</a>)</p>
@@ -1687,8 +1705,11 @@ nmap
 
 #### 212.2 Important Commands
 
-```ssh
-Examples
+##### ftp
+
+```sh
+# conenct in ftp server
+ftp <IP_FTP_SERVER>
 ```
 
 <p align="right">(<a href="#topic-212.2">back to sub topic 212.2</a>)</p>

@@ -40,7 +40,7 @@ sysctl -p
 
 
 ############## TABLE NAT    ################
-EXTERNAL_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+#EXTERNAL_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 #iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j SNAT --to-source $EXTERNAL_IP
 #iptables -t nat -A POSTROUTING -s 172.16.32.0/24 -o eth2 -j SNAT --to-source 192.168.0.141
 ############## TABLE NAT    ################
