@@ -11,6 +11,10 @@ export LANG=C
 
 cd /home/vagrant || exit
 
+# Install packages
+apt install -y fail2ban
+apt install -y openvpn
+
 # Enable packet forwarding for IPv4
 # -rw-r--r-- 1 root root 2355 Apr  6  2021 /etc/sysctl.conf
 cp  configs/commons/sysctl.conf /etc

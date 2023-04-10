@@ -1752,8 +1752,28 @@ PasswordAuthentication, Protocol
 
 #### 212.3 Important Commands
 
+##### ssh
+
 ```sh
-Examples
+# Connect in the server - verbose mode
+ssh -v vagrant@debian-server01
+
+# Generate keys
+ssh-keygen -q -t ecdsa -b 521 -f ~/.ssh/my_ecdsa_keys
+
+# Send public key for remote server
+ssh-copy-id vagrant@debian-client01
+
+# Use private key whith password
+## start ssh-agent
+ssh-agent
+## add key in safe
+ssh-add # enter your pass
+## connect in server
+ssh user@server
+
+# create ssh tunnel
+ssh -N -f -L 4321:debian-client01:1234 vagrant@debian-client01
 ```
 
 <p align="right">(<a href="#topic-212.3">back to sub topic 212.3</a>)</p>
@@ -1793,8 +1813,59 @@ iptables
 
 #### 212.4 Important Commands
 
+##### telnet
+
 ```sh
-Examples
+# Test local port connection
+telnet localhots 22
+
+# Test remote port connection
+telnet debian-client01 22
+```
+
+##### nc
+
+```sh
+# Test local port connection
+nc localhots 22
+
+# Test remote port connection
+nc debian-client01 22
+
+# open and listen local tcp connection in specific port
+nc -k -l -p 1234
+```
+
+##### netstat
+
+```sh
+# List tcp connections in listen
+netstat --tcp --listen
+netstat -tln
+
+
+# List udp connections in listen
+netstat --udp --listen
+netstat -uln
+
+# List listen connections and process
+netstat -nalp | grep 22
+```
+
+##### nmap
+
+```sh
+# scan ports 1-22 in localhost
+nmap -sT -p1-22 localhost
+
+# scan ports 1-22 in remote server
+nmap -sT -p21-22 debian-client01
+
+# Get system operation information
+nmap -O localhost
+
+# Generate general report
+nmap -A ol9-server01
 ```
 
 <p align="right">(<a href="#topic-212.4">back to sub topic 212.4</a>)</p>
@@ -1823,6 +1894,22 @@ openvpn
 ```
 
 ![Mind Map](Images/mindmap-212.5.png)
+
+#### 212.5 Important Commands
+
+##### openvpn
+
+```sh
+# generate key par 
+openvpn --genkey secret static.key
+
+#Connect in VPN with device type  tun
+## Start server
+cd /etc/openvpn && openvpn --config /etc/openvpn/server.conf --daemon
+
+## Start client
+cd /etc/openvpn && openvpn --config /etc/openvpn/client.conf --daemon
+```
 
 <p align="right">(<a href="#topic-212.5">back to sub topic 212.5</a>)</p>
 <p align="right">(<a href="#topic-212">back to topic 212</a>)</p>

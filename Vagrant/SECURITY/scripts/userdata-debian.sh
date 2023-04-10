@@ -36,6 +36,7 @@ apt-get install -y htop
 apt-get install -y collectd
 apt-get install -y smbclient
 apt-get install -y cifs-utils
+apt-get install -y nmap
 
 
 # Set profile in /etc/profile
