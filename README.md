@@ -2023,7 +2023,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
+<!-- MARKDOWN LINKS & IMAGES-->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
 [contributors-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/graphs/contributors
