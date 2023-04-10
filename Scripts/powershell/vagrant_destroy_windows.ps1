@@ -85,3 +85,10 @@ $vmFolders | ForEach-Object {
         }        
     }
 }
+
+# # Remove user vagrant with exist
+# $myuser="vagrant"
+# $op = Get-LocalUser | where-Object Name -eq $myuser | Measure
+# if ($op.Count -eq 1) {
+#     Remove-LocalUser -Name $myuser
+# }
