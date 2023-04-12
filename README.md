@@ -1239,7 +1239,7 @@ ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" '(& (cn=marcos) (! (sn=Alm
 ldapdelete -x -w vagrant -h localhost -D "cn=admin,dc=lpic2,dc=com,dc=br" "cn=Carlos1,ou=funcionarios,ou=testes,dc=lpic2,dc=com,dc=br"
 ```
 
-##### ldapasswd
+##### ldappasswd
 
 ```sh
 # Example
