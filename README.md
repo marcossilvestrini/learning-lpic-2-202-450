@@ -163,8 +163,8 @@ Use this repository for get learning about LPIC2 202-450 exam
 * [x] Create examples about Topic 209
 * [x] Create examples about Topic 210
 * [x] Create examples about Topic 211
-* [ ] Create examples about Topic 212
-* [ ] Upload simulated itexam
+* [x] Create examples about Topic 212
+* [x] Upload simulated itexam
 
 <a name="freedoms"></a>
 
