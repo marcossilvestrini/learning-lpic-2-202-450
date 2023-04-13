@@ -9,7 +9,7 @@
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-# LEARNNING LPIC-2 202-450
+# LEARNING LPIC-2 202-450
 
 ![202-450 Linux Engineer](Images/lpic2-202-450.jpg)
 

@@ -1,0 +1,64 @@
+What command creates a SSH key pair? (Specify ONLY the command without any path or parameters)
+
+R:
+ssh-keygen
+
+What configuration directive of the Apache HTTPD server defines where log files are stored? (Specify ONE of the directives without any other options.)
+
+R:
+ErrorLog
+
+Which directive in a Nginx server configuration block defines the TCP ports on which the virtual host will be available, and which protocols it will use? (Specify
+ONLY the option name without any values.)
+
+R:
+listen
+
+According to this LDIF excerpt, which organizational unit is Robert Smith part of? (Specify only the organizational unit.)
+
+R:
+people
+
+What is the name of the root element of the LDAP tree holding the configuration of an OpenLDAP server that is using directory based configuration? (Specify
+ONLY the element"™s name without any additional information.)
+
+R:
+slapd
+
+In order to specify alterations to an LDAP entry, what keyword is missing from the following LDIF file excerpt?
+
+R:
+modify
+
+Which OpenLDAP client command can be used to change the password for an LDAP entry? (Specify ONLY the command without any path or parameters.)
+
+ldappasswd
+
+What is the path to the global Postfix configuration file? (Specify the full name of the file, including path.)
+
+R:
+/etc/postfix/main.cf
+
+Which action in a Sieve filter forwards a message to another email address without changing the message? (Specify ONLY the action"™s name without any parameters.)
+
+R:
+redirect
+
+In order to export /usr and /bin via NFSv4, /exports was created and contains working bind mounts to /usr and /bin. The following lines are added to /etc/exports on the NFC server:
+
+R:
+fsid
+
+What command displays NFC kernel statistics? (Specify ONLY the command without any path or parameters.)
+
+R:nfsstat
+
+
+What option in the sshd configuration file instructs sshd to permit only specific user names to log in to a system? (Specify ONLY the option name without any values.)
+
+R: AllowUsers
+
+
+According to the configuration below, what is the full e-mail address of the administrator for this domain?
+
+R: pluto.example.com
