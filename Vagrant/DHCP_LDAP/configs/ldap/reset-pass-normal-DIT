@@ -1,0 +1,4 @@
+dn: cn=admin,dc=skynet,dc=com,dc=br
+changetype: modify
+replace: userPassword
+userPassword: {SSHA}ijUPA+6wdo7CylvRDsmdafk/aFwpy+1M

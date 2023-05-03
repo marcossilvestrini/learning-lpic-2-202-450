@@ -155,18 +155,3 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-2-202-450](htt
 * [NFS](https://linux-nfs.org/wiki/index.php/Main_Page)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
-[contributors-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
-[forks-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/network/members
-[stars-shield]: https://img.shields.io/github/stars/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
-[stars-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/stargazers
-[issues-shield]: https://img.shields.io/github/issues/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
-[issues-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/issues
-[license-shield]: https://img.shields.io/github/license/marcossilvestrini/learning-lpic-2-202-450.svg?style=for-the-badge
-[license-url]: https://github.com/marcossilvestrini/learning-lpic-2-202-450/blob/master/LICENSE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/marcossilvestrini

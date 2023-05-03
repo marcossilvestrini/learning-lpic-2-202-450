@@ -1219,7 +1219,7 @@ ldapsearch -H ldapi:/// -Y EXTERNAL -b "cn=config" -LLL -Q "olcDatabase=*" dn
 ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br"
 
 # Find specific cn
-ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" cn=Marcos
+ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" "cn=Marcos"
 
 # Find specific sn
 ldapsearch -x -h localhost -b "dc=lpic2,dc=com,dc=br" cn=silvestrini
@@ -1249,6 +1249,13 @@ ldapadd -x -w vagrant -D "cn=admin,dc=lpic2,dc=com,dc=br" -f configs/ldap/user.l
 ## Modify password
 ldappasswd -x -w vagrant -h localhost -D "cn=admin,dc=lpic2,dc=com,dc=br" \
   -s newpassword "uid=skynet,ou=funcionarios,ou=suporte,dc=lpic2,dc=com,dc=br"
+```
+
+##### ldapwhoami
+
+```sh
+# Validate user\password admin--->vagrant
+ldapwhoami -vvv -h localhost  -D cn=admin,dc=skynet,dc=com,dc=br -x -w vagrant
 ```
 
 <p align="right">(<a href="#topic-210.3">back to sub topic 210.3</a>)</p>
