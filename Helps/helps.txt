@@ -108,7 +108,7 @@ start "shell:appsFolder\mail.google.com-98783EC6_1.0.0.1_neutral__vq8mrer2vmnwe!
 -----------------------------------------
 # Vagrant - Alter home and download box Folder
 -----------------------------------------
-Open file E:\Apps\Vagrant\embedded\gems\2.3.4\gems\vagrant-2.3.4\lib\vagrant\environment.rb
+Open file E:\Apps\Vagrant\embedded\gems\gems\vagrant-2.3.6\lib\vagrant\environment.rb
 and alter @home_path value
 
 Example:

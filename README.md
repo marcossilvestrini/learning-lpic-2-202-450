@@ -1608,7 +1608,6 @@ ip6tables
 
 #### 212.1 Important Commands
 
-
 ##### iptables
 
 ```sh
